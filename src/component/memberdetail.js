@@ -334,7 +334,6 @@ function capitalizeFirstLetter(string) {
                 })
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data.response.data.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1))
                         const obj = data.response.data.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1)
                         setNewspop(obj)
                     }).catch(() => {

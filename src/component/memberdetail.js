@@ -329,12 +329,12 @@ function capitalizeFirstLetter(string) {
                     setArr([])
                     setLoaded(true)
                 })
-                fetch(fet + '/bnk48/getSpotUpdate', {
+                fetch(fet + '/bnk48/getadsupdate', {
                     method :'post'
                 })
                     .then(response => response.json())
                     .then(data => {
-                        const obj = data.response.data.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1)
+                        const obj = data.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1)
                         setNewspop(obj)
                     }).catch(() => {
                         setNewspop([])

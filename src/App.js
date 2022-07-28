@@ -215,7 +215,7 @@ function App() {
   const FetchPopNews = (fet) => {
     if (sessionStorage.getItem("ads") == null) {
       setpopup(true)
-      fetch(fet + '/bnk48/getSpotUpdate', {
+      fetch(fet + '/bnk48/getadsupdate', {
         method :'post'
     })
         .then(response => response.json())
@@ -229,7 +229,7 @@ function App() {
           .then(dres => {
             sessionStorage.setItem("ads", 'i')
             if (dres.count == 0) {
-              setNewspop(data.response.data)
+              setNewspop(data)
             } else {
               let tempd = []
               for (let i = 0; i< dres.response.length; i++) {
@@ -246,8 +246,8 @@ function App() {
                 })
               }
               }
-              for (let i = 0; i< data.response.data.length; i++) {
-                  tempd.push(data.response.data[i])
+              for (let i = 0; i< data.length; i++) {
+                  tempd.push(data[i])
               }
               setNewspop(tempd)
             }

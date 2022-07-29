@@ -739,8 +739,8 @@ transitionDuration={500}
               {item.memtag.length > 0 && (<div>
                 Member included {
                   (item.memtag.map((nametag, ii) => (
-                    <a href={nametag == 'All' ? ("/memberlist"): ("/member?name=" + nametag)} target='_blank'>
-                    {ii == 0 ? capitalizeFirstLetter(nametag) : ', ' + capitalizeFirstLetter(nametag)}
+                    <a href={nametag == 'All' || nametag == 'ge' ? ("/memberlist"): ("/member?name=" + nametag)} target='_blank'>
+                    {nametag == 'ge' ? 'All 48 winners นด BNK48 12th Single Senbutsu General Election' : (ii == 0 ? capitalizeFirstLetter(nametag) : ', ' + capitalizeFirstLetter(nametag))}
                     </a>
                   )))
                 }

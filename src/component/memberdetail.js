@@ -304,6 +304,21 @@ function capitalizeFirstLetter(string) {
                     if (data.response == 'Not found this member in record.') {
                         History.push("/")
                     } else {
+                        fetch(fet + '/bnk48/getadsupdate', {
+                            method :'post'
+                        })
+                            .then(response => response.json())
+                            .then(dataads => {
+                                if (data.response.ge != "") {
+                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1)
+                                    setNewspop(obj)
+                                } else {
+                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1)
+                                    setNewspop(obj)
+                                }
+                            }).catch(() => {
+                                setNewspop([])
+                            })
                         setSec(data.response.name)
                         const temp =[]
                         temp.push(data.response)
@@ -329,16 +344,6 @@ function capitalizeFirstLetter(string) {
                     setArr([])
                     setLoaded(true)
                 })
-                fetch(fet + '/bnk48/getadsupdate', {
-                    method :'post'
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        const obj = data.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1)
-                        setNewspop(obj)
-                    }).catch(() => {
-                        setNewspop([])
-                    })
             } else {
                 History.push("/")
             }

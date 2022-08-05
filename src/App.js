@@ -214,53 +214,53 @@ function App() {
   const FetchPopNews = (fet) => {
     if (sessionStorage.getItem("ads") == null) {
       setpopup(true)
-      fetch(fet + '/bnk48/getadsupdate', {
-        method :'post'
-    })
-        .then(response => response.json())
-        .then(data => {
-          
-
-          fetch(fet + '/bnk48/getmemberbybirth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-            method :'post'
-        })
-          .then(response => response.json())
-          .then(dres => {
-            sessionStorage.setItem("ads", 'i')
-            if (dres.count == 0) {
-              setNewspop(data)
-            } else {
-              let tempd = []
-              for (let i = 0; i< dres.response.length; i++) {
-                if (dres.response[i].graduated == false) {
-                tempd.push({
-                  title: 'Happy birthday! ' +  dres.response[i].name + ' BNK48',
-                  desc: 'Today is her birthday! Let\'s celebrate each other together.',
-                  link: '/member?name=' + dres.response[i].name.toLowerCase(),
-                  src: dres.response[i].img,
-                  place: '',
-                  timerange: [
-                      moment(dres.response[i].birthday + ' 00:00:00', 'YYYY-MM-DD HH:mm:ss').unix(),
-                      moment(dres.response[i].birthday + ' 23:59:59', 'YYYY-MM-DD HH:mm:ss').unix()
-                  ],
-                  memtag: [
-                    dres.response[i].name.toLowerCase()
-                  ]
-                })
-              }
-              }
-              for (let i = 0; i< data.length; i++) {
-                  tempd.push(data[i])
-              }
-              setNewspop(tempd)
-            }
-          }).catch(() => {
-          })
-        }).catch(() => {
-        })
     } else {
       setpopup(false)
     }
+    fetch(fet + '/bnk48/getadsupdate', {
+      method :'post'
+  })
+      .then(response => response.json())
+      .then(data => {
+        
+
+        fetch(fet + '/bnk48/getmemberbybirth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+          method :'post'
+      })
+        .then(response => response.json())
+        .then(dres => {
+          sessionStorage.setItem("ads", 'i')
+          if (dres.count == 0) {
+            setNewspop(data)
+          } else {
+            let tempd = []
+            for (let i = 0; i< dres.response.length; i++) {
+              if (dres.response[i].graduated == false) {
+              tempd.push({
+                title: 'Happy birthday! ' +  dres.response[i].name + ' BNK48',
+                desc: 'Today is her birthday! Let\'s celebrate each other together.',
+                link: '/member?name=' + dres.response[i].name.toLowerCase(),
+                src: dres.response[i].img,
+                place: '',
+                timerange: [
+                    moment(dres.response[i].birthday + ' 00:00:00', 'YYYY-MM-DD HH:mm:ss').unix(),
+                    moment(dres.response[i].birthday + ' 23:59:59', 'YYYY-MM-DD HH:mm:ss').unix()
+                ],
+                memtag: [
+                  dres.response[i].name.toLowerCase()
+                ]
+              })
+            }
+            }
+            for (let i = 0; i< data.length; i++) {
+                tempd.push(data[i])
+            }
+            setNewspop(tempd)
+          }
+        }).catch(() => {
+        })
+      }).catch(() => {
+      })
   }
 
   React.useEffect(() => {
@@ -654,7 +654,7 @@ function App() {
                <ListItemIcon>
                <img alt={JSON.parse(localStorage.getItem("glog")).name} src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
              </ListItemIcon>
-             <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' BNK48'} secondary={newspop != null && newspop.filter(x => (x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] != 0 && moment().unix() <= x.timerange[1]).length > 0 ? 'Your Kami-Oshi have ' + newspop.filter(x => x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1).length +' incoming event. Click here to check it!' : 'Click here to see more description of your Kami-Oshi'} />
+             <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' BNK48'} secondary={newspop.length > 0 && newspop.filter(x => (x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] != 0 && moment().unix() <= x.timerange[1]).length > 0 ? 'Your Kami-Oshi have ' + newspop.filter(x => x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1).length +' incoming event(s). Click here to check it!' : 'Click here to see more description of your Kami-Oshi'} />
              </ListItem>
              ) : (
            <ListItem button>

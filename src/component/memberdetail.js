@@ -537,10 +537,7 @@ function capitalizeFirstLetter(string) {
                                             <img src={ita.src} width="100%" />
                                         </div>
                                         <div className='col-md mt-3'>
-                                            <h4 data-aos="zoom-out-right">{ita.title}
-                                            
-                                            </h4>
-                                            <p className='text-muted mt-3' data-aos="zoom-in">{ita.desc}&nbsp;
+                                            <h4 data-aos="zoom-out-right">{ita.title}&nbsp;
                                             {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment().unix() && (
                                                 <span className='mt-1 mb-3 badge badge-success'>
                                                     Event is starting
@@ -552,7 +549,8 @@ function capitalizeFirstLetter(string) {
                                                      Event is starting
                                                 </span>
                                                 )}
-                                                </p>
+                                            </h4>
+                                            <p className='text-muted mt-3' data-aos="zoom-in">{ita.desc}</p>
                                             {
                                                 ita.link != '' && (
                                                     <div data-aos="fade-down">

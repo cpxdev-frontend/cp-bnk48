@@ -728,7 +728,7 @@ transitionDuration={500}
               </a>
               {item.timerange[0] > 0 && item.timerange[1] == 0 && (
              <p className='mt-1 mb-3'>
-                This event has been started since <b>{moment.unix(item.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                This event has been started since <b>{moment.unix(item.timerange[0]).format('ddd DD MMMM yyyy')}</b>
             </p>
             )}
              {item.timerange[0] > 0 && item.timerange[1] > 0 && item.timerange[0] < item.timerange[1] && (
@@ -772,7 +772,7 @@ transitionDuration={500}
             </a>
             {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] == 0 && (
              <p className='mt-1 mb-3'>
-                This event has been started since <b>{moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                This event has been started since <b>{moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy')}</b>
             </p>
             )}
              {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] > 0 && newspop[0].timerange[0] < newspop[0].timerange[1] && (

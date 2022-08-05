@@ -728,12 +728,12 @@ transitionDuration={500}
               </a>
               {item.timerange[0] > 0 && item.timerange[1] == 0 && (
              <p className='mt-1 mb-3'>
-                This event has been started since {moment.unix(item.timerange[0]).format('dd MMMM yyyy HH:mm:ss')}
+                This event has been started since {moment.unix(item.timerange[0]).format('ddd DD MMMM yyyy H:mm:ss tt')}
             </p>
             )}
              {item.timerange[0] > 0 && item.timerange[1] > 0 && item.timerange[0] < item.timerange[1] && (
              <p className='mt-1 mb-3'>
-                This event has been started in {moment.unix(item.timerange[0]).format('dd MMMM yyyy HH:mm:ss')} to {moment.unix(item.timerange[1]).format('dd MMMM yyyy HH:mm:ss')}
+                This event has been started in {moment.unix(item.timerange[0]).format('ddd DD MMMM yyyy H:mm:ss tt')} to {moment.unix(item.timerange[1]).format('ddd DD MMMM yyyy H:mm:ss tt')}
             </p>
             )}
             <br />
@@ -772,12 +772,12 @@ transitionDuration={500}
             </a>
             {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] == 0 && (
              <p className='mt-1 mb-3'>
-                This event has been started since {moment.unix(newspop[0].timerange[0]).format('dd MMMM yyyy HH:mm:ss')}
+                This event has been started since {moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy H:mm:ss tt')}
             </p>
             )}
              {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] > 0 && newspop[0].timerange[0] < newspop[0].timerange[1] && (
              <p className='mt-1 mb-3'>
-                This event has been started in {moment.unix(newspop[0].timerange[0]).format('dd MMMM yyyy HH:mm:ss')} to {moment.unix(newspop[0].timerange[1]).format('dd MMMM yyyy HH:mm:ss')}
+                This event has been started in {moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy H:mm:ss tt')} to {moment.unix(newspop[0].timerange[1]).format('ddd DD MMMM yyyy H:mm:ss tt')}
             </p>
             )}
             <br />

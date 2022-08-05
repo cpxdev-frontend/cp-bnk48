@@ -550,14 +550,14 @@ function capitalizeFirstLetter(string) {
                                                 </span>
                                                 )}
                                             </h4>
-                                            {ita.timerange[0] > 0 && ita.timerange[0] > moment().unix() && ita.timerange[1] == 0 && (
+                                            {ita.timerange[0] > 0 && ita.timerange[0] > moment().unix() && (
                                                 <p className='mt-1 mb-3'>
                                                     Event is coming soon in <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b>
                                                 </p>
                                                 )}
                                                 {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment().unix() && (
                                                 <p className='mt-1 mb-3'>
-                                                    Event has been started since <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                                                    Event has been started since <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy')}</b>
                                                 </p>
                                                 )}
                                                 {ita.timerange[0] > 0 && ita.timerange[1] > 0 && ita.timerange[0] < ita.timerange[1] &&

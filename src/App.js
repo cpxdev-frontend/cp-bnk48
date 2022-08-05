@@ -650,7 +650,7 @@ function App() {
                <ListItemIcon>
                <img alt={JSON.parse(localStorage.getItem("glog")).name} src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
              </ListItemIcon>
-             <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' BNK48'} secondary={newspop != null && newspop.filter(x => (x.memtag.indexOf(localStorage.getItem("glog").name.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] != 0 && moment().unix() <= x.timerange[1]).length > 0 ? 'Your Kami-Oshi have ' + newspop.filter(x => x.memtag.indexOf(localStorage.getItem("glog").name.toLowerCase().toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1).length +' incoming event. Click here to check it!' : 'Click here to see more description of your Kami-Oshi'} />
+             <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' BNK48'} secondary={newspop != null && newspop.filter(x => (x.memtag.indexOf(JSON.parse(localStorage.getItem("glog")).name.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] != 0 && moment().unix() <= x.timerange[1]).length > 0 ? 'Your Kami-Oshi have ' + newspop.filter(x => x.memtag.indexOf(JSON.parse(localStorage.getItem("glog")).name.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1).length +' incoming event. Click here to check it!' : 'Click here to see more description of your Kami-Oshi'} />
              </ListItem>
              ) : (
            <ListItem button>

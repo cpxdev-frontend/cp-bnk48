@@ -55,7 +55,6 @@ import PageErr from './component/404'
 
 import GeCom from './component/geevent/ge';
 import GeMana from './component/geevent/gemanage';
-import moment from 'moment'
 import Fet from './fetch'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import Carousel from 'react-material-ui-carousel'

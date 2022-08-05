@@ -539,17 +539,22 @@ function capitalizeFirstLetter(string) {
                                         <div className='col-md mt-3'>
                                             <h4 data-aos="zoom-out-right">{ita.title}&nbsp;
                                             {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment().unix() && (
-                                                <span className='mt-1 mb-3 badge badge-success'>
-                                                    Event is starting
+                                                <span className='badge badge-success'>
+                                                    Event is starting since <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b>
                                                 </span>
                                                 )}
                                                 {ita.timerange[0] > 0 && ita.timerange[1] > 0 && ita.timerange[0] < ita.timerange[1] &&
                                                 moment().unix() >= ita.timerange[0] && moment().unix() <= ita.timerange[1] && (
-                                                <span className='mt-1 mb-3 badge badge-success'>
-                                                     Event is starting
+                                                <span className='badge badge-success'>
+                                                     Event is starting until <b>{moment.unix(ita.timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
                                                 </span>
                                                 )}
                                             </h4>
+                                            {ita.timerange[0] > 0 && ita.timerange[0] > moment().unix() && (
+                                                <p className='mt-1 mb-3'>
+                                                    Event is coming soon in <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                                                </p>
+                                                )}
                                             <p className='text-muted mt-3' data-aos="zoom-in">{ita.desc}</p>
                                             {
                                                 ita.link != '' && (

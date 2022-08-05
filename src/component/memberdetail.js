@@ -541,13 +541,13 @@ function capitalizeFirstLetter(string) {
                                             
                                             </h4>
                                             <p className='text-muted mt-3' data-aos="zoom-in">{ita.desc}&nbsp;
-                                            {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment.unix() (
+                                            {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment().unix() (
                                                 <span className='mt-1 mb-3 badge badge-success'>
                                                     Current Event
                                                 </span>
                                                 )}
                                                 {ita.timerange[0] > 0 && ita.timerange[1] > 0 && ita.timerange[0] < ita.timerange[1] &&
-                                                moment.unix() >= ita.timerange[0] && moment.unix() <= ita.timerange[1] && (
+                                                moment().unix() >= ita.timerange[0] && moment().unix() <= ita.timerange[1] && (
                                                 <span className='mt-1 mb-3 badge badge-success'>
                                                    Current Event
                                                 </span>

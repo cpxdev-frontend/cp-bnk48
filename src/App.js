@@ -55,7 +55,7 @@ import PageErr from './component/404'
 
 import GeCom from './component/geevent/ge';
 import GeMana from './component/geevent/gemanage';
-
+import moment from 'moment'
 import Fet from './fetch'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import Carousel from 'react-material-ui-carousel'
@@ -727,6 +727,16 @@ transitionDuration={500}
               <a href={item.link} target='_blank' className='mt-1'>
                   Reference Link
               </a>
+              {item.timerange[0] > 0 && item.timerange[1] == 0 && (
+             <p className='mt-1 mb-3'>
+                This event has been started since {moment.unix(item.timerange[0]).format('dd MMMM yyyy HH:mm:ss')}
+            </p>
+            )}
+             {item.timerange[0] > 0 && item.timerange[1] > 0 && item.timerange[0] < item.timerange[1] && (
+             <p className='mt-1 mb-3'>
+                This event has been started in {moment.unix(item.timerange[0]).format('dd MMMM yyyy HH:mm:ss')} to {moment.unix(item.timerange[1]).format('dd MMMM yyyy HH:mm:ss')}
+            </p>
+            )}
             <br />
               {
                 item.place != '' && (
@@ -761,6 +771,16 @@ transitionDuration={500}
             <a href={newspop[0].link} target='_blank' className='mt-1'>
                 Reference Link
             </a>
+            {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] == 0 && (
+             <p className='mt-1 mb-3'>
+                This event has been started since {moment.unix(newspop[0].timerange[0]).format('dd MMMM yyyy HH:mm:ss')}
+            </p>
+            )}
+             {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] > 0 && newspop[0].timerange[0] < newspop[0].timerange[1] && (
+             <p className='mt-1 mb-3'>
+                This event has been started in {moment.unix(newspop[0].timerange[0]).format('dd MMMM yyyy HH:mm:ss')} to {moment.unix(newspop[0].timerange[1]).format('dd MMMM yyyy HH:mm:ss')}
+            </p>
+            )}
             <br />
             {
                 newspop[0].place != '' && (

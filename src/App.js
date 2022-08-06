@@ -150,6 +150,7 @@ function App() {
   const [spcLive, setLive] = React.useState(false);
   const [geready, setReadyGE] = React.useState(false);
   const [newspop, setNewspop] = React.useState([]);
+  const [memUpdate, setUpdate] = React.useState([]);
   const [stream, setStream] = React.useState(null);
   const [tokenID, setToken] = React.useState('');
   const [point, setPoint] = React.useState(0);
@@ -215,49 +216,53 @@ function App() {
   const FetchPopNews = (fet) => {
     if (sessionStorage.getItem("ads") == null) {
       setpopup(true)
-      fetch(fet + '/bnk48/getadsupdate', {
-        method :'post'
-    })
-        .then(response => response.json())
-        .then(data => {
-          
-
-          fetch(fet + '/bnk48/getmemberbybirth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-            method :'post'
-        })
-          .then(response => response.json())
-          .then(dres => {
-            sessionStorage.setItem("ads", 'i')
-            if (dres.count == 0) {
-              setNewspop(data)
-            } else {
-              let tempd = []
-              for (let i = 0; i< dres.response.length; i++) {
-                if (dres.response[i].graduated == false) {
-                tempd.push({
-                  title: 'Happy birthday! ' +  dres.response[i].name + ' BNK48',
-                  desc: 'Today is her birthday! Let\'s celebrate each other together.',
-                  link: '/member?name=' + dres.response[i].name.toLowerCase(),
-                  src: dres.response[i].img,
-                  place: '',
-                  memtag: [
-                    dres.response[i].name.toLowerCase()
-                  ]
-                })
-              }
-              }
-              for (let i = 0; i< data.length; i++) {
-                  tempd.push(data[i])
-              }
-              setNewspop(tempd)
-            }
-          }).catch(() => {
-          })
-        }).catch(() => {
-        })
     } else {
       setpopup(false)
     }
+    
+    fetch(fet + '/bnk48/getadsupdate', {
+      method :'post'
+  })
+      .then(response => response.json())
+      .then(data => {
+        
+
+        fetch(fet + '/bnk48/getmemberbybirth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+          method :'post'
+      })
+        .then(response => response.json())
+        .then(dres => {
+          sessionStorage.setItem("ads", 'i')
+          if (dres.count == 0) {
+            setNewspop(data)
+          } else {
+            let tempd = []
+            for (let i = 0; i< dres.response.length; i++) {
+              if (dres.response[i].graduated == false) {
+              tempd.push({
+                title: 'Happy birthday! ' +  dres.response[i].name + ' BNK48',
+                desc: 'Today is her birthday! Let\'s celebrate each other together.',
+                link: '/member?name=' + dres.response[i].name.toLowerCase(),
+                src: dres.response[i].img,
+                place: '',
+                memtag: [
+                  dres.response[i].name.toLowerCase()
+                ]
+              })
+            }
+            }
+            for (let i = 0; i< data.length; i++) {
+                tempd.push(data[i])
+            }
+            setNewspop(tempd)
+            if (kamin != '') {
+                setUpdate(tempd.filter(x => x.memtag.indexOf(kamin.toLowerCase()) || x.memtag.indexOf('All')))
+            }
+          }
+        }).catch(() => {
+        })
+      }).catch(() => {
+      })
   }
 
   React.useEffect(() => {
@@ -659,7 +664,7 @@ function App() {
                <ListItemIcon>
                <img alt={JSON.parse(localStorage.getItem("glog")).name} src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
              </ListItemIcon>
-             <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' BNK48'} secondary='Click here to see more description of your Kami-Oshi' />
+             <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' BNK48'} secondary={memUpdate.length > 0 ? 'Your Kami Oshi have ' + memUpdate.length + ' incoming event(s). Let\'s check it!' : 'Click here to see more description of your Kami-Oshi'} />
              </ListItem>
              ) : (
            <ListItem button>

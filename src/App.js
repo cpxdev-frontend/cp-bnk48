@@ -543,9 +543,17 @@ function App() {
                 <ListItem onClick={() => {
                   setOpen(false)
                   Swal.fire({
-                    html: 'Region mode will enhance system performance. Current region connection has been referenced by IP address.',
+                    title: 'Region mode will enhance system performance. Current region connection has been referenced by IP address',
+                    showDenyButton: true,
+                    confirmButtonText: 'View System Status',
+                    denyButtonText: `Close`,
                     icon: 'info',
                     iconColor: 'rgb(203, 150, 194)'
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      window.open('//status.cpxdev.tk', '_blank')
+                    }
                   })
                 }} button>
                   <ListItemIcon>

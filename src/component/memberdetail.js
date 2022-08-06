@@ -537,7 +537,35 @@ function capitalizeFirstLetter(string) {
                                             <img src={ita.src} width="100%" />
                                         </div>
                                         <div className='col-md mt-3'>
-                                            <h4 data-aos="zoom-out-right">{ita.title}</h4>
+                                            <h4 data-aos="zoom-out-right">{ita.title}&nbsp;
+                                            {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment().unix() && (
+                                                <span className='badge badge-success'>
+                                                    Event has been started
+                                                </span>
+                                                )}
+                                                {ita.timerange[0] > 0 && ita.timerange[1] > 0 && ita.timerange[0] < ita.timerange[1] &&
+                                                moment().unix() >= ita.timerange[0] && moment().unix() <= ita.timerange[1] && (
+                                                <span className='badge badge-success'>
+                                                     Event is starting
+                                                </span>
+                                                )}
+                                            </h4>
+                                            {ita.timerange[0] > 0 && ita.timerange[0] > moment().unix() && (
+                                                <p className='mt-1 mb-3'>
+                                                    Event is coming soon in <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                                                </p>
+                                                )}
+                                                {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment().unix() && (
+                                                <p className='mt-1 mb-3'>
+                                                    Event has been started since <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy')}</b>
+                                                </p>
+                                                )}
+                                                {ita.timerange[0] > 0 && ita.timerange[1] > 0 && ita.timerange[0] < ita.timerange[1] &&
+                                                moment().unix() >= ita.timerange[0] && moment().unix() <= ita.timerange[1] && (
+                                                <p className='mt-1 mb-3'>
+                                                     Event is starting until <b>{moment.unix(ita.timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                                                </p>
+                                                )}
                                             <p className='text-muted mt-3' data-aos="zoom-in">{ita.desc}</p>
                                             {
                                                 ita.link != '' && (

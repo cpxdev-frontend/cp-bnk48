@@ -255,7 +255,8 @@ function App() {
                 tempd.push(data[i])
             }
             setNewspop(tempd)
-            if (kamin != '') {
+            alert(kamin)
+            if (kamin !== '') {
                 setUpdate(tempd.filter(x => x.memtag.indexOf(kamin.toLowerCase()) || x.memtag.indexOf('All')))
             }
           }
@@ -664,8 +665,8 @@ function App() {
                <ListItemIcon>
                <img alt={JSON.parse(localStorage.getItem("glog")).name} src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
              </ListItemIcon>
-             <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' BNK48'} secondary={memUpdate.length > 0 ? 'Your Kami Oshi have ' + memUpdate.length + ' incoming event(s). Let\'s check it!' : 'Click here to see more description of your Kami-Oshi'} />
-             </ListItem>
+             <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' BNK48'} secondary={newspop.length > 0 && newspop.filter(x => ((x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] == 0) || ((x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] > 0 && moment().unix() <= x.timerange[1])).length > 0 ? 'Your Kami-Oshi have ' + newspop.filter(x => x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1).length +' incoming event(s). Click here to check it!' : 'Click here to see more description of your Kami-Oshi'} />
+              </ListItem>
              ) : (
            <ListItem button>
                <ListItemIcon>
@@ -737,6 +738,17 @@ transitionDuration={500}
               <Typography className='mt-3' variant="body2" component="p">
                   {item.desc}
               </Typography>
+            {item.timerange[0] > 0 && item.timerange[1] == 0 && (
+             <p className='mt-1 mb-3'>
+                This event has been started since <b>{moment.unix(item.timerange[0]).format('ddd DD MMMM yyyy')}</b>
+            </p>
+            )}
+             {item.timerange[0] > 0 && item.timerange[1] > 0 && item.timerange[0] < item.timerange[1] && (
+             <p className='mt-1 mb-3'>
+                This event has been started in <b>{moment.unix(item.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b> to <b>{moment.unix(item.timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
+            </p>
+            )}
+
               <a href={item.link} target='_blank' className='mt-1'>
                   Reference Link
               </a>
@@ -771,6 +783,17 @@ transitionDuration={500}
             <Typography className='mt-3 tw' variant="body2" component="p">
                 {newspop[0].desc}
             </Typography>
+
+            {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] == 0 && (
+             <p className='mt-1 mb-3'>
+                This event has been started since <b>{moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy')}</b>
+            </p>
+            )}
+             {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] > 0 && newspop[0].timerange[0] < newspop[0].timerange[1] && (
+             <p className='mt-1 mb-3'>
+                This event has been started in <b>{moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b> to <b>{moment.unix(newspop[0].timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
+            </p>
+            )}
             <a href={newspop[0].link} target='_blank' className='mt-1'>
                 Reference Link
             </a>

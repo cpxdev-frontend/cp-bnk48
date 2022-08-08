@@ -414,7 +414,9 @@ function capitalizeFirstLetter(string) {
                                         {birthday ? (
                                             <h6><CakeIcon fontSize="small"/> Today is her birthday! ({new Date().getFullYear() - new Date(item.birthday).getFullYear() + ' years old'})</h6>
                                         ) : (
-                                            <h6><CakeIcon fontSize="small"/> {moment(item.birthday).format('DD MMMM YYYY')}</h6>
+                                            <>
+                                            {moment(item.birthday).format('M') == new Date().getMonth() + 1 && parseInt(moment(item.birthday).format('D')) - new Date().getDate() > 0 ? (<h6><CakeIcon fontSize="small"/> {moment(item.birthday).format('DD MMMM YYYY') + ' (' + (parseInt(moment(item.birthday).format('D')) - new Date().getDate())) + ' day(s) to go' : (<h6><CakeIcon fontSize="small"/> {moment(item.birthday).format('DD MMMM YYYY')}</h6>)}</h6>)}
+                                            </>
                                         )}
                                         {!item.graduated && (
                                             <>

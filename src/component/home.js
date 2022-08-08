@@ -239,7 +239,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
                  />
                <CardContent>
                    <h5>{item.name}</h5>
-                   <p>Birthday: {moment(new Date().getFullYear() + "-" + (new Date(item.birthday).getMonth() + 1)+ "-" + (new Date(item.birthday).getDate())).format('ddd DD MMMM YYYY')} ({new Date().getFullYear() - new Date(item.birthday).getFullYear() + ' years old'})</p>
+                   <p>Birthday: {new Date(item.birthday).format('ddd DD MMMM YYYY')} ({moment(item.birthday).format('M') == new Date().getMonth() + 1 && parseInt(moment(item.birthday).format('D')) - new Date().getDate() > 0 ? (parseInt(moment(item.birthday).format('D')) - new Date().getDate()) + ' day(s) to go' : new Date().getFullYear() - new Date(item.birthday).getFullYear() + ' years old'}) {}</p>
                </CardContent>
              </CardActionArea>
               </Card> 

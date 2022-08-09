@@ -2,6 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar,Typography, IconButton, FormControlLabel, DialogTitle, DialogContent, ListItem, DialogActions, Dialog, ListItemText,
 Card, CardContent, Avatar, Button, ListItemSecondaryAction, List, Checkbox, Fade, Grow, CardHeader } from '@material-ui/core';
 import moment from 'moment';
+import StarsIcon from '@material-ui/icons/Stars';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
@@ -492,7 +493,7 @@ const Ge = ({fet, timesch, setSec}) => {
                       data-aos='fade-right'
                    >
                     <TableCell component="th" className={classes.rank}>
-                          {item.rank}
+                          {item.rank == 1 || item.rank == 17 || item.rank == 33 && (<StarsIcon/>)} {item.rank}
                         </TableCell>
                         <TableCell align="center" className={classes.img}>
                         <img src={item.response.img} className={classes.large + ' cir avatarlimit'} />

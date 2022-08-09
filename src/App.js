@@ -620,32 +620,50 @@ function App() {
                 
                 
                 </Drawer>
-                <BasicSwitch>
-                      <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
-                      <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/member" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} />} />
-                      <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      	{moment().unix() <	1660521600 && (
-                        <>
-                          <Route path="/fandom" render={() => <FamdomList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                          <Route path="/fandomroom" render={() => <FanRoom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                          <Route path="/addevent" render={() => <AddEvent fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                          <Route path="/eventcontrol" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                        </>
-                        )}
-                      <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/manual" render={() => <SiteMan fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                {moment().unix() <1660521600 ? (
+                    <BasicSwitch>
+                    <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
+                    <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/member" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} />} />
+                    <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                        <Route path="/fandom" render={() => <FamdomList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                        <Route path="/fandomroom" render={() => <FanRoom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                        <Route path="/addevent" render={() => <AddEvent fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                        <Route path="/eventcontrol" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/manual" render={() => <SiteMan fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
 
-                      <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} />} />
-                      <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
-                    </BasicSwitch>
+                    <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} />} />
+                    <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
+                  </BasicSwitch>
+                ): (
+                  <BasicSwitch>
+                  <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
+                  <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/member" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} />} />
+                  <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/manual" render={() => <SiteMan fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+
+                  <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} />} />
+                  <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
+                </BasicSwitch>
+                )}
+                
                       
                   
         <footer className="bg-white text-center pt-2 pb-2 bnktheme">

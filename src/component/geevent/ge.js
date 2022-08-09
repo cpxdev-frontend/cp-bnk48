@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(10),
   },
   rank: {
-    width: theme.spacing(15),
+    width: theme.spacing(25),
   },
   img: {
     width: theme.spacing(50),
@@ -493,7 +493,7 @@ const Ge = ({fet, timesch, setSec}) => {
                       data-aos='fade-right'
                    >
                     <TableCell component="th" className={classes.rank}>
-                          {item.rank == 1 || item.rank == 17 || item.rank == 33 && (<StarsIcon/>)} {item.rank}
+                          {(item.rank == 1 || item.rank == 17 || item.rank == 33) && (<StarsIcon/>)} {item.rank}
                         </TableCell>
                         <TableCell align="center" className={classes.img}>
                         <img src={item.response.img} className={classes.large + ' cir avatarlimit'} />

@@ -11,10 +11,6 @@ const useStyles = makeStyles((theme) => ({
 
   const Streamchannel = [
       {
-          label: 'General Election',
-          value: '1',
-      },
-      {
         label: 'Special Event Stream',
         value: '2',
     }

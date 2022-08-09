@@ -478,6 +478,7 @@ const Ge = ({fet, timesch, setSec}) => {
                 <caption className='text-right'>{moment().unix() >= timesch.announ &&moment().unix() <= timesch.announ + 86400 ? "System will be update records every minute. You don't need to be refresh" : ''}</caption>
                   <TableHead>
                     <TableRow>
+                      <TableCell></TableCell>
                       <TableCell className={classes.rank}>Rank</TableCell>
                       <TableCell className={classes.img} align="center">Member Image</TableCell>
                       <TableCell align="center">Name</TableCell>
@@ -492,8 +493,11 @@ const Ge = ({fet, timesch, setSec}) => {
                       onClick={() => item.response.ref.includes('bnk48') ? History.push('member?name=' + item.memid.toLowerCase()) : item.response.ref.includes('cgm48') ? window.open('//cgm48fan.cpxdev.tk/member?name=' + item.memid.toLowerCase(), '_target') : ''}
                       data-aos='fade-right'
                    >
-                    <TableCell component="th" className={classes.rank}>
-                          {(item.rank == 1 || item.rank == 17 || item.rank == 33) && (<StarsIcon/>)} {item.rank}
+                         <TableCell component="th">
+                          {(item.rank == 1 || item.rank == 17 || item.rank == 33) && (<StarsIcon/>)}
+                        </TableCell>
+                        <TableCell component="th" className={classes.rank}>
+                          {item.rank}
                         </TableCell>
                         <TableCell align="center" className={classes.img}>
                         <img src={item.response.img} className={classes.large + ' cir avatarlimit'} />

@@ -487,7 +487,7 @@ const Ge = ({fet, timesch, setSec}) => {
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
                     <TableBody key={item.id} className={(item.rank == 1 ? 'centerGE' : item.rank > 1 && item.rank <= 16 ? 'senGE' : item.rank > 16 && item.rank <= 32 ? 'nextGE' : '') + ' cur'}
-                      data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.response.name + ' is both Center position and Senbatsu of BNK48 12th Single' : item.rank > 1 && item.rank <= 16 ? item.response.name + ' is Senbatsu of BNK48 12th Single' : item.rank > 16 && item.rank <= 32 ? item.response.name + ' is participate in second song of BNK48 12th Single' : item.response.name +' is participate in last song of BNK48 12th Single') + (moment().unix() < timesch.vote.close ? ' (2nd Preliminary Result)' : '')}
+                      data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.response.name + ' is both Center position and Senbatsu of BNK48 12th Single' : item.rank > 1 && item.rank <= 16 ? item.response.name + ' is Senbatsu of BNK48 12th Single' : item.rank > 16 && item.rank <= 32 ? item.response.name + ' is participate in second song of BNK48 12th Single "Make Noise"' : item.response.name +' is participate in The third song of BNK48 12th Single "Kinou Yori Motto Suki"') + (moment().unix() < timesch.vote.close ? ' (2nd Preliminary Result)' : '')}
                       onClick={() => item.response.ref.includes('bnk48') ? History.push('member?name=' + item.memid.toLowerCase()) : item.response.ref.includes('cgm48') ? window.open('//cgm48fan.cpxdev.tk/member?name=' + item.memid.toLowerCase(), '_target') : ''}
                       data-aos='fade-right'
                    >

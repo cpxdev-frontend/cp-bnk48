@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(10),
   },
   rank: {
-    width: theme.spacing(50),
+    width: theme.spacing(20),
   },
   img: {
     width: theme.spacing(50),

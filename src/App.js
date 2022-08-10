@@ -427,7 +427,7 @@ function App() {
                     color="secondary"
                   />
                 }
-                label="Reduce Graphic"
+                label="Focus on Efficiency"
               />
               )}
               {login&& (

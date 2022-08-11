@@ -384,7 +384,7 @@ function capitalizeFirstLetter(string) {
                   })
             } else {
                 Swal.fire({
-                    title: "Image is Below",
+                    title: "BNK48 12th Single Image",
                     imageUrl: url,
                     showDenyButton: true,
                     showCancelButton: true,

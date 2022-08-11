@@ -383,7 +383,22 @@ function capitalizeFirstLetter(string) {
                     text: 'This member is in-queue to released image.',
                   })
             } else {
-                window.open(url, '_blank')
+                Swal.fire({
+                    title: "Image is Below",
+                    imageUrl: url,
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Download',
+                    denyButtonColor: '#3085d6',
+                    denyButtonText: `See General Election Ranking`,
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      window.open(url, '_blank')
+                    } else if (result.isDenied) {
+                      window.location.href ='https://bnk48fan.cpxdev.tk'
+                    }
+                  })
             }
         }
         return (  

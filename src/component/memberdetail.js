@@ -396,7 +396,7 @@ function capitalizeFirstLetter(string) {
                     if (result.isConfirmed) {
                       window.open(url, '_blank')
                     } else if (result.isDenied) {
-                      window.location.href ='https://bnk48fan.cpxdev.tk'
+                      History.push('/ge3')
                     }
                   })
             }

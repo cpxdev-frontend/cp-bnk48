@@ -79,7 +79,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
           <div class="video-background">
           {localStorage.getItem('lowgraphic') == null ? (
             <div class="video-foreground">
-            <iframe src="https://www.youtube.com/embed/vX2Y5xNQnYE?autoplay=1&mute=1&controls=0&loop=1&playlist=vX2Y5xNQnYE" frameborder="0"></iframe>
+            <iframe src="https://www.youtube.com/embed/yF4amthgOm8?autoplay=1&mute=1&controls=0&loop=1&playlist=yF4amthgOm8" frameborder="0"></iframe>
           </div>
           ) : (
             <Fade in={true} timeout={800}>
@@ -239,7 +239,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
                  />
                <CardContent>
                    <h5>{item.name}</h5>
-                   <p>Birthday: {moment(new Date().getFullYear() + "-" + (new Date(item.birthday).getMonth() + 1)+ "-" + (new Date(item.birthday).getDate())).format('ddd DD MMMM YYYY')} ({new Date().getFullYear() - new Date(item.birthday).getFullYear() + ' years old'})</p>
+                   <p>Birthday: {moment(item.birthday).format('ddd DD MMMM YYYY')} ({moment(item.birthday).format('M') == new Date().getMonth() + 1 && parseInt(moment(item.birthday).format('D')) - new Date().getDate() > 0 ? (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old | ' + (parseInt(moment(item.birthday).format('D')) - new Date().getDate()) + ' day(s) to go' : (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old'})</p>
                </CardContent>
              </CardActionArea>
               </Card> 

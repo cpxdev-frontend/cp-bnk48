@@ -55,6 +55,7 @@ import PageErr from './component/404'
 
 import GeCom from './component/geevent/ge';
 import GeMana from './component/geevent/gemanage';
+
 import Fet from './fetch'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import Carousel from 'react-material-ui-carousel'
@@ -149,6 +150,7 @@ function App() {
   const [spcLive, setLive] = React.useState(false);
   const [geready, setReadyGE] = React.useState(false);
   const [newspop, setNewspop] = React.useState([]);
+  const [memUpdate, setUpdate] = React.useState([]);
   const [stream, setStream] = React.useState(null);
   const [tokenID, setToken] = React.useState('');
   const [point, setPoint] = React.useState(0);
@@ -217,6 +219,7 @@ function App() {
     } else {
       setpopup(false)
     }
+    
     fetch(fet + '/bnk48/getadsupdate', {
       method :'post'
   })
@@ -242,10 +245,6 @@ function App() {
                 link: '/member?name=' + dres.response[i].name.toLowerCase(),
                 src: dres.response[i].img,
                 place: '',
-                timerange: [
-                    moment(dres.response[i].birthday + ' 00:00:00', 'YYYY-MM-DD HH:mm:ss').unix(),
-                    moment(dres.response[i].birthday + ' 23:59:59', 'YYYY-MM-DD HH:mm:ss').unix()
-                ],
                 memtag: [
                   dres.response[i].name.toLowerCase()
                 ]
@@ -256,6 +255,10 @@ function App() {
                 tempd.push(data[i])
             }
             setNewspop(tempd)
+            alert(kamin)
+            if (kamin !== '') {
+                setUpdate(tempd.filter(x => x.memtag.indexOf(kamin.toLowerCase()) || x.memtag.indexOf('All')))
+            }
           }
         }).catch(() => {
         })
@@ -424,7 +427,7 @@ function App() {
                     color="secondary"
                   />
                 }
-                label="Reduce Graphic"
+                label={Reduce ? "Focus on Efficiency" : "Focus on Modern"}
               />
               )}
               {login&& (
@@ -505,12 +508,14 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary="Official Update" />
                 </ListItem>
+                {moment().unix() < 1660521600 && (
                 <ListItem component={Link} to='/fandom' className={window.location.pathname == '/fandom' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <AcUnitIcon />
                   </ListItemIcon>
                   <ListItemText primary="Fandom Event" />
                 </ListItem>
+                )}
                 <ListItem component={Link} to='/token' className={window.location.pathname == '/token' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <MonetizationOnIcon />
@@ -546,9 +551,17 @@ function App() {
                 <ListItem onClick={() => {
                   setOpen(false)
                   Swal.fire({
-                    html: 'Region mode will enhance system performance. Current region connection has been referenced by IP address.',
+                    title: 'Region mode will enhance system performance. Current region connection has been referenced by IP address',
+                    showDenyButton: true,
+                    confirmButtonText: 'View System Status',
+                    denyButtonText: `Close`,
                     icon: 'info',
                     iconColor: 'rgb(203, 150, 194)'
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      window.open('//status.cpxdev.tk', '_blank')
+                    }
                   })
                 }} button>
                   <ListItemIcon>
@@ -607,28 +620,50 @@ function App() {
                 
                 
                 </Drawer>
-                <BasicSwitch>
-                      <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
-                      <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/member" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} />} />
-                      <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/fandom" render={() => <FamdomList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/fandomroom" render={() => <FanRoom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/addevent" render={() => <AddEvent fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/eventcontrol" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/manual" render={() => <SiteMan fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                {moment().unix() <1660521600 ? (
+                    <BasicSwitch>
+                    <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
+                    <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/member" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} />} />
+                    <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                        <Route path="/fandom" render={() => <FamdomList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                        <Route path="/fandomroom" render={() => <FanRoom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                        <Route path="/addevent" render={() => <AddEvent fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                        <Route path="/eventcontrol" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/manual" render={() => <SiteMan fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
 
-                      <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} />} />
-                      <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                      <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
-                    </BasicSwitch>
+                    <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} />} />
+                    <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
+                  </BasicSwitch>
+                ): (
+                  <BasicSwitch>
+                  <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
+                  <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/member" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} />} />
+                  <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/manual" render={() => <SiteMan fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+
+                  <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} />} />
+                  <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
+                </BasicSwitch>
+                )}
+                
                       
                   
         <footer className="bg-white text-center pt-2 pb-2 bnktheme">
@@ -655,7 +690,7 @@ function App() {
                <img alt={JSON.parse(localStorage.getItem("glog")).name} src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
              </ListItemIcon>
              <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' BNK48'} secondary={newspop.length > 0 && newspop.filter(x => ((x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] == 0) || ((x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] > 0 && moment().unix() <= x.timerange[1])).length > 0 ? 'Your Kami-Oshi have ' + newspop.filter(x => x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1).length +' incoming event(s). Click here to check it!' : 'Click here to see more description of your Kami-Oshi'} />
-             </ListItem>
+              </ListItem>
              ) : (
            <ListItem button>
                <ListItemIcon>
@@ -727,10 +762,7 @@ transitionDuration={500}
               <Typography className='mt-3' variant="body2" component="p">
                   {item.desc}
               </Typography>
-              <a href={item.link} target='_blank' className='mt-1'>
-                  Reference Link
-              </a>
-              {item.timerange[0] > 0 && item.timerange[1] == 0 && (
+            {item.timerange[0] > 0 && item.timerange[1] == 0 && (
              <p className='mt-1 mb-3'>
                 This event has been started since <b>{moment.unix(item.timerange[0]).format('ddd DD MMMM yyyy')}</b>
             </p>
@@ -740,6 +772,10 @@ transitionDuration={500}
                 This event has been started in <b>{moment.unix(item.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b> to <b>{moment.unix(item.timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
             </p>
             )}
+
+              <a href={item.link} target='_blank' className='mt-1'>
+                  Reference Link
+              </a>
             <br />
               {
                 item.place != '' && (
@@ -771,9 +807,7 @@ transitionDuration={500}
             <Typography className='mt-3 tw' variant="body2" component="p">
                 {newspop[0].desc}
             </Typography>
-            <a href={newspop[0].link} target='_blank' className='mt-1'>
-                Reference Link
-            </a>
+
             {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] == 0 && (
              <p className='mt-1 mb-3'>
                 This event has been started since <b>{moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy')}</b>
@@ -784,6 +818,9 @@ transitionDuration={500}
                 This event has been started in <b>{moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b> to <b>{moment.unix(newspop[0].timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
             </p>
             )}
+            <a href={newspop[0].link} target='_blank' className='mt-1'>
+                Reference Link
+            </a>
             <br />
             {
                 newspop[0].place != '' && (

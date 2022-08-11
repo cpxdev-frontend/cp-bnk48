@@ -1,7 +1,8 @@
 import React from 'react';
-import { AppBar, Toolbar,Typography, IconButton, FormControlLabel, DialogTitle, DialogContent, ListItem, DialogActions, Dialog, ListItemText,
-Card, CardContent, Avatar, Button, ListItemSecondaryAction, List, Checkbox, Fade, Grow, CardHeader } from '@material-ui/core';
+import { AppBar, MenuItem,Typography, IconButton, FormControlLabel, DialogTitle, DialogContent, ListItem, DialogActions, Dialog, ListItemText,
+Card, CardContent, TextField, Button, ListItemSecondaryAction, List, Checkbox, Fade, Grow, CardHeader } from '@material-ui/core';
 import moment from 'moment';
+import StarsIcon from '@material-ui/icons/Stars';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
@@ -78,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(10),
   },
   rank: {
-    width: theme.spacing(10),
+    width: theme.spacing(20),
   },
   img: {
     width: theme.spacing(50),
@@ -98,6 +99,8 @@ const Ge = ({fet, timesch, setSec}) => {
   const [candiUrl, setCandiUrl] = React.useState(''); 
   const [ts, setts] = React.useState('Updating'); 
   const [urlstream, setStream] = React.useState(''); 
+  const [rankrange, setRankrange] = React.useState([0, 47]); 
+  const [ranklabel, setRanklab] = React.useState('all'); 
 
   const ResultFetch = () => {
     setts('Updating')
@@ -230,6 +233,29 @@ const Ge = ({fet, timesch, setSec}) => {
     }
     return dcn
   }
+
+  const ranklist = [
+    {
+      id: 'all',
+      rank: [0, 47],
+      label: 'All'
+    },
+    {
+      id: 'sen',
+      rank: [0, 15],
+      label: 'Senbutsu (TBA)'
+    },
+    {
+      id: 'under',
+      rank: [16, 31],
+      label: 'Under Girl (Make Noise)'
+    },
+    {
+      id: 'next',
+      rank: [32, 47],
+      label: 'Next Girl (Kinou Yori Motto Suki)'
+    }
+  ]
 
     return ( 
         <>
@@ -472,11 +498,29 @@ const Ge = ({fet, timesch, setSec}) => {
             <CardContent>
               <CardHeader title="Result of Election" subheader={'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
+              <TextField
+                select
+                label="Choose Group"
+                defaultValue={ranklabel}
+                className="col-8 mb-2"
+                fullWidth={true}
+                onChange={(e) => {
+                  setRankrange(ranklist[ranklist.findIndex(x => x.id == e.target.value)].rank)
+                  setRanklab(e.target.value)
+                }}
+                >
+                  {ranklist.map((it,i) => (
+                       <MenuItem key={it.id} value={it.id}>
+                       {it.label}
+                       </MenuItem>
+                  ))}
+             </TextField>
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">
                 <caption className='text-right'>{moment().unix() >= timesch.announ &&moment().unix() <= timesch.announ + 86400 ? "System will be update records every minute. You don't need to be refresh" : ''}</caption>
                   <TableHead>
                     <TableRow>
+                      <TableCell></TableCell>
                       <TableCell className={classes.rank}>Rank</TableCell>
                       <TableCell className={classes.img} align="center">Member Image</TableCell>
                       <TableCell align="center">Name</TableCell>
@@ -485,13 +529,16 @@ const Ge = ({fet, timesch, setSec}) => {
                       <TableCell align="right">Scores</TableCell>
                     </TableRow>
                   </TableHead>
-                  {rank.length > 0 ? rank.map((item, i) => (
+                  {rank.length > 0 ? rank.map((item, i) => i >= rankrange[0] && i <= rankrange[1] && (
                     <TableBody key={item.id} className={(item.rank == 1 ? 'centerGE' : item.rank > 1 && item.rank <= 16 ? 'senGE' : item.rank > 16 && item.rank <= 32 ? 'nextGE' : '') + ' cur'}
-                      data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.response.name + ' is both Center position and Senbatsu of BNK48 12th Single' : item.rank > 1 && item.rank <= 16 ? item.response.name + ' is Senbatsu of BNK48 12th Single' : item.rank > 16 && item.rank <= 32 ? item.response.name + ' is participate in second song of BNK48 12th Single' : item.response.name +' is participate in last song of BNK48 12th Single') + (moment().unix() < timesch.vote.close ? ' (2nd Preliminary Result)' : '')}
+                      data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.response.name + ' is both Center position and Senbatsu of BNK48 12th Single' : item.rank > 1 && item.rank <= 16 ? item.response.name + ' is Senbatsu of BNK48 12th Single' : item.rank > 16 && item.rank <= 32 ? item.response.name + ' is participate in second song of BNK48 12th Single "Make Noise"' : item.response.name +' is participate in The third song of BNK48 12th Single "Kinou Yori Motto Suki"') + (moment().unix() < timesch.vote.close ? ' (2nd Preliminary Result)' : '')}
                       onClick={() => item.response.ref.includes('bnk48') ? History.push('member?name=' + item.memid.toLowerCase()) : item.response.ref.includes('cgm48') ? window.open('//cgm48fan.cpxdev.tk/member?name=' + item.memid.toLowerCase(), '_target') : ''}
                       data-aos='fade-right'
                    >
-                    <TableCell component="th" className={classes.rank}>
+                         <TableCell component="th" data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? 'Center Position of BNK48 12th Single main song' : item.rank == 17 ? 'Center Position of Under Girl Song "Make Noise"' : item.rank == 33 ? 'Center Position of Next Girl Song "Kinou Yori Motto Suki"' : '')}>
+                          {(item.rank == 1 || item.rank == 17 || item.rank == 33) && (<StarsIcon/>)}
+                        </TableCell>
+                        <TableCell component="th" className={classes.rank}>
                           {item.rank}
                         </TableCell>
                         <TableCell align="center" className={classes.img}>

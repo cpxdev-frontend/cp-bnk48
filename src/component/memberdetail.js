@@ -374,6 +374,18 @@ function capitalizeFirstLetter(string) {
             return i + "th";
         }
         const tokenrateexchange = 90;
+
+        const session12thSingle = (url) => {
+            if (url == "") {
+                Swal.fire({
+                    title: "Image Not Found",
+                    icon: 'error',
+                    text: 'This memebr is in-queue to released image.',
+                  })
+            } else {
+                window.open(url, '_blank')
+            }
+        }
         return (  
         <>
             <div className="pt-5 pb-2">
@@ -405,7 +417,7 @@ function capitalizeFirstLetter(string) {
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]</h4>
                                         {item.ge != '' && (
-                                            <a className='cur'>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
+                                            <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     <hr />
@@ -414,7 +426,9 @@ function capitalizeFirstLetter(string) {
                                         {birthday ? (
                                             <h6><CakeIcon fontSize="small"/> Today is her birthday! ({new Date().getFullYear() - new Date(item.birthday).getFullYear() + ' years old'})</h6>
                                         ) : (
-                                            <h6><CakeIcon fontSize="small"/> {moment(item.birthday).format('DD MMMM YYYY')}</h6>
+                                                 <>
+                                                       {moment(item.birthday).format('M') == new Date().getMonth() + 1 && parseInt(moment(item.birthday).format('D')) - new Date().getDate() > 0 ? (<h6><CakeIcon fontSize="small"/> {moment(item.birthday).format('DD MMMM YYYY') + ' (' + (parseInt(moment(item.birthday).format('D')) - new Date().getDate()) + ' day(s) to go)'}</h6>) : (<h6><CakeIcon fontSize="small"/> {moment(item.birthday).format('DD MMMM YYYY')}</h6>)}
+                                                  </>
                                         )}
                                         {!item.graduated && (
                                             <>

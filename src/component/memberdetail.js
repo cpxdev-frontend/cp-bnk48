@@ -380,7 +380,7 @@ function capitalizeFirstLetter(string) {
                 Swal.fire({
                     title: "Image Not Found",
                     icon: 'error',
-                    text: 'This memebr is in-queue to released image.',
+                    text: 'This member is in-queue to released image.',
                   })
             } else {
                 window.open(url, '_blank')

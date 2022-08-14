@@ -61,6 +61,7 @@ import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import Carousel from 'react-material-ui-carousel'
 import Swal from 'sweetalert2'
 
+var checkloop;
 const drawerWidth = 240;
 const Client = '961896647339-roenm2ee6i60ed2rhbe2sqee0unlqj0f.apps.googleusercontent.com'
 
@@ -159,6 +160,21 @@ function App() {
   const [allDone, setAllDone] = React.useState(false);
   const [styleFade, setSty] = React.useState(0);
   
+  React.useEffect(() => {
+    checkloop = setInterval(() => {
+     fetch(Fet().ul + '/home/status').catch(() => {
+         clearInterval(checkloop)
+         document.getElementById("root").style.display = "none";
+         Swal.fire({
+           title: 'System is under maintenance',
+           text: 'You can contact us for ask more information.',
+           icon: 'error',
+           allowOutsideClick: false,
+           showConfirmButton: false
+         })
+     })
+    }, 5000)
+   }, []);
 
   const FetchKami = (fetdata) => {
     if (localStorage.getItem("glog") != null) {

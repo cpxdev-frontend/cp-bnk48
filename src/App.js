@@ -261,6 +261,10 @@ function App() {
                 link: '/member?name=' + dres.response[i].name.toLowerCase(),
                 src: dres.response[i].img,
                 place: '',
+                timerange: [
+                    moment(dres.response[i].birth +" 00:00:00", "YYYY-MM-DD HH:mm:ss").unix(),
+                    moment(dres.response[i].birth +" 23:59:59", "YYYY-MM-DD HH:mm:ss").unix()
+                ],
                 memtag: [
                   dres.response[i].name.toLowerCase()
                 ]

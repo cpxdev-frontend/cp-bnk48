@@ -988,7 +988,7 @@ transitionDuration={500}
         <div className="row" onDoubleClick={() => setAllDone(true)}>
         <Fade in={styleFade != 0 ? true : false} timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 0 : 350 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/1.jgp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/1.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1250 : 450 }}>

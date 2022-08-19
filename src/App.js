@@ -988,103 +988,72 @@ transitionDuration={500}
         <div className="row" onDoubleClick={() => setAllDone(true)}>
         <Fade in={styleFade != 0 ? true : false} timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 0 : 350 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/1.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/1.jgp" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1250 : 450 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/2.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/2.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1350 : 550 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/3.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/3.jpg" width="100%" />
           </div>
         </Fade>
           <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 250 :  650 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/4.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/4.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1150 :  750 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/5.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/5.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1450 :  850 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/6.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/6.jpg" width="100%" />
           </div>
         </Fade>
           <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 350 :  950 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/7.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/7.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1050 :  1050 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/8.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/8.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1550 :  1150 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/9.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/9.jpg" width="100%" />
           </div>
         </Fade>
           <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 450 :  1250 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/10.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/10.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 950 :  1350 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/11.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/11.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1650 :  1450 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/12.webp" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/gigsaw/phone/12.jpg" width="100%" />
           </div>
         </Fade>
-          <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 550 :  1550 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/13.webp" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 850 :  1650 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/14.webp" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1750 :  1750 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/15.webp" width="100%" />
-          </div>
-        </Fade>
-          <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 650 :  1850 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/16.webp" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 750 :  1950 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/17.webp" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1850 :  2050 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayofade/18.webp" width="100%" />
-          </div>
-        </Fade>
+        
         <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-              <AlertTitle>Relax in summer with the latest Single of BNK48 "Sayonara Crawl" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
+              <AlertTitle>BNK48 12th Single "Believers" will be soon in August 28, 2022</AlertTitle>
               Double click or tap on image to skip this page
             </Alert>
             </div>
@@ -1092,7 +1061,7 @@ transitionDuration={500}
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-              <AlertTitle>Relax in summer with the latest Single of BNK48 "Sayonara Crawl" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
+             <AlertTitle>BNK48 12th Single "Believers" will be soon in August 28, 2022</AlertTitle>
                     Double click/tap here on image or wait 5 seconds to skip this page
             </Alert>
             </div>

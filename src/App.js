@@ -131,6 +131,7 @@ const timesch = {
 
 var url = new URL(window.location.href);
 var imgget = url.searchParams.get("imgstar");
+var myportdetect = url.searchParams.get("ref");
 
 function App() {
   const [Section, setSec] = React.useState('');
@@ -317,6 +318,15 @@ function App() {
           if (sessionStorage.getItem('ads') != null) {
             clearInterval(timeo)
             setAllDone(true)
+          }
+          if (myportdetect != null && myportdetect == 'myport') {
+             Swal.fire({
+              title: 'Welcome MyPort User to BNK48 Fan Space.',
+              text: 'This objective of this web platform are to be the center of BNK48 fans from around the world in once.',
+              footer: 'Notes: This is not BNK48 Official Website. You may be see at https://www.bnk48.com',
+              icon: 'info',
+              iconColor: 'rgb(203, 150, 194)'
+            })
           }
         }, 4500);
         setUri(Fet().ul)

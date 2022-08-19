@@ -243,7 +243,7 @@ const Ge = ({fet, timesch, setSec}) => {
     {
       id: 'sen',
       rank: [0, 15],
-      label: 'Senbutsu (TBA)'
+      label: 'Senbutsu (Belivers)'
     },
     {
       id: 'under',
@@ -531,11 +531,11 @@ const Ge = ({fet, timesch, setSec}) => {
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => i >= rankrange[0] && i <= rankrange[1] && (
                     <TableBody key={item.id} className={(item.rank == 1 ? 'centerGE' : item.rank > 1 && item.rank <= 16 ? 'senGE' : item.rank > 16 && item.rank <= 32 ? 'nextGE' : '') + ' cur'}
-                      data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.response.name + ' is both Center position and Senbatsu of BNK48 12th Single' : item.rank > 1 && item.rank <= 16 ? item.response.name + ' is Senbatsu of BNK48 12th Single' : item.rank > 16 && item.rank <= 32 ? item.response.name + ' is participate in second song of BNK48 12th Single "Make Noise"' : item.response.name +' is participate in The third song of BNK48 12th Single "Kinou Yori Motto Suki"') + (moment().unix() < timesch.vote.close ? ' (2nd Preliminary Result)' : '')}
+                      data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.response.name + ' is both Center position and Senbatsu of BNK48 12th Single' : item.rank > 1 && item.rank <= 16 ? item.response.name + ' is Senbatsu of BNK48 12th Single (Belivers)' : item.rank > 16 && item.rank <= 32 ? item.response.name + ' is participate in second song of BNK48 12th Single "Make Noise"' : item.response.name +' is participate in The third song of BNK48 12th Single "Kinou Yori Motto Suki"') + (moment().unix() < timesch.vote.close ? ' (2nd Preliminary Result)' : '')}
                       onClick={() => item.response.ref.includes('bnk48') ? History.push('member?name=' + item.memid.toLowerCase()) : item.response.ref.includes('cgm48') ? window.open('//cgm48fan.cpxdev.tk/member?name=' + item.memid.toLowerCase(), '_target') : ''}
                       data-aos='fade-right'
                    >
-                         <TableCell component="th" data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? 'Center Position of BNK48 12th Single main song' : item.rank == 17 ? 'Center Position of Under Girl Song "Make Noise"' : item.rank == 33 ? 'Center Position of Next Girl Song "Kinou Yori Motto Suki"' : '')}>
+                         <TableCell component="th" data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? 'Center Position of BNK48 12th Single main song (Belivers)' : item.rank == 17 ? 'Center Position of Under Girl Song "Make Noise"' : item.rank == 33 ? 'Center Position of Next Girl Song "Kinou Yori Motto Suki"' : '')}>
                           {(item.rank == 1 || item.rank == 17 || item.rank == 33) && (<StarsIcon/>)}
                         </TableCell>
                         <TableCell component="th" className={classes.rank}>

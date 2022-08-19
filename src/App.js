@@ -328,7 +328,7 @@ function App() {
               iconColor: 'rgb(203, 150, 194)'
             })
           }
-        }, 4500);
+        }, 9500);
         setUri(Fet().ul)
         FetchKami(Fet().ul)
         FetLive(Fet().ul)
@@ -979,7 +979,7 @@ transitionDuration={500}
          <div className={cls.fabButton}>
              <Alert severity="info">
                <AlertTitle>Relax in summer with the latest Single of BNK48 "Sayonara Crawl" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
-                     Double click/tap here on image or wait 5 seconds to skip this page
+                     Double click/tap here on image or wait 10 seconds to skip this page
              </Alert>
              </div>
          </Grow>
@@ -1062,7 +1062,7 @@ transitionDuration={500}
         <div className={cls.fabButton}>
             <Alert severity="info">
              <AlertTitle>BNK48 12th Single "Believers" will be soon in August 28, 2022</AlertTitle>
-                    Double click/tap here on image or wait 5 seconds to skip this page
+                    Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>
         </Grow>

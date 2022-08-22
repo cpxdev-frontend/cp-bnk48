@@ -134,7 +134,7 @@ function capitalizeFirstLetter(string) {
                         artwork: [
                             { src: arr[0].img, sizes: '500x500' },
                         ],
-                        album: 'CGM48 Fans Space platform'
+                        album: 'BNK48 Fans Space platform'
                     });
                 }
                 var loop = setInterval(function () {
@@ -383,7 +383,14 @@ function capitalizeFirstLetter(string) {
                     text: 'This member is in-queue to released image.',
                   })
             } else {
-                Swal.fire({
+                if (localStorage.getItem("glog") == null) {
+                 Swal.fire({
+                    title: "BNK48 12th Single Image",
+                    text: "This content is exclusively for BNK48 Fan Space Membership only, please login as Google Account and try again",
+                    icon: 'error',
+                  })
+                } else {
+                 Swal.fire({
                     title: "BNK48 12th Single Image",
                     imageUrl: url,
                     showDenyButton: true,
@@ -399,6 +406,7 @@ function capitalizeFirstLetter(string) {
                       History.push('/ge3')
                     }
                   })
+                }
             }
         }
         return (  

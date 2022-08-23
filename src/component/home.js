@@ -82,11 +82,10 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
             <iframe src="https://www.youtube.com/embed/yF4amthgOm8?autoplay=1&mute=1&controls=0&loop=1&playlist=yF4amthgOm8" frameborder="0"></iframe>
           </div>
           ) : (
-//             <Fade in={true} timeout={800}>
-//                 <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayomain.webp" width={window.innerWidth} />
-//               </Fade>
          <div data-aos="zoom-out-up">
+            <Fade in={Reduce} timeout={1000}>
                 <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayomain.webp" width={window.innerWidth} />
+               </Fade>
               </div>
           )}
       </div>

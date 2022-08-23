@@ -162,6 +162,13 @@ function App() {
   const [styleFade, setSty] = React.useState(0);
   
   React.useEffect(() => {
+    const currentP = document.documentElement.scrollTop || document.body.scrollTop;
+    window.scrollTo(0, currentP + 1);
+     window.scrollTo(0, currentP - 1);
+     window.scrollTo(0, currentP);
+   }, [Reduce]);
+  
+   React.useEffect(() => {
     checkloop = setInterval(() => {
      fetch(Fet().ul + '/home/status').catch(() => {
          clearInterval(checkloop)

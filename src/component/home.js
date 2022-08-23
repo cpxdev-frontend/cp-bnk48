@@ -78,14 +78,14 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
         {window.innerWidth > 1100 && (
           <div class="video-background">
           {localStorage.getItem('lowgraphic') == null ? (
-            <div class="video-foreground">
+            <div class="video-foreground" data-aos="zoom-out-up">
             <iframe src="https://www.youtube.com/embed/yF4amthgOm8?autoplay=1&mute=1&controls=0&loop=1&playlist=yF4amthgOm8" frameborder="0"></iframe>
           </div>
           ) : (
 //             <Fade in={true} timeout={800}>
 //                 <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayomain.webp" width={window.innerWidth} />
 //               </Fade>
-         <div  data-aos="zoom-out-up">
+         <div data-aos="zoom-out-up">
                 <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayomain.webp" width={window.innerWidth} />
               </div>
           )}

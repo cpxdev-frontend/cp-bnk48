@@ -170,8 +170,9 @@ function App() {
   
    React.useEffect(() => {
     checkloop = setInterval(() => {
-     fetch(Fet().ul + '/home/status').catch(() => {
-         clearInterval(checkloop)
+      if (Fet().ul != '') {
+        clearInterval(checkloop)
+         fetch(Fet().ul + '/home/status').catch(() => {
          document.getElementById("root").style.display = "none";
          Swal.fire({
            title: 'System is under maintenance',
@@ -180,8 +181,9 @@ function App() {
            allowOutsideClick: false,
            showConfirmButton: false
          })
-     })
-    }, 5000)
+        })
+      }
+    }, 1)
    }, []);
 
   const FetchKami = (fetdata) => {

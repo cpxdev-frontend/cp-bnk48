@@ -350,6 +350,7 @@ function App() {
      FetLive(Fet().ul)
     }
 }, 60000);
+
   }, [])
 
 
@@ -399,6 +400,8 @@ function App() {
     setLogin(false)
     localStorage.removeItem("glog")
     setOpen(false)
+    setKname('')
+    setKami('')
     if (window.location.pathname == '/fandom' || window.location.pathname == '/fandomroom') {
       window.location.href = '/'
     }
@@ -438,6 +441,18 @@ function App() {
       })
    
   }
+
+React.useEffect(()=> {
+  if (sessionStorage.getItem("bnk12thkaminback") == null && kamin != '' && kamin != '-') {
+    Swal.fire({
+      text: "For celebration of BNK48 12th Single \"Believers\" is released. Your kami-oshi which a part of Senbutsu will be show on BNK48 Fan Space Background (Please login as Google Account on menu toggle and select kami-oshi then switch toggle to \"Focus on Efficiency\" to see it)",
+      icon: 'success',
+      iconColor: 'rgb(203, 150, 194)',
+    }).then(() => {
+      sessionStorage.setItem("bnk12thkaminback", "")
+    })
+  }
+}, [kamin])
 
   if (uri != '' && allDone) {
     return (<>
@@ -547,14 +562,6 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary="Official Update" />
                 </ListItem>
-                {moment().unix() < 1660521600 && (
-                <ListItem component={Link} to='/fandom' className={window.location.pathname == '/fandom' ? 'activeNav' : ''} button>
-                  <ListItemIcon>
-                    <AcUnitIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Fandom Event" />
-                </ListItem>
-                )}
                 <ListItem component={Link} to='/token' className={window.location.pathname == '/token' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <MonetizationOnIcon />
@@ -659,32 +666,8 @@ function App() {
                 
                 
                 </Drawer>
-                {moment().unix() <1660521600 ? (
-                    <BasicSwitch>
-                    <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
-                    <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                    <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                    <Route path="/member" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} />} />
-                    <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                    <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                    <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                    <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                    <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                        <Route path="/fandom" render={() => <FamdomList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                        <Route path="/fandomroom" render={() => <FanRoom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                        <Route path="/addevent" render={() => <AddEvent fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                        <Route path="/eventcontrol" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                    <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                    <Route path="/manual" render={() => <SiteMan fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                    <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-
-                    <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} />} />
-                    <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                    <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
-                  </BasicSwitch>
-                ): (
-                  <BasicSwitch>
-                  <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
+                <BasicSwitch>
+                  <Route exact path="/" render={() => <Home kamin={kamin} fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/member" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} />} />
@@ -701,7 +684,6 @@ function App() {
                   <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
                 </BasicSwitch>
-                )}
                 
                       
                   

@@ -4,13 +4,16 @@ import { Typography, ListItem, Zoom, ListItemText,
     import { useHistory } from 'react-router-dom';
     import moment from 'moment'
     import AOS from "aos";
+    import Swal from 'sweetalert2'
 
-const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
+const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayomain.webp'
+const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);
     const [Loaded2, setLoaded2] = React.useState(false);
     const [Loaded3, setLoaded3] = React.useState(false);
     const [onMonth, setMonth] = React.useState(false);
+    const [urc, setUrc] = React.useState(defaultTheme);
     const [birth, setBirth] = React.useState([]);
     const [samplemem, setMem] = React.useState([]);
     const [highMV, setMV] = React.useState([]);
@@ -19,6 +22,23 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
   React.useEffect(() => {
     setSec('Homepage')
   },[])
+
+  React.useEffect(() => {
+    if (kamin != "") {
+      const check = "https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/main_back/" + kamin.toLowerCase() + ".jpg"
+        fetch(check)
+          .then((response) => {
+            if (response.status != 200) {
+                throw new Error("fail")
+            }
+            return response.text()
+          })
+          .then(() => setUrc(check))
+          .catch(() => setUrc(defaultTheme));
+    } else {
+      setUrc(defaultTheme)
+    }
+  }, [kamin])
 
     React.useEffect(() => {
       AOS.init({ duration: 1000 });
@@ -84,7 +104,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
           ) : (
          <div data-aos="zoom-out-up">
             <Fade in={true} timeout={900}>
-                <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayomain.webp" width={window.innerWidth} />
+                <img src={urc} width={window.innerWidth} />
                </Fade>
               </div>
           )}

@@ -285,7 +285,7 @@ function App() {
                 tempd.push(data[i])
             }
             setNewspop(tempd)
-            alert(kamin)
+
             if (kamin !== '') {
                 setUpdate(tempd.filter(x => x.memtag.indexOf(kamin.toLowerCase()) || x.memtag.indexOf('All')))
             }

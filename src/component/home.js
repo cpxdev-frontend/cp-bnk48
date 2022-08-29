@@ -81,11 +81,9 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     .then(data => {
         setLoaded3(true)
         setMV(data.items)
-    console.log('Success:', data);
     })
     .catch((error) => {
         setLoaded3(true)
-    console.error('Error:', error);
     });
     }, [])
 

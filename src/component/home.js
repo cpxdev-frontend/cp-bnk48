@@ -6,7 +6,7 @@ import { Typography, ListItem, Zoom, ListItemText,
     import AOS from "aos";
     import Swal from 'sweetalert2'
 
-const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sayomain.webp'
+const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket/bnk48/main.jpg'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);

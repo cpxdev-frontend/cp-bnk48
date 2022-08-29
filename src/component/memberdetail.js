@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, List , ListItem,Divider } from '@material-ui/core';
+import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, FormControlLabel , Switch,Divider } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -76,6 +76,22 @@ function capitalizeFirstLetter(string) {
         
         const [play, onPlay] = React.useState(false);
         const [GEPoster, setGEPoster] = React.useState('');
+        const [customback, setBack] = React.useState(false);
+        
+        React.useEffect(() => {
+         if (localStorage.getItem('customback') != null) {
+          setBack(true)
+         } else {
+            setBack(false)
+         }
+         }, []);
+         React.useEffect(() => {
+            if (customback) {
+                localStorage.setItem('customback', '')
+            } else {
+                localStorage.removeItem('customback')
+            }
+            }, [customback]);
 
         const downGEPost = (name) => {
             let a = document.createElement('a');
@@ -443,7 +459,22 @@ function capitalizeFirstLetter(string) {
                                             <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
-                                    <hr />
+                                
+                                    {window.innerWidth > 1100 && kami == 2 && item.twelvethsingle.includes('bnk12thsing/main') && (
+                                         <FormControlLabel
+                                         className='ml-2 pt-4'
+                                         control={
+                                           <Switch
+                                             checked={customback}
+                                             name="reduce"
+                                             onChange={()=> setBack(!customback)}
+                                             color="secondary"
+                                           />
+                                         }
+                                         label={"Show your Kami-Oshi as Background on BNK48 Fan Space Homepage"}
+                                       />
+                                    )}
+                                        <hr />
                                     <>
                                         <h6><LocationOnIcon fontSize="small"/> {item.province}</h6>
                                         {birthday ? (

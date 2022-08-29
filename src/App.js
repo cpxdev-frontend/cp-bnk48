@@ -160,7 +160,8 @@ function App() {
   const [TokenLoad, setLoadToken] = React.useState(false);
   const [allDone, setAllDone] = React.useState(false);
   const [styleFade, setSty] = React.useState(0);
-  
+
+
   React.useEffect(() => {
     const currentP = document.documentElement.scrollTop || document.body.scrollTop;
     window.scrollTo(0, currentP + 1);
@@ -442,17 +443,6 @@ function App() {
    
   }
 
-React.useEffect(()=> {
-  if (sessionStorage.getItem("bnk12thkaminback") == null && kamin != '' && kamin != '-') {
-    Swal.fire({
-      text: "For celebration of BNK48 12th Single \"Believers\" is released. Your kami-oshi which a part of Senbutsu will be show on BNK48 Fan Space Background (Please login as Google Account on menu toggle and select kami-oshi then switch toggle to \"Focus on Efficiency\" to see it)",
-      icon: 'success',
-      iconColor: 'rgb(203, 150, 194)',
-    }).then(() => {
-      sessionStorage.setItem("bnk12thkaminback", "")
-    })
-  }
-}, [kamin])
 
   if (uri != '' && allDone) {
     return (<>

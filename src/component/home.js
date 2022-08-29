@@ -33,7 +33,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
             }
             return response.text()
           })
-          .then(() => setUrc(check))
+          .then(() => localStorage.getItem('customback') != null ? setUrc(check) : setUrc(defaultTheme))
           .catch(() => setUrc(defaultTheme));
     } else {
       setUrc(defaultTheme)

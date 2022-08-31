@@ -18,6 +18,8 @@ import NaturePeopleIcon from '@material-ui/icons/NaturePeople';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import moment from 'moment'
 
+import { Share } from 'react-twitter-widgets'
+
 import { Fireworks } from 'fireworks-js/dist/react'
 import Swal from 'sweetalert2'
 import AOS from "aos";
@@ -518,7 +520,18 @@ function capitalizeFirstLetter(string) {
                                     <a className='text-dark' href={item.ref} target='_blank'>Reference from BNK48 official Site</a>
                                     <br />
                                     {birthday && (
-                                        <Button onClick={()=> PlaySong()} className='mt-3' color="primary" variant="contained">Click here see effect</Button>  
+                                        <div className='row mt-3'>
+                                            <Button onClick={()=> PlaySong()}color="primary" variant="contained">Click here see effect</Button> 
+                                            <div className='ml-3 pt-2'>
+                                            <Share 
+                                                  url={"https://bnk48fan.cpxdev.tk/member?name=" + item.name.toLowerCase()}
+                                                  options={{ text: "(You can custom your blessing here)", hashtags: item.name+"BNK48,fanspaceplatform,48groupthailand", size:"large"}}
+                                                id='blessingshare'
+                                            />
+                                            </div>
+                                            <br/>
+                                            <label className='col-md-12 mt-3 text-muted'>Notes: Click Tweet Button to blessing her on Twitter (Twitter login required)</label>
+                                        </div> 
                                     )}
                                 </div>
                         </Fade>

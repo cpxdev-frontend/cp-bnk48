@@ -456,12 +456,13 @@ function capitalizeFirstLetter(string) {
                             </div>
                             <Fade in={true} timeout={1200} style={{ transitionDelay: 600}}>
                                 <div className='col-md mt-5 mb-5'>
-                                    <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]</h4>
+                                    <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
+                                    </h4>
                                         {item.ge != '' && (
                                             <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
-                                
+                                    
                                     {window.innerWidth > 1100 && kami == 2 && item.twelvethsingle.includes('bnk12thsing/main') && (
                                          <FormControlLabel
                                          className='ml-2 pt-4'
@@ -478,6 +479,9 @@ function capitalizeFirstLetter(string) {
                                     )}
                                         <hr />
                                     <>
+                                    {item.captain != undefined && (
+                                        <p className="mb-3 badge badge-pill badge-warning">BNK48 Captain</p>
+                                    )}
                                         <h6><LocationOnIcon fontSize="small"/> {item.province}</h6>
                                         {birthday ? (
                                             <h6><CakeIcon fontSize="small"/> Today is her birthday! ({new Date().getFullYear() - new Date(item.birthday).getFullYear() + ' years old'})</h6>

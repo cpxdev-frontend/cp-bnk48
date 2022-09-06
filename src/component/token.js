@@ -202,7 +202,7 @@ const HomeCom = ({fet, gp, setSec}) => {
                     <ListItemText primary="2. If you see verify email popup alert, don't be check your email inbox!" secondary="Some user may receive popup alert to verify email. We take personal and account information strictly. You need to verify email and re-login account again to done. If you have any issue. Please contact Talen Connect Teams in app." />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="3. See more using Token in BNK Token page" secondary={(<p>See more update for BNK Token <a href='https://tokenx.finance/partners/1' target='_blank'>here</a></p>)} />
+                    <ListItemText primary="3. See more using Token in BNK Token page" secondary={(<p>See more update for BNK Token <a href='https://www.scb.co.th/th/about-us/news/feb-2565/bnk-governance-token.html' target='_blank'>here</a></p>)} />
                   </ListItem>
                     </Typography>
                 </CardContent>

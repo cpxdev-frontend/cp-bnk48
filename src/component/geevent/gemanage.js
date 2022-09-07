@@ -23,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
     {
       label: 'Facebook',
       value: 'facebook',
+  },
+      {
+      label: 'Another Platform',
+      value: 'other',
   }
 ]
 

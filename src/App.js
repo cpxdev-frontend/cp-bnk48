@@ -52,6 +52,7 @@ import Api from './component/apisupport';
 import SiteMan from './component/manual';
 import FollowCom from './component/follow';
 import PageErr from './component/404'
+import Sport from './component/sportday';
 
 import GeCom from './component/geevent/ge';
 import GeMana from './component/geevent/gemanage';
@@ -534,6 +535,12 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary="Special Live" secondary={spcLive ? 'Livestream is launching' : ''} />
                 </ListItem>
+                <ListItem component={Link} to='/sportday' className={window.location.pathname == '/sportday' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <LiveTvIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="BNK48 and CGM48 Sport Day" />
+                </ListItem>
                 <ListItem component={Link} to='/mv' className={window.location.pathname == '/mv' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <YouTubeIcon />
@@ -669,6 +676,7 @@ function App() {
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/manual" render={() => <SiteMan fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/sportday" render={() => <Sport fet={Fet().ul} setSec={(v) => setSec(v)} />} />
 
                   <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} />} />
                   <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />

@@ -10,9 +10,13 @@ const useStyles = makeStyles((theme) => ({
   }));
 
   const Streamchannel = [
-      {
-        label: 'Special Event Stream',
+    {
+        label: 'BNK48 LIVE',
         value: '2',
+    },
+    {
+        label: 'CGM48 LIVE',
+        value: '3',
     }
   ]
   const streamplat = [

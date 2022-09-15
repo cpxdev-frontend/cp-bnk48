@@ -100,7 +100,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
             <iframe src="https://www.youtube.com/embed/zPpz8rJFIlY?autoplay=1&mute=1&controls=0&loop=1&playlist=zPpz8rJFIlY" frameborder="0"></iframe>
           </div>
           ) : (
-         <div data-aos="zoom-out-up">
+         <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
                 <img src={urc} width={window.innerWidth} />
                </Fade>
@@ -111,7 +111,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
              {window.innerWidth >1200 ? (
             <div className="cover mt-4">
 
-          <Card data-aos="zoom-out" className="col-md-4 m-5">
+          <Card data-aos="zoom-in" className="col-md-4 m-5">
               <CardContent>
                 <Typography variant="h5" component="h2">
                   Welcome to BNK48 Fan Space
@@ -146,7 +146,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
           ) : (
         <div className="pb-5 pt-2">
 
-  <Card data-aos="fade-up" className="bnktheme ml-2 mr-2">
+  <Card data-aos="zoom-in" className="bnktheme ml-2 mr-2">
       <CardContent>
         <Typography variant="h5" component="h2">
           Welcome to BNK48 Fan Space

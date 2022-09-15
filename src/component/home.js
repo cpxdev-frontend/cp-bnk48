@@ -276,7 +276,6 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
   {Loaded2 ? (
       <div className='row ml-3 mr-3 justify-content-center'>
       {samplemem.length > 0 ? samplemem.map((item, i) => (
-        <Zoom in={true} timeout={150} style={{ transitionDelay: (i * 150)-150 }}>
           <div data-aos="zoom-out-down" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
           <Card>
           <CardActionArea>
@@ -291,7 +290,6 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
             </CardActionArea>
              </Card> 
           </div>
-          </Zoom>
       )) : (
           <h6>No BNK48 member birthday in today.</h6>
       )}

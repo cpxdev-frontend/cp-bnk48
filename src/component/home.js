@@ -111,7 +111,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
              {window.innerWidth >1200 ? (
             <div className="cover mt-4">
 
-          <Card data-aos="fade-up" className="col-md-4 m-5">
+          <Card data-aos="zoom-out" className="col-md-4 m-5">
               <CardContent>
                 <Typography variant="h5" component="h2">
                   Welcome to BNK48 Fan Space

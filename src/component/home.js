@@ -249,7 +249,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
   {Loaded1 ? (
       <div className='row ml-3 mr-3 justify-content-center'>
       {birth.length > 0 ? birth.map((item, i) => (
-           <div data-aos="zoom-in" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
+           <div data-aos="zoom-out-down" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
            <Card>
            <CardActionArea>
            <CardMedia
@@ -277,7 +277,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
       <div className='row ml-3 mr-3 justify-content-center'>
       {samplemem.length > 0 ? samplemem.map((item, i) => (
         <Zoom in={true} timeout={150} style={{ transitionDelay: (i * 150)-150 }}>
-          <div className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
+          <div data-aos="zoom-out-down" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
           <Card>
           <CardActionArea>
           <CardMedia

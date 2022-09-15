@@ -110,8 +110,8 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
         )}
              {window.innerWidth >1200 ? (
             <div className="cover mt-4">
-            <Grow in={true} timeout={1000}>
-          <Card className="col-md-4 m-5">
+//             <Grow in={true} timeout={1000}>
+          <Card data-aos="fade-up" className="col-md-4 m-5">
               <CardContent>
                 <Typography variant="h5" component="h2">
                   Welcome to BNK48 Fan Space
@@ -141,12 +141,12 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
                 </Typography>
               </CardContent>
             </Card>
-            </Grow>
+//             </Grow>
           </div>
           ) : (
         <div className="pb-5 pt-2">
-    <Grow in={true} timeout={1000}>
-  <Card className="bnktheme ml-2 mr-2">
+//     <Grow in={true} timeout={1000}>
+  <Card data-aos="fade-up" className="bnktheme ml-2 mr-2">
       <CardContent>
         <Typography variant="h5" component="h2">
           Welcome to BNK48 Fan Space
@@ -176,7 +176,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
         </Typography>
       </CardContent>
     </Card>
-    </Grow>
+//     </Grow>
   </div>
           )}
   

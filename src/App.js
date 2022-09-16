@@ -583,12 +583,7 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary='Follow and Support' />
                 </ListItem>
-                <ListItem component={Link} to='/manual' className={window.location.pathname == '/manual' ? 'activeNav' : ''} button>
-                  <ListItemIcon>
-                    <MenuBookIcon />
-                  </ListItemIcon>
-                  <ListItemText primary='Site Manual' />
-                </ListItem>
+              
                 </d>
                 <Divider />
                 <ListItem onClick={() => {
@@ -674,7 +669,6 @@ function App() {
                   <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/manual" render={() => <SiteMan fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/sportday" render={() => <Sport fet={Fet().ul} setSec={(v) => setSec(v)} />} />
 

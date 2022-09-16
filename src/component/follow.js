@@ -9,19 +9,7 @@ const Contact = ({fet, setSec}) => {
     const [news, setNews] = React.useState([]);
     React.useEffect(() => {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
-        fetch(fet + '/bnk48/getnews', {
-            method :'get'
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.rss.channel.item != undefined) {
-            setNews(data.rss.channel.item)
-            setLoaded(true)
-        }
-        }).catch(() => {
-            setNews([])
-            setLoaded(true)
-        })
+       
         setSec('Follow and Support BNK48')
     }, [])
 

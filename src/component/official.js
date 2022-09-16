@@ -13,7 +13,7 @@ const Offi = ({fet, setSec}) => {
     const [fetLLoad, setFet] = React.useState(false);
 
     React.useEffect(() => {
-        AOS.init({ duration: 1000 });
+        AOS.init({ duration: 800 });
         setSec('Official Update')
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         fetch(encodeURI(fet + '/bnk48/getoffnews?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
@@ -56,7 +56,7 @@ const Offi = ({fet, setSec}) => {
              <br />
              <div className='row'>
              {Arr.length > 0 ? Arr.map((item,i) => (
-                 <div className={"col-md-12 mb-5" + (window.innerWidth > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
+                 <div data-aos="fade-down-right" className={"col-md-12 mb-5" + (window.innerWidth > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
                  <Card onClick={() => hand(true,{ id: item.id, name: 'More tweet about "' + item.text.substring(0, 60) + '..."' })}>
                 <CardContent>
                     <Typography variant="h6" dangerouslySetInnerHTML={window.innerWidth < 700 ? { __html: removeurl(item.text.replace(new RegExp('\n', 'g'), '<br />')) } : { __html: removeurl(item.text) }}>

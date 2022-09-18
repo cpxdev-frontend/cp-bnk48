@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, FormControlLabel , Switch,Divider } from '@material-ui/core';
+import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, FormControlLabel , Switch,Backdrop } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -51,6 +51,10 @@ const fwoptions = {
       marginLeft: theme.spacing(2),
       flex: 1,
     },
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
+      },
   }));
 
   const hbdparse = [
@@ -72,6 +76,7 @@ function capitalizeFirstLetter(string) {
         const [arr, setArr] = React.useState([]); 
         const [geResult, setGE] = React.useState(null); 
         const [Loaded, setLoaded] = React.useState(false);
+        const [change, setChange] = React.useState(false);
         const [birthday, setBirthday] = React.useState(false);
         const [kami, setKami] = React.useState(0);
         const [newspop, setNewspop] = React.useState(null);
@@ -190,7 +195,7 @@ function capitalizeFirstLetter(string) {
                         showCancelButton: true
                       }).then((result) => {
                         if (result.isConfirmed) {
-                            setLoaded(false)
+                            setChange(true)
                             fetch(fet + '/bnk48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
                                 method: 'POST', // or 'PUT'
                                 headers: {
@@ -204,13 +209,13 @@ function capitalizeFirstLetter(string) {
                                 })
                                 .catch((error) => {
                                     alert("System will be temporary error for a while. Please try again")
-                                    setLoaded(true)
+                                    setChange(false)
                                     setKami(1)
                                 });
                         }
                       })
                 } else if (kamio == '-') {
-                    setLoaded(false)
+                    setChange(true)
                     fetch(fet + '/bnk48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
                         method: 'POST', // or 'PUT'
                         headers: {
@@ -224,7 +229,7 @@ function capitalizeFirstLetter(string) {
                         })
                         .catch((error) => {
                             alert("System will be temporary error for a while. Please try again")
-                            setLoaded(true)
+                            setChange(false)
                             setKami(1)
                         });
                   } else {
@@ -244,7 +249,7 @@ function capitalizeFirstLetter(string) {
                                 showCancelButton: true
                               }).then((result) => {
                                 if (result.isConfirmed) {
-                                    setLoaded(false)
+                                    setChange(true)
                                     fetch(fet + '/bnk48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
                                         method: 'POST', // or 'PUT'
                                         headers: {
@@ -258,13 +263,13 @@ function capitalizeFirstLetter(string) {
                                         })
                                         .catch((error) => {
                                             alert("System will be temporary error for a while. Please try again")
-                                            setLoaded(true)
+                                            setChange(false)
                                             setKami(1)
                                         });
                                 }
                               })
                         } else {
-                            setLoaded(false)
+                            setChange(true)
                             fetch(fet + '/bnk48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
                                 method: 'POST', // or 'PUT'
                                 headers: {
@@ -275,11 +280,10 @@ function capitalizeFirstLetter(string) {
                                 .then(response => response.text())
                                 .then(data => {
                                     window.location.reload()
-                                    setLoaded(true)
                                 })
                                 .catch((error) => {
                                     alert("System will be temporary error for a while. Please try again")
-                                    setLoaded(true)
+                                    setChange(false)
                                     setKami(1)
                                 });
                         }
@@ -463,7 +467,7 @@ function capitalizeFirstLetter(string) {
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     
-                                    {window.innerWidth > 1100 && kami == 2 && item.twelvethsingle.includes('bnk12thsing/main') && (
+                                    {window.innerWidth > 1100 && kami == 2 && item.twelvethsingle != undefined && item.twelvethsingle.includes('bnk12thsing/main') && (
                                          <FormControlLabel
                                          className='ml-2 pt-4'
                                          control={
@@ -687,6 +691,9 @@ function capitalizeFirstLetter(string) {
                             <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                         </div>
                     </Zoom>
+                    <Backdrop className={classes.backdrop} open={change}>
+                        <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" />
+                    </Backdrop>
             </div>
         </>
          );

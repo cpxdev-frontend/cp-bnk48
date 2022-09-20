@@ -23,15 +23,15 @@ const Stream = ({fet, setSec}) => {
         <>
         <Card>
             <CardContent className='text-center align-center'>
-            <CardHeader title='[LIVE] BNK48 and CGM48 Sport Day 2022 - งานกีฬาสีอนุบาลหนูน้อย 48' subheader='This Live Streaming may be unusable when you watch from outside of Thailand' />
-            {/* {window.innerWidth > 800 ? (
+            <CardHeader title='[Rerun] BNK48 and CGM48 Sport Day 2022 - งานกีฬาสีอนุบาลหนูน้อย 48' subheader='This video streaming may be unusable when you watch from outside of Thailand' />
+            {{window.innerWidth > 800 ? (
                      <div className='container' data-aos="zoom-out-up">
-                     <iframe src="https://aisplay.ais.co.th/portal/exclusive/bnk48live/630c71fa27406aefa9b66198?screen=bnk48live" width="100%" height='850px' allowFullScreen />
+                     <iframe src="https://s.cpxdev.tk/iam48sportday2022" width="100%" height='850px' allowFullScreen />
                      </div>
             ) : (
                 <Button color='primary' variant='contained' onClick={() => window.open('https://s.cpxdev.tk/iam48sportday2022', '_blank')}>Watch it in AIS Play Application</Button>
-            )} */}
-            <h6>You can watch rerun of BNK48 and CGM48 Sport Day 2022 on AIS Play soon</h6>
+            )}}
+          
             </CardContent>
         </Card>
         </>

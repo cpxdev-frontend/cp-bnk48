@@ -539,7 +539,7 @@ function App() {
                   <ListItemIcon>
                     <LiveTvIcon />
                   </ListItemIcon>
-                  <ListItemText primary="BNK48 and CGM48 Sport Day" />
+                  <ListItemText primary="BNK48 and CGM48 Sport Day" secondary="Rerun is avaliable now!" />
                 </ListItem>
                 <ListItem component={Link} to='/mv' className={window.location.pathname == '/mv' ? 'activeNav' : ''} button>
                   <ListItemIcon>

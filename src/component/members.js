@@ -179,7 +179,7 @@ const Memberlist = ({fet, setSec}) => {
                                 <CardContent>
                                     <h5>{item.name}</h5>
                                     {item.captain != undefined && (
-                                        <p class="badge badge-pill badge-warning">BNK48 Captain</p>
+                                        <p class="badge badge-pill badge-warning">BNK48 {item.captain}</p>
                                     )}
                                 </CardContent>
                                 </CardActionArea>

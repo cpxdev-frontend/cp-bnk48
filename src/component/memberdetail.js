@@ -484,7 +484,7 @@ function capitalizeFirstLetter(string) {
                                         <hr />
                                     <>
                                     {item.captain != undefined && (
-                                        <p className="mb-3 badge badge-pill badge-warning">BNK48 Captain</p>
+                                        <p className="mb-3 badge badge-pill badge-warning">BNK48 {item.captain}</p>
                                     )}
                                         <h6><LocationOnIcon fontSize="small"/> {item.province}</h6>
                                         {birthday ? (

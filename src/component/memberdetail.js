@@ -455,7 +455,7 @@ function capitalizeFirstLetter(string) {
                                     <CardMedia
                                     src={item.img}
                                     component="img"
-                                    className='mt-2'
+                                    className='mt-3'
                                     />
                                 </Fade>
                             </div>

@@ -243,7 +243,7 @@ const Ge = ({fet, timesch, setSec}) => {
     {
       id: 'sen',
       rank: [0, 15],
-      label: 'Senbutsu (Belivers)'
+      label: 'Senbutsu (Believers)'
     },
     {
       id: 'under',
@@ -535,7 +535,7 @@ const Ge = ({fet, timesch, setSec}) => {
                       onClick={() => item.response.ref.includes('bnk48') ? History.push('member?name=' + item.memid.toLowerCase()) : item.response.ref.includes('cgm48') ? window.open('//cgm48fan.cpxdev.tk/member?name=' + item.memid.toLowerCase(), '_target') : ''}
                       data-aos='fade-right'
                    >
-                         <TableCell component="th" data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? 'Center Position of BNK48 12th Single main song (Belivers)' : item.rank == 17 ? 'Center Position of Under Girl Song "Make Noise"' : item.rank == 33 ? 'Center Position of Next Girl Song "Kinou Yori Motto Suki"' : '')}>
+                         <TableCell component="th" data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? 'Center Position of BNK48 12th Single main song (Believers)' : item.rank == 17 ? 'Center Position of Under Girl Song "Make Noise"' : item.rank == 33 ? 'Center Position of Next Girl Song "Kinou Yori Motto Suki"' : '')}>
                           {(item.rank == 1 || item.rank == 17 || item.rank == 33) && (<StarsIcon/>)}
                         </TableCell>
                         <TableCell component="th" className={classes.rank}>

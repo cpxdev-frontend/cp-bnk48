@@ -181,6 +181,9 @@ const Memberlist = ({fet, setSec}) => {
                                     {item.captain != undefined && (
                                         <p class="badge badge-pill badge-warning">BNK48 {item.captain}</p>
                                     )}
+                                    {item.graduated == true && (
+                                        <p class="badge badge-pill badge-warning">Graduating Announced</p>
+                                    )}
                                 </CardContent>
                                 </CardActionArea>
                                 </Card> 

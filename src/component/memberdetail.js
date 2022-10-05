@@ -79,6 +79,7 @@ function capitalizeFirstLetter(string) {
         const [change, setChange] = React.useState(false);
         const [birthday, setBirthday] = React.useState(false);
         const [kami, setKami] = React.useState(0);
+        const [follower, setFol] = React.useState(0);
         const [newspop, setNewspop] = React.useState(null);
         
         const [play, onPlay] = React.useState(false);
@@ -334,9 +335,11 @@ function capitalizeFirstLetter(string) {
                                 if (data.response.ge != "") {
                                     const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1)
                                     setNewspop(obj)
+                                    setFol(data.follower)
                                 } else {
                                     const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1)
                                     setNewspop(obj)
+                                    setFol(data.follower)
                                 }
                             }).catch(() => {
                                 setNewspop([])
@@ -464,7 +467,7 @@ function capitalizeFirstLetter(string) {
                                         {item.ge != '' && (
                                             <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
-                                            <p>{item.follower} followers on Instagram<br /></p>
+                                            <p>{follower} followers on Instagram<br /></p>
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     
                                     {window.innerWidth > 1100 && kami == 2 && item.twelvethsingle != undefined && item.twelvethsingle.includes('bnk12thsing/main') && (

@@ -5,6 +5,7 @@ import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Butto
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
+import CountUp from 'react-countup';
 
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import CakeIcon from '@material-ui/icons/Cake';
@@ -80,13 +81,14 @@ function capitalizeFirstLetter(string) {
         const [birthday, setBirthday] = React.useState(false);
         const [kami, setKami] = React.useState(0);
         const [follower, setFol] = React.useState(0);
+        const [countstep, setCount] = React.useState(false);
         const [newspop, setNewspop] = React.useState(null);
         
         const [play, onPlay] = React.useState(false);
         const [GEPoster, setGEPoster] = React.useState('');
         const [customback, setBack] = React.useState(false);
         
-        const numberWithCommas = (x) => {
+        const numberWithCommasx = (x) => {
             return x.toLocaleString('en-US');
         }
         
@@ -471,7 +473,7 @@ function capitalizeFirstLetter(string) {
                                         {item.ge != '' && (
                                             <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
-                                            <p>{numberWithCommas(follower)} followers on Instagram<br /></p>
+                                            <p>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={5} />) : numberWithCommasx(follower)} followers on Instagram<br /></p>
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     
                                     {window.innerWidth > 1100 && kami == 2 && item.twelvethsingle != undefined && item.twelvethsingle.includes('bnk12thsing/main') && (

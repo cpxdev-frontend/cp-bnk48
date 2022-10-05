@@ -86,7 +86,7 @@ function capitalizeFirstLetter(string) {
         const [GEPoster, setGEPoster] = React.useState('');
         const [customback, setBack] = React.useState(false);
         
-        function numberWithCommas(x) {
+        const numberWithCommas = (x) => {
             return x.toLocaleString('en-US');
         }
         

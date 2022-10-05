@@ -82,6 +82,7 @@ function capitalizeFirstLetter(string) {
         const [kami, setKami] = React.useState(0);
         const [follower, setFol] = React.useState(0);
         const [countstep, setCount] = React.useState(false);
+        const [loadfollow, setFollow] = React.useState(true);
         const [newspop, setNewspop] = React.useState(null);
         
         const [play, onPlay] = React.useState(false);
@@ -89,7 +90,7 @@ function capitalizeFirstLetter(string) {
         const [customback, setBack] = React.useState(false);
         
         const numberWithCommasx = (x) => {
-            return x.toLocaleString('en-US');
+            return parseInt(x).toLocaleString('en-US');
         }
         
         React.useEffect(() => {
@@ -107,16 +108,20 @@ function capitalizeFirstLetter(string) {
             }
             }, [customback]);
 
-        const downGEPost = (name) => {
-            let a = document.createElement('a');
-            a.href = GEPoster;
-            a.download = name + ".webp";
-            a.target = '_blank'
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            alert('Downloading ' + name + '.webp')
-        }
+            const fetchfollower = (name) => {
+                setFollow(true)
+                fetch(fet + '/bnk48/getfollower?name=' + name  , {
+                    method :'post'
+                })
+                  .then(response => response.text())
+                  .then(data => {
+                    setFol(data)
+                    setFollow(false)
+                  }).catch(() => {
+                    setFol(-1)
+                    setFollow(false)
+                  });
+            }
 
     //    const GEdown = (mem) => {
     //         fetch('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48thirdge/' + mem + '1.webp', {
@@ -341,11 +346,13 @@ function capitalizeFirstLetter(string) {
                                 if (data.response.ge != "") {
                                     const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1)
                                     setNewspop(obj)
-                                    setFol(data.follower)
+                                    setGEPoster(data.follower)
+                                    fetchfollower(data.follower)
                                 } else {
                                     const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1)
                                     setNewspop(obj)
-                                    setFol(data.follower)
+                                    setGEPoster(data.follower)
+                                    fetchfollower(data.follower)
                                 }
                             }).catch(() => {
                                 setNewspop([])
@@ -473,10 +480,18 @@ function capitalizeFirstLetter(string) {
                                         {item.ge != '' && (
                                             <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
-                                        {follower > -1 ? (
-                                          <p>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : numberWithCommasx(follower)} followers on Instagram<br /></p>
-                                        ): (
-                                            <a className='cur' onClick={() => window.location.reload()}>Something went wrong, please click here to refresh page<br /></a>
+                                       {loadfollow ? (
+                                            <Skeleton />
+                                        ):(
+                                            <>
+                                            {follower > -1 ? (
+                                                <Zoom in={true}>
+                                                    <p>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : numberWithCommasx(follower)} followers on Instagram<br /></p>
+                                                </Zoom>
+                                            ): (
+                                                <a className='cur' onClick={() => fetchfollower(GEPoster)}>Something went wrong, please click here to refresh page<br /></a>
+                                            )}
+                                            </>
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     
@@ -560,41 +575,6 @@ function capitalizeFirstLetter(string) {
                                 </div>
                         </Fade>
                     </Card>
-                    <Dialog fullScreen open={open} onClose={() => setOpen(false)} TransitionComponent={Transition}>
-                        <AppBar className={classes.appBar}>
-                        <Toolbar>
-                            <IconButton edge="start" color="inherit" onClick={() => setOpen(false)} aria-label="close">
-                            <CloseIcon />
-                            </IconButton>
-                            <Typography variant="h6" className={classes.title}>
-                            BNK48 12th Single General Election Promote
-                            </Typography>
-                        </Toolbar>
-                        </AppBar>
-                        <div className='container mt-3 pb-3'>
-                        <div className='row'>
-                            <div className='col-md-4'>
-                                <Slide direction='right' in={open} timeout={600} style={open ? { transitionDelay: 400 } : {}}>
-                                    <img src={GEPoster} width='100%' className='imgge' onDoubleClick={() => downGEPost(item.name)} />
-                                </Slide>
-                            </div>
-                            <div className={'col-md' + (window.innerWidth < 600 ? ' mt-3' : '')}>
-                                <Slide direction='left' in={open} timeout={600} style={open ? { transitionDelay: 400 } : {}}>
-                                    {item.ge != '' ? (
-                                    <CardMedia
-                                        component='iframe'
-                                        height={600}
-                                        src={'https://www.youtube.com/embed/' + item.ge +'?mute=1' + (window.innerWidth <= 600 ? '' : '&autoplay=1')}
-                                        allowFullScreen
-                                    />
-                                    ) : (
-                                        <h5 className='mt-3'>GE Appeal Comment Video of "{item.name} BNK48" is coming soon</h5>
-                                    )}
-                                </Slide>
-                            </div>
-                        </div>
-                        </div>
-                    </Dialog>
                             </div>
                     ))}
                     </>

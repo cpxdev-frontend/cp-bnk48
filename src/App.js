@@ -570,7 +570,7 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary='BNK48 12th Single General Election' />
                 </ListItem>
-                <ListItem component={Link} to='/requesthour' className={window.location.pathname == '/ge3' ? 'activeNav' : ''} button>
+                <ListItem component={Link} to='/requesthour' className={window.location.pathname == '/requesthour' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <TheatersIcon />
                   </ListItemIcon>

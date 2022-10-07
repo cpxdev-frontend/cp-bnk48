@@ -34,6 +34,7 @@ import LiveTvIcon from '@material-ui/icons/LiveTv';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import TheatersIcon from '@material-ui/icons/Theaters';
 
 import Home from './component/home';
 import MemberList from './component/members';
@@ -44,15 +45,13 @@ import News from './component/news';
 import MvCom from './component/music';
 import MusicCom from './component/streaming';
 import Offici from './component/official';
-import FamdomList from './component/fandomlist';
-import FanRoom from './component/fanroom';
-import AddEvent from './component/addNewEvent';
 import Mana from './component/manage';
 import Api from './component/apisupport';
 import SiteMan from './component/manual';
 import FollowCom from './component/follow';
 import PageErr from './component/404'
 import Sport from './component/sportday';
+import RequestCom from './component/requesthour';
 
 import GeCom from './component/geevent/ge';
 import GeMana from './component/geevent/gemanage';
@@ -571,6 +570,12 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary='BNK48 12th Single General Election' />
                 </ListItem>
+                <ListItem component={Link} to='/requesthour' className={window.location.pathname == '/ge3' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <TheatersIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='BNK48 and CGM48 Request Hour 2022' />
+                </ListItem>
                 <ListItem component={Link} to='/api' className={window.location.pathname == '/api' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <CodeIcon />
@@ -671,6 +676,7 @@ function App() {
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/sportday" render={() => <Sport fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
 
                   <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} />} />
                   <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />

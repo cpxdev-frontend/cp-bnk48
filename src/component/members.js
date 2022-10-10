@@ -15,6 +15,7 @@ const Memberlist = ({fet, setSec}) => {
 
     const [seGroup, setGr] = React.useState('-');
     const [seFill, setFr] = React.useState('-');
+    const [seGrad, setGrad] = React.useState('-');
     const [search, setSearch] = React.useState('');
     const [Loaded, setLoaded] = React.useState(false);
     const [Filter, setFilter] = React.useState([]);
@@ -64,8 +65,6 @@ const Memberlist = ({fet, setSec}) => {
             setFilter(vPack.team)
         } else if (event.target.value == 'gen') {
             setFilter(vPack.gen)
-        } else if (event.target.value == 'grad') {
-            setFilter(vPack.graduation)
         } else {
             setFilter([])
         }
@@ -74,66 +73,23 @@ const Memberlist = ({fet, setSec}) => {
       const onSearch = () => {
           if (seGroup != '-' && seFill != "-") {
           setLoaded(false)
-          if (seGroup != 'grad') {
-            fetch(fet + '/bnk48/getmemberby?filter=' + seGroup + '&param=' + seFill + '&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-                method :'post'
-            })
-                .then(response => response.json())
-                .then(async data => {
+          fetch(fet + '/bnk48/getmemberby?filter=' + seGroup + '&param=' + seFill + '&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+            method :'post'
+        })
+            .then(response => response.json())
+            .then(async data => {
+                setArr(data.response)
+                if (search !== '') {
+                    const txt = search.toLowerCase()
+                    setSearch(txt)
+                    const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt));
+                    setmem(d)
+                } else {
+                    setmem(data.response)
                     setArr(data.response)
-                    if (search !== '') {
-                        const txt = search.toLowerCase()
-                        setSearch(txt)
-                        const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt));
-                        setmem(d)
-                    } else {
-                        setmem(data.response)
-                        setArr(data.response)
-                    }
-                    setLoaded(true)
-                });
-          } else {
-            fetch(fet + '/bnk48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-                method :'get'
-            })
-                .then(response => response.json())
-                .then(data => {
-                    setArr(data.response)
-                    if (seFill == 1) {
-                        if (search !== '') {
-                            const txt = search.toLowerCase()
-                            setSearch(txt)
-                            const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt) && x.graduated == false);
-                            setmem(d)
-                        } else {
-                            setmem(data.response.filter(x => x.graduated == false))
-                            setArr(data.response)
-                        }
-                    } else if (seFill == 2) {
-                        if (search !== '') {
-                            const txt = search.toLowerCase()
-                            setSearch(txt)
-                            const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt) && x.graduated == true);
-                            setmem(d)
-                        } else {
-                            setmem(data.response.filter(x => x.graduated == true))
-                            setArr(data.response)
-                        }
-                    } else {
-                        if (search !== '') {
-                            const txt = search.toLowerCase()
-                            setSearch(txt)
-                            const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt));
-                            setmem(d)
-                        } else {
-                            setmem(data.response)
-                            setArr(data.response)
-                        }
-                    }
-                    setLoaded(true)
-                })
-          }
-            
+                }
+                setLoaded(true)
+            }); 
 
           }
       }
@@ -196,6 +152,19 @@ const Memberlist = ({fet, setSec}) => {
                      ))}
               </TextField>
              )}
+              <TextField
+                 select
+                 label="Graduation Status"
+                 value={seGrad || '-'}
+                 className="m-3"
+                 onChange={(e) => setGrad(e.target.value)}
+                 >
+                     {vPack.graduation.map((option) => (
+                         <MenuItem key={option.value} value={option.value}>
+                         {option.label}
+                         </MenuItem>
+                     ))}
+              </TextField>
              <ButtonGroup>
              {seGroup != '-' && seFill != '-' && (
                  <Button className='ml-5 mt-4 mb-3' color="primary" onClick={() => onSearch()} variant="contained">Search</Button>
@@ -213,7 +182,7 @@ const Memberlist = ({fet, setSec}) => {
             
             {Loaded ? (
                 <div className='row ml-3 mr-3 mt-5 justify-content-center'>
-                {mem.length > 0 ? mem.map((item, i) => (
+                {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
                       <div data-aos="zoom-in" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
                         <Card>
                             <CardActionArea>
@@ -227,6 +196,7 @@ const Memberlist = ({fet, setSec}) => {
                                     {item.captain != undefined && (
                                         <p class="badge badge-pill badge-info">BNK48 {item.captain}</p>
                                     )}
+                                    <br />
                                     {item.graduated == true && (
                                         <p class="badge badge-pill badge-warning">Graduating Announced</p>
                                     )}

@@ -13,10 +13,6 @@
         {
           "value": "gen",
           "label": "Generation"
-        },
-        {
-          "value": "grad",
-          "label": "Graduation Status"
         }
       ],
       "team": [

@@ -64,6 +64,8 @@ const Memberlist = ({fet, setSec}) => {
             setFilter(vPack.team)
         } else if (event.target.value == 'gen') {
             setFilter(vPack.gen)
+        } else if (event.target.value == 'grad') {
+            setFilter(vPack.graduation)
         } else {
             setFilter([])
         }
@@ -72,23 +74,67 @@ const Memberlist = ({fet, setSec}) => {
       const onSearch = () => {
           if (seGroup != '-' && seFill != "-") {
           setLoaded(false)
+          if (seGroup != 'grad') {
             fetch(fet + '/bnk48/getmemberby?filter=' + seGroup + '&param=' + seFill + '&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
                 method :'post'
             })
-      .then(response => response.json())
-      .then(async data => {
-        await setArr(data.response)
-          if (search !== '') {
-            const txt = search.toLowerCase()
-            setSearch(txt)
-            const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt));
-            setmem(d)
+                .then(response => response.json())
+                .then(async data => {
+                    setArr(data.response)
+                    if (search !== '') {
+                        const txt = search.toLowerCase()
+                        setSearch(txt)
+                        const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt));
+                        setmem(d)
+                    } else {
+                        setmem(data.response)
+                        setArr(data.response)
+                    }
+                    setLoaded(true)
+                });
           } else {
-            setmem(data.response)
-            setArr(data.response)
+            fetch(fet + '/bnk48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+                method :'get'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    setArr(data.response)
+                    if (seFill == 1) {
+                        if (search !== '') {
+                            const txt = search.toLowerCase()
+                            setSearch(txt)
+                            const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt) && x.graduated == false);
+                            setmem(d)
+                        } else {
+                            setmem(data.response.filter(x => x.graduated == false))
+                            setArr(data.response)
+                        }
+                    } else if (seFill == 2) {
+                        if (search !== '') {
+                            const txt = search.toLowerCase()
+                            setSearch(txt)
+                            const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt) && x.graduated == true);
+                            setmem(d)
+                        } else {
+                            setmem(data.response.filter(x => x.graduated == true))
+                            setArr(data.response)
+                        }
+                    } else {
+                        if (search !== '') {
+                            const txt = search.toLowerCase()
+                            setSearch(txt)
+                            const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt));
+                            setmem(d)
+                        } else {
+                            setmem(data.response)
+                            setArr(data.response)
+                        }
+                    }
+                    setLoaded(true)
+                })
           }
-          setLoaded(true)
-      });
+            
+
           }
       }
     

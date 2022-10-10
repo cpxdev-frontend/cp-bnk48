@@ -13,6 +13,10 @@
         {
           "value": "gen",
           "label": "Generation"
+        },
+        {
+          "value": "grad",
+          "label": "Graduation Status"
         }
       ],
       "team": [
@@ -50,5 +54,19 @@
             "value": 3,
           "label": "Generation 3"
           }
+      ],
+      "graduation": [
+        {
+            "value": "-",
+            "label": "Choose Status"
+        },
+        {
+          "value": 1,
+          "label": "Only Non-Graduated"
+        },
+        {
+            "value": 2,
+            "label": "Graduated"
+        }
       ]
   }

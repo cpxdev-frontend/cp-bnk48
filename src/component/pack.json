@@ -54,7 +54,7 @@
       "graduation": [
         {
             "value": "-",
-            "label": "Choose Status"
+            "label": "All Status"
         },
         {
           "value": 1,

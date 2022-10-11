@@ -175,7 +175,7 @@ const Memberlist = ({fet, setSec}) => {
              <Zoom in={mem.length > 0 ? Loaded : false}>
              <Card className='mt-2 ml-5 mr-5'>
                      <CardContent>
-                         Found {mem.length} matched BNK48 members
+                         Found {seGrad == 2 ? mem.filter(x => x.graduated == true).length : seGrad == 1 ? mem.filter(x => x.graduated == false).length : mem.length} matched BNK48 members
                      </CardContent>
                  </Card>
              </Zoom>

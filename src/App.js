@@ -10,10 +10,20 @@ import {
 import { Alert, AlertTitle } from '@material-ui/lab';
 import "aos/dist/aos.css";
 
+import {
+  GoogleAuthProvider,
+  TwitterAuthProvider,
+  signInWithPopup,
+  signOut,
+  OAuthProvider,
+  deleteUser
+} from "firebase/auth";
+import auth from "./fbindex";
+
 import 'sweetalert2/dist/sweetalert2.min.css'
 import moment from 'moment'
 import { AppBar, Toolbar,Typography, IconButton, Drawer, FormControlLabel, Switch, ListItem, ListItemIcon, Divider, ListItemText,
-Dialog, DialogActions, Button, DialogTitle, DialogContent, Avatar, Badge, CardContent, CardMedia, Slide, Grow, Fade, TextField } from '@material-ui/core';
+Dialog, DialogActions, Button, DialogTitle, DialogContent, Avatar, Badge, CardContent, CardMedia, Slide, Grow, Fade, TextField, Menu, MenuItem } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
@@ -35,6 +45,7 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import TheatersIcon from '@material-ui/icons/Theaters';
+import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
 
 import Home from './component/home';
 import MemberList from './component/members';
@@ -47,11 +58,12 @@ import MusicCom from './component/streaming';
 import Offici from './component/official';
 import Mana from './component/manage';
 import Api from './component/apisupport';
-import SiteMan from './component/manual';
+import Account from './component/account';
 import FollowCom from './component/follow';
 import PageErr from './component/404'
 import Sport from './component/sportday';
 import RequestCom from './component/requesthour';
+import RegisCom from './component/register';
 
 import GeCom from './component/geevent/ge';
 import GeMana from './component/geevent/gemanage';
@@ -156,6 +168,8 @@ function App() {
   const [stream, setStream] = React.useState(null);
   const [tokenID, setToken] = React.useState('');
   const [point, setPoint] = React.useState(0);
+
+  const [anchorEl, setAnchorEl] = React.useState(null)
   
   const [TokenLoad, setLoadToken] = React.useState(false);
   const [allDone, setAllDone] = React.useState(false);
@@ -188,22 +202,26 @@ function App() {
    }, []);
 
   const FetchKami = (fetdata) => {
-    if (localStorage.getItem("glog") != null) {
-    const rep = JSON.parse(localStorage.getItem("glog"))
-      fetch(fetdata + '/bnk48/getFanMem?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString()  , {
+    if (localStorage.getItem("loged") != null) {
+      fetch(fetdata + '/bnk48/getbnkkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
         method :'get'
     })
       .then(response => response.json())
       .then(data => {
+        setLogLoad(false)
+        setOpen(false)
         if (data.obj != 'none') {
           setKami(data.obj.img)
           setKname(data.obj.name)
           setToken(data.wallet)
+          localStorage.setItem('i', data.uname)
           // FetchWallet(fetdata, data.wallet)
         } else {
           setKami('-')
+          localStorage.setItem('i', data.uname)
           setKname('-')
         }
+        setLogin(true)
       });
     }
   }
@@ -309,7 +327,7 @@ function App() {
     } else {
       setReduce(true)
     }
-    if (localStorage.getItem("glog") == null) {
+    if (localStorage.getItem("loged") == null) {
       setLogin(false)
     } else {
       setLogin(true)
@@ -390,6 +408,59 @@ function App() {
       });
   }
 
+  const loginAction = (action) => {
+    let provider = null
+    switch (action) {
+      case 1:
+        provider = new GoogleAuthProvider();
+        break;
+      case 2:
+        provider = new TwitterAuthProvider();
+        break;
+      case 3:
+        provider = new OAuthProvider("yahoo.com");
+        break;
+      default:
+        return;
+    }
+    setLogLoad(true)
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        fetch(Fet().ul + '/bnk48/checklogin?i=' + result.user.uid  , {
+          method :'get'
+      })
+        .then(response => response.text())
+        .then(data => {
+          setAnchorEl(null)
+          if (data == 'true') {
+            localStorage.setItem("loged", JSON.stringify(result));
+            FetchKami(Fet().ul)
+          } else {
+            setLogLoad(false)
+            setLogin(false)
+            deleteUser(result.user)
+            Swal.fire({
+              title: 'User not found',
+              text: 'This user don\'t be register to our system. please try again.',
+              icon: 'error'
+            })
+          }
+        });
+      })
+      .catch((error) => {
+        // Handle error.
+        setAnchorEl(null)
+        setOpen(false)
+        setLogLoad(false)
+        setMemDl(false)
+        Swal.fire({
+          title: 'Login error or canceled by user',
+          text: 'For exclusive feature. You need to login Fan Space Membership.',
+          icon: 'warning'
+        })
+      });
+  }
+
   const errorlog = (response) => {
     setLogLoad(false)
     console.log(response);
@@ -399,12 +470,13 @@ function App() {
     setLogLoad(false)
     setMemDl(false)
     setLogin(false)
-    localStorage.removeItem("glog")
+    localStorage.removeItem("loged")
+    localStorage.removeItem("i")
     setOpen(false)
     setKname('')
     setKami('')
-    if (window.location.pathname == '/fandom' || window.location.pathname == '/fandomroom') {
-      window.location.href = '/'
+    if (window.location.pathname == '/account') {
+      History.push('/')
     }
   }
 
@@ -484,7 +556,7 @@ function App() {
                    }}
                    badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
                  >
-                   <Avatar alt={JSON.parse(localStorage.getItem("glog")).name} src={JSON.parse(localStorage.getItem("glog")).imageUrl} />
+                  <Avatar alt={localStorage.getItem("i")} src={JSON.parse(localStorage.getItem("loged")).user.photoURL} />
                  </Badge>
                  </ListItemIcon>
               )}
@@ -588,7 +660,14 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary='Follow and Support' />
                 </ListItem>
-              
+                {!login && (
+                  <ListItem component={Link} to='/register' className={window.location.pathname == '/register' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <AssignmentReturnedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Register Membership' secondary='Public Beta State' />
+                </ListItem>
+                )}
                 </d>
                 <Divider />
                 <ListItem onClick={() => {
@@ -612,7 +691,7 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary={'Region: ' + Fet().nme} />
                 </ListItem>
-                {
+                {/* {
                   loginLoad ? (
                     <ListItem onClick={() => setMemDl(true)} button>
                     <ListItemIcon>
@@ -659,6 +738,57 @@ function App() {
                 )}
                     </>
                   )
+                } */}
+                 {
+                  loginLoad ? (
+                    <ListItem onClick={() => setMemDl(true)} button>
+                    <ListItemIcon>
+                    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="40px" />
+                    </ListItemIcon>
+                    <ListItemText primary="Signing in" />
+                  </ListItem>
+                  ) : (
+                    <>
+                      {!login ? (
+                        <>
+                        <ListItem onClick={(e) => setAnchorEl(e.currentTarget)} button>
+                        <ListItemIcon>
+                          <VpnKeyIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Login Fan Space Membership" secondary='Public Beta State'/>
+                      </ListItem>
+                        <Menu
+                          id="lock-menu"
+                          anchorEl={anchorEl}
+                          keepMounted
+                          open={Boolean(anchorEl)}
+                          onClose={() => setAnchorEl(null)}
+                        >
+                          <MenuItem onClick={(e) => loginAction(1)}>Google Account</MenuItem>
+                          <MenuItem onClick={(e) => loginAction(2)}>Twitter Account</MenuItem>
+                          <MenuItem onClick={(e) => loginAction(3)}>Yahoo Account</MenuItem>
+                        </Menu>
+                        </>
+                ) : (
+                  <ListItem onClick={() => setMemDl(true)} button>
+                  <ListItemIcon>
+                  <Badge
+                    overlap="circular"
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'right',
+                    }}
+                    badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
+                  >
+                    <Avatar alt={localStorage.getItem("i")} src={JSON.parse(localStorage.getItem("loged")).user.photoURL} />
+                  </Badge>
+                  
+                  </ListItemIcon>
+                  <ListItemText primary="You're logged in" secondary={localStorage.getItem("i")} />
+                </ListItem>
+                )}
+                    </>
+                  )
                 }
                 
                 
@@ -677,6 +807,12 @@ function App() {
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/sportday" render={() => <Sport fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  {
+                    login && (
+                      <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    )
+                  }
 
                   <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} />} />
                   <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
@@ -691,9 +827,9 @@ function App() {
         </footer>
 
 
-        {localStorage.getItem("glog") != null && (
+        {localStorage.getItem("loged") != null && (
            <Dialog
-           open={localStorage.getItem("glog") != null ? MemberDl : false}
+           open={localStorage.getItem("loged") != null ? MemberDl : false}
            onClose={() => setMemDl(false)}
            fullWidth={true}
            maxWidth='sm'
@@ -706,14 +842,14 @@ function App() {
              {kamin != '-' ? (
            <ListItem onClick={() => window.location.href = "/member?name=" + kamin.toLowerCase()} button>
                <ListItemIcon>
-               <img alt={JSON.parse(localStorage.getItem("glog")).name} src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
+               <img src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
              </ListItemIcon>
              <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' BNK48'} secondary={newspop.length > 0 && newspop.filter(x => ((x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] == 0) || ((x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] > 0 && moment().unix() <= x.timerange[1])).length > 0 ? 'Your Kami-Oshi have ' + newspop.filter(x => x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1).length +' incoming event(s). Click here to check it!' : 'Click here to see more description of your Kami-Oshi'} />
               </ListItem>
              ) : (
            <ListItem button>
                <ListItemIcon>
-                         <Avatar alt={JSON.parse(localStorage.getItem("glog")).name} src="" />
+                         <Avatar src="" />
                        </ListItemIcon>
                        <ListItemText primary="You don't have any Kami-Oshi" secondary='Please choose your member which you love only once person.' />
                        </ListItem>
@@ -740,17 +876,13 @@ function App() {
                      </ListItem>
            </DialogContent>
            <DialogActions>
-           <GoogleLogout
-           clientId={Client}
-           render={renderProps => (
-             <Button onClick={renderProps.onClick} className="text-danger">
-             Sign out
-         </Button>
-           )}
-           onLogoutSuccess={(e) => Signout(e)}
-           isSignedIn={login}
-         />
-           <Button onClick={() => setMemDl(false)} className="text-dark">
+           <Button onClick={(e) => {Signout(e)}} className="text-danger">
+               Sign out
+           </Button>
+           <Button onClick={(e) => {History.push('/account'); setMemDl(false); setOpen(false)}} className="text-dark">
+               Account Studio (Beta)
+           </Button>
+           <Button onClick={(e) => {setMemDl(false)}} className="text-dark">
                Close
            </Button>
            </DialogActions>

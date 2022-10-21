@@ -6,7 +6,7 @@ import { Typography, ListItem, Zoom, ListItemText,
     import AOS from "aos";
     import Swal from 'sweetalert2'
 
-const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/full4k.jpg'
+const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/bnkfullmemhd.jpg'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);
@@ -24,7 +24,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
   },[])
 
   React.useEffect(() => {
-    if (kamin != "") {
+    if (kamin != "-") {
       const check = "https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/main_back/" + kamin.toLowerCase() + ".jpg"
         fetch(check)
           .then((response) => {

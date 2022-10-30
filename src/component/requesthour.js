@@ -18,7 +18,7 @@ const RequestHr = ({fet, setSec}) => {
       })
           .then(response => response.json())
           .then(data => {
-            if (data.status == true) {
+            if (data.status == 200) {
               setArr(data.res)
             } else {
               setArr([])

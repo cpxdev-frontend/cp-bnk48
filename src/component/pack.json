@@ -40,16 +40,20 @@
         },
         {
           "value": 1,
-          "label": "Generation 1"
+          "label": "1st Generation"
         },
         {
             "value": 2,
-            "label": "Generation 2"
+            "label": "2nd Generation"
         },
         {
             "value": 3,
-          "label": "Generation 3"
-          }
+          "label": "3rd Generation"
+          },
+          {
+              "value": 4,
+            "label": "4th Generation"
+            }
       ],
       "graduation": [
         {

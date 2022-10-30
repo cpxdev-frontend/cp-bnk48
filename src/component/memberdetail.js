@@ -109,18 +109,18 @@ function capitalizeFirstLetter(string) {
             }, [customback]);
 
             const fetchfollower = (name) => {
-                setFollow(true)
-                fetch(fet + '/bnk48/getfollower?name=' + name  , {
-                    method :'post'
-                })
-                  .then(response => response.text())
-                  .then(data => {
-                    setFol(data)
-                    setFollow(false)
-                  }).catch(() => {
-                    setFol(-1)
-                    setFollow(false)
-                  });
+                // setFollow(true)
+                // fetch(fet + '/bnk48/getfollower?name=' + name  , {
+                //     method :'post'
+                // })
+                //   .then(response => response.text())
+                //   .then(data => {
+                //     setFol(data)
+                //     setFollow(false)
+                //   }).catch(() => {
+                //     setFol(-1)
+                //     setFollow(false)
+                //   });
             }
 
     //    const GEdown = (mem) => {
@@ -480,7 +480,7 @@ function capitalizeFirstLetter(string) {
                                         {item.ge != '' && (
                                             <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
-                                      {loadfollow ? (
+                                      {/* {loadfollow ? (
                                             <Skeleton />
                                         ):(
                                             <>
@@ -492,7 +492,7 @@ function capitalizeFirstLetter(string) {
                                                 <button className='cur btn btn-info' onClick={() => fetchfollower(GEPoster)}>Something went wrong, please click here to refresh page</button>
                                             )}
                                             </>
-                                        )}
+                                        )} */}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
 {/*                                     
                                     {window.innerWidth > 1100 && kami == 2 && item.twelvethsingle != undefined && item.twelvethsingle.includes('bnk12thsing/main') && (
@@ -660,10 +660,17 @@ function capitalizeFirstLetter(string) {
                                                 )
                                             }
                                             {
-                                                ita.place != '' && (
-                                                    <div className='mt-1' data-aos="fade-down">
-                                                    <a href={ita.place} target='_blank'>See event location on Google Maps</a>
-                                                    </div>
+                                                ita.place != '' && ita.place.includes('IAMP') && (
+                                                <a href={ita.placeobj.ref} target='_blank' className='mt-1' data-toggle="tooltip" data-placement="down" title={ita.placeobj.placeDesc}>
+                                                    <LocationOnIcon/> Location: {ita.placeobj.placeName + ", " + ita.placeobj.placeProvince}
+                                                </a>
+                                                )
+                                            }
+                                            {
+                                                ita.place != '' && !ita.place.includes('IAMP') && (
+                                                <a href={ita.place} target='_blank' className='mt-1'>
+                                                    <LocationOnIcon/> Where is this event?
+                                                </a>
                                                 )
                                             }
                                         </div>

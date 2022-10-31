@@ -124,7 +124,7 @@ const RequestHr = ({fet, setSec}) => {
               </TableContainer>
               {window.innerWidth > 800 ? (
               <div className='mt-3'>
-                <iframe src='https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C' />
+                <iframe src='https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C' width="100%" />
               </div>
               ): (
                 <a className='mt-3' href='https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C'>Click here to view Virtualization (Powered by Google Data Studio)</a>

@@ -122,6 +122,9 @@ const RequestHr = ({fet, setSec}) => {
           }
             </Table>
               </TableContainer>
+              <div className='mt-3'>
+                <iframe src='https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C' />
+              </div>
         </div>
         </>
      );

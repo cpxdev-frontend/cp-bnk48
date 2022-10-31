@@ -89,6 +89,7 @@ const RequestHr = ({fet, setSec}) => {
                       <TableCell align="center">Song Name</TableCell>
                       <TableCell align="center">Song Artist</TableCell>
                       <TableCell align="right">Spent Token</TableCell>
+                      <TableCell align="center">Avaliable on Spotify</TableCell>
                     </TableRow>
                   </TableHead>
           {
@@ -116,6 +117,9 @@ const RequestHr = ({fet, setSec}) => {
                           </TableCell>
                           <TableCell align="right">
                           {item.spentToken}
+                          </TableCell>
+                          <TableCell align="center">
+                          {item.trackID != '' ? 'YES': '-'}
                           </TableCell>
                   </TableBody>
             )))

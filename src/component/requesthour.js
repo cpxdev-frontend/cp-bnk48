@@ -146,7 +146,7 @@ const RequestHr = ({fet, setSec}) => {
                   window.innerWidth >1200 ? (
                     <iframe src="https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C" frameborder="0" width="90%" height={window.innerWidth< 600 ? "500px" : '700px'} />
                   ) : (
-                    <iframe src="https://datastudio.google.com/embed/reporting/b7c85307-2842-4e6e-936d-343290b1b0a7/page/F6aqC" frameborder="0" width="100%" height={window.innerWidth< 600 ? "500px" : '700px'} />
+                    <iframe src="https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C" frameborder="0" width="100%" height={window.innerWidth< 600 ? "500px" : '700px'} />
                   )
                 }
               {window.innerWidth < 800 && (

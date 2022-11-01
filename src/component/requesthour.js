@@ -7,12 +7,22 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import React from 'react'
+import AOS from "aos";
 
 const RequestHr = ({fet, setSec}) => {
   const [arr, setArr] = React.useState(null)
 
+  function numberWithCommas(x) {
+    const options = { 
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2 
+    };
+    return Number(x).toLocaleString('en', options);
+}
+
     React.useEffect(() =>{
         setSec('Request Hour 2022')
+        AOS.init({ duration: 1000 });
         fetch(fet + '/bnk48/requesthrlist', {
           method :'post'
       })
@@ -82,7 +92,7 @@ const RequestHr = ({fet, setSec}) => {
 
         <TableContainer>
                 <Table stickyHeader aria-label="simple table">
-                  <TableHead>
+                  <TableHead data-aos='fade-down'>
                     <TableRow>
                       <TableCell>Rank</TableCell>
                       <TableCell align="center">Album Image</TableCell>
@@ -99,10 +109,10 @@ const RequestHr = ({fet, setSec}) => {
         </TableBody>
             ) : ((arr.length == 0) ? (
               <TableBody>
-                  <TableCell colSpan={5} align='center'>Voting is end. The voting are being collected. Please come back again in November 1, 2022</TableCell>
+                  <TableCell colSpan={6} align='center'>Voting is end. The voting are being collected. Please come back again in November 1, 2022</TableCell>
             </TableBody>
             ) : arr.map((item) => (
-                <TableBody key={item.trackID} className='text-left' onClick={() => window.open(item.reflink,'_blank')}>
+                <TableBody key={item.trackID} className='text-left' onClick={() => window.open(item.reflink,'_blank')} data-aos='fade-right'>
                         <TableCell component="th">
                           {item.rank}
                         </TableCell>
@@ -116,7 +126,7 @@ const RequestHr = ({fet, setSec}) => {
                           {item.songArtist}
                           </TableCell>
                           <TableCell align="right">
-                          {item.spentToken}
+                          {numberWithCommas(item.spentToken)}
                           </TableCell>
                           <TableCell align="center">
                           {item.trackID != '' ? 'YES': '-'}
@@ -126,13 +136,25 @@ const RequestHr = ({fet, setSec}) => {
           }
             </Table>
               </TableContainer>
-              {window.innerWidth > 800 ? (
-              <div className='mt-3'>
-                <iframe src='https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C' width="100%" height="1000px" />
-              </div>
-              ): (
-                <a className='mt-3' href='https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C'>Click here to view Virtualization (Powered by Google Data Studio)</a>
+
+          <Card className='mt-5' data-aos='zoom-in-up'>
+            <CardContent>
+            <CardHeader title="Election Report" subheader="Reported by Token X. Visualization Statistic by Google Data Studio" data-aos='flip-down' />
+              <hr />
+              <div className='text-center' data-aos='zoom-out'>
+                {
+                  window.innerWidth >1200 ? (
+                    <iframe src="https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C" frameborder="0" width="90%" height={window.innerWidth< 600 ? "500px" : '700px'} />
+                  ) : (
+                    <iframe src="https://datastudio.google.com/embed/reporting/b7c85307-2842-4e6e-936d-343290b1b0a7/page/F6aqC" frameborder="0" width="100%" height={window.innerWidth< 600 ? "500px" : '700px'} />
+                  )
+                }
+              {window.innerWidth < 800 && (
+                  <a className='mt-3' href='https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C'>Click here to view Virtualization (Powered by Google Data Studio)</a>
               )}
+              </div>
+            </CardContent>
+          </Card>
         </div>
         </>
      );

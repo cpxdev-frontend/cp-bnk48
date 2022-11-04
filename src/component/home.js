@@ -63,7 +63,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
         setLoaded1(true)
     }
   });
- const ran = Math.floor(Math.random() * 3) + 1;
+ const ran = Math.floor(Math.random() * 4) + 1;
  fetch(fet + '/bnk48/getmemberby?filter=gen&param=' + ran + '&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
             method :'post'
         })

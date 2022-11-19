@@ -198,125 +198,13 @@ function capitalizeFirstLetter(string) {
                       })
                     return false
                 }
-                if (arr[0].graduated == true && arr[0].gen === 1 && arr[0].graduated == true) {
-                    Swal.fire({
-                        title: arr[0].name +" BNK48 is graduated, But you can still set as Your Kami-Oshi in last time.",
-                        icon: 'info',
-                        text: 'This member is graduated. But you can set your Kami-Oshi in memories until 31 December 2022.',
-                      }).then((rew) => {
-                        if (localStorage.getItem("loged") != null && kamio != ''  && kamio != '-') {
-                            Swal.fire({
-                                title: 'Confirm to Change your Kami-Oshi',
-                                text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
-                                icon: 'question',
-                                iconColor: 'rgb(203, 150, 194)',
-                                showCancelButton: true
-                              }).then((result) => {
-                                if (result.isConfirmed) {
-                                    setChange(true)
-                                    fetch(fet + '/bnk48/uptbnkKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
-                                        method: 'POST', // or 'PUT'
-                                        headers: {
-                                            'Accept': 'application/json',
-                                            'Content-Type': 'application/json'
-                                        },
-                                        })
-                                        .then(response => response.text())
-                                        .then(data => {
-                                           window.location.reload()
-                                        })
-                                        .catch((error) => {
-                                            alert("System will be temporary error for a while. Please try again")
-                                            setChange(false)
-                                            setKami(1)
-                                        });
-                                }
-                              })
-                        } else if (kamio == '-') {
-                            setChange(true)
-                            fetch(fet + '/bnk48/uptbnkKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
-                                method: 'POST', // or 'PUT'
-                                headers: {
-                                    'Accept': 'application/json',
-                                    'Content-Type': 'application/json'
-                                },
-                                })
-                                .then(response => response.text())
-                                .then(data => {
-                                    window.location.reload()
-                                })
-                                .catch((error) => {
-                                    alert("System will be temporary error for a while. Please try again")
-                                    setChange(false)
-                                    setKami(1)
-                                });
-                          } else {
-                              setKami(0)
-                            fetch(fet + '/bnk48/getbnkkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
-                                method :'get'
-                            })
-                              .then(response => response.json())
-                              .then(data => {
-                                setKami(1)
-                                if (data.obj != 'none') {
-                                    Swal.fire({
-                                        title: 'Confirm to Change your Kami-Oshi',
-                                        text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
-                                        icon: 'question',
-                                        iconColor: 'rgb(203, 150, 194)',
-                                        showCancelButton: true
-                                      }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            setChange(true)
-                                            fetch(fet + '/bnk48/uptbnkKami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
-                                                method: 'POST', // or 'PUT'
-                                                headers: {
-                                                    'Accept': 'application/json',
-                                                    'Content-Type': 'application/json'
-                                                },
-                                                })
-                                                .then(response => response.text())
-                                                .then(data => {
-                                                   window.location.reload()
-                                                })
-                                                .catch((error) => {
-                                                    alert("System will be temporary error for a while. Please try again")
-                                                    setChange(false)
-                                                    setKami(1)
-                                                });
-                                        }
-                                      })
-                                } else {
-                                    setChange(true)
-                                    fetch(fet + '/bnk48/uptbnkKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
-                                        method: 'POST', // or 'PUT'
-                                        headers: {
-                                            'Accept': 'application/json',
-                                            'Content-Type': 'application/json'
-                                        },
-                                        })
-                                        .then(response => response.text())
-                                        .then(data => {
-                                            window.location.reload()
-                                        })
-                                        .catch((error) => {
-                                            alert("System will be temporary error for a while. Please try again")
-                                            setChange(false)
-                                            setKami(1)
-                                        });
-                                }
-                              }).catch(() => {
-                                setKami(1)
-                              })
-                          }
-                      })
-                }
                 if (localStorage.getItem("loged") != null && kamio != ''  && kamio != '-') {
                     Swal.fire({
                         title: 'Confirm to Change your Kami-Oshi',
                         text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
                         icon: 'question',
                         iconColor: 'rgb(203, 150, 194)',
+                        footer : (arr[0].graduated == true && arr[0].gen === 1 && arr[0].graduated == true ? 'This member is graduated. But you can still set as Your Kami-Osi in memories until December 31, 2022' : null),
                         showCancelButton: true
                       }).then((result) => {
                         if (result.isConfirmed) {
@@ -371,6 +259,7 @@ function capitalizeFirstLetter(string) {
                                 text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
                                 icon: 'question',
                                 iconColor: 'rgb(203, 150, 194)',
+                                footer : (arr[0].graduated == true && arr[0].gen === 1 && arr[0].graduated == true ? 'This member is graduated. But you can still set as Your Kami-Osi in memories until December 31, 2022' : null),
                                 showCancelButton: true
                               }).then((result) => {
                                 if (result.isConfirmed) {

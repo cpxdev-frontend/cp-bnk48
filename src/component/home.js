@@ -46,17 +46,9 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
   React.useEffect(() => {
     if (kamin != "-") {
       const check = (fet + "/bnk48/getjivarudays?id=" + kamin.toLowerCase())
-        fetch(check)
-          .then((response) => {
-            if (response.status != 200) {
-                throw new Error("fail")
-            }
-            return response.text()
-          })
-          .then(() => localStorage.getItem('jiwa') != null ? setVideo(check) : setVideo(defaultvideo))
-          .catch(() => setVideo(defaultvideo));
+      localStorage.getItem('jiwa') != null ? setVideo(check) : setVideo(defaultvideo)
     } else {
-      setUrc(defaultvideo)
+      setVideo(defaultvideo)
     }
   }, [kamin])
 

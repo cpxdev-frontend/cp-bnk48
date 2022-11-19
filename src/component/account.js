@@ -36,6 +36,8 @@ const AccountMana = ({fet, setSec}) => {
     const [ uid, setID ] = React.useState('')
     const [customback, setBack] = React.useState(false);
 
+    const [jiwaback, setJiwa] = React.useState(false);
+
         React.useEffect(() => {
             if (customback) {
                 localStorage.setItem('customback', '')
@@ -43,6 +45,14 @@ const AccountMana = ({fet, setSec}) => {
                 localStorage.removeItem('customback')
             }
             }, [customback]);
+
+            React.useEffect(() => {
+              if (jiwaback) {
+                  localStorage.setItem('jiwa', '')
+              } else {
+                  localStorage.removeItem('jiwa')
+              }
+              }, [jiwaback]);
 
 
         const Fetch= () => {
@@ -74,6 +84,11 @@ const AccountMana = ({fet, setSec}) => {
             setBack(true)
            } else {
               setBack(false)
+           }
+           if (localStorage.getItem('jiwa') != null) {
+            setJiwa(true)
+           } else {
+              setJiwa(false)
            }
            Fetch()
     }, []) 
@@ -204,7 +219,21 @@ const AccountMana = ({fet, setSec}) => {
                               color="primary"
                             />
                           }
-                          label={"Show your Kami-Oshi as Background on BNK48 Fan Space Homepage"}
+                          label={"Show your Kami-Oshi as Background on BNK48 Fan Space Homepage (BNK48 12th Single \"Believers\" campaign)"}
+                        />
+                    )}
+                    {window.innerWidth > 1100 && data.obj != null && data.obj.gen == 1 && (
+                          <FormControlLabel
+                          className='ml-2 pt-4'
+                          control={
+                            <Switch
+                              checked={jiwaback}
+                              name="jiwa"
+                              onChange={()=> setJiwa(!jiwaback)}
+                              color="primary"
+                            />
+                          }
+                          label={"Show your Kami-Oshi as Video-Background on BNK48 Fan Space Homepage (BNK48 1st Generation Special Single \"Jiwaru Days\" campaign)"}
                         />
                     )}
                 </div>

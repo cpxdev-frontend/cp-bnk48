@@ -7,6 +7,7 @@ import { Typography, ListItem, Zoom, ListItemText,
     import Swal from 'sweetalert2'
 
 const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/bnkfullmemhd.jpg'
+const defaultvideo = 'https://www.youtube.com/embed/r0oFiQ1doSs?autoplay=1&mute=1&controls=0&loop=1&playlist=r0oFiQ1doSs'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);
@@ -18,6 +19,8 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     const [samplemem, setMem] = React.useState([]);
     const [highMV, setMV] = React.useState([]);
     const [GenRan, setGenRan] = React.useState(0);
+
+    const [vdo, setVideo] =React.useState(defaultvideo)
 
   React.useEffect(() => {
     setSec('Homepage')
@@ -37,6 +40,23 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
           .catch(() => setUrc(defaultTheme));
     } else {
       setUrc(defaultTheme)
+    }
+  }, [kamin])
+
+  React.useEffect(() => {
+    if (kamin != "-") {
+      const check = (fet + "/bnk48/getjivarudays?id=" + kamin.toLowerCase())
+        fetch(check)
+          .then((response) => {
+            if (response.status != 200) {
+                throw new Error("fail")
+            }
+            return response.text()
+          })
+          .then(() => localStorage.getItem('jiwa') != null ? setVideo(check) : setVideo(defaultvideo))
+          .catch(() => setVideo(defaultvideo));
+    } else {
+      setUrc(defaultvideo)
     }
   }, [kamin])
 
@@ -97,7 +117,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
           <div class="video-background">
           {localStorage.getItem('lowgraphic') == null ? (
             <div class="video-foreground" data-aos="zoom-out-up">
-            <iframe src="https://www.youtube.com/embed/r0oFiQ1doSs?autoplay=1&mute=1&controls=0&loop=1&playlist=r0oFiQ1doSs" frameborder="0"></iframe>
+            <iframe src={vdo} frameborder="0"></iframe>
           </div>
           ) : (
          <div data-aos="zoom-out">

@@ -190,7 +190,7 @@ function capitalizeFirstLetter(string) {
                     iconColor: 'rgb(203, 150, 194)',
                   })
             } else {
-                if (arr[0].graduated == true) {
+                if (arr[0].graduated == true && arr[0].gen !== 1) {
                     Swal.fire({
                         title: arr[0].name +" BNK48 is graduated",
                         icon: 'error',

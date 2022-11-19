@@ -97,7 +97,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
           <div class="video-background">
           {localStorage.getItem('lowgraphic') == null ? (
             <div class="video-foreground" data-aos="zoom-out-up">
-            <iframe src="https://www.youtube.com/embed/zPpz8rJFIlY?autoplay=1&mute=1&controls=0&loop=1&playlist=zPpz8rJFIlY" frameborder="0"></iframe>
+            <iframe src="https://www.youtube.com/embed/r0oFiQ1doSs?autoplay=1&mute=1&controls=0&loop=1&playlist=r0oFiQ1doSs" frameborder="0"></iframe>
           </div>
           ) : (
          <div data-aos="zoom-out">

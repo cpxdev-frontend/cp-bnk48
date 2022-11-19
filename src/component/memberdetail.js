@@ -198,6 +198,14 @@ function capitalizeFirstLetter(string) {
                       })
                     return false
                 }
+                if (arr[0].graduated == true && arr[0].gen === 1 && arr[0].graduated == true) {
+                    Swal.fire({
+                        title: arr[0].name +" BNK48 is graduated, But you can still set as Your Kami-Oshi in last time.",
+                        icon: 'info',
+                        text: 'This member is graduated. But you can set your Kami-Oshi in memories until 31 December 2022.',
+                      })
+                    return true
+                }
                 if (localStorage.getItem("loged") != null && kamio != ''  && kamio != '-') {
                     Swal.fire({
                         title: 'Confirm to Change your Kami-Oshi',

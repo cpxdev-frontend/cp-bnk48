@@ -1149,7 +1149,7 @@ transitionDuration={500}
         <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-              <AlertTitle>BNK48 12th Single "Believers" has been released. Let's watch or listen it!</AlertTitle>
+              <AlertTitle>BNK48 1st Generation Special Single "Jiwaru Days" has been released. Let's watch and farewell them together</AlertTitle>
               Double click or tap on image to skip this page
             </Alert>
             </div>
@@ -1157,7 +1157,7 @@ transitionDuration={500}
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>BNK48 12th Single "Believers" has been released. Let's watch or listen it!</AlertTitle>
+            <AlertTitle>BNK48 1st Generation Special Single "Jiwaru Days" has been released. Let's watch and farewell them together</AlertTitle>
                     Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>

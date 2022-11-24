@@ -7,7 +7,7 @@ import { Typography, ListItem, Zoom, ListItemText,
     import Swal from 'sweetalert2'
 
 // const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/bnkfullmemhd.jpg'
-const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/jiwarudays.jpg'
+const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/jiwarudayswall.jpg'
 const defaultvideo = 'https://www.youtube.com/embed/r0oFiQ1doSs?autoplay=1&mute=1&controls=0&loop=1&playlist=r0oFiQ1doSs'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     const History = useHistory()

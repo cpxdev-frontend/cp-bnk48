@@ -1,6 +1,6 @@
 # BNK48 Fan Space Front-End Souce Code
 
-![bnk48](https://edge.cpxdev.tk/iam48/bnk.jpg)
+![bnk48](https://edge.cpxdev.tk/iam48/bnkfullmem.jpg)
 
 BNK48 Fan Space is sub-project of Fan Space project. Our objective are merge BNK48 fanclub from around the world to join this platform at once.
 

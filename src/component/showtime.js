@@ -44,7 +44,7 @@ const ShowTime = ({fet, setSec}) => {
                     <CardActionArea onClick={() => window.open("https://ticket.bnk48.com", "_blank")}>
                         <CardContent>
                             <CardMedia
-                                src={item.img} width="100%"
+                                src={item.img} component="img" width="100%"
                             />
                             <Typography variant="h6">
                                 {item.title}

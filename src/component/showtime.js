@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Typography, ListItem, Zoom, ListItemText,
     Card, CardActionArea, CardContent, CardMedia, Grow, Fade, CardHeader } from '@material-ui/core';
 
-const ShowTime = () => {
+const ShowTime = ({fet, setSec}) => {
     const [Loaded, setLoaded] = React.useState(false);
     const [Arr, setArr] = React.useState([]);
     const [open, setOpen] = React.useState(false);

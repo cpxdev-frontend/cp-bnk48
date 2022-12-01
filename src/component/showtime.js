@@ -46,13 +46,30 @@ const ShowTime = ({fet, setSec}) => {
                             <CardMedia
                                 src={item.img} component="img" width="100%"
                             />
-                            <Typography variant="h6">
+                            <Typography variant="h6" className='mt-3'>
                                 {item.title}
                             </Typography>
                     
                             <hr />
+                            {moment.utc() < moment.utc(item.dooropen) ? (
+                                 <span className='badge badge-warning'>
+                                    On scheduled
+                                </span>
+                            ) : moment.utc(item.dooropen) >= moment.utc() && moment.utc() < moment.utc(item.dateStart) ? (
+                                <span className='badge badge-info'>
+                                   Door is opening
+                               </span>
+                           ) : moment.utc(item.dateStart) >= moment.utc() && moment.utc() < moment.utc(item.dateEnd) ? (
+                                <span className='badge badge-success'>
+                                    Currently Showed
+                                </span>
+                            ): (
+                                    <span className='badge badge-danger'>
+                                        The show is over
+                                    </span>
+                                )}
                             <Typography color="textSecondary">
-                            Scheduled Showtime: {moment.utc(item.dateStart).local().format('DD MMMM YYYY HH:mm:ss')} - {moment.utc(item.dateEnd).local().format('DD MMMM YYYY HH:mm:ss')} (Door open {moment.utc(item.dooropen).local().format('HH:mm:ss')})
+                            Scheduled Showtime: {moment.utc(item.dateStart).local().format('DD MMMM YYYY HH:mm:ss')} - {moment.utc(item.dateEnd).local().format('HH:mm:ss')} (Door open {moment.utc(item.dooropen).local().format('HH:mm:ss')})
                             </Typography>
                     </CardContent>
                     </CardActionArea>

@@ -68,6 +68,9 @@ const ShowTime = ({fet, setSec}) => {
                             </Typography>
                     
                             <hr />
+                            <Typography color="subtitle">
+                            Click this card to drawing reserved ticket
+                            </Typography>
                             <Typography color="textSecondary">
                             Scheduled Showtime: {moment.utc(item.dateStart).local().format('DD MMMM YYYY HH:mm:ss')} - {moment.utc(item.dateEnd).local().format('HH:mm:ss')} (Door open {moment.utc(item.dooropen).local().format('HH:mm:ss')})
                             </Typography>

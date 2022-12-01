@@ -13,7 +13,7 @@ const ShowTime = () => {
         AOS.init({ duration: 800 });
         setSec('BNK48 Theater Showtime')
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-        fetch(encodeURI(fet + '/bnk48/stagelist', {
+        fetch(encodeURI(fet + '/bnk48/stagelist'), {
             method: 'post', // or 'PUT'
             })
             .then(response => response.json())

@@ -11,7 +11,7 @@ const ShowTime = ({fet, setSec}) => {
     const [para, setpara] = React.useState({});
     const [fetLLoad, setFet] = React.useState(false);
 
-    React.useEffect(({fet, setSec}) => {
+    React.useEffect(() => {
         AOS.init({ duration: 800 });
         setSec('BNK48 Theater Showtime')
         document.body.scrollTop = document.documentElement.scrollTop = 0;

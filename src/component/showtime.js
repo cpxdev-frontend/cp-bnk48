@@ -41,7 +41,7 @@ const ShowTime = ({fet, setSec}) => {
              {Arr.length > 0 ? Arr.map((item,i) => (
                  <div data-aos="fade-down-right" className={"col-md-6 col-sm-12 mb-5" + (window.innerWidth > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
                  <Card>
-                    <CardActionArea onClick={() => window.open("https://ticket.bnk48.com", "_blank")}>
+                    <CardActionArea onClick={() => window.open("https://ticket.bnk48.com/index.php?page=theater&theater=" + item.id, "_blank")}>
                         <CardContent>
                             <CardMedia
                                 src={item.img} component="img" width="100%"

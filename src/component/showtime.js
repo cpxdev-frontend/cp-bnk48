@@ -41,19 +41,21 @@ const ShowTime = ({fet, setSec}) => {
              {Arr.length > 0 ? Arr.map((item,i) => (
                  <div data-aos="fade-down-right" className={"col-md-12 mb-5" + (window.innerWidth > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
                  <Card>
-                <CardContent>
-                    <CardMedia
-                        src={item.img} width="100%"
-                    />
-                    <Typography variant="h6">
-                        {item.title}
-                    </Typography>
-               
-                    <hr />
-                    <Typography color="textSecondary">
-                     Scheduled Showtime: {moment.utc(item.dateStart).local().format('DD MMMM YYYY HH:mm:ss')} - {moment.utc(item.dateEnd).local().format('DD MMMM YYYY HH:mm:ss')} (Door open {moment.utc(item.dooropen).local().format('HH:mm:ss')})
-                    </Typography>
+                    <CardActionArea onClick={() => window.open("https://ticket.bnk48.com", "_blank")}>
+                        <CardContent>
+                            <CardMedia
+                                src={item.img} width="100%"
+                            />
+                            <Typography variant="h6">
+                                {item.title}
+                            </Typography>
+                    
+                            <hr />
+                            <Typography color="textSecondary">
+                            Scheduled Showtime: {moment.utc(item.dateStart).local().format('DD MMMM YYYY HH:mm:ss')} - {moment.utc(item.dateEnd).local().format('DD MMMM YYYY HH:mm:ss')} (Door open {moment.utc(item.dooropen).local().format('HH:mm:ss')})
+                            </Typography>
                     </CardContent>
+                    </CardActionArea>
                  </Card>
                  </div>
              )) : (

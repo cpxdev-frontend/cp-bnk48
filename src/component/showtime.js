@@ -49,19 +49,19 @@ const ShowTime = ({fet, setSec}) => {
                             <Typography variant="h6" className='mt-3'>
                                 {item.title}
                                 {moment.utc() < moment.utc(item.dooropen) ? (
-                                    <span className='badge badge-warning'>
+                                    <span className='ml-2 badge badge-warning'>
                                         On scheduled
                                     </span>
                                 ) : moment.utc(item.dooropen) >= moment.utc() && moment.utc() < moment.utc(item.dateStart) ? (
-                                    <span className='badge badge-info'>
+                                    <span className='ml-2 badge badge-info'>
                                     Door is opening
                                 </span>
                             ) : moment.utc(item.dateStart) >= moment.utc() && moment.utc() < moment.utc(item.dateEnd) ? (
-                                    <span className='badge badge-success'>
+                                    <span className='ml-2 badge badge-success'>
                                         Currently Showed
                                     </span>
                                 ): (
-                                        <span className='badge badge-danger'>
+                                        <span className='ml-2 badge badge-danger'>
                                             The show is over
                                         </span>
                                     )}

@@ -33,7 +33,7 @@ const ShowTime = ({fet, setSec}) => {
     return ( 
         <>
         <h3 className='text-center mt-5'>BNK48 Theater Showtime</h3>
-        <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus, 4th Floor at The Mall Bangkapi</p>
+        <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus, 4th Floor at The Mall Bangkapi. See navigate from <a href="https://goo.gl/maps/CFvM1PSbY7smBPkh9" target="_blank">here</a></p>
         {Loaded ? (
              <div className={"stage justify-content-center pt-5" + (window.innerWidth > 600 ? ' pl-5 pr-5' : ' pl-3 pr-3')}>
              <br />
@@ -54,7 +54,7 @@ const ShowTime = ({fet, setSec}) => {
                                     </span>
                                 ) : moment.utc(item.dooropen) >= moment.utc() && moment.utc() < moment.utc(item.dateStart) ? (
                                     <span className='ml-2 badge badge-info'>
-                                    Door is opening
+                                    Door is opened
                                 </span>
                             ) : moment.utc(item.dateStart) >= moment.utc() && moment.utc() < moment.utc(item.dateEnd) ? (
                                     <span className='ml-2 badge badge-success'>

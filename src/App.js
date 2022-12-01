@@ -40,6 +40,7 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import CodeIcon from '@material-ui/icons/Code';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import MovieIcon from '@material-ui/icons/Movie';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
@@ -56,7 +57,7 @@ import News from './component/news';
 import MvCom from './component/music';
 import MusicCom from './component/streaming';
 import Offici from './component/official';
-import Mana from './component/manage';
+import ShowTime from './component/showtime';
 import Api from './component/apisupport';
 import Account from './component/account';
 import FollowCom from './component/follow';
@@ -633,6 +634,12 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary="Official Update" />
                 </ListItem>
+                <ListItem component={Link} to='/theaterstage' className={window.location.pathname == '/theaterstage' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <MovieIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Theater Stage Showtime" />
+                </ListItem>
                 <ListItem component={Link} to='/token' className={window.location.pathname == '/token' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <MonetizationOnIcon />
@@ -809,6 +816,7 @@ function App() {
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/sportday" render={() => <Sport fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/theaterstage" render={() => <ShowTime fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   {

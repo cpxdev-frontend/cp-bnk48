@@ -727,7 +727,7 @@ function capitalizeFirstLetter(string) {
                             )) : (
                                 <Card className="text-center" data-aos="zoom-out-up">
                                     <CardContent>
-                                    {capitalizeFirstLetter(mem)} BNK48 doesn't have incoming events right now.
+                                    {capitalizeFirstLetter(mem)} BNK48 doesn't have scheduled LIVE in IAM48 Application right now.
                                     </CardContent>
                                 </Card>
                             )

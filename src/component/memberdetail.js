@@ -200,6 +200,14 @@ function capitalizeFirstLetter(string) {
                     return false
                 }
                 if (localStorage.getItem("loged") != null && kamio != ''  && kamio != '-') {
+                    if (moment().format("YYYY-MM-DD") > moment("2022-12-31","YYYY-MM-DD").format("YYYY-MM-DD")) {
+                        Swal.fire({
+                            title: arr[0].name +" BNK48 is graduated",
+                            icon: 'error',
+                            text: 'This member is graduated. You cannot select this member to your Kami-Oshi anymore.',
+                          })
+                        return false
+                    }
                     Swal.fire({
                         title: 'Confirm to Change your Kami-Oshi',
                         text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
@@ -255,6 +263,14 @@ function capitalizeFirstLetter(string) {
                       .then(data => {
                         setKami(1)
                         if (data.obj != 'none') {
+                            if (moment().format("YYYY-MM-DD") > moment("2022-12-31","YYYY-MM-DD").format("YYYY-MM-DD")) {
+                                Swal.fire({
+                                    title: arr[0].name +" BNK48 is graduated",
+                                    icon: 'error',
+                                    text: 'This member is graduated. You cannot select this member to your Kami-Oshi anymore.',
+                                  })
+                                return false
+                            }
                             Swal.fire({
                                 title: 'Confirm to Change your Kami-Oshi',
                                 text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",

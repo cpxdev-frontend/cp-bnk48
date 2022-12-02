@@ -737,7 +737,7 @@ function capitalizeFirstLetter(string) {
                     )}
                 </div>
                
-                <Zoom in={newspop == null ? true : false} timeout={{ enter: 200, exit: 200}}>
+                <Zoom in={newspop == null || memLive == null ? true : false} timeout={{ enter: 200, exit: 200}}>
                         <div className='text-center pb-3'>
                             <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                         </div>

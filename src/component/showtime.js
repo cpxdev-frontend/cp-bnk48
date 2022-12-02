@@ -81,14 +81,16 @@ const ShowTime = ({fet, setSec}) => {
                             </Typography>
                     
                             <hr />
-                            <Typography color="body2">
+                            <Typography color="body1">
                             BNK48 Stage Team Name: {Stageconvert(item.team)}
-                            </Typography>
-                            <Typography color="subtitle">
-                            Click this card to reserved ticket
                             </Typography>
                             <Typography color="textSecondary">
                             Scheduled Showtime: {moment.utc(item.dateStart).local().format('DD MMMM YYYY HH:mm:ss')} - {moment.utc(item.dateEnd).local().format('HH:mm:ss')} (Door open {moment.utc(item.dooropen).local().format('HH:mm:ss')})
+                            </Typography>
+                            <hr />
+                            
+                            <Typography color="subtitle" className='text-right'>
+                            Click this card to reserved ticket
                             </Typography>
                     </CardContent>
                     </CardActionArea>

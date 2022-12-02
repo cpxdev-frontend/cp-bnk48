@@ -29,6 +29,19 @@ const ShowTime = ({fet, setSec}) => {
             });
     }, [])
 
+    const Stageconvert = (keyword) => {
+        switch(keyword) {
+            case 'B3':
+              return 'BIII Second Stage "Saishuu Bell ga Naru"'
+            case 'NV':
+                return 'NV first Stage "Theater no Megami"'
+            case 'Trainee':
+                return 'Trainee Stage "Ganbare! Kenkyuusei"'
+            default:
+              return keyword
+          }
+    }
+
 
     return ( 
         <>
@@ -68,6 +81,9 @@ const ShowTime = ({fet, setSec}) => {
                             </Typography>
                     
                             <hr />
+                            <Typography color="body2">
+                            BNK48 Stage Team Name: {Stageconvert(item.team)}
+                            </Typography>
                             <Typography color="subtitle">
                             Click this card to reserved ticket
                             </Typography>

@@ -175,6 +175,8 @@ function App() {
   const [TokenLoad, setLoadToken] = React.useState(false);
   const [allDone, setAllDone] = React.useState(false);
   const [styleFade, setSty] = React.useState(0);
+  
+  const [kamicheckbirth, setKamiBirth] = React.useState(false);
 
 
   React.useEffect(() => {
@@ -284,7 +286,10 @@ function App() {
           } else {
             let tempd = []
             for (let i = 0; i< dres.response.length; i++) {
-              if (dres.response[i].graduated == false) {
+              if (dres.response[i].birthday == moment().format('YYYY-MM-DD')) {
+                setKamiBirth(true)
+              }
+              if (dres.response[i].graduated == false || (dres.response[i].graduated == true && dres.response[i].gen == 1)) {
               tempd.push({
                 title: 'Happy birthday! ' +  dres.response[i].name + ' BNK48',
                 desc: 'Today is her birthday! Let\'s celebrate each other together.',
@@ -885,6 +890,11 @@ function App() {
                      <ListItem className='text-info' button>
                        <ListItemText primary='Feature will be unavaliable when you not sign in' secondary='Choose and share your Kami-Oshi member, Fandom group view and add new event' />
                      </ListItem>
+                     {kamicheckbirth == true && (
+                      <ListItem className='text-muted' button>
+                        <ListItemText primary="Today is her Birthday. Click her profile to view info and bless her on Twitter." />
+                      </ListItem>
+                     )}
            </DialogContent>
            <DialogActions>
            <Button onClick={(e) => {Signout(e)}} className="text-danger">

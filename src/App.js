@@ -286,9 +286,6 @@ function App() {
           } else {
             let tempd = []
             for (let i = 0; i< dres.response.length; i++) {
-              if (dres.response[i].name === kamin) {
-                setKamiBirth(true)
-              }
               if (dres.response[i].graduated == false || (dres.response[i].graduated == true && dres.response[i].gen == 1)) {
               tempd.push({
                 title: 'Happy birthday! ' +  dres.response[i].name + ' BNK48',

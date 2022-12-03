@@ -286,7 +286,7 @@ function App() {
           } else {
             let tempd = []
             for (let i = 0; i< dres.response.length; i++) {
-              if (dres.response[i].name == kamin) {
+              if (dres.response[i].name === kamin) {
                 setKamiBirth(true)
               }
               if (dres.response[i].graduated == false || (dres.response[i].graduated == true && dres.response[i].gen == 1)) {
@@ -890,7 +890,7 @@ function App() {
                      <ListItem className='text-info' button>
                        <ListItemText primary='Feature will be unavaliable when you not sign in' secondary='Choose and share your Kami-Oshi member, Fandom group view and add new event' />
                      </ListItem>
-                     {kamicheckbirth == true && (
+                     {kamin != "-" && kamicheckbirth == true && (
                       <ListItem className='text-muted' button>
                         <ListItemText primary="Today is her Birthday. Click her profile to view info and bless her on Twitter." />
                       </ListItem>

@@ -286,7 +286,7 @@ function App() {
           } else {
             let tempd = []
             for (let i = 0; i< dres.response.length; i++) {
-              if (dres.response[i].birthday == moment().format('YYYY-MM-DD')) {
+              if (dres.response[i].name == kamin && dres.response[i].birthday == moment().format('YYYY-MM-DD')) {
                 setKamiBirth(true)
               }
               if (dres.response[i].graduated == false || (dres.response[i].graduated == true && dres.response[i].gen == 1)) {

@@ -69,7 +69,7 @@ const ShowTime = ({fet, setSec}) => {
                                     <span className='ml-2 badge badge-info'>
                                     Door is opened
                                 </span>
-                            ) : moment.utc() >= moment.utc(item.dateStart) && moment.utc() < moment.utc(item.dateEnd) ? (
+                                ) : moment.utc() >= moment.utc(item.dateStart) && moment.utc() < moment.utc(item.dateEnd) ? (
                                     <span className='ml-2 badge badge-success'>
                                         Currently Showed
                                     </span>

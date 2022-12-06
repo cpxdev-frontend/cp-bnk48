@@ -1,19 +1,19 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "bnkfanspace",
+  "name": "BNK48 Fan Space",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "https://pbs.twimg.com/profile_images/1422908801166962698/n6bV6uEO_400x400.jpg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "https://pbs.twimg.com/profile_images/1422908801166962698/n6bV6uEO_400x400.jpg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.webp",
+      "src": "https://pbs.twimg.com/profile_images/1422908801166962698/n6bV6uEO_400x400.jpg",
       "type": "image/png",
       "sizes": "512x512"
     }

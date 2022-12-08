@@ -524,7 +524,8 @@ function App() {
   }
 
   if (uri != '' && allDone) {
-    return (<>
+    return (<>       
+      <Snowfall />
        <Slide in={localStorage.getItem('lowgraphic') == null && window.innerWidth > 1100 ? !open : true} timeout={600} direction='down'>
        <AppBar position="sticky" className='bnktheme app-barcurve'>
           <Toolbar>
@@ -833,8 +834,6 @@ function App() {
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
                 </BasicSwitch>
                 
-                      
-       <Snowfall style={{ zIndex: 500 }} />
                   
         <footer className="bg-white text-center pt-2 pb-2 bnktheme">
           Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved

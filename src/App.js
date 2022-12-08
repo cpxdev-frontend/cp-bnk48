@@ -19,6 +19,7 @@ import {
   deleteUser
 } from "firebase/auth";
 import auth from "./fbindex";
+import Snowfall from 'react-snowfall'
 
 import 'sweetalert2/dist/sweetalert2.min.css'
 import moment from 'moment'
@@ -1035,6 +1036,7 @@ transitionDuration={500}
       </DialogActions>
   </Dialog>
        )}
+       <Snowfall />
        </>
   )
   }

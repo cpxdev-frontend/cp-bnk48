@@ -834,7 +834,7 @@ function App() {
                 </BasicSwitch>
                 
                       
-       <Snowfall />
+       <Snowfall style={{ zIndex: 500 }} />
                   
         <footer className="bg-white text-center pt-2 pb-2 bnktheme">
           Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved

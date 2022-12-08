@@ -834,6 +834,7 @@ function App() {
                 </BasicSwitch>
                 
                       
+       <Snowfall />
                   
         <footer className="bg-white text-center pt-2 pb-2 bnktheme">
           Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
@@ -1036,7 +1037,6 @@ transitionDuration={500}
       </DialogActions>
   </Dialog>
        )}
-       <Snowfall />
        </>
   )
   }

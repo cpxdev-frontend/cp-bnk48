@@ -19,7 +19,6 @@ import {
   deleteUser
 } from "firebase/auth";
 import auth from "./fbindex";
-import Snowfall from 'react-snowfall'
 
 import 'sweetalert2/dist/sweetalert2.min.css'
 import moment from 'moment'
@@ -524,8 +523,7 @@ function App() {
   }
 
   if (uri != '' && allDone) {
-    return (<>       
-      <Snowfall />
+    return (<>      
        <Slide in={localStorage.getItem('lowgraphic') == null && window.innerWidth > 1100 ? !open : true} timeout={600} direction='down'>
        <AppBar position="sticky" className='bnktheme app-barcurve'>
           <Toolbar>

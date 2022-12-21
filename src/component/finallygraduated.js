@@ -38,7 +38,7 @@ const Graduated = ({fet, setSec}) => {
         fetch(fet + '/bnk48/bnk481stgenplaylist', {
             method :'post'
         })
-            .then(response => response.json())
+            .then(response => response.text())
             .then(data => {
                 const json = JSON.parse(data)
                 if (data != "") {

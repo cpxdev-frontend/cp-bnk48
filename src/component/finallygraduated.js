@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardActionArea, CardContent, CardMedia, TextField, Zoom, MenuItem, Button, ButtonGroup } from '@material-ui/core';
+import { Card, CardActionArea, CardContent, CardMedia, TextField, Zoom, MenuItem, Button, ButtonGroup, CardHeader } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import vPack from './pack.json'
 import AOS from "aos";
@@ -44,13 +44,52 @@ const Graduated = ({fet, setSec}) => {
         window.open(link, "_blank")
     }
 
+
     return ( 
         <>
-        <h3 className='text-center mt-4'>Graduated Members</h3>
-        <br />
-        <div className="stage text-center pt-5 pb-2">
-            
-             <Zoom in={mem.length > 0 ? Loaded : false}>
+        {window.innerWidth >1200 && (
+          <div class="video-background">
+           <Fade in={true} timeout={800}>
+           <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket/bnk48/bnk1stgenfull.png" width={window.innerWidth} />
+              </Fade>
+      </div>
+        )}
+             {window.innerWidth >1200 ? (
+            <div className="cover mt-4">
+            <Grow in={true} timeout={1000}>
+          <Card className="col-md-4 m-5">
+              <CardContent>
+              <Typography variant="h5" component="h2">
+                BNK48 Graduation
+                </Typography>
+                <hr />
+                    <Typography color="textSecondary">
+                    Let's good bye her as BNK48 members.
+                    </Typography>
+              </CardContent>
+            </Card>
+            </Grow>
+          </div>
+          ) : (
+        <div className="pb-5 pt-2">
+    <Grow in={true} timeout={1000}>
+  <Card className="bnktheme ml-2 mr-2">
+      <CardContent>
+        <Typography variant="h5" component="h2">
+          BNK48 News
+        </Typography>
+        <hr />
+                <Typography color="textSecondary">
+                    Let's good bye her as BNK48 members.
+                    </Typography>
+      </CardContent>
+    </Card>
+    </Grow>
+  </div>
+          )}
+  <div className="stage pb-2">
+    <CardHeader title={( <h3 className='text-center mt-4'>Members</h3>)} subheader="Tap or click member who want to add some moment to her on Twitter." />
+       <Zoom in={mem.length > 0 ? Loaded : false}>
              <Card className='mt-2 ml-5 mr-5'>
                      <CardContent>
                          Found {mem.length} matched BNK48 members
@@ -82,15 +121,16 @@ const Graduated = ({fet, setSec}) => {
                         <h6>No BNK48 members to show. Please try different keyword</h6>
                     </div>
                 )}
-                </div>
+            </div>
             ) : (
                 <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
                 <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                 </Zoom>
             )}
-        </div>
+            </div>
         </>
-     );
+    );
+
 }
  
 export default Graduated;

@@ -43,13 +43,10 @@ const Graduated = ({fet, setSec}) => {
                 try {
                     let str = data;
                     str = str.replaceAll(`""`, `'"`).replaceAll(`From "`, "From '").replaceAll(`")"`, `')"`)
-                    console.log('test',str)
                     const json = JSON.parse(str)
                     setSong(json.res.tracks.items)
-                    console.log('ok')
                 } catch(err) {
                     setSong([])
-                    console.log('fail', err)
                 }
                 setLoaded1(true)
             }).catch(() => {
@@ -166,7 +163,7 @@ const Graduated = ({fet, setSec}) => {
                         <Card>
                             <CardActionArea>
                             <CardMedia
-                                    src={item.track.images[0].url}
+                                    src={item.track.album.images[0].url}
                                     component="img"
                                     />
                                 <CardContent>

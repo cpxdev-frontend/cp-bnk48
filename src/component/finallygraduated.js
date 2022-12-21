@@ -100,7 +100,7 @@ const Graduated = ({fet, setSec}) => {
             {Loaded ? (
                 <div className='row ml-3 mr-3 mt-5 justify-content-center'>
                 {mem.length > 0 ? mem.map((item, i) => (
-                      <div data-aos="zoom-in" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
+                      <div data-aos="zoom-in" className='col-md-3 mb-5 text-center' onClick={() => ChangeRoute(item.name)}>
                         <Card>
                             <CardActionArea>
                             <CardMedia

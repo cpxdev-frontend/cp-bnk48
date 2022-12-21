@@ -38,11 +38,10 @@ const Graduated = ({fet, setSec}) => {
         fetch(fet + '/bnk48/bnk481stgenplaylist', {
             method :'post'
         })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(data => {
                 try {
-                    const json = JSON.parse(data)
-                    setSong(json.res.tracks.items)
+                    setSong(data.res.tracks.items)
                     console.log('ok')
                 } catch(err) {
                     setSong([])

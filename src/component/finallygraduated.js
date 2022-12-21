@@ -56,7 +56,7 @@ const Graduated = ({fet, setSec}) => {
             {Loaded ? (
                 <div className='row ml-3 mr-3 mt-5 justify-content-center'>
                 {mem.length > 0 ? mem.map((item, i) => (
-                      <div data-aos="zoom-in" className='col-md-3 mb-5'>
+                      <div data-aos="zoom-in" className='col-md-3 mb-5 text-center'>
                         <Card>
                             <CardActionArea>
                             <CardMedia
@@ -65,9 +65,7 @@ const Graduated = ({fet, setSec}) => {
                                     />
                                 <CardContent>
                                     <h5>{item.name}</h5>
-                                    {item.captain != undefined && (
-                                        <p class="badge badge-pill badge-info">BNK48 {item.captain}</p>
-                                    )}
+                                    <h5>{item.fullnameEn[0]} {item.fullnameEn[1]}</h5>
                                     <br />
                                     <Share 
                                         url={"https://bnk48fan.cpxdev.tk"}

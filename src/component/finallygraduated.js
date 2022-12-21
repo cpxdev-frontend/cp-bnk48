@@ -157,16 +157,16 @@ const Graduated = ({fet, setSec}) => {
             {Loaded1 ? (
                 <div className='row ml-3 mr-3 mt-5 justify-content-center'>
                 {song.length > 0 ? song.map((item, i) => (
-                      <div data-aos="zoom-in" className='col-md-3 mb-5 text-center' onClick={() => ChangeRoute(item.name)}>
+                      <div data-aos="zoom-in" className='col-md-3 mb-5 text-center' onClick={() => window.open(item.track.external_urls.spotify, "_blank")}>
                         <Card>
                             <CardActionArea>
                             <CardMedia
-                                    src={item.images[0].url}
+                                    src={item.track.images[0].url}
                                     component="img"
                                     />
                                 <CardContent>
-                                    <h5>{item.name}</h5>
-                                    <p>{moment(item.album.release_date, "YYYY-MM-DD").format("DD MMMM YYYY")}</p>
+                                    <h5>{item.track.name}</h5>
+                                    <p>{moment(item.track.album.release_date, "YYYY-MM-DD").format("DD MMMM YYYY")}</p>
                                     <br />
                                 </CardContent>
                                 </CardActionArea>

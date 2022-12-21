@@ -40,9 +40,11 @@ const Graduated = ({fet, setSec}) => {
         })
             .then(response => response.text())
             .then(data => {
-                const json = JSON.parse(data)
-                if (data != "") {
+                try {
+                    const json = JSON.parse(data)
                     setSong(json.res.tracks.items)
+                } catch {
+                    setSong([])
                 }
                 setLoaded1(true)
             }).catch(() => {

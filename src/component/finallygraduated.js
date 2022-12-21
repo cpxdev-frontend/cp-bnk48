@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import vPack from './pack.json'
 import AOS from "aos";
 import { Share } from 'react-twitter-widgets'
+import moment from 'moment'
 
 const Graduated = ({fet, setSec}) => {
 
@@ -15,10 +16,11 @@ const Graduated = ({fet, setSec}) => {
     const History = useHistory()
 
     const [Loaded, setLoaded] = React.useState(false);
+    const [Loaded1, setLoaded1] = React.useState(false);
 
 
-    const [Arr, setArr] = React.useState([]);
     const [mem, setmem] = React.useState([]);
+    const [song, setSong] = React.useState([]);
     React.useEffect(() => {
         AOS.init({ duration: 1000 });
         document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -28,12 +30,23 @@ const Graduated = ({fet, setSec}) => {
             .then(response => response.json())
             .then(data => {
                 setmem(data.response)
-                setArr(data.response)
                 setLoaded(true)
             }).catch(() => {
                 setmem([])
-                setArr([])
                 setLoaded(true)
+            })
+        fetch(fet + '/bnk48/bnk481stgenplaylist', {
+            method :'post'
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data != "") {
+                    setSong(data.res.tracks.items)
+                }
+                setLoaded1(true)
+            }).catch(() => {
+                setSong([])
+                setLoaded1(true)
             })
     }, [])
 
@@ -87,7 +100,7 @@ const Graduated = ({fet, setSec}) => {
     </Grow>
   </div>
           )}
-  <div className="stage pb-2">
+  <div className="stage pb-2 text-center justify-content-center">
     <CardHeader title={( <h3 className='text-center mt-4'>Members</h3>)} subheader={(<p className='text-center text-muted'>Tap or click member who want to add some moment to her on Twitter.</p>)} />
        <Zoom in={mem.length > 0 ? Loaded : false}>
              <Card className='mt-2 ml-5 mr-5 text-center'>
@@ -124,6 +137,47 @@ const Graduated = ({fet, setSec}) => {
             </div>
             ) : (
                 <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
+                <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+                </Zoom>
+            )}
+
+            <Zoom in={song.length > 0 ? Loaded1 : false}>
+             <Card className='mt-2 ml-5 mr-5 text-center'>
+                <CardActionArea onClick={() => window.open("https://open.spotify.com/playlist/7F30bXVNDvQPf3J9KNPahV", "_blank")}>
+                     <CardContent>
+                        <CardHeader title="BNK48 1st Generation in memories playlist" subheader="Provided by Spotify. Click here to view full playlist" />
+                     </CardContent>
+                </CardActionArea>
+                 </Card>
+             </Zoom>
+
+            {Loaded1 ? (
+                <div className='row ml-3 mr-3 mt-5 justify-content-center'>
+                {song.length > 0 ? song.map((item, i) => (
+                      <div data-aos="zoom-in" className='col-md-3 mb-5 text-center' onClick={() => ChangeRoute(item.name)}>
+                        <Card>
+                            <CardActionArea>
+                            <CardMedia
+                                    src={item.images[0].url}
+                                    component="img"
+                                    />
+                                <CardContent>
+                                    <h5>{item.name}</h5>
+                                    <p>{moment(item.album.release_date, "YYYY-MM-DD").format("DD MMMM YYYY")}</p>
+                                    <br />
+                                </CardContent>
+                                </CardActionArea>
+                                </Card> 
+                            </div>
+                   
+                )) : (
+                    <div className='text-center col-md-12'>
+                        <h6>This playlist is unavaliable right now.</h6>
+                    </div>
+                )}
+            </div>
+            ) : (
+                <Zoom in={Loaded1 ? false : true} timeout={{ enter: 200, exit: 200}}>
                 <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                 </Zoom>
             )}

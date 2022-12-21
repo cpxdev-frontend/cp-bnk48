@@ -3,6 +3,7 @@ import { Card, CardActionArea, CardContent, CardMedia, TextField, Zoom, MenuItem
 import { useHistory } from 'react-router-dom';
 import vPack from './pack.json'
 import AOS from "aos";
+import { Share } from 'react-twitter-widgets'
 
 const Graduated = ({fet, setSec}) => {
 
@@ -37,9 +38,6 @@ const Graduated = ({fet, setSec}) => {
     }, [])
 
 
-    const ChangeRoute = (name) =>{
-        History.push("/member?name=" + name.toLowerCase())
-    }
 
     return ( 
         <>
@@ -58,7 +56,7 @@ const Graduated = ({fet, setSec}) => {
             {Loaded ? (
                 <div className='row ml-3 mr-3 mt-5 justify-content-center'>
                 {mem.length > 0 ? mem.map((item, i) => (
-                      <div data-aos="zoom-in" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
+                      <div data-aos="zoom-in" className='col-md-3 mb-5'>
                         <Card>
                             <CardActionArea>
                             <CardMedia
@@ -71,6 +69,11 @@ const Graduated = ({fet, setSec}) => {
                                         <p class="badge badge-pill badge-info">BNK48 {item.captain}</p>
                                     )}
                                     <br />
+                                    <Share 
+                                        url={"https://bnk48fan.cpxdev.tk"}
+                                        options={{ text: "(Enter your moment to " + item.name + " BNK48 here)", hashtags: item.name+"BNK48,fanspaceplatform,48groupthailand,bnk48", size:"large"}}
+                                        id='blessinggrad'
+                                    />
                                 </CardContent>
                                 </CardActionArea>
                                 </Card> 

@@ -593,7 +593,7 @@ function capitalizeFirstLetter(string) {
                                             <div className='ml-3 pt-2'>
                                             <Share 
                                                   url={"https://bnk48fan.cpxdev.tk/member?name=" + item.name.toLowerCase()}
-                                                  options={{ text: "(You can custom your blessing here)", hashtags: item.name+"BNK48,fanspaceplatform,48groupthailand", size:"large"}}
+                                                  options={{ text: "(You can custom your blessing here)", hashtags: item.name+"BNK48,fanspaceplatform,48groupthailand,bnk48", size:"large"}}
                                                 id='blessingshare'
                                             />
                                             </div>

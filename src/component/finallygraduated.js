@@ -63,15 +63,17 @@ const Graduated = ({fet, setSec}) => {
                                     src={item.img}
                                     component="img"
                                     />
-                                <CardContent className='text-center'>
+                                <CardContent>
                                     <h5>{item.name}</h5>
                                     <p>{item.fullnameEn[0]} {item.fullnameEn[1]}</p>
                                     <br />
+                                    <div className='text-center'>
                                     <Share 
                                         url={"https://bnk48fan.cpxdev.tk"}
                                         options={{ text: "(Enter your moment to " + item.name + " BNK48 here)", hashtags: item.name+"BNK48,fanspaceplatform,48groupthailand,bnk48", size:"large"}}
                                         id='blessinggrad'
                                     />
+                                    </div>
                                 </CardContent>
                                 </CardActionArea>
                                 </Card> 

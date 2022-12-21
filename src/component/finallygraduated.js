@@ -67,8 +67,9 @@ const Graduated = ({fet, setSec}) => {
                                     <h5>{item.name}</h5>
                                     <p>{item.fullnameEn[0]} {item.fullnameEn[1]}</p>
                                     <br />
-                                    <div className='text-center'>
+                                    <div>
                                     <Share 
+                                        className='text-center'
                                         url={"https://bnk48fan.cpxdev.tk"}
                                         options={{ text: "(Enter your moment to " + item.name + " BNK48 here)", hashtags: item.name+"BNK48,fanspaceplatform,48groupthailand,bnk48", size:"large"}}
                                         id='blessinggrad'

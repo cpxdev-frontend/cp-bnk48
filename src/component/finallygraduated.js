@@ -41,7 +41,8 @@ const Graduated = ({fet, setSec}) => {
             .then(response => response.json())
             .then(data => {
                 try {
-                    const str = data.replace("\"\"", "'\"").replace("From \"", "From '").replace("\")\"", "')\"");
+                    let str = data;
+                    str = str.replace("\"\"", "'\"").replace("From \"", "From '").replace("\")\"", "')\"")
                     console.log('test',str)
                     const json = JSON.parse(str)
                     setSong(json.res.tracks.items)

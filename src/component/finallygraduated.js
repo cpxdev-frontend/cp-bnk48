@@ -146,7 +146,8 @@ const Graduated = ({fet, setSec}) => {
                 </Zoom>
             )}
 
-            <Zoom in={song.length > 0 ? Loaded1 : false}>
+            <hr />
+            <Zoom in={Loaded1}>
              <Card className='mt-2 ml-5 mr-5 text-center'>
                 <CardActionArea onClick={() => window.open("https://open.spotify.com/playlist/7F30bXVNDvQPf3J9KNPahV", "_blank")}>
                      <CardContent>

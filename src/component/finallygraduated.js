@@ -88,7 +88,7 @@ const Graduated = ({fet, setSec}) => {
   </div>
           )}
   <div className="stage pb-2">
-    <CardHeader title={( <h3 className='text-center mt-4'>Members</h3>)} subheader={(<p className='text-muted'>Tap or click member who want to add some moment to her on Twitter.</p>)} />
+    <CardHeader title={( <h3 className='text-center mt-4'>Members</h3>)} subheader={(<p className='text-center text-muted'>Tap or click member who want to add some moment to her on Twitter.</p>)} />
        <Zoom in={mem.length > 0 ? Loaded : false}>
              <Card className='mt-2 ml-5 mr-5 text-center'>
                      <CardContent>

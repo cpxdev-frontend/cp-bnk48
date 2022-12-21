@@ -37,7 +37,12 @@ const Graduated = ({fet, setSec}) => {
             })
     }, [])
 
+    
 
+    const ChangeRoute = (name) =>{
+        const link = "https://twitter.com/intent/tweet?hashtags=" + name + "BNK48,fanspaceplatform,48groupthailand,bnk48&original_referer=https://bnk48fan.cpxdev.tk&text=(Enter your moment to " + name+" BNK48 here)&url=https://bnk48fan.cpxdev.tk"
+        window.open(link, "_blank")
+    }
 
     return ( 
         <>
@@ -56,7 +61,7 @@ const Graduated = ({fet, setSec}) => {
             {Loaded ? (
                 <div className='row ml-3 mr-3 mt-5 justify-content-center'>
                 {mem.length > 0 ? mem.map((item, i) => (
-                      <div data-aos="zoom-in" className='col-md-3 mb-5'>
+                      <div data-aos="zoom-in" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
                         <Card>
                             <CardActionArea>
                             <CardMedia
@@ -67,13 +72,6 @@ const Graduated = ({fet, setSec}) => {
                                     <h5>{item.name}</h5>
                                     <p>{item.fullnameEn[0]} {item.fullnameEn[1]}</p>
                                     <br />
-                                    <div>
-                                    <Share 
-                                        url={"https://bnk48fan.cpxdev.tk"}
-                                        options={{ text: "(Enter your moment to " + item.name + " BNK48 here)", hashtags: item.name+"BNK48,fanspaceplatform,48groupthailand,bnk48", size:"large"}}
-                                        id='blessinggrad'
-                                    />
-                                    </div>
                                 </CardContent>
                                 </CardActionArea>
                                 </Card> 

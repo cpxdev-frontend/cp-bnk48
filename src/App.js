@@ -42,6 +42,7 @@ import CodeIcon from '@material-ui/icons/Code';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import MovieIcon from '@material-ui/icons/Movie';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
+import PanToolIcon from '@material-ui/icons/PanTool';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
@@ -62,7 +63,7 @@ import Api from './component/apisupport';
 import Account from './component/account';
 import FollowCom from './component/follow';
 import PageErr from './component/404'
-import Sport from './component/sportday';
+import Graduated from './component/finallygraduated';
 import RequestCom from './component/requesthour';
 import RegisCom from './component/register';
 
@@ -612,11 +613,11 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary="Special Live" secondary={spcLive ? 'Livestream is launching' : ''} />
                 </ListItem>
-                <ListItem component={Link} to='/sportday' className={window.location.pathname == '/sportday' ? 'activeNav' : ''} button>
+                <ListItem component={Link} to='/bnk48inmemories' className={window.location.pathname == '/bnk48inmemories' ? 'activeNav' : ''} button>
                   <ListItemIcon>
-                    <LiveTvIcon />
+                    <PanToolIcon />
                   </ListItemIcon>
-                  <ListItemText primary="BNK48 and CGM48 Sport Day" secondary="Rerun is avaliable now!" />
+                  <ListItemText primary="BNK48 Graduation Gallery" secondary="Rewind in memories of graduated members of BNK48" />
                 </ListItem>
                 <ListItem component={Link} to='/mv' className={window.location.pathname == '/mv' ? 'activeNav' : ''} button>
                   <ListItemIcon>
@@ -817,7 +818,7 @@ function App() {
                   <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/sportday" render={() => <Sport fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/bnk48inmemories" render={() => <Graduated fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/theaterstage" render={() => <ShowTime fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />

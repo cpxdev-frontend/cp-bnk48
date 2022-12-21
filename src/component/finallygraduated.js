@@ -69,7 +69,6 @@ const Graduated = ({fet, setSec}) => {
                                     <br />
                                     <div>
                                     <Share 
-                                        className='text-center'
                                         url={"https://bnk48fan.cpxdev.tk"}
                                         options={{ text: "(Enter your moment to " + item.name + " BNK48 here)", hashtags: item.name+"BNK48,fanspaceplatform,48groupthailand,bnk48", size:"large"}}
                                         id='blessinggrad'

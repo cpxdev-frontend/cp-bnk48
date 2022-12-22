@@ -65,13 +65,23 @@ const Graduated = ({fet, setSec}) => {
 
     return ( 
         <>
-        {window.innerWidth >1200 && (
+        {window.innerWidth > 1100 && (
           <div class="video-background">
-           <Fade in={true} timeout={800}>
-           <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket/bnk48/bnk1stgenfull.png" width={window.innerWidth} />
-              </Fade>
+          {localStorage.getItem('lowgraphic') == null ? (
+            <div class="video-foreground" data-aos="zoom-out-up">
+            <iframe src="https://www.youtube.com/embed/JfuKXJUXRWQ?autoplay=1&mute=1&controls=0&loop=1&playlist=JfuKXJUXRWQ" frameborder="0"></iframe>
+          </div>
+          ) : (
+         <div data-aos="zoom-out">
+            <Fade in={true} timeout={900}>
+                <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket/bnk48/bnk1stgenfull.png" width={window.innerWidth} />
+               </Fade>
+              </div>
+          )}
       </div>
         )}
+
+
              {window.innerWidth >1200 ? (
             <div className="cover mt-4">
             <Grow in={true} timeout={1000}>

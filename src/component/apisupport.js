@@ -5,7 +5,7 @@ const API = ({setSec}) => {
     const [ stat, setstat] = React.useState(null);
     const APITest = () => {
       setSec('API Service')
-        fetch('https://api.cpxdev.tk/Home/status')
+        fetch('https://api.cpxdev.tk/home/status')
         .then(function () {
             setSec('API Service [System health is good]')
             setstat(true)

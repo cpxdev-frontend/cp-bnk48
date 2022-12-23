@@ -191,7 +191,7 @@ function App() {
     checkloop = setInterval(() => {
       if (Fet().ul != '') {
         clearInterval(checkloop)
-         fetch(Fet().ul + '/home/status').catch(() => {
+         fetch(Fet().ul + '/bnk48/status').catch(() => {
          document.getElementById("root").style.display = "none";
          Swal.fire({
            title: 'System is under maintenance',

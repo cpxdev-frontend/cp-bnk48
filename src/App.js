@@ -179,6 +179,8 @@ function App() {
   
   const [kamicheckbirth, setKamiBirth] = React.useState(false);
 
+  const ref = React.useRef(null)
+  const [footerHeight, setFooterH] = React.useState(0)
 
   React.useEffect(() => {
     const currentP = document.documentElement.scrollTop || document.body.scrollTop;
@@ -187,6 +189,12 @@ function App() {
      window.scrollTo(0, currentP);
    }, [Reduce]);
   
+   React.useEffect(() => {
+    if (ref.current != null){
+      setFooterH(ref.current.clientHeight)
+    } 
+  })
+
    React.useEffect(() => {
     checkloop = setInterval(() => {
       if (Fet().ul != '') {
@@ -704,54 +712,6 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary={'Region: ' + Fet().nme} />
                 </ListItem>
-                {/* {
-                  loginLoad ? (
-                    <ListItem onClick={() => setMemDl(true)} button>
-                    <ListItemIcon>
-                    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="40px" />
-                    </ListItemIcon>
-                    <ListItemText primary="Signing in" />
-                  </ListItem>
-                  ) : (
-                    <>
-                      {!login ? (
-                  <ListItem button>
-                  <ListItemIcon>
-                    <VpnKeyIcon />
-                  </ListItemIcon>
-                  <GoogleLogin
-                    clientId={Client}
-                    render={renderProps => (
-                      <ListItemText onClick={renderProps.onClick} primary="Login as Google Account" />
-                    )}
-                    onSuccess={(e) => responseGoogle(e)}
-                    onRequest={() => setLogLoad(true)}
-                    onFailure={(e) => errorlog(e)}
-                    cookiePolicy={'single_host_origin'}
-                    isSignedIn={login}
-                  />
-                </ListItem>
-                ) : (
-                  <ListItem onClick={() => setMemDl(true)} button>
-                  <ListItemIcon>
-                  <Badge
-                    overlap="circular"
-                    anchorOrigin={{
-                      vertical: 'bottom',
-                      horizontal: 'right',
-                    }}
-                    badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
-                  >
-                    <Avatar alt={JSON.parse(localStorage.getItem("glog")).name} src={JSON.parse(localStorage.getItem("glog")).imageUrl} />
-                  </Badge>
-                  
-                  </ListItemIcon>
-                  <ListItemText primary="You're logged in" secondary={JSON.parse(localStorage.getItem("glog")).name} />
-                </ListItem>
-                )}
-                    </>
-                  )
-                } */}
                  {
                   loginLoad ? (
                     <ListItem onClick={() => setMemDl(true)} button>
@@ -806,6 +766,7 @@ function App() {
                 
                 
                 </Drawer>
+                <div style={{marginBottom: footerHeight + 'px'}}>
                 <BasicSwitch>
                   <Route exact path="/" render={() => <Home kamin={kamin} fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
@@ -832,9 +793,10 @@ function App() {
                   <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
                 </BasicSwitch>
+                </div>
                 
                   
-        <footer className="bg-white text-center pt-2 pb-2 bnktheme">
+        <footer className="bg-white text-center pt-2 pb-2 bnktheme fixed-bottom" ref={ref}>
           Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
           <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for BNK48 supporting only.
         </footer>

@@ -48,6 +48,8 @@ const CardLoop = ({item, i, gp}) => {
   const [alt, setAlert] = React.useState('');
   const [open, setOpen] = React.useState(false);
 
+
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;

@@ -766,7 +766,7 @@ function App() {
                 
                 
                 </Drawer>
-                <div style={{marginBottom: (footerHeight+5) + 'px'}}>
+                <div style={{marginBottom: (footerHeight) + 'px'}}>
                 <BasicSwitch>
                   <Route exact path="/" render={() => <Home kamin={kamin} fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />

@@ -766,7 +766,7 @@ function App() {
                 
                 
                 </Drawer>
-                <div style={{marginBottom: (footerHeight) + 'px'}}>
+                <div>
                 <BasicSwitch>
                   <Route exact path="/" render={() => <Home kamin={kamin} fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
@@ -796,7 +796,7 @@ function App() {
                 </div>
                 
                   
-        <footer className="bg-white text-center pt-2 pb-2 bnktheme fixed-bottom" ref={ref}>
+        <footer className="bg-white text-center pt-2 pb-2 bnktheme" ref={ref}>
           Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
           <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for BNK48 supporting only.
         </footer>

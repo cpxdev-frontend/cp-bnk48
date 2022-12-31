@@ -312,8 +312,13 @@ function App() {
               })
             }
             }
-            for (let i = 0; i< data.length; i++) {
+            const withprio = data.filter(x => x.priority != undefined && (moment.unix() >= x.timerange[0] && moment.unix() < x.timerange[1]));
+            const nonprio = data.filter(x => x.priority == undefined);
+            for (let i = 0; i< withprio.length; i++) {
                 tempd.push(data[i])
+            }
+            for (let i = 0; i< nonprio.length; i++) {
+              tempd.push(data[i])
             }
             setNewspop(tempd)
 
@@ -766,7 +771,7 @@ function App() {
                 
                 
                 </Drawer>
-                <div>
+                <div style={{marginBottom: footerHeight + 'px'}}>
                 <BasicSwitch>
                   <Route exact path="/" render={() => <Home kamin={kamin} fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
@@ -796,7 +801,7 @@ function App() {
                 </div>
                 
                   
-        <footer className="bg-white text-center pt-2 pb-2 bnktheme" ref={ref}>
+        <footer className="bg-white text-center pt-2 pb-2 bnktheme fixed-bottom" ref={ref}>
           Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
           <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for BNK48 supporting only.
         </footer>
@@ -886,7 +891,7 @@ transitionDuration={500}
     (<Carousel interval={8000}>{
       newspop.map((item, i) => (
         <>
-        <DialogTitle id="alert-dialog-title">Advertisement - {item.title}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{item.priority != undefined ? 'Announcement' : 'Advertisement'} - {item.title}</DialogTitle>
           <DialogContent>
             <CardContent>
               <CardMedia src={item.src} component="img" width={80} />
@@ -938,7 +943,7 @@ transitionDuration={500}
       ))
     }</Carousel>) : (
       <>
-      <DialogTitle id="alert-dialog-title">Advertisement - {newspop[0].title}</DialogTitle>
+      <DialogTitle id="alert-dialog-title">{newspop[0].priority != undefined ? 'Announcement' : 'Advertisement'} - {newspop[0].title}</DialogTitle>
         <DialogContent>
           <CardContent>
             <CardMedia src={newspop[0].src} component="img" width={80} />

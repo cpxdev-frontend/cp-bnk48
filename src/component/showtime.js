@@ -2,7 +2,7 @@ import React from 'react'
 import AOS from 'aos'
 import moment from 'moment';
 import { Typography, ListItem, Zoom, ListItemText,
-    Card, CardActionArea, CardContent, CardMedia, Grow, Fade, CardHeader } from '@material-ui/core';
+    Card, CardActionArea, CardContent, CardMedia, Grow, Fade, Tooltip } from '@material-ui/core';
 
 const ShowTime = ({fet, setSec}) => {
     const [Loaded, setLoaded] = React.useState(false);
@@ -62,21 +62,29 @@ const ShowTime = ({fet, setSec}) => {
                             <Typography variant="h6" className='mt-3'>
                                 {item.title}
                                 {moment.utc() < moment.utc(item.dooropen) ? (
-                                    <span className='ml-2 badge badge-warning'>
-                                        On scheduled
-                                    </span>
+                                    <Tooltip title="The show has already been scheduled. The schedule is subject to change as appropriate.">
+                                        <span className='ml-2 badge badge-warning'>
+                                            On scheduled
+                                        </span>
+                                    </Tooltip>
                                 ) : moment.utc() >= moment.utc(item.dooropen) && moment.utc() < moment.utc(item.dateStart) ? (
-                                    <span className='ml-2 badge badge-info'>
-                                    Door is opened
-                                </span>
+                                    <Tooltip title="BNK48 Theater is ready to show this stage. Please collect your tickets before the show starts to reduce congestion in front of the BNK48 Campus.">
+                                        <span className='ml-2 badge badge-info'>
+                                            Door is opened
+                                        </span>
+                                    </Tooltip>
                                 ) : moment.utc() >= moment.utc(item.dateStart) && moment.utc() < moment.utc(item.dateEnd) ? (
-                                    <span className='ml-2 badge badge-success'>
-                                        Currently Showed
-                                    </span>
+                                    <Tooltip title="BNK48 Theater is starting to show and door is closed. Those who arrive after the show has started may be forfeited the right to attend the show.">
+                                        <span className='ml-2 badge badge-success'>
+                                            Currently Showed
+                                        </span>
+                                    </Tooltip>
                                 ): (
+                                    <Tooltip title="This BNK48 Theater show is over. Thank you for your interesting. Please follow the next show times here.">
                                         <span className='ml-2 badge badge-danger'>
                                             The show is over
                                         </span>
+                                    </Tooltip>
                                     )}
                             </Typography>
                     

@@ -191,7 +191,7 @@ function capitalizeFirstLetter(string) {
                     iconColor: 'rgb(203, 150, 194)',
                   })
             } else {
-                if (arr[0].graduated == true && arr[0].gen !== 1) {
+                if (arr[0].graduated == true) {
                     Swal.fire({
                         title: arr[0].name +" BNK48 is graduated",
                         icon: 'error',
@@ -200,14 +200,6 @@ function capitalizeFirstLetter(string) {
                     return false
                 }
                 if (localStorage.getItem("loged") != null && kamio != ''  && kamio != '-') {
-                    if (moment().format("YYYY-MM-DD") > moment("2022-12-31","YYYY-MM-DD").format("YYYY-MM-DD")) {
-                        Swal.fire({
-                            title: arr[0].name +" BNK48 is graduated",
-                            icon: 'error',
-                            text: 'This member is graduated. You cannot select this member to your Kami-Oshi anymore.',
-                          })
-                        return false
-                    }
                     Swal.fire({
                         title: 'Confirm to Change your Kami-Oshi',
                         text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",

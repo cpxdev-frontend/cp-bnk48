@@ -68,7 +68,7 @@ const CardLoop = ({item, i, gp}) => {
 
   const handleClick = (id, til) => {
     navigator.clipboard.writeText('https://www.youtube.com/watch?v=' + id).then(() => {
-      alert('Link of song '+alt +' has copied to clipboard');
+      alert('Link of Content '+til +' has copied to clipboard');
       })
       .catch(() => {
         alert("something went wrong");
@@ -84,7 +84,7 @@ const CardLoop = ({item, i, gp}) => {
     <div className={i == 0 ? "col-md-9 mb-5" : "col-md-4 mb-5"} data-aos='zoom-in'>
      <Card className={i == 0 ? "border border-warning border-5" : ""}>
       <CardHeader
-        title={(i == 0 ? 'Highlight Music Video | ' : '') +item.snippet.title}
+        title={(i == 0 ? 'Highlight Content | ' : '') +item.snippet.title}
         subheader={'Uploaded by ' + item.snippet.videoOwnerChannelTitle + ' since ' + moment.utc(item.snippet.publishedAt).local().format('DD MMMM YYYY HH:mm:ss')}
     />
         <CardMedia

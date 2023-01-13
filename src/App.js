@@ -39,7 +39,7 @@ import DnsIcon from '@material-ui/icons/Dns';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import CodeIcon from '@material-ui/icons/Code';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
+import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import MovieIcon from '@material-ui/icons/Movie';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import PanToolIcon from '@material-ui/icons/PanTool';
@@ -56,6 +56,7 @@ import MamSam from './component/memberdetail';
 import TokenCom from './component/token';
 import News from './component/news';
 import MvCom from './component/music';
+import OriCom from './component/originalcontent';
 import MusicCom from './component/streaming';
 import Offici from './component/official';
 import ShowTime from './component/showtime';
@@ -633,6 +634,12 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary="BNK48 Graduation Gallery" secondary="Rewind in memories of graduated members of BNK48" />
                 </ListItem>
+                <ListItem component={Link} to='/originalcontent' className={window.location.pathname == '/originalcontent' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <SubscriptionsIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Original Content" />
+                </ListItem>
                 <ListItem component={Link} to='/mv' className={window.location.pathname == '/mv' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <YouTubeIcon />
@@ -781,6 +788,7 @@ function App() {
                   <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/originalcontent" render={() => <OriCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />

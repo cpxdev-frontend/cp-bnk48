@@ -68,7 +68,7 @@ const CardLoop = ({item, i, gp}) => {
 
   const handleClick = (id, til) => {
     navigator.clipboard.writeText('https://www.youtube.com/watch?v=' + id).then(() => {
-      alert('Link of song '+alt +' has copied to clipboard');
+      alert('Link of song '+til +' has copied to clipboard');
       })
       .catch(() => {
         alert("something went wrong");

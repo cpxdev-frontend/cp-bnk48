@@ -273,7 +273,7 @@ function capitalizeFirstLetter(string) {
                               }).then((result) => {
                                 if (result.isConfirmed) {
                                     setChange(true)
-                                    fetch(fet + '/bnk48/uptbnkKami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
+                                    fetch(fet + '/bnk48/uptbnkKami?i=' + (JSON.parse(localStorage.getItem("loged")).googleId).toString() + '&name=' + val, {
                                         method: 'POST', // or 'PUT'
                                         headers: {
                                             'Accept': 'application/json',
@@ -441,7 +441,7 @@ function capitalizeFirstLetter(string) {
                     text: 'This member is in-queue to released image.',
                   })
             } else {
-                if (localStorage.getItem("glog") == null) {
+                if (localStorage.getItem("loged") == null) {
                  Swal.fire({
                     title: "BNK48 12th Single Image",
                     text: "This content is exclusively for BNK48 Fan Space Membership only, please login as Google Account and try again",

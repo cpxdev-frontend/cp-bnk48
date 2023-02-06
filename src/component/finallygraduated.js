@@ -58,7 +58,7 @@ const Graduated = ({fet, setSec}) => {
     
 
     const ChangeRoute = (name, tag) =>{
-        const link = "https://twitter.com/intent/tweet?hashtags=" + name + "BNK48,fanspaceplatform,bnk48_1stgeneration," + tag.join(", ") + "&original_referer=https://bnk48fan.cpxdev.tk&text=(Enter your moment to " + name+" BNK48 here)&url=https://bnk48fan.cpxdev.tk"
+        const link = "https://twitter.com/intent/tweet?hashtags=" + name + "BNK48,fanspaceplatform,bnk48_1stgeneration," + tag.join(",") + "&original_referer=https://bnk48fan.cpxdev.tk&text=(Enter your moment to " + name+" BNK48 here)&url=https://bnk48fan.cpxdev.tk"
         window.open(link, "_blank")
     }
 

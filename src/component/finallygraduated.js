@@ -57,8 +57,8 @@ const Graduated = ({fet, setSec}) => {
 
     
 
-    const ChangeRoute = (name) =>{
-        const link = "https://twitter.com/intent/tweet?hashtags=" + name + "BNK48,fanspaceplatform,bnk48_1stgeneration,48groupthailand,bnk48&original_referer=https://bnk48fan.cpxdev.tk&text=(Enter your moment to " + name+" BNK48 here)&url=https://bnk48fan.cpxdev.tk"
+    const ChangeRoute = (name, tag) =>{
+        const link = "https://twitter.com/intent/tweet?hashtags=" + name + "BNK48,fanspaceplatform,bnk48_1stgeneration," + tag.join(", ") + "&original_referer=https://bnk48fan.cpxdev.tk&text=(Enter your moment to " + name+" BNK48 here)&url=https://bnk48fan.cpxdev.tk"
         window.open(link, "_blank")
     }
 
@@ -128,7 +128,7 @@ const Graduated = ({fet, setSec}) => {
             {Loaded ? (
                 <div className='row ml-3 mr-3 mt-5 justify-content-center'>
                 {mem.length > 0 ? mem.map((item, i) => (
-                      <div data-aos="zoom-in" className='col-md-3 mb-5 text-center' onClick={() => ChangeRoute(item.name)}>
+                      <div data-aos="zoom-in" className='col-md-3 mb-5 text-center' onClick={() => ChangeRoute(item.name, item.tag)}>
                         <Card>
                             <CardActionArea>
                             <CardMedia

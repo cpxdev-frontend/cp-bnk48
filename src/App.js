@@ -534,9 +534,6 @@ function App() {
    
   }
 
-  const checkiamupdatestatusformem = (newsobj) => {
-            
-  }
 
   if (uri != '' && allDone) {
     return (<>      
@@ -1020,22 +1017,22 @@ transitionDuration={500}
          <div className="row" onDoubleClick={() => setAllDone(true)}>
          <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 500 }}>
            <div className="col pr-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/1.jpg" width="100%" />
+               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk4thgendebut/pc/1.png" width="100%" />
            </div>
          </Fade>
          <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 300 : 400 }}>
            <div className="col p-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/2.jpg" width="100%" />
+               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk4thgendebut/pc/2.png" width="100%" />
            </div>
          </Fade>
          <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 400 : 300 }}>
            <div className="col p-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/3.jpg" width="100%" />
+               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk4thgendebut/pc/3.png" width="100%" />
            </div>
          </Fade>
            <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 500 :  0 }}>
            <div className="col pl-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/4.jpg" width="100%" />
+               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk4thgendebut/pc/4.png" width="100%" />
            </div>
          </Fade>
          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
@@ -1049,8 +1046,8 @@ transitionDuration={500}
          <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-             <AlertTitle>BNK48 12th Single "Believers" has been released. Let's watch or listen it!</AlertTitle>
-                     Double click/tap here on image or wait 10 seconds to skip this page
+             <AlertTitle>BNK48 4th Generation Debut Single "Shoujotachi yo – วันใหม่" has been released soon.</AlertTitle>
+                    Double click/tap here on image or wait 10 seconds to skip this page
              </Alert>
              </div>
          </Grow>

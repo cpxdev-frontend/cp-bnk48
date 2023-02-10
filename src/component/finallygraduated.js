@@ -104,7 +104,7 @@ const Graduated = ({fet, setSec}) => {
   <Card className="bnktheme ml-2 mr-2">
       <CardContent>
         <Typography variant="h5" component="h2">
-          BNK48 News
+        BNK48 Graduation
         </Typography>
         <hr />
                 <Typography color="textSecondary">

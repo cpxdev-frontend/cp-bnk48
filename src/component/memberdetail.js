@@ -492,8 +492,11 @@ function capitalizeFirstLetter(string) {
                                         {item.sing13 != undefined && item.sing13 != '' && (
                                             <a className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is now! Please click here to download solo member image.<br/></a>
                                         )}
-                                        {item.sing13 != undefined && item.sing13 == '' && (
+                                        {item.sing13 != undefined && item.sing13 == '' && window.innerWidth <= 600 && (
                                             <marquee className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></marquee>
+                                        )}
+                                         {item.sing13 != undefined && item.sing13 == '' && window.innerWidth > 600 && (
+                                            <p className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></p>
                                         )}
                                        {loadfollow ? (
                                             <Skeleton />

@@ -206,11 +206,11 @@ const Memberlist = ({fet, setSec}) => {
              </Zoom>
             
             {Loaded ? (
-                <Grid container spacing={2}>
+                <Grid container spacing={2} className='mt-3'>
                     {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
                        <Grid item md={3}>
                        <div data-aos="zoom-in" className='mb-5' onClick={() => ChangeRoute(item.name)}>
-                         <Card className={item.shihainin != undefined ? "ripple" : ''}>
+                         <Card>
                              <CardActionArea>
                              <CardMedia
                                      src={item.img}
@@ -219,6 +219,9 @@ const Memberlist = ({fet, setSec}) => {
                                      />
                                  <CardContent>
                                      <h5>{item.name}</h5>
+                                     {item.shihainin != undefined && (
+                                         <p class="badge text-light" style={{backgroundColor: "#BF953F"}}>BNK48 Manager (Shihainin)</p>
+                                     )}
                                      {item.captain != undefined && (
                                          <p class="badge badge-pill badge-info">BNK48 {item.captain}</p>
                                      )}

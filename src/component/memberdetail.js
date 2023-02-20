@@ -425,7 +425,7 @@ function capitalizeFirstLetter(string) {
         }
         const tokenrateexchange = 90;
 
-        const session12thSingle = (url) => {
+        const session13thSingle = (url) => {
             if (url == "") {
                 Swal.fire({
                     title: "Image Not Found",
@@ -435,19 +435,18 @@ function capitalizeFirstLetter(string) {
             } else {
                 if (localStorage.getItem("loged") == null) {
                  Swal.fire({
-                    title: "BNK48 12th Single Image",
+                    title: "BNK48 13th Single Image",
                     text: "This content is exclusively for BNK48 Fan Space Membership only, please login as Google Account and try again",
                     icon: 'error',
                   })
                 } else {
                  Swal.fire({
-                    title: "BNK48 12th Single Image",
+                    title: "BNK48 13th Single \"ii-Wake Maybe\" Image",
                     imageUrl: url,
                     showDenyButton: true,
                     showCancelButton: true,
                     confirmButtonText: 'Download',
-                    denyButtonColor: '#3085d6',
-                    denyButtonText: `See General Election Ranking`,
+                    denyButtonColor: '#3085d6'
                   }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
@@ -490,8 +489,11 @@ function capitalizeFirstLetter(string) {
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                                     </h4>
-                                        {item.ge != '' && (
-                                            <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
+                                        {item.sing13 != undefined && item.sing13 != '' && (
+                                            <a className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is now! Please click here to download solo member image.<br/></a>
+                                        )}
+                                        {item.sing13 != undefined && item.sing13 == '' && (
+                                            <p className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></p>
                                         )}
                                        {loadfollow ? (
                                             <Skeleton />

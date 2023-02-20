@@ -222,6 +222,7 @@ const Memberlist = ({fet, setSec}) => {
                                      {item.shihainin != undefined && (
                                          <p class="badge text-light" style={{backgroundColor: "#BF953F"}}>BNK48 Manager (Shihainin)</p>
                                      )}
+                                     <br />
                                      {item.captain != undefined && (
                                          <p class="badge badge-pill badge-info">BNK48 {item.captain}</p>
                                      )}

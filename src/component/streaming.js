@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpotify, faItunes, faDeezer, faYoutube, faTiktok, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons'
-import { Typography, ListItem, Zoom, ListItemText,
+import { Typography, ListItem, Zoom, Container,
     Card, CardHeader, CardContent, CardMedia, Grid, Fade, CardActionArea } from '@material-ui/core';
     import CircularProgress from '@material-ui/core/CircularProgress';
     import AOS from "aos";
@@ -68,10 +68,11 @@ const MusicSt = ({fet, setSec}) => {
               </Fade>
       </div>
         )}
+        <Container>
          <Grid container spacing={2} className='mt-3'>
               {data.length > 0 ? data.map((item,i) => (item.release_date.includes(new Date().getFullYear()) || item.release_date.includes(new Date().getFullYear() - 1)) ? (
                    <Grid key={item.id} item md={3}>
-                <Card className={'mb-3' + (window.innerWidth < 700 ? ' bnktheme' : '')} data-aos="zoom-in" >
+                <Card className={'text-center mb-3' + (window.innerWidth < 700 ? ' bnktheme' : '')} data-aos="zoom-in" >
                   <CardContent>
                     <CardActionArea onClick={() => window.open(item.external_urls.spotify, '_blank').focus()}>
                   <Typography variant="h5" component="h2">
@@ -101,6 +102,7 @@ const MusicSt = ({fet, setSec}) => {
               </Zoom>
               )}
         </Grid>
+        </Container>
         </>
      );
 }

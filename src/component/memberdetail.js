@@ -493,7 +493,7 @@ function capitalizeFirstLetter(string) {
                                             <a className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is now! Please click here to download solo member image.<br/></a>
                                         )}
                                         {item.sing13 != undefined && item.sing13 == '' && (
-                                            <p className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></p>
+                                            <marquee className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></marquee>
                                         )}
                                        {loadfollow ? (
                                             <Skeleton />

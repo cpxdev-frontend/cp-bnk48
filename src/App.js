@@ -363,31 +363,32 @@ function App() {
     var dem = setInterval(function(){ 
       if (Fet().ul !== '') {
         clearInterval(dem)
+        fetch(Fet().ul + '/tpop/time', {
+          method :'get'
+      })
+          .then(response => response.text())
+          .then(data => {
+            if (parseInt(data) < iiwakelaunch) {
+              var diffTime = iiwakelaunch - parseInt(data);
+              var duration = moment.duration(diffTime*1000, 'milliseconds');
+              duration = moment.duration(duration - 1000, 'milliseconds');
+              const counttime = duration.days() + ' day(s) ' + (duration.hours() + " hour(s) " + duration.minutes() + " minute(s) " + duration.seconds() + " second(s) ")
+              Swal.fire({
+                title: 'BNK48 13th Single \"iiWake Maybe\" is soon.',
+                text: 'Please wait ' + counttime + ' to Music Video is released. You can watch the first performance in BNK48 Fan Space and T-POP Megeverse',
+                icon: 'info',
+                iconColor: 'rgb(203, 150, 194)'
+              })
+            }
+          }).catch(() => {
+            
+          })
         var timeo = setInterval(function(){ 
           if (sessionStorage.getItem('ads') != null) {
             clearInterval(timeo)
             setAllDone(true)
           }
-          fetch(Fet().ul + '/tpop/time', {
-            method :'get'
-        })
-            .then(response => response.text())
-            .then(data => {
-              if (parseInt(data) < iiwakelaunch) {
-                var diffTime = iiwakelaunch - parseInt(data);
-                var duration = moment.duration(diffTime*1000, 'milliseconds');
-                duration = moment.duration(duration - 1000, 'milliseconds');
-                const counttime = duration.days() + ' day(s) ' + (duration.hours() + " hour(s) " + duration.minutes() + " minute(s) " + duration.seconds() + " second(s) ")
-                Swal.fire({
-                  title: 'BNK48 13th Single \"iiWake Maybe\" is soon.',
-                  text: 'Please wait ' + counttime + ' to Music Video is released. You can watch the first performance in BNK48 Fan Space and T-POP Megeverse',
-                  icon: 'info',
-                  iconColor: 'rgb(203, 150, 194)'
-                })
-              }
-            }).catch(() => {
-              
-            })
+          
           if (myportdetect != null && myportdetect == 'myport') {
              Swal.fire({
               title: 'Welcome MyPort User to BNK48 Fan Space.',

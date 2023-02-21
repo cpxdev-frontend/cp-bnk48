@@ -340,7 +340,7 @@ function App() {
 
   React.useEffect(() => {
     iiake = setInterval(function(){ 
-      if (Fet().ul != '' && allDone) {
+      if (Fet().ul != '') {
         clearInterval(iiake)
        
         fetch(Fet().ul + '/tpop/time', {

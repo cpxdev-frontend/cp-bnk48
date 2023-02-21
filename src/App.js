@@ -150,6 +150,8 @@ var url = new URL(window.location.href);
 var imgget = url.searchParams.get("imgstar");
 var myportdetect = url.searchParams.get("ref");
 
+var iiake
+
 function App() {
   const [Section, setSec] = React.useState('');
 
@@ -386,8 +388,8 @@ function App() {
       }
   }, 10);
 
-  var iiake = setInterval(function(){ 
-    if (uri != '' && allDone == true) {
+  iiake = setInterval(function(){ 
+    if (uri != '' && allDone) {
       clearInterval(iiake)
      
       fetch(Fet().ul + '/tpop/time', {

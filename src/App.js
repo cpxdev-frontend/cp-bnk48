@@ -376,7 +376,7 @@ function App() {
               if (parseInt(data) < iiwakelaunch) {
                 var diffTime = iiwakelaunch - parseInt(data);
                 var duration = moment.duration(diffTime*1000, 'milliseconds');
-                duration = moment.duration(duration - interval, 'milliseconds');
+                duration = moment.duration(duration - 1000, 'milliseconds');
                 const counttime = duration.days() + ' day(s) ' + (duration.hours() + " hour(s) " + duration.minutes() + " minute(s) " + duration.seconds() + " second(s) ")
                 Swal.fire({
                   title: 'BNK48 13th Single \"iiWake Maybe\" is soon.',

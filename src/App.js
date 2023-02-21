@@ -339,6 +339,36 @@ function App() {
   }
 
   React.useEffect(() => {
+    iiake = setInterval(function(){ 
+      if (uri != '') {
+        clearInterval(iiake)
+       
+        fetch(Fet().ul + '/tpop/time', {
+          method :'get'
+      })
+          .then(response => response.text())
+          .then(data => {
+            if (parseInt(data) < iiwakelaunch) {
+              var diffTime = iiwakelaunch - parseInt(data);
+              var duration = moment.duration(diffTime*1000, 'milliseconds');
+              duration = moment.duration(duration - 1000, 'milliseconds');
+              const counttime = duration.days() + ' day(s) ' + (duration.hours() + " hour(s) " + duration.minutes() + " minute(s) " + duration.seconds() + " second(s) ")
+              Swal.fire({
+                title: 'BNK48 13th Single \"iiWake Maybe\" is soon.',
+                text: 'Please wait in ' + counttime + ' to Music Video is released. You can watch the first performance in BNK48 Fan Space and T-POP Megeverse',
+                footer: "Event has been started in " + moment.unix(iiwakelaunch).local().format("DD MMMM YYYY HH:mm:ss") + " (Refered from Local timezone)",
+                icon: 'info',
+                iconColor: 'rgb(203, 150, 194)'
+              })
+            }
+          }).catch(() => {
+            
+          })
+      }
+    }, 10);
+  }, [])
+
+  React.useEffect(() => {
     function isOdd() {
       const ran = Math.floor((Math.random() * 1000) + 1);
       return Math.abs(ran % 2) == 1;
@@ -388,33 +418,7 @@ function App() {
       }
   }, 10);
 
-  iiake = setInterval(function(){ 
-    if (uri != '' && allDone) {
-      clearInterval(iiake)
-     
-      fetch(Fet().ul + '/tpop/time', {
-        method :'get'
-    })
-        .then(response => response.text())
-        .then(data => {
-          if (parseInt(data) < iiwakelaunch) {
-            var diffTime = iiwakelaunch - parseInt(data);
-            var duration = moment.duration(diffTime*1000, 'milliseconds');
-            duration = moment.duration(duration - 1000, 'milliseconds');
-            const counttime = duration.days() + ' day(s) ' + (duration.hours() + " hour(s) " + duration.minutes() + " minute(s) " + duration.seconds() + " second(s) ")
-            Swal.fire({
-              title: 'BNK48 13th Single \"iiWake Maybe\" is soon.',
-              text: 'Please wait in ' + counttime + ' to Music Video is released. You can watch the first performance in BNK48 Fan Space and T-POP Megeverse',
-              footer: "Event has been started in " + moment.unix(iiwakelaunch).local().format("DD MMMM YYYY HH:mm:ss") + " (Refered from Local timezone)",
-              icon: 'info',
-              iconColor: 'rgb(203, 150, 194)'
-            })
-          }
-        }).catch(() => {
-          
-        })
-    }
-  }, 10);
+  
 
   setInterval(function(){ 
     if (Fet().ul !== '') {

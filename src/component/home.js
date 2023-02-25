@@ -7,8 +7,8 @@ import { Typography, ListItem, Zoom, ListItemText,
     import Swal from 'sweetalert2'
 
 // const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/bnkfullmemhd.jpg'
-const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/jiwarudayswall.jpg'
-const defaultvideo = 'https://www.youtube.com/embed/PwTexIMFsRw?autoplay=1&mute=1&controls=0&loop=1&playlist=PwTexIMFsRw'
+const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk4thgendebut/pc/4thgen_pc.png'
+const defaultvideo = 'https://www.youtube.com/embed/x1CUf9N-WLg?autoplay=1&mute=1&controls=0&loop=1&playlist=x1CUf9N-WLg'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);

@@ -80,6 +80,8 @@ var checkloop;
 const drawerWidth = 240;
 const Client = '961896647339-roenm2ee6i60ed2rhbe2sqee0unlqj0f.apps.googleusercontent.com'
 
+const iiwakelaunch = 1677402000
+
 const useStyles = makeStyles((theme) => ({
   sm: {
     width: theme.spacing(3.8),
@@ -147,6 +149,8 @@ const timesch = {
 var url = new URL(window.location.href);
 var imgget = url.searchParams.get("imgstar");
 var myportdetect = url.searchParams.get("ref");
+
+var iiake
 
 function App() {
   const [Section, setSec] = React.useState('');
@@ -335,6 +339,36 @@ function App() {
   }
 
   React.useEffect(() => {
+    iiake = setInterval(function(){ 
+      if (Fet().ul != '') {
+        clearInterval(iiake)
+       
+        fetch(Fet().ul + '/tpop/time', {
+          method :'get'
+      })
+          .then(response => response.text())
+          .then(data => {
+            if (parseInt(data) < iiwakelaunch) {
+              var diffTime = iiwakelaunch - parseInt(data);
+              var duration = moment.duration(diffTime*1000, 'milliseconds');
+              duration = moment.duration(duration - 1000, 'milliseconds');
+              const counttime = duration.days() + ' day(s) ' + (duration.hours() + " hour(s) " + duration.minutes() + " minute(s) " + duration.seconds() + " second(s) ")
+              Swal.fire({
+                title: 'BNK48 13th Single \"iiWake Maybe\" is soon.',
+                text: 'Please wait in ' + counttime + ' to Music Video is released. You can watch the first performance in BNK48 Fan Space and T-POP Megeverse',
+                footer: "Event has been started in " + moment.unix(iiwakelaunch).local().format("DD MMMM YYYY HH:mm:ss") + " (Refered from Local timezone)",
+                icon: 'info',
+                iconColor: 'rgb(203, 150, 194)'
+              })
+            }
+          }).catch(() => {
+            
+          })
+      }
+    }, 10);
+  }, [])
+
+  React.useEffect(() => {
     function isOdd() {
       const ran = Math.floor((Math.random() * 1000) + 1);
       return Math.abs(ran % 2) == 1;
@@ -366,6 +400,7 @@ function App() {
             clearInterval(timeo)
             setAllDone(true)
           }
+          
           if (myportdetect != null && myportdetect == 'myport') {
              Swal.fire({
               title: 'Welcome MyPort User to BNK48 Fan Space.',
@@ -382,6 +417,8 @@ function App() {
         FetchPopNews(Fet().ul)
       }
   }, 10);
+
+  
 
   setInterval(function(){ 
     if (Fet().ul !== '') {
@@ -534,9 +571,6 @@ function App() {
    
   }
 
-  const checkiamupdatestatusformem = (newsobj) => {
-            
-  }
 
   if (uri != '' && allDone) {
     return (<>      
@@ -1020,22 +1054,22 @@ transitionDuration={500}
          <div className="row" onDoubleClick={() => setAllDone(true)}>
          <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 500 }}>
            <div className="col pr-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/1.jpg" width="100%" />
+               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk4thgendebut/pc/1.png" width="100%" />
            </div>
          </Fade>
          <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 300 : 400 }}>
            <div className="col p-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/2.jpg" width="100%" />
+               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk4thgendebut/pc/2.png" width="100%" />
            </div>
          </Fade>
          <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 400 : 300 }}>
            <div className="col p-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/3.jpg" width="100%" />
+               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk4thgendebut/pc/3.png" width="100%" />
            </div>
          </Fade>
            <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 500 :  0 }}>
            <div className="col pl-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/4.jpg" width="100%" />
+               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk4thgendebut/pc/4.png" width="100%" />
            </div>
          </Fade>
          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
@@ -1049,8 +1083,8 @@ transitionDuration={500}
          <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-             <AlertTitle>BNK48 12th Single "Believers" has been released. Let's watch or listen it!</AlertTitle>
-                     Double click/tap here on image or wait 10 seconds to skip this page
+             <AlertTitle>BNK48 4th Generation Debut Single "Shoujotachi yo – วันใหม่" has been released soon.</AlertTitle>
+                    Double click/tap here on image or wait 10 seconds to skip this page
              </Alert>
              </div>
          </Grow>
@@ -1059,257 +1093,65 @@ transitionDuration={500}
         <div className="row" onDoubleClick={() => setAllDone(true)}>
         <Fade in={styleFade != 0 ? true : false} timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 100 : 100 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/1.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/1.jpg" width="100%" />
           </div>
         </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 0 : 0 }}>
+        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1050 : 450 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/2.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/2.jpg" width="100%" />
           </div>
         </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 100 : 100 }}>
+        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1150 : 550 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/3.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/3.jpg" width="100%" />
           </div>
         </Fade>
           <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 300 :  300 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/phone/4.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk4thgendebut/4.jpg" width="100%" />
           </div>
         </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 200 :  200 }}>
+        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 950 :  750 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/5.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/5.jpg" width="100%" />
           </div>
         </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 300 :  300 }}>
+        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1250 :  850 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/6.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/6.jpg" width="100%" />
           </div>
         </Fade>
           <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 500 :  500 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/7.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/7.jpg" width="100%" />
           </div>
         </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 400 :  400 }}>
+        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 850 :  1050 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/8.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/8.jpg" width="100%" />
           </div>
         </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 500 :  500 }}>
+        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1350 :  1150 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/9.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/9.jpg" width="100%" />
           </div>
         </Fade>
           <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/10.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/10.jpg" width="100%" />
           </div>
         </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
+        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 750 :  1350 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/11.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/11.jpg" width="100%" />
           </div>
         </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
+        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1450 :  1450 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/12.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/13.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/14.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/15.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/16.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/17.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/18.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/19.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/20.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/21.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/22.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/23.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/24.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/25.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/26.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/27.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/28.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/29.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/30.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/31.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/32.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/33.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/34.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/35.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/36.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/37.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/38.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/39.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/40.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/41.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/42.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/43.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/44.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/45.jpg" width="100%" />
-          </div>
-        </Fade>
-        <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/46.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/47.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 600 :  600 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/48.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/12.jpg" width="100%" />
           </div>
         </Fade>
       
@@ -1318,7 +1160,7 @@ transitionDuration={500}
         <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-              <AlertTitle>BNK48 1st Generation Special Single "Jiwaru Days" has been released. Let's watch and farewell them together</AlertTitle>
+              <AlertTitle>BNK48 4th Generation Debut Single "Shoujotachi yo – วันใหม่" has been released soon.</AlertTitle>
               Double click or tap on image to skip this page
             </Alert>
             </div>
@@ -1326,7 +1168,7 @@ transitionDuration={500}
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>BNK48 1st Generation Special Single "Jiwaru Days" has been released. Let's watch and farewell them together</AlertTitle>
+            <AlertTitle>BNK48 4th Generation Debut Single "Shoujotachi yo – วันใหม่" has been released soon.</AlertTitle>
                     Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>

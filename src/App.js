@@ -1109,7 +1109,7 @@ transitionDuration={500}
           <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 300 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk4thgendebut/4.jpg" width="100%" />
+              <img src="https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/4.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 200 }}>

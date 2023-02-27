@@ -449,7 +449,7 @@ function capitalizeFirstLetter(string) {
                            confirmButtonText: 'Download',
                            denyButtonColor: '#3AA504',
                            denyButtonText: 'Listening it!',
-                           footer: 'You can hold tap or right click then save image to your phone or PC',
+                           footer: 'You can hold tap or right click on image then save it to your phone or PC',
                          }).then((result) => {
                            /* Read more about isConfirmed, isDenied below */
                            if (result.isConfirmed) {

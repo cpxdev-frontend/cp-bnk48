@@ -449,6 +449,7 @@ function capitalizeFirstLetter(string) {
                            confirmButtonText: 'Download',
                            denyButtonColor: '#3AA504',
                            denyButtonText: 'Listening it!',
+                           footer: 'You can hold tap or right click then save image to your phone or PC',
                          }).then((result) => {
                            /* Read more about isConfirmed, isDenied below */
                            if (result.isConfirmed) {
@@ -492,7 +493,7 @@ function capitalizeFirstLetter(string) {
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                                     </h4>
                                         {item.sing13 != undefined && item.sing13 == '' && window.innerWidth <= 600 && (
-                                            <marquee className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download solo member image.<br/></marquee>
+                                            <marquee className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
                                         )}
                                          {item.sing13 != undefined && item.sing13 == '' && window.innerWidth > 600 && (
                                             <p className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download solo member image.<br/></p>

@@ -426,37 +426,36 @@ function capitalizeFirstLetter(string) {
         const tokenrateexchange = 90;
 
         const session13thSingle = (url) => {
-            if (url == "") {
+            if (localStorage.getItem("loged") == null) {
                 Swal.fire({
-                    title: "Image Not Found",
-                    icon: 'error',
-                    text: 'This member is in-queue to released image.',
-                  })
-            } else {
-                if (localStorage.getItem("loged") == null) {
-                 Swal.fire({
-                    title: "BNK48 13th Single Image",
-                    text: "This content is exclusively for BNK48 Fan Space Membership only, please login as Google Account and try again",
-                    icon: 'error',
-                  })
-                } else {
-                 Swal.fire({
-                    title: "BNK48 13th Single \"ii-Wake Maybe\" Image",
-                    imageUrl: url,
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: 'Download',
-                    denyButtonColor: '#3085d6'
-                  }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                      window.open(url, '_blank')
-                    } else if (result.isDenied) {
-                      History.push('/ge3')
-                    }
-                  })
-                }
-            }
+                   title: "BNK48 13th Single Image",
+                   text: "This content is exclusively for BNK48 Fan Space Membership only, please login as Google Account and try again",
+                   icon: 'error',
+                 })
+               } else {
+                   if (url.gen == 4) {
+                       Swal.fire({
+                           title: "BNK48 13th Single Gift Image is unavaliable for forth Generation members",
+                           icon: 'info',
+                           text: 'Let\'s support BNK48 4th Generation Debut Single \"Shoujotachi yo – วันใหม่\".',
+                         })
+                   } else {
+                       const img = 'https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/' +  (window.innerWidth > window.innerHeight ? 'landscape' : 'portrait') + '/' + url.name.toLowerCase() + '.jpg'
+                       Swal.fire({
+                           title: "BNK48 13th Single \"ii-Wake Maybe\" Image",
+                           imageUrl: img,
+                           showDenyButton: true,
+                           showCancelButton: true,
+                           confirmButtonText: 'Download',
+                           denyButtonColor: '#3085d6'
+                         }).then((result) => {
+                           /* Read more about isConfirmed, isDenied below */
+                           if (result.isConfirmed) {
+                             window.open(img, '_blank')
+                           }
+                         })
+                   }
+               }
         }
 
         return (  
@@ -490,13 +489,13 @@ function capitalizeFirstLetter(string) {
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                                     </h4>
                                         {item.sing13 != undefined && item.sing13 != '' && (
-                                            <a className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is now! Please click here to download solo member image.<br/></a>
+                                            <a className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now! Please click here to download solo member image.<br/></a>
                                         )}
                                         {item.sing13 != undefined && item.sing13 == '' && window.innerWidth <= 600 && (
-                                            <marquee className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></marquee>
+                                            <marquee className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></marquee>
                                         )}
                                          {item.sing13 != undefined && item.sing13 == '' && window.innerWidth > 600 && (
-                                            <p className='cur' onClick={() => session13thSingle(item.sing13)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></p>
+                                            <p className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></p>
                                         )}
                                        {loadfollow ? (
                                             <Skeleton />

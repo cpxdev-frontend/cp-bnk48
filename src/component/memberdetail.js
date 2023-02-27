@@ -448,7 +448,7 @@ function capitalizeFirstLetter(string) {
                            showCancelButton: true,
                            confirmButtonText: 'Download',
                            denyButtonColor: '#3AA504',
-                           denyButtonText: 'Listening it!'
+                           denyButtonText: 'Listening it!',
                          }).then((result) => {
                            /* Read more about isConfirmed, isDenied below */
                            if (result.isConfirmed) {

@@ -447,12 +447,15 @@ function capitalizeFirstLetter(string) {
                            showDenyButton: true,
                            showCancelButton: true,
                            confirmButtonText: 'Download',
-                           denyButtonColor: '#3085d6'
+                           denyButtonColor: '#3AA504',
+                           denyButtonText: 'Listening it!'
                          }).then((result) => {
                            /* Read more about isConfirmed, isDenied below */
                            if (result.isConfirmed) {
                              window.open(img, '_blank')
-                           }
+                           } else if (result.isDenied) {
+                            window.open('https://bnk48.bfan.link/0227-IiwakeMaybeTH', '_blank')
+                          }
                          })
                    }
                }
@@ -488,14 +491,11 @@ function capitalizeFirstLetter(string) {
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                                     </h4>
-                                        {item.sing13 != undefined && item.sing13 != '' && (
-                                            <a className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now! Please click here to download solo member image.<br/></a>
-                                        )}
                                         {item.sing13 != undefined && item.sing13 == '' && window.innerWidth <= 600 && (
-                                            <marquee className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></marquee>
+                                            <marquee className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download solo member image.<br/></marquee>
                                         )}
                                          {item.sing13 != undefined && item.sing13 == '' && window.innerWidth > 600 && (
-                                            <p className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is soon.<br/></p>
+                                            <p className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download solo member image.<br/></p>
                                         )}
                                        {loadfollow ? (
                                             <Skeleton />

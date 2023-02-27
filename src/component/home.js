@@ -7,7 +7,7 @@ import { Typography, ListItem, Zoom, ListItemText,
     import Swal from 'sweetalert2'
 
 // const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/bnkfullmemhd.jpg'
-const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk4thgendebut/pc/4thgen_pc.png'
+const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/main13th.png'
 const defaultvideo = 'https://www.youtube.com/embed/PwTexIMFsRw?autoplay=1&mute=1&controls=0&loop=1&playlist=PwTexIMFsRw'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     const History = useHistory()
@@ -28,20 +28,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
   },[])
 
   React.useEffect(() => {
-    if (kamin != "-") {
-      const check = "https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk12thsing/main_back/" + kamin.toLowerCase() + ".jpg"
-        fetch(check)
-          .then((response) => {
-            if (response.status != 200) {
-                throw new Error("fail")
-            }
-            return response.text()
-          })
-          .then(() => localStorage.getItem('customback') != null ? setUrc(check) : setUrc(defaultTheme))
-          .catch(() => setUrc(defaultTheme));
-    } else {
-      setUrc(defaultTheme)
-    }
+    setUrc(defaultTheme)
   }, [kamin])
 
   React.useEffect(() => {

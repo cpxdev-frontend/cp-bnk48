@@ -21,15 +21,15 @@
             "label": "Choose Stage Team"
         },
         {
-          "value": "b3",
+          "value": "BIII",
           "label": "B Three (BIII)"
         },
         {
-          "value": "nv",
+          "value": "NV",
           "label": "N Five (NV)"
         },
         {
-            "value": "under",
+            "value": "Trainee",
             "label": "Trainee (Undergirl)"
           }
       ],

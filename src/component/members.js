@@ -96,24 +96,26 @@ const Memberlist = ({fet, setSec}) => {
       };
 
       const onSearch = () => {
-         let newfilter = [];
-          if (seGroup != '-' && seFill != "-") {
-
-          if (seGroup == "team") {
-            newfilter = Arr.filter(x => x.team.filter(teamx => teamx == seFill).length > 0)
-          } else if (seGroup == "gen") {
-            newfilter = Arr.filter(x => x.gen == seFill)
-          }
-
-          if (search !== '') {
-            const txt = search.toLowerCase()
-            setSearch(txt)
-            const d = newfilter.filter(x => (x.name.toLowerCase()).includes(txt));
-            setmem(d)
-        } else {
-            setmem(newfilter)
+        if (Arr.length > 0 && mem.length > 0) {
+            let newfilter = [];
+             if (seGroup != '-' && seFill != "-") {
+   
+                if (seGroup == "team") {
+                    newfilter = Arr.filter(x => x.team.filter(teamx => teamx == seFill).length > 0)
+                } else if (seGroup == "gen") {
+                    newfilter = Arr.filter(x => x.gen == seFill)
+                }
+        
+                 if (search !== '') {
+                    const txt = search.toLowerCase()
+                    setSearch(txt)
+                    const d = newfilter.filter(x => (x.name.toLowerCase()).includes(txt));
+                    setmem(d)
+                } else {
+                    setmem(newfilter)
+                }
+             }
         }
-          }
       }
     
       const onReset = () => {

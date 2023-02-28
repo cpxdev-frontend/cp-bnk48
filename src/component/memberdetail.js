@@ -311,7 +311,7 @@ function capitalizeFirstLetter(string) {
                                 })
                                 .then(response => response.text())
                                 .then(data => {
-                                //    window.location.reload()
+                                    triggerUpdate()
                                     setLoaded(false)
                                     fetchLoad()
                                 })
@@ -333,9 +333,9 @@ function capitalizeFirstLetter(string) {
                         })
                         .then(response => response.text())
                         .then(data => {
-                            // window.location.reload()
-                                    setLoaded(false)
-                                    fetchLoad()
+                            triggerUpdate()
+                            setLoaded(false)
+                            fetchLoad()
                         })
                         .catch((error) => {
                             alert("System will be temporary error for a while. Please try again")
@@ -370,7 +370,7 @@ function capitalizeFirstLetter(string) {
                                         })
                                         .then(response => response.text())
                                         .then(data => {
-                                        //    window.location.reload()
+                                            triggerUpdate()
                                             setLoaded(false)
                                             fetchLoad()
                                         })
@@ -392,7 +392,7 @@ function capitalizeFirstLetter(string) {
                                 })
                                 .then(response => response.text())
                                 .then(data => {
-                                    // window.location.reload()
+                                    triggerUpdate()
                                     setLoaded(false)
                                     fetchLoad()
                                 })

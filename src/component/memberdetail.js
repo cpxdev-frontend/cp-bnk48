@@ -229,11 +229,14 @@ function capitalizeFirstLetter(string) {
                                 .then(data => {
                                     setGE(data.response)
                                     setLoaded(true)
+                                    setChange(false)
                                 }).catch(() => {
                                   setGE([])
+                                  setChange(false)
                                   setLoaded(true)
                                 })
                         } else {
+                            setChange(false)
                             setLoaded(true)
                         }
                         BirthdayCheck(data.response.name)
@@ -241,6 +244,7 @@ function capitalizeFirstLetter(string) {
                 }).catch(() => {
                     setArr([])
                     setLoaded(true)
+                    setChange(false)
                 })
             } else {
                 History.push("/")

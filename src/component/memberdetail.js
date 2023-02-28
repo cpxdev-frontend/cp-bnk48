@@ -186,7 +186,6 @@ function capitalizeFirstLetter(string) {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    setFollow(true)
                     if (data.response == 'Not found this member in record.') {
                         History.push("/")
                     } else {
@@ -310,6 +309,7 @@ function capitalizeFirstLetter(string) {
                                 .then(data => {
                                     setChange(false)
                                     setLoaded(false)
+                                    setFollow(true)
                                     fetchLoad()
                                     triggerUpdate()
                                 })
@@ -334,6 +334,7 @@ function capitalizeFirstLetter(string) {
                             setChange(false)
                             triggerUpdate()
                             setLoaded(false)
+                            setFollow(true)
                             fetchLoad()
                         })
                         .catch((error) => {
@@ -372,6 +373,7 @@ function capitalizeFirstLetter(string) {
                                             setChange(false)
                                             triggerUpdate()
                                             setLoaded(false)
+                                            setFollow(true)
                                             fetchLoad()
                                         })
                                         .catch((error) => {
@@ -395,6 +397,7 @@ function capitalizeFirstLetter(string) {
                                     setChange(false)
                                     triggerUpdate()
                                     setLoaded(false)
+                                    setFollow(true)
                                     fetchLoad()
                                 })
                                 .catch((error) => {

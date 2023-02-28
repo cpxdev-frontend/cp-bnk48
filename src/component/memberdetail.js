@@ -160,6 +160,9 @@ function capitalizeFirstLetter(string) {
         }
 
         const fetchLoad = () => {
+            var url_string = window.location.href; 
+            var url = new URL(url_string);
+            var c = url.searchParams.get("name");
             setKami(0)
             fetch(fet + '/bnk48/getbnkkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
                 method :'get'

@@ -308,9 +308,9 @@ function capitalizeFirstLetter(string) {
                                 .then(response => response.text())
                                 .then(data => {
                                     setChange(false)
-                                    triggerUpdate()
                                     setLoaded(false)
                                     fetchLoad()
+                                    triggerUpdate()
                                 })
                                 .catch((error) => {
                                     alert("System will be temporary error for a while. Please try again")

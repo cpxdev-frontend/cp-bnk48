@@ -98,7 +98,6 @@ const Memberlist = ({fet, setSec}) => {
       const onSearch = () => {
          let newfilter = [];
           if (seGroup != '-' && seFill != "-") {
-          setLoaded(false)
 
           if (seGroup == "team") {
             newfilter = Arr.filter(x => x.team.filter(teamx => teamx == seFill))
@@ -119,20 +118,7 @@ const Memberlist = ({fet, setSec}) => {
     
       const onReset = () => {
         if (seGroup != '-' || seFill != "-" || search != '') {
-        setLoaded(false)
-        fetch(fet + '/bnk48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-            method :'get'
-        })
-            .then(response => response.json())
-            .then(data => {
-                setmem(data.response)
-                setArr(data.response)
-                setLoaded(true)
-            }).catch(() => {
-                setmem([])
-                setArr([])
-                setLoaded(true)
-            })
+            setmem(Arr)
             setFilter([])
             setGr('-')
             setFr('-')

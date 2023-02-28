@@ -160,91 +160,18 @@ function capitalizeFirstLetter(string) {
         }
 
         const fetchLoad = () => {
-            var url_string = window.location.href; 
-            var url = new URL(url_string);
-            var c = url.searchParams.get("name");
-            if (c != null && c != "") {
-                setSec('Loading Member description')
-                if (localStorage.getItem("loged") != null) {
-                    fetch(fet + '/bnk48/getbnkkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
-                      method :'get'
-                  })
-                    .then(response => response.json())
-                    .then(data => {
-                      if (data.obj != 'none' && (data.obj.name).toLowerCase() == c) {
-                        setKami(2)
-                      } else {
-                        setKami(1)
-                      }
-                    });
-                  } else {
-                    setKami(1)
-                  }
-                setmem(c)
-                fetch(fet + '/bnk48/getmember?name=' + c +'&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-                    method :'post'
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.response == 'Not found this member in record.') {
-                        History.push("/")
-                    } else {
-                        fetch(fet + '/bnk48/getadsupdate', {
-                            method :'post'
-                        })
-                            .then(response => response.json())
-                            .then(dataads => {
-                                if (data.response.ge != "") {
-                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1)
-                                    setNewspop(obj)
-                                    setGEPoster(data.follower)
-                                    fetchfollower(data.follower)
-                                } else {
-                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1)
-                                    setNewspop(obj)
-                                    setGEPoster(data.follower)
-                                    fetchfollower(data.follower)
-                                }
-                            }).catch(() => {
-                                setNewspop([])
-                            })
-                            fetch(fet + '/bnk48/memberlivelist', {
-                                method :'post'
-                            })
-                                .then(response => response.json())
-                                .then(dataads => {
-                                    setMemLive(dataads)
-                                }).catch(() => {
-                                    setMemLive([])
-                                })
-                        setSec(data.response.name)
-                        const temp =[]
-                        temp.push(data.response)
-                        setArr(temp)
-                        if (data.response.ge != "") {
-                            fetch(fet + '/bnk48/getge?rankid=' + data.response.ge, {
-                                method :'post'
-                            })
-                                .then(response => response.json())
-                                .then(data => {
-                                    setGE(data.response)
-                                    setLoaded(true)
-                                }).catch(() => {
-                                  setGE([])
-                                  setLoaded(true)
-                                })
-                        } else {
-                            setLoaded(true)
-                        }
-                        BirthdayCheck(data.response.name)
-                    }
-                }).catch(() => {
-                    setArr([])
-                    setLoaded(true)
-                })
-            } else {
-                History.push("/")
-            }
+            setKami(0)
+            fetch(fet + '/bnk48/getbnkkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
+                method :'get'
+            })
+              .then(response => response.json())
+              .then(data => {
+                if (data.obj != 'none' && (data.obj.name).toLowerCase() == c) {
+                  setKami(2)
+                } else {
+                  setKami(1)
+                }
+              });
         }
 
         const PlaySong = () => {
@@ -417,7 +344,91 @@ function capitalizeFirstLetter(string) {
             AOS.init({ duration: 1000 });
             document.body.scrollTop = document.documentElement.scrollTop = 0;
           
-            fetchLoad()
+            var url_string = window.location.href; 
+            var url = new URL(url_string);
+            var c = url.searchParams.get("name");
+            if (c != null && c != "") {
+                setSec('Loading Member description')
+                if (localStorage.getItem("loged") != null) {
+                    fetch(fet + '/bnk48/getbnkkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
+                      method :'get'
+                  })
+                    .then(response => response.json())
+                    .then(data => {
+                      if (data.obj != 'none' && (data.obj.name).toLowerCase() == c) {
+                        setKami(2)
+                      } else {
+                        setKami(1)
+                      }
+                    });
+                  } else {
+                    setKami(1)
+                  }
+                setmem(c)
+                fetch(fet + '/bnk48/getmember?name=' + c +'&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+                    method :'post'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.response == 'Not found this member in record.') {
+                        History.push("/")
+                    } else {
+                        fetch(fet + '/bnk48/getadsupdate', {
+                            method :'post'
+                        })
+                            .then(response => response.json())
+                            .then(dataads => {
+                                if (data.response.ge != "") {
+                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1)
+                                    setNewspop(obj)
+                                    setGEPoster(data.follower)
+                                    fetchfollower(data.follower)
+                                } else {
+                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1)
+                                    setNewspop(obj)
+                                    setGEPoster(data.follower)
+                                    fetchfollower(data.follower)
+                                }
+                            }).catch(() => {
+                                setNewspop([])
+                            })
+                            fetch(fet + '/bnk48/memberlivelist', {
+                                method :'post'
+                            })
+                                .then(response => response.json())
+                                .then(dataads => {
+                                    setMemLive(dataads)
+                                }).catch(() => {
+                                    setMemLive([])
+                                })
+                        setSec(data.response.name)
+                        const temp =[]
+                        temp.push(data.response)
+                        setArr(temp)
+                        if (data.response.ge != "") {
+                            fetch(fet + '/bnk48/getge?rankid=' + data.response.ge, {
+                                method :'post'
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    setGE(data.response)
+                                    setLoaded(true)
+                                }).catch(() => {
+                                  setGE([])
+                                  setLoaded(true)
+                                })
+                        } else {
+                            setLoaded(true)
+                        }
+                        BirthdayCheck(data.response.name)
+                    }
+                }).catch(() => {
+                    setArr([])
+                    setLoaded(true)
+                })
+            } else {
+                History.push("/")
+            }
             return (() => {
                 pm.pause()
             })

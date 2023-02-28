@@ -68,7 +68,7 @@ const fwoptions = {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-    const MemDetail = ({fet, kamio, setSec}) => {
+    const MemDetail = ({fet, kamio, setSec, triggerUpdate}) => {
 
         const classes = useStyles();
         const [open, setOpen] = React.useState(false);

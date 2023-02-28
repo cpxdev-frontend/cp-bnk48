@@ -100,7 +100,7 @@ const Memberlist = ({fet, setSec}) => {
           if (seGroup != '-' && seFill != "-") {
 
           if (seGroup == "team") {
-            newfilter = Arr.filter(x => x.team.filter(teamx => teamx == seFill))
+            newfilter = Arr.filter(x => x.team.filter(teamx => teamx == seFill).length > 0)
           } else if (seGroup == "gen") {
             newfilter = Arr.filter(x => x.gen == seFill)
           }

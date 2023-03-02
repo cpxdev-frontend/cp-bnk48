@@ -238,8 +238,16 @@ function capitalizeFirstLetter(string) {
                                 .then(response => response.text())
                                 .then(data => {
                                     setChange(false)
-                                    fetchLoad()
-                                    triggerUpdate()
+                                    if (data == "true") {
+                                        fetchLoad()
+                                        triggerUpdate()
+                                    } else {
+                                        Swal.fire({
+                                            title: "You just changed Kami-Oshi not long ago.",
+                                            icon: 'warning',
+                                            text: 'We recommend that you maybe change your Kami-Oshi on next month.',
+                                          })
+                                    }
                                 })
                                 .catch((error) => {
                                     alert("System will be temporary error for a while. Please try again")
@@ -260,8 +268,16 @@ function capitalizeFirstLetter(string) {
                         .then(response => response.text())
                         .then(data => {
                             setChange(false)
-                            triggerUpdate()
-                            fetchLoad()
+                            if (data == "true") {
+                                fetchLoad()
+                                triggerUpdate()
+                            } else {
+                                Swal.fire({
+                                    title: "You just changed Kami-Oshi not long ago.",
+                                    icon: 'warning',
+                                    text: 'We recommend that you maybe change your Kami-Oshi on next month.',
+                                  })
+                            }
                         })
                         .catch((error) => {
                             alert("System will be temporary error for a while. Please try again")
@@ -297,8 +313,16 @@ function capitalizeFirstLetter(string) {
                                         .then(response => response.text())
                                         .then(data => {        
                                             setChange(false)
-                                            triggerUpdate()
-                                            fetchLoad()
+                                            if (data == "true") {
+                                                fetchLoad()
+                                                triggerUpdate()
+                                            } else {
+                                                Swal.fire({
+                                                    title: "You just changed Kami-Oshi not long ago.",
+                                                    icon: 'warning',
+                                                    text: 'We recommend that you maybe change your Kami-Oshi on next month.',
+                                                })
+                                            }
                                         })
                                         .catch((error) => {
                                             alert("System will be temporary error for a while. Please try again")
@@ -319,8 +343,16 @@ function capitalizeFirstLetter(string) {
                                 .then(response => response.text())
                                 .then(data => {
                                     setChange(false)
-                                    triggerUpdate()
-                                    fetchLoad()
+                                    if (data == "true") {
+                                        fetchLoad()
+                                        triggerUpdate()
+                                    } else {
+                                        Swal.fire({
+                                            title: "You just changed Kami-Oshi not long ago.",
+                                            icon: 'warning',
+                                            text: 'We recommend that you maybe change your Kami-Oshi on next month.',
+                                          })
+                                    }
                                 })
                                 .catch((error) => {
                                     alert("System will be temporary error for a while. Please try again")

@@ -223,7 +223,7 @@ function capitalizeFirstLetter(string) {
                         text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
                         icon: 'question',
                         iconColor: 'rgb(203, 150, 194)',
-                        footer : (arr[0].graduated == true && arr[0].gen === 1 && arr[0].graduated == true ? 'This member is graduated. But you can still set as Your Kami-Oshi in memories until December 31, 2022' : null),
+                        footer: 'Notes: Since 2 March 2023, You can change your Kami-Oshi only one time per month for reduce system workload.',
                         showCancelButton: true
                       }).then((result) => {
                         if (result.isConfirmed) {
@@ -298,7 +298,7 @@ function capitalizeFirstLetter(string) {
                                 text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
                                 icon: 'question',
                                 iconColor: 'rgb(203, 150, 194)',
-                                footer : (arr[0].graduated == true && arr[0].gen === 1 && arr[0].graduated == true ? 'This member is graduated. But you can still set as Your Kami-Oshi in memories until December 31, 2022' : null),
+                                footer: 'Notes: Since 2 March 2023, You can change your Kami-Oshi only one time per month for reduce system workload.',
                                 showCancelButton: true
                               }).then((result) => {
                                 if (result.isConfirmed) {

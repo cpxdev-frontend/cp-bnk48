@@ -547,7 +547,7 @@ function capitalizeFirstLetter(string) {
                                             <marquee className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
                                         )}
                                          {item.sing13 != undefined && item.sing13 == '' && window.innerWidth > 600 && (
-                                            <p className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download solo member image.<br/></p>
+                                            <p className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
                                         )}
                                        {loadfollow ? (
                                             <Skeleton />

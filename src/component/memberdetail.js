@@ -492,32 +492,24 @@ function capitalizeFirstLetter(string) {
                    icon: 'error',
                  })
                } else {
-                   if (url.gen == 4) {
-                       Swal.fire({
-                           title: "BNK48 13th Single Gift Image is unavaliable for forth Generation members",
-                           icon: 'info',
-                           text: 'Let\'s support BNK48 4th Generation Debut Single \"Shoujotachi yo – วันใหม่\".',
-                         })
-                   } else {
-                       const img = 'https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/' +  (window.innerWidth > window.innerHeight ? 'landscape' : 'portrait') + '/' + url.name.toLowerCase() + '.jpg'
-                       Swal.fire({
-                           title: "BNK48 13th Single \"ii-Wake Maybe\" Image",
-                           imageUrl: img,
-                           showDenyButton: true,
-                           showCancelButton: true,
-                           confirmButtonText: 'Download',
-                           denyButtonColor: '#3AA504',
-                           denyButtonText: 'Listening it!',
-                           footer: 'You can hold tap or right click on image then save it to your phone or PC',
-                         }).then((result) => {
-                           /* Read more about isConfirmed, isDenied below */
-                           if (result.isConfirmed) {
-                             window.open(img, '_blank')
-                           } else if (result.isDenied) {
-                            window.open('https://bnk48.bfan.link/0227-IiwakeMaybeTH', '_blank')
-                          }
-                         })
+                const img = 'https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/' +  (window.innerWidth > window.innerHeight ? 'landscape' : 'portrait') + '/' + url.name.toLowerCase() + '.jpg'
+                Swal.fire({
+                    title: "BNK48 13th Single \"ii-Wake Maybe\" Image",
+                    imageUrl: img,
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Download',
+                    denyButtonColor: '#3AA504',
+                    denyButtonText: 'Listening it!',
+                    footer: 'You can hold tap or right click on image then save it to your phone or PC',
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      window.open(img, '_blank')
+                    } else if (result.isDenied) {
+                     window.open('https://bnk48.bfan.link/0227-IiwakeMaybeTH', '_blank')
                    }
+                  })
                }
         }
 

@@ -65,10 +65,6 @@ const fwoptions = {
     "Wishing you a wonderful day and all the most amazing things on your Big Day!"
 ]
 
-var url_string = window.location.href; 
-var url = new URL(url_string);
-var c = url.searchParams.get("name");
-
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -375,7 +371,9 @@ function capitalizeFirstLetter(string) {
             AOS.init({ duration: 1000 });
             document.body.scrollTop = document.documentElement.scrollTop = 0;
           
-           
+            var url_string = window.location.href; 
+            var url = new URL(url_string);
+            var c = url.searchParams.get("name");
             if (c != null && c != "") {
                 setSec('Loading Member description')
                 if (localStorage.getItem("loged") != null) {
@@ -448,7 +446,7 @@ function capitalizeFirstLetter(string) {
             return (() => {
                 pm.pause()
             })
-        }, [c])
+        }, [])
         function numberWithCommas(x) {
             const options = { 
               minimumFractionDigits: 2,

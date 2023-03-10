@@ -878,6 +878,7 @@ function App() {
            <DialogContent>
              {kamin != '-' ? (
            <ListItem onClick={() => {
+            History.push("/load")
             History.push("/member?name=" + kamin.toLowerCase())
             setMemDl(false)
            }} button>

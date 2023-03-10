@@ -433,7 +433,7 @@ function capitalizeFirstLetter(string) {
                         const temp =[]
                         temp.push(data.response)
                         setArr(temp)
-                       
+                        setLoaded(true)
                         BirthdayCheck(data.response.name)
                     }
                 }).catch(() => {

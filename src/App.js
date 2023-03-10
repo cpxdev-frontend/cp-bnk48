@@ -878,8 +878,9 @@ function App() {
            <DialogContent>
              {kamin != '-' ? (
            <ListItem onClick={() => {
+              const last = window.location.href
               History.push("/member?name=" + kamin.toLowerCase())
-              if (window.location.href.includes('/member')) {
+              if (last.includes('/member')) {
                 History.go(0)
               }
               setMemDl(false)

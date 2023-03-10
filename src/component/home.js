@@ -6,8 +6,8 @@ import { Typography, ListItem, Zoom, ListItemText,
     import AOS from "aos";
     import Swal from 'sweetalert2'
 
-// const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/bnkfullmemhd.jpg'
-const defaultTheme = 'https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/main13th.png'
+// const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@latest/bnk48/bnkfullmemhd.jpg'
+const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/main13th.png'
 const defaultvideo = 'https://www.youtube.com/embed/PwTexIMFsRw?autoplay=1&mute=1&controls=0&loop=1&playlist=PwTexIMFsRw'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     const History = useHistory()
@@ -247,7 +247,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
       </div>
     </>
   ) : (
-    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
   )}
   <hr />
   {onMonth ? (
@@ -278,7 +278,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
       )}
       </div>
   ) : (
-    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
   )}
   < hr />
   <CardHeader title={(<h3 data-aos="flip-up">Sample Members</h3>)} subheader={GenRan != 0 ? ordinal_suffix_of(GenRan) + ' Generation' : ''} className='mb-5' />
@@ -307,7 +307,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
       )}
       </div>
   ) : (
-    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
   )}
   </div>
         </>

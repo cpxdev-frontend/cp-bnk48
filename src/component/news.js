@@ -32,7 +32,7 @@ const News = ({fet, setSec}) => {
         {window.innerWidth >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/sub13th.jpg" width={window.innerWidth} />
+           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/sub13th.jpg" width={window.innerWidth} />
               </Fade>
       </div>
         )}
@@ -101,7 +101,7 @@ const News = ({fet, setSec}) => {
       ) : (
         <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
             <div className='text-center'>
-                <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
             </div>
         </Zoom>
       )}

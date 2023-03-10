@@ -777,7 +777,7 @@ function App() {
                   loginLoad ? (
                     <ListItem onClick={() => setMemDl(true)} button>
                     <ListItemIcon>
-                    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="40px" />
+                    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="40px" />
                     </ListItemIcon>
                     <ListItemText primary="Signing in" />
                   </ListItem>
@@ -911,7 +911,7 @@ function App() {
                        <ListItemText primary="Now you can also check BNK Token balance from this site" secondary='Please enter your iAM wallet code below in first time (Check it in iAM48 application)' />
                        </ListItem>
                 <ListItem>
-                      <ListItemText primary={(<TextField value={survey} onChange={(e) => setSur(e.target.value)} fullWidth label="Enter your wallet code here" disabled={TokenLoad} />)} secondary={TokenLoad == false ? (<Button onClick={() => setTokenDialog()} variant="contained" className='mt-1' color='primary'>Add</Button>):(<img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" className='mt-2' width="40px" />)} />
+                      <ListItemText primary={(<TextField value={survey} onChange={(e) => setSur(e.target.value)} fullWidth label="Enter your wallet code here" disabled={TokenLoad} />)} secondary={TokenLoad == false ? (<Button onClick={() => setTokenDialog()} variant="contained" className='mt-1' color='primary'>Add</Button>):(<img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" className='mt-2' width="40px" />)} />
                 </ListItem>
                </>
              )} */}
@@ -1075,22 +1075,22 @@ transitionDuration={500}
          <div className="row" onDoubleClick={() => setAllDone(true)}>
          <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 500 }}>
            <div className="col pr-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/1.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/1.jpg" width="100%" />
            </div>
          </Fade>
          <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 300 : 400 }}>
            <div className="col p-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/2.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/2.jpg" width="100%" />
            </div>
          </Fade>
          <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 400 : 300 }}>
            <div className="col p-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/3.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/3.jpg" width="100%" />
            </div>
          </Fade>
            <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 500 :  0 }}>
            <div className="col pl-0">
-               <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/pc/4.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/4.jpg" width="100%" />
            </div>
          </Fade>
          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
@@ -1114,257 +1114,257 @@ transitionDuration={500}
         <div className="row" onDoubleClick={() => setAllDone(true)}>
         <Fade in={styleFade != 0 ? true : false} timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 100 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/1.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/1.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 0 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/2.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/2.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 100 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/3.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/3.jpg" width="100%" />
           </div>
         </Fade>
           <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 300 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/4.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/4.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 200 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/5.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/5.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 300 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/6.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/6.jpg" width="100%" />
           </div>
         </Fade>
           <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 500 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/7.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/7.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 400 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/8.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/8.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 500 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/9.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/9.jpg" width="100%" />
           </div>
         </Fade>
           <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/10.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/10.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/11.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/11.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/12.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/12.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/13.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/13.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/14.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/14.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/15.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/15.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/16.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/16.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/17.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/17.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/18.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/18.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/19.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/19.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/20.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/20.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/21.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/21.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/22.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/22.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/23.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/23.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/24.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/24.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/25.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/25.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/26.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/26.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/27.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/27.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/28.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/28.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/29.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/29.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/30.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/30.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/31.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/31.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/32.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/32.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/33.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/33.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/34.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/34.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/35.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/35.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/36.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/36.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/37.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/37.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/38.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/38.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/39.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/39.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/40.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/40.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/41.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/41.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/42.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/42.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/43.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/43.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/44.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/44.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/45.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/45.jpg" width="100%" />
           </div>
         </Fade>
         <div className="w-100"></div>
           <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pr-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/46.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/46.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col p-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/47.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/47.jpg" width="100%" />
           </div>
         </Fade>
         <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 600 }}>
           <div className="col pl-0">
-              <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/bnk48/phone/48.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/48.jpg" width="100%" />
           </div>
         </Fade>
       

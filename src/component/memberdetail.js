@@ -125,7 +125,7 @@ function capitalizeFirstLetter(string) {
             }
 
     //    const GEdown = (mem) => {
-    //         fetch('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48thirdge/' + mem + '1.webp', {
+    //         fetch('https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@latest/bnk48thirdge/' + mem + '1.webp', {
     //             method :'get'
     //         })
     //             .then(response => {
@@ -135,7 +135,7 @@ function capitalizeFirstLetter(string) {
     //                 throw new Error('Something went wrong');
     //             })
     //             .then(data => {
-    //                 setGEPoster('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48thirdge/' + mem + '1.webp')
+    //                 setGEPoster('https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@latest/bnk48thirdge/' + mem + '1.webp')
     //             }).catch(() => {
     //                 setGEPoster('')
     //             });
@@ -478,7 +478,7 @@ function capitalizeFirstLetter(string) {
                    icon: 'error',
                  })
                } else {
-                const img = 'https://cdn.jsdelivr.net/gh/cpx2017/iamprofile@main/bnk13thsing/img/' +  (window.innerWidth > window.innerHeight ? 'landscape' : 'portrait') + '/' + url.name.toLowerCase() + '.jpg'
+                const img = 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/bnk13thsing/img/' +  (window.innerWidth > window.innerHeight ? 'landscape' : 'portrait') + '/' + url.name.toLowerCase() + '.jpg'
                 Swal.fire({
                     title: "BNK48 13th Single \"ii-Wake Maybe\" Image",
                     imageUrl: img,
@@ -548,7 +548,7 @@ function capitalizeFirstLetter(string) {
                                             )}
                                             </>
                                         )}
-                                    <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
+                                    <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
 {/*                                     
                                     {window.innerWidth > 1100 && kami == 2 && item.twelvethsingle != undefined && item.twelvethsingle.includes('bnk12thsing/main') && (
                                          <FormControlLabel
@@ -784,11 +784,11 @@ function capitalizeFirstLetter(string) {
                
                 <Zoom in={newspop == null || memLive == null ? true : false} timeout={{ enter: 200, exit: 200}}>
                         <div className='text-center pb-3'>
-                            <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+                            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                         </div>
                     </Zoom>
                     <Backdrop className={classes.backdrop} open={change}>
-                        <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" />
+                        <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" />
                     </Backdrop>
             </div>
         </>

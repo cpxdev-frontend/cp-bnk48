@@ -245,7 +245,7 @@ const AccountMana = ({fet, setSec}) => {
                     <Button onClick={() => Updateparam(2)} className='m-1' variant='contained' color='primary' disabled={data.yahooId != '' ? true : false}>{data.yahooId != '' ? 'Yahoo Account: Already Registered' : 'Link to Yahoo Account'}</Button>
             </div>
             <Backdrop className={classes.backdrop} open={Load}>
-            <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" />
+            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" />
         </Backdrop>
         </div>
      );

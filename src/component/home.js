@@ -237,6 +237,9 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
                        )
                      }
                      <CardContent>
+                      <Typography variant='subtitle1'>
+                        Notes: LSAT or LIVE Streaming Automated Trigger is system flow to check live streaming status from BNK48 Youtube Official is ready and display to everyone without team managed in backend. 
+                      </Typography>
                      </CardContent>
                      </Card>
                      </div>

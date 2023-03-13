@@ -74,7 +74,7 @@ const Graduated = ({fet, setSec}) => {
           ) : (
          <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket/bnk48/bnk1stgenfull.png" width={window.innerWidth} />
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/bnk1stgenfull.png" width={window.innerWidth} />
                </Fade>
               </div>
           )}

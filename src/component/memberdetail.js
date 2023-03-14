@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, FormControlLabel , Switch,Backdrop, Avatar } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
@@ -64,6 +64,8 @@ const fwoptions = {
     "Your birthday only comes once a year, so make sure this is the most memorable one ever and have a colorful day.",
     "Wishing you a wonderful day and all the most amazing things on your Big Day!"
 ]
+
+let c = useParams()
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -160,9 +162,6 @@ function capitalizeFirstLetter(string) {
         }
 
         const fetchLoad = () => {
-            var url_string = window.location.href; 
-            var url = new URL(url_string);
-            var c = url.searchParams.get("name");
             setKami(0)
             fetch(fet + '/bnk48/getbnkkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
                 method :'get'
@@ -371,9 +370,6 @@ function capitalizeFirstLetter(string) {
             AOS.init({ duration: 1000 });
             document.body.scrollTop = document.documentElement.scrollTop = 0;
           
-            var url_string = window.location.href; 
-            var url = new URL(url_string);
-            var c = url.searchParams.get("name");
             if (c != null && c != "") {
                 setSec('Loading Member description')
                 if (localStorage.getItem("loged") != null) {
@@ -621,7 +617,7 @@ function capitalizeFirstLetter(string) {
                                             <Button onClick={()=> PlaySong()}color="primary" variant="contained">Click here see effect</Button> 
                                             <div className='ml-3 pt-2'>
                                             <Share 
-                                                  url={"https://bnk48fan.cpxdev.tk/member?name=" + item.name.toLowerCase()}
+                                                  url={"https://bnk48fan.cpxdev.tk/member/" + item.name.toLowerCase()}
                                                   options={{ text: "(You can custom your blessing here)", hashtags: item.name+"BNK48,fanspaceplatform,48groupthailand,bnk48", size:"large"}}
                                                 id='blessingshare'
                                             />

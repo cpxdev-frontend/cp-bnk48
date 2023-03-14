@@ -97,7 +97,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
     }, [])
 
     const ChangeRoute = (name) =>{
-        History.push("/member?name=" + name.toLowerCase())
+        History.push("/member/" + name.toLowerCase())
     }
 
     return ( 

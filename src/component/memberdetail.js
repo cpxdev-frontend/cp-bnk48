@@ -70,7 +70,7 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
     const MemDetail = ({fet, kamio, setSec, triggerUpdate}) => {
-        let c = useParams()
+        let { c } = useParams()
 
         const classes = useStyles();
         const [open, setOpen] = React.useState(false);

@@ -65,12 +65,12 @@ const fwoptions = {
     "Wishing you a wonderful day and all the most amazing things on your Big Day!"
 ]
 
-let c = useParams()
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
     const MemDetail = ({fet, kamio, setSec, triggerUpdate}) => {
+        let c = useParams()
 
         const classes = useStyles();
         const [open, setOpen] = React.useState(false);

@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { Alert, AlertTitle } from '@material-ui/lab';
 import "aos/dist/aos.css";
+import { HubConnectionBuilder } from "@microsoft/signalr";
 
 import {
   GoogleAuthProvider,
@@ -156,7 +157,7 @@ var iiake
 
 function App() {
   const [Section, setSec] = React.useState('');
-
+  const [con, setConnection] = React.useState(null);
   const cls = useStyles();
   const History = useHistory()
   const [ Reduce, setReduce] = React.useState(false)
@@ -202,23 +203,55 @@ function App() {
     } 
   })
 
-   React.useEffect(() => {
-    checkloop = setInterval(() => {
-      if (Fet().ul != '') {
-        clearInterval(checkloop)
-         fetch(Fet().ul + '/bnk48/status').catch(() => {
-         document.getElementById("root").style.display = "none";
-         Swal.fire({
-           title: 'System is under maintenance',
-           text: 'You can contact us for ask more information.',
-           icon: 'error',
-           allowOutsideClick: false,
-           showConfirmButton: false
-         })
-        })
-      }
-    }, 1)
-   }, []);
+
+  React.useEffect(() => {
+    const newConnection = new HubConnectionBuilder()
+        .withUrl("https://cpxdevapi.azurewebspites.net/status")
+        .build();
+
+    setConnection(newConnection);
+}, []);
+
+React.useEffect(() => {
+  if (con) {
+      con.start()
+          .then(result => {
+            con.on("responsestatus", function (res) {
+              if (res =='fail') {
+                document.getElementById("root").style.display = "none";
+                Swal.fire({
+                  title: 'System is under maintenance',
+                  text: 'You can contact us for ask more information.',
+                  icon: 'error',
+                  allowOutsideClick: false,
+                  showConfirmButton: false
+                })
+              }
+          });
+          })
+          .catch(e => {
+            document.getElementById("root").style.display = "none";
+                   Swal.fire({
+                     title: 'System is under maintenance',
+                     text: 'You can contact us for ask more information.',
+                     icon: 'error',
+                     allowOutsideClick: false,
+                     showConfirmButton: false
+                   })
+          });
+          
+          con.onclose(error => {
+            document.getElementById("root").style.display = "none";
+            Swal.fire({
+              title: 'System is under maintenance',
+              text: 'You can contact us for ask more information.',
+              icon: 'error',
+              allowOutsideClick: false,
+              showConfirmButton: false
+            })
+        });
+  }
+}, [con]);
 
   const FetchKami = (fetdata) => {
     if (localStorage.getItem("loged") != null) {

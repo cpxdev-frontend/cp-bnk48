@@ -48,6 +48,7 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import TheatersIcon from '@material-ui/icons/Theaters';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
+import SlideshowIcon from '@material-ui/icons/Slideshow';
 
 import Home from './component/home';
 import MemberList from './component/members';
@@ -66,9 +67,10 @@ import FollowCom from './component/follow';
 import PageErr from './component/404'
 import Graduated from './component/finallygraduated';
 import RequestCom from './component/requesthour';
+import JankenCom from './component/janken';
 import RegisCom from './component/register';
 
-import GeCom from './component/geevent/ge';
+import GeCom from './component/ge';
 import GeMana from './component/geevent/gemanage';
 
 import Fet from './fetch'
@@ -670,6 +672,12 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary="News" />
                 </ListItem>
+                <ListItem component={Link} to='/janken' className={window.location.pathname == '/janken' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <SlideshowIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='BNK48 and CGM48 Janken Tournament 2023' />
+                </ListItem>
                 <ListItem component={Link} to='/livestream' className={window.location.pathname == '/livestream' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <LiveTvIcon className={spcLive ? 'text-success' : ''} />
@@ -844,6 +852,7 @@ function App() {
                   <Route path="/bnk48inmemories" render={() => <Graduated fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/theaterstage" render={() => <ShowTime fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/janken" render={() => <JankenCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   {
                     login && (

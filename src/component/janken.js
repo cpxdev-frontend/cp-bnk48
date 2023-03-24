@@ -100,7 +100,7 @@ const Janken = ({fet, setSec}) => {
                 </div>
             </CardContent>
         </Card>
-        <Card className='mt-4' data-aos="flip-up">
+        <Card className='mt-4' data-aos="flip-right">
             <CardContent className='row'>
                 <div className='col-md mt-5' data-aos="slide-right">
                     <Typography variant='h5'>Tournament Host and Judge</Typography>
@@ -237,7 +237,7 @@ const Janken = ({fet, setSec}) => {
                 </div>
             </CardContent>
         </Card>
-        <Card data-aos="zoom-out-down" className='mt-4'>
+        <Card data-aos="zoom-in-down" className='mt-4'>
             <CardContent className='row'>
                 <div className='col-md'>
                     <Typography variant='h5'>Tournament Result</Typography>

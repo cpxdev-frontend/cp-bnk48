@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, FormControlLabel , Switch,Backdrop, Avatar } from '@material-ui/core';
+import { Card, Fade, Grow, Drawer, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, FormControlLabel , Switch,Backdrop, Avatar, CardActionArea } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -25,6 +25,8 @@ import { Fireworks } from 'fireworks-js/dist/react'
 import Swal from 'sweetalert2'
 import AOS from "aos";
 
+import IRBio from './ir/bio'
+
 var pm = new Audio('https://p.scdn.co/mp3-preview/26031551568cba193fbb55d6e4dcf3eb8fb99b04?cid=774b29d4f13844c495f206cafdad9c86')
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -47,6 +49,13 @@ const fwoptions = {
   const useStyles = makeStyles((theme) => ({
     appBar: {
       position: 'relative',
+    },
+    drawer: {
+      width: 400,
+      flexShrink: 0,
+    },
+    drawerPaper: {
+      width: 400,
     },
     title: {
       marginLeft: theme.spacing(2),
@@ -73,7 +82,7 @@ function capitalizeFirstLetter(string) {
         let { c } = useParams()
 
         const classes = useStyles();
-        const [open, setOpen] = React.useState(false);
+        const [irtog, setIRtog] = React.useState(false);
         const History = useHistory()
         const [mem, setmem] = React.useState('');
         const [arr, setArr] = React.useState([]); 
@@ -545,21 +554,7 @@ function capitalizeFirstLetter(string) {
                                             </>
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
-{/*                                     
-                                    {window.innerWidth > 1100 && kami == 2 && item.twelvethsingle != undefined && item.twelvethsingle.includes('bnk12thsing/main') && (
-                                         <FormControlLabel
-                                         className='ml-2 pt-4'
-                                         control={
-                                           <Switch
-                                             checked={customback}
-                                             name="reduce"
-                                             onChange={()=> setBack(!customback)}
-                                             color="secondary"
-                                           />
-                                         }
-                                         label={"Show your Kami-Oshi as Background on BNK48 Fan Space Homepage"}
-                                       />
-                                    )} */}
+
                                         <hr />
                                     <>
                                      {item.shihainin != undefined && (
@@ -569,7 +564,9 @@ function capitalizeFirstLetter(string) {
                                         <p className="mb-3 badge badge-pill badge-warning">BNK48 {item.captain}</p>
                                     )}
                                     {item.ir != undefined && (
-                                        <p className="mb-3 badge badge-pill badge-info"  data-toggle="tooltip" data-placement="top" title={'[Independent Records] ' + item.ir.desc}>{item.ir.title}</p>
+                                        <CardActionArea className="mb-3" onClick={() => setIRtog(true)}>
+                                            <p className="badge badge-pill badge-info"  data-toggle="tooltip" data-placement="top" title={'[Independent Records] ' + item.ir.desc}>{item.ir.title}</p>
+                                        </CardActionArea>
                                     )}
                                         <h6><LocationOnIcon fontSize="small"/> {item.province}</h6>
                                         {birthday ? (
@@ -629,6 +626,26 @@ function capitalizeFirstLetter(string) {
                                 </div>
                         </Fade>
                     </Card>
+
+
+                {
+                    item.ir != undefined && (
+                        <Drawer
+                        className={classes.drawer}
+                                anchor='right'
+                                variant="temporary"
+                                color="primary"
+                                open={irtog}
+                                onClose={()=> setIRtog(false)}
+                                classes={{
+                                    paper: classes.drawerPaper
+                                  }}
+                            >
+                               <IRBio irItem={item.ir} /> 
+                        </Drawer>
+                    )
+                }
+                    
                             </div>
                     ))}
                     </>

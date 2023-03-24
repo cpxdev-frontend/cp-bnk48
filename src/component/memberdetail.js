@@ -51,11 +51,11 @@ const fwoptions = {
       position: 'relative',
     },
     drawer: {
-      width: 400,
+      width: window.innerWidth < 700 ? '85%' : 400,
       flexShrink: 0,
     },
     drawerPaper: {
-      width: 400,
+        width: window.innerWidth < 700 ? '85%' : 400,
     },
     title: {
       marginLeft: theme.spacing(2),
@@ -641,7 +641,7 @@ function capitalizeFirstLetter(string) {
                                     paper: classes.drawerPaper
                                   }}
                             >
-                               <IRBio irItem={item.ir} /> 
+                               <IRBio fet={fet} irItem={item.ir} /> 
                         </Drawer>
                     )
                 }

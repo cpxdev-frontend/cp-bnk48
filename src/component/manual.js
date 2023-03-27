@@ -18,7 +18,7 @@ import FanDetail from '../img/FandomDetail.png'
 import AddEv from '../img/addevent.png'
 
 
-const HomeCom = ({fet, setSec}) => {
+const HomeCom = ({fet, setSec, width}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);
     const [Loaded2, setLoaded2] = React.useState(false);
@@ -62,14 +62,14 @@ const HomeCom = ({fet, setSec}) => {
 
     return ( 
         <>
-        {window.innerWidth >1200 && (
+        {width >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa"  width={window.innerWidth} />
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa"  width={width} />
               </Fade>
       </div>
         )}
-             {window.innerWidth >1200 ? (
+             {width >1200 ? (
             <div className="cover mt-4">
             <Grow in={true} timeout={1000}>
           <Card className="col-md-4 m-5">

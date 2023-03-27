@@ -15,7 +15,7 @@ const timeline = {
     live: 0
 }
 
-const Janken = ({fet, setSec}) => {
+const Janken = ({fet, setSec, width}) => {
 
     const [Loaded, setLoaded] = React.useState(false);
     const [news, setNews] = React.useState([]);
@@ -28,14 +28,14 @@ const Janken = ({fet, setSec}) => {
 
     return ( 
         <>
-        {window.innerWidth >1200 && (
+        {width >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/sub13th.jpg" width={window.innerWidth} />
+           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/sub13th.jpg" width={width} />
               </Fade>
       </div>
         )}
-             {window.innerWidth >1200 ? (
+             {width >1200 ? (
             <div className="cover mt-4">
             <Grow in={true} timeout={1000}>
           <Card className="col-md-4 m-5">

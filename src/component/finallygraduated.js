@@ -6,7 +6,7 @@ import AOS from "aos";
 import { Share } from 'react-twitter-widgets'
 import moment from 'moment'
 
-const Graduated = ({fet, setSec}) => {
+const Graduated = ({fet, setSec, width}) => {
 
     React.useEffect(() => {
         setSec('Graduation Gallery')
@@ -65,7 +65,7 @@ const Graduated = ({fet, setSec}) => {
 
     return ( 
         <>
-        {window.innerWidth > 1100 && (
+        {width > 1100 && (
           <div class="video-background">
           {localStorage.getItem('lowgraphic') == null ? (
             <div class="video-foreground" data-aos="zoom-out-up">
@@ -74,7 +74,7 @@ const Graduated = ({fet, setSec}) => {
           ) : (
          <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/bnk1stgenfull.png" width={window.innerWidth} />
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/bnk1stgenfull.png" width={width} />
                </Fade>
               </div>
           )}

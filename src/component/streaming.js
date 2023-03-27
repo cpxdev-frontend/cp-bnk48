@@ -6,7 +6,7 @@ import { Typography, ListItem, Zoom, Container,
     import CircularProgress from '@material-ui/core/CircularProgress';
     import AOS from "aos";
 
-const MusicSt = ({fet, setSec}) => {
+const MusicSt = ({fet, setSec, width}) => {
     const [data, setData] = React.useState([])
     const [hover, setHover] = React.useState('')
     const [Loaded, setLoaded] = React.useState(false);
@@ -61,10 +61,10 @@ const MusicSt = ({fet, setSec}) => {
           </Card>
          </Zoom>
         )}
-            {window.innerWidth >1200 && (
+            {width >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/sub13th.jpg" width={window.innerWidth} />
+           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/sub13th.jpg" width={width} />
               </Fade>
       </div>
         )}
@@ -72,7 +72,7 @@ const MusicSt = ({fet, setSec}) => {
          <Grid container spacing={2} className='justify-content-center mt-3'>
               {data.length > 0 ? data.map((item,i) => (item.release_date.includes(new Date().getFullYear()) || item.release_date.includes(new Date().getFullYear() - 1)) ? (
                    <Grid key={item.id} item md={3} data-aos="zoom-in">
-                <Card className={'text-center mb-3' + (window.innerWidth < 700 ? ' bnktheme' : '')}>
+                <Card className={'text-center mb-3' + (width < 700 ? ' bnktheme' : '')}>
                   <CardContent>
                     <CardActionArea onClick={() => window.open(item.external_urls.spotify, '_blank').focus()}>
                   <Typography variant="h5" component="h2">

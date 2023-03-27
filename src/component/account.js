@@ -28,7 +28,7 @@ import {
       },
     }));
 
-const AccountMana = ({fet, setSec}) => {
+const AccountMana = ({fet, setSec, width}) => {
     const [Load, setLoad] = React.useState(false);
     const History = useHistory()
     const classes = useStyles();
@@ -208,7 +208,7 @@ const AccountMana = ({fet, setSec}) => {
                     ) : (
                         <p>Your Kami-Oshi is <a className='cur' onClick={() => History.push('/member/' + data.obj.name.toLowerCase())}>{data.obj.fullnameEn[0]} {data.obj.fullnameEn[1]} ({data.obj.name} BNK48)</a></p>
                     )}
-                    {window.innerWidth > 1100 && data.obj != null && data.obj.twelvethsingle != undefined && data.obj.twelvethsingle.includes('bnk12thsing/main') && (
+                    {width > 1100 && data.obj != null && data.obj.twelvethsingle != undefined && data.obj.twelvethsingle.includes('bnk12thsing/main') && (
                           <FormControlLabel
                           className='ml-2 pt-4'
                           control={
@@ -222,7 +222,7 @@ const AccountMana = ({fet, setSec}) => {
                           label={"Show your Kami-Oshi as Background on BNK48 Fan Space Homepage (BNK48 12th Single \"Believers\" campaign)"}
                         />
                     )}
-                    {window.innerWidth > 1100 && data.obj != null && data.obj.gen == 1 && (
+                    {width > 1100 && data.obj != null && data.obj.gen == 1 && (
                           <FormControlLabel
                           className='ml-2 pt-4'
                           control={

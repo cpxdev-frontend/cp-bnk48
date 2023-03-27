@@ -78,7 +78,7 @@ const fwoptions = {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-    const MemDetail = ({fet, kamio, setSec, triggerUpdate}) => {
+    const MemDetail = ({fet, kamio, setSec, triggerUpdate, width}) => {
         let { c } = useParams()
 
         const classes = useStyles();
@@ -483,7 +483,7 @@ function capitalizeFirstLetter(string) {
                    icon: 'error',
                  })
                } else {
-                const img = 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/bnk13thsing/img/' +  (window.innerWidth > window.innerHeight ? 'landscape' : 'portrait') + '/' + url.name.toLowerCase() + '.jpg'
+                const img = 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/bnk13thsing/img/' +  (width > window.innerHeight ? 'landscape' : 'portrait') + '/' + url.name.toLowerCase() + '.jpg'
                 Swal.fire({
                     title: "BNK48 13th Single \"ii-Wake Maybe\" Image",
                     imageUrl: img,
@@ -507,8 +507,8 @@ function capitalizeFirstLetter(string) {
         return (  
         <>
             <div className="pt-5 pb-2">
-                <h3 className={window.innerWidth > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' BNK48' : 'Fetching Header'}</h3>
-                <Breadcrumbs className={window.innerWidth > 600 ? ' ml-5' : ' ml-3'} aria-label="breadcrumb">
+                <h3 className={width > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' BNK48' : 'Fetching Header'}</h3>
+                <Breadcrumbs className={width > 600 ? ' ml-5' : ' ml-3'} aria-label="breadcrumb">
                     <Link color="inherit" onClick={() => History.push("/memberlist")}>
                         Members
                     </Link>
@@ -522,8 +522,8 @@ function capitalizeFirstLetter(string) {
                             <Fade in={play} timeout={{enter:300,exit:500}}>
                             <Fireworks options={fwoptions} style={fwstyle} />
                             </Fade>
-                            <Card className={(window.innerWidth > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"} key={i}>
-                            <div className={window.innerWidth > 1600 ? 'col-md-3 mb-1' : 'col-lg-3 mb-1'}>
+                            <Card className={(width > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"} key={i}>
+                            <div className={width > 1600 ? 'col-md-3 mb-1' : 'col-lg-3 mb-1'}>
                                 <Zoom in={true} timeout={600} style={{ transitionDelay: 0}}>
                                         <div className='p-3 pt-5'>
                                         <Avatar src={item.img} style={{width: '100%', height: '100%'}} />
@@ -534,10 +534,10 @@ function capitalizeFirstLetter(string) {
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                                     </h4>
-                                        {item.sing13 != undefined && item.sing13 == '' && window.innerWidth <= 600 && (
+                                        {item.sing13 != undefined && item.sing13 == '' && width <= 600 && (
                                             <marquee className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
                                         )}
-                                         {item.sing13 != undefined && item.sing13 == '' && window.innerWidth > 600 && (
+                                         {item.sing13 != undefined && item.sing13 == '' && width > 600 && (
                                             <p className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
                                         )}
                                        {loadfollow ? (
@@ -652,8 +652,8 @@ function capitalizeFirstLetter(string) {
                 ) : (
                     <Grow in={!Loaded} timeout={600}>
                             <div>
-                            <Card className={(window.innerWidth > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"}>
-                            <div className={window.innerWidth > 1600 ? 'col-md-4 mb-1' : 'col-lg-4 mb-1'}>
+                            <Card className={(width > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"}>
+                            <div className={width > 1600 ? 'col-md-4 mb-1' : 'col-lg-4 mb-1'}>
                                 <Skeleton height={530} />
                             </div>
                                 <div className='col-md mt-5 mb-5'>

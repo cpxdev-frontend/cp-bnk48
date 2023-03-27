@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Typography, ListItem, Zoom, ListItemText,
     Card, CardActionArea, CardContent, CardMedia, Grow, Fade, Tooltip } from '@material-ui/core';
 
-const ShowTime = ({fet, setSec}) => {
+const ShowTime = ({fet, setSec, width}) => {
     const [Loaded, setLoaded] = React.useState(false);
     const [Arr, setArr] = React.useState([]);
     const [open, setOpen] = React.useState(false);
@@ -49,11 +49,11 @@ const ShowTime = ({fet, setSec}) => {
         {/* <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus, 4th Floor at The Mall Bangkapi. See navigate to Theater from <a href="https://goo.gl/maps/CFvM1PSbY7smBPkh9" target="_blank">here</a></p> */}
         <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus (New BNK48 Campus will be announcement soon. Thank you for support all Theater Stage show. See at new place!)</p>
         {Loaded ? (
-             <div className={"stage justify-content-center pt-5" + (window.innerWidth > 600 ? ' pl-5 pr-5' : ' pl-3 pr-3')}>
+             <div className={"stage justify-content-center pt-5" + (width > 600 ? ' pl-5 pr-5' : ' pl-3 pr-3')}>
              <br />
              <div className='row'>
              {Arr.length > 0 ? Arr.map((item,i) => (
-                 <div className={"col-md-6 col-sm-12 mb-5" + (window.innerWidth > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
+                 <div className={"col-md-6 col-sm-12 mb-5" + (width > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
                  <Card>
                     <CardActionArea onClick={() => window.open("https://ticket.bnk48.com", "_blank")}>
                         <CardContent>

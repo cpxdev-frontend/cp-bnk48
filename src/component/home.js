@@ -9,7 +9,7 @@ import { Typography, ListItem, Zoom, ListItemText,
 // const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@latest/bnk48/bnkfullmemhd.jpg'
 const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/main13th.png'
 const defaultvideo = 'https://www.youtube.com/embed/PwTexIMFsRw?autoplay=1&mute=1&controls=0&loop=1&playlist=PwTexIMFsRw'
-const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
+const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);
     const [Loaded2, setLoaded2] = React.useState(false);
@@ -102,7 +102,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
 
     return ( 
         <>
-        {window.innerWidth > 1100 && (
+        {width > 1100 && (
           <div class="video-background">
           {localStorage.getItem('lowgraphic') == null ? (
             <div class="video-foreground" data-aos="zoom-out-up">
@@ -111,13 +111,13 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec}) => {
           ) : (
          <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
-                <img src={urc} width={window.innerWidth} />
+                <img src={urc} width={width} />
                </Fade>
               </div>
           )}
       </div>
         )}
-             {window.innerWidth >1200 ? (
+             {width >1200 ? (
             <div className="cover mt-4">
 
           <Card data-aos="zoom-in" className="col-md-4 m-5">

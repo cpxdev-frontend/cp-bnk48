@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardActionArea} from '@material-ui/core'
 
-const API = ({setSec}) => {
+const API = ({setSec, width}) => {
     const [ stat, setstat] = React.useState(null);
     const APITest = () => {
       setSec('API Service')
@@ -20,7 +20,7 @@ const API = ({setSec}) => {
       }, [])
     return ( 
         <Card>
-            <CardContent className={window.innerWidth > 700 ? 'pl-5 pr-5' : 'pl-2 pr-2'}>
+            <CardContent className={width > 700 ? 'pl-5 pr-5' : 'pl-2 pr-2'}>
                 <CardHeader title='API Service' subheader='Unofficial BNK48 Members Public API' />
                 <hr />
                 <p>We also serve BNK48 members profile on Public API service. Member profile contents which you see in website are using this service also. Please see our <a href='https://apicenter.cpxdev.tk/bnk48' target='_blank'>documentation</a> here</p>

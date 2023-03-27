@@ -2,20 +2,20 @@ import React from 'react';
 import { Typography, ListItem, Zoom, ListItemText,
     Card, CardActionArea, CardContent, CardMedia, Grow, Fade } from '@material-ui/core';
 
-const ErrCom = ({setSec}) => {
+const ErrCom = ({setSec, width}) => {
   React.useEffect(() => {
     setSec('Page not found')
   }, [])
     return ( 
       <>
-      {window.innerWidth >1200 && (
+      {width >1200 && (
         <div class="video-background">
          <Fade in={true} timeout={800}>
          <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/main13th.png" width={window.innerWidth} />
             </Fade>
     </div>
       )}
-           {window.innerWidth >1200 ? (
+           {width >1200 ? (
           <div className="cover mt-4">
           <Grow in={true} timeout={1000}>
         <Card className="col-md-4 m-5">

@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Ge = ({fet, timesch, setSec}) => {
+const Ge = ({fet, timesch, setSec, width}) => {
   const History = useHistory()
   const classes = useStyles();
 
@@ -259,7 +259,7 @@ const Ge = ({fet, timesch, setSec}) => {
 
     return ( 
         <>
-           {window.innerWidth > 1200 && (
+           {width > 1200 && (
               <div class="video-background">
               {localStorage.getItem('lowgraphic') == null ? (
                 <div class="video-foreground">
@@ -267,12 +267,12 @@ const Ge = ({fet, timesch, setSec}) => {
               </div>
               ) : (
                 <Fade in={true} timeout={800}>
-                <img src="https://pbs.twimg.com/media/FP90nHfacAIvUXu?format=webp&name=large"  width={window.innerWidth} />
+                <img src="https://pbs.twimg.com/media/FP90nHfacAIvUXu?format=webp&name=large"  width={width} />
                   </Fade>
               )}
           </div>
             )}
-                {window.innerWidth >1200 ? (
+                {width >1200 ? (
                 <div className="cover mt-4">
                 <Grow in={true} timeout={1000}>
               <Card className="col-md-4 m-5">
@@ -333,9 +333,9 @@ const Ge = ({fet, timesch, setSec}) => {
           )}
 
 
-        <div className={'stage ' + (window.innerWidth > 700 ? 'p-5' : 'p-2')}>
+        <div className={'stage ' + (width > 700 ? 'p-5' : 'p-2')}>
           <div className='row mt-5 ml-1 mr-1'>
-          <Card className={(window.innerWidth > 700 ? '' : 'mb-5') + ' col-md-5'} data-aos='zoom-in-right'>
+          <Card className={(width > 700 ? '' : 'mb-5') + ' col-md-5'} data-aos='zoom-in-right'>
             <CardContent>
               <CardHeader title="TimeLine of Election" subheader="Notes: Timeline are subject to change as appropriate due to the situation of the epidemic of Covid-19." />
               <hr />
@@ -437,7 +437,7 @@ const Ge = ({fet, timesch, setSec}) => {
               </div>
             </CardContent>
           </Card>
-          <Card className={(window.innerWidth > 700 ? 'ml-3' : '') + ' col-md'} data-aos={window.innerWidth > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+          <Card className={(width > 700 ? 'ml-3' : '') + ' col-md'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>
             <CardHeader title="General Election Candidate Summary" subheader='We have 62 BNK48 and CGM48 members who candidated' />
               <hr />
@@ -483,10 +483,10 @@ const Ge = ({fet, timesch, setSec}) => {
               <hr />
               <div className='text-center' data-aos='zoom-out'>
                 {
-                  window.innerWidth >1200 ? (
-                    <iframe src="https://datastudio.google.com/embed/reporting/79887e4e-cf19-4dd8-97f8-d08362c73bb2/page/F6aqC" frameborder="0" width="90%" height={window.innerWidth< 600 ? "500px" : '700px'} />
+                  width >1200 ? (
+                    <iframe src="https://datastudio.google.com/embed/reporting/79887e4e-cf19-4dd8-97f8-d08362c73bb2/page/F6aqC" frameborder="0" width="90%" height={width< 600 ? "500px" : '700px'} />
                   ) : (
-                    <iframe src="https://datastudio.google.com/embed/reporting/b7c85307-2842-4e6e-936d-343290b1b0a7/page/F6aqC" frameborder="0" width="100%" height={window.innerWidth< 600 ? "500px" : '700px'} />
+                    <iframe src="https://datastudio.google.com/embed/reporting/b7c85307-2842-4e6e-936d-343290b1b0a7/page/F6aqC" frameborder="0" width="100%" height={width< 600 ? "500px" : '700px'} />
                   )
                 }
              

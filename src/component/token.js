@@ -4,7 +4,7 @@ import { Typography, ListItem, Zoom, ListItemText,
     import { useHistory } from 'react-router-dom';
     import AOS from "aos";
 
-const HomeCom = ({fet, gp, setSec}) => {
+const HomeCom = ({fet, gp, setSec, width}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);
     const [Loaded2, setLoaded2] = React.useState(false);
@@ -68,7 +68,7 @@ const HomeCom = ({fet, gp, setSec}) => {
 
     return ( 
         <>
-        {window.innerWidth > 1100 && (
+        {width > 1100 && (
           <div class="video-background">
           {localStorage.getItem('lowgraphic') == null ? (
             <div class="video-foreground">
@@ -76,12 +76,12 @@ const HomeCom = ({fet, gp, setSec}) => {
           </div>
           ) : (
             <Fade in={true} timeout={800}>
-                <img src="https://img.youtube.com/vi/w3t-o12L9Cc/maxresdefault.jpg" width={window.innerWidth} />
+                <img src="https://img.youtube.com/vi/w3t-o12L9Cc/maxresdefault.jpg" width={width} />
               </Fade>
           )}
       </div>
         )}
-             {window.innerWidth >1200 ? (
+             {width >1200 ? (
             <div className="cover mt-4">
             <Grow in={true} timeout={1000}>
           <Card className="col-md-4 m-5">

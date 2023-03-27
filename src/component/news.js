@@ -4,7 +4,7 @@ import { Typography, ListItem, Zoom, IconButton,
     import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AOS from "aos";
 
-const News = ({fet, setSec}) => {
+const News = ({fet, setSec, width}) => {
 
     const [Loaded, setLoaded] = React.useState(false);
     const [news, setNews] = React.useState([]);
@@ -29,14 +29,14 @@ const News = ({fet, setSec}) => {
 
     return ( 
         <>
-        {window.innerWidth >1200 && (
+        {width >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/sub13th.jpg" width={window.innerWidth} />
+           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/sub13th.jpg" width={width} />
               </Fade>
       </div>
         )}
-             {window.innerWidth >1200 ? (
+             {width >1200 ? (
             <div className="cover mt-4">
             <Grow in={true} timeout={1000}>
           <Card className="col-md-4 m-5">
@@ -77,7 +77,7 @@ const News = ({fet, setSec}) => {
           )}
   <div className="stage pb-2">
       {Loaded ? (
-           <div className={window.innerWidth > 600 ? 'row pt-5 m-5' : 'row pt-4 m-2'}>
+           <div className={width > 600 ? 'row pt-5 m-5' : 'row pt-4 m-2'}>
                {news.length > 0 ? news.map((item, i) => i < 30 && (
                    <div className='col-md-12 mb-5' data-aos="zoom-in-down">
                    <Card>

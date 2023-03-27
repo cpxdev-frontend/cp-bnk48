@@ -189,7 +189,7 @@ function App() {
 
   const ref = React.useRef(null)
   const [footerHeight, setFooterH] = React.useState(0)
-
+ 
   React.useEffect(() => {
     const currentP = document.documentElement.scrollTop || document.body.scrollTop;
     window.scrollTo(0, currentP + 1);
@@ -900,11 +900,13 @@ React.useEffect(() => {
                 </div>
                 
                   
-        <footer className="bg-white text-center pt-2 pb-2 bnktheme fixed-bottom" ref={ref}>
-          Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
-          <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for BNK48 supporting only.
-        </footer>
+  
 
+
+        <footer className={'fixed-bottom text-center text-dark bg-light'} ref={ref}>
+        <h6>Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
+        <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for BNK48 supporting only.</h6>
+      </footer>
 
         {localStorage.getItem("loged") != null && (
            <Dialog

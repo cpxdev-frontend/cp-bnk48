@@ -133,7 +133,7 @@ const Memberlist = ({fet, setSec}) => {
         <h3 className='text-center mt-4'>Members</h3>
         <br />
         <div className="stage text-center pt-5 pb-2">
-            <Card className={"text-left " + (window.innerWidth > 700 ? 'ml-5 mr-5' : 'ml-2 mr-2')}>
+            <Card className={"text-left " + (window.innerWidth > 700 ? 'ml-3 mr-3' : 'ml-2 mr-2')}>
             <TextField label="Search Member" value={search} className="m-3" onChange={(e) => SearchEng(e.target.value)} />
             <TextField
                 select
@@ -190,12 +190,12 @@ const Memberlist = ({fet, setSec}) => {
                      </CardContent>
                  </Card>
              </Zoom>
-            
+             <Grid item xs={12}>
             {Loaded ? (
-                <Grid container spacing={2} className='justify-content-center mt-3'>
+                <Grid container style={{overflow: 'hidden'}} className='mt-3'>
                     {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
                        <Grid item md={3} data-aos="zoom-in">
-                       <div className='mb-5' onClick={() => ChangeRoute(item.name)}>
+                       <div className='mb-5 p-1' onClick={() => ChangeRoute(item.name)}>
                          <Card>
                              <CardActionArea>
                              <CardMedia
@@ -233,6 +233,7 @@ const Memberlist = ({fet, setSec}) => {
                 <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                 </Zoom>
             )}
+            </Grid>
         </div>
         </>
      );

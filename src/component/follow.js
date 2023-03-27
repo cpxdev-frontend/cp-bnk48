@@ -3,10 +3,11 @@ import { Typography, ListItem, Zoom, ListItemText,
     Card, CardHeader, CardContent, CardMedia, Grow, Fade } from '@material-ui/core';
     import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+    import { useHistory } from 'react-router-dom';
+
 const Contact = ({fet, setSec, width}) => {
 
-    const [Loaded, setLoaded] = React.useState(false);
-    const [news, setNews] = React.useState([]);
+    const History = useHistory()
     React.useEffect(() => {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
        
@@ -15,14 +16,14 @@ const Contact = ({fet, setSec, width}) => {
 
     return ( 
         <>
-        {width >1200 && (
+        {width > 700 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/main13th.png" width={window.innerWidth} />
               </Fade>
       </div>
         )}
-             {width >1200 ? (
+             {width > 700 ? (
             <div className="cover mt-4">
             <Grow in={true} timeout={1000}>
           <Card className="col-md-4 m-5">
@@ -53,6 +54,9 @@ const Contact = ({fet, setSec, width}) => {
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Also Streaming Platform" secondary={(<a href='/music' target='_blank'>Go to Music page</a>)} />
+                  </ListItem>
+                  <ListItem onClick={() => History.push('/48group')} className='cur'>
+                    <ListItemText primary="48 Group Network" secondary='See another 48 group band in here.' />
                   </ListItem>
                 </Typography>
               </CardContent>
@@ -90,6 +94,9 @@ const Contact = ({fet, setSec, width}) => {
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Also Streaming Platform" secondary={(<a href='/music' target='_blank'>Go to Music page</a>)} />
+                  </ListItem>
+                  <ListItem onClick={() => History.push('/48group')} className='cur'>
+                    <ListItemText primary="48 Group Network" secondary='See another 48 group band in here.' />
                   </ListItem>
                 </Typography>
               </CardContent>

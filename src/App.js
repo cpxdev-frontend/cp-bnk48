@@ -20,6 +20,7 @@ import {
   deleteUser
 } from "firebase/auth";
 import auth from "./fbindex";
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import 'sweetalert2/dist/sweetalert2.min.css'
 import moment from 'moment'
@@ -70,6 +71,7 @@ import Graduated from './component/finallygraduated';
 import RequestCom from './component/requesthour';
 import JankenCom from './component/janken';
 import RegisCom from './component/register';
+import Fenetwork from './component/48groupnetwork';
 
 import GeCom from './component/ge';
 import GeMana from './component/geevent/gemanage';
@@ -894,12 +896,13 @@ React.useEffect(() => {
                   <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-                  <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/bnk48inmemories" render={() => <Graduated fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/theaterstage" render={() => <ShowTime fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/janken" render={() => <JankenCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/48group" render={() => <Fenetwork fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   {
                     login && (
                       <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

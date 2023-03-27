@@ -192,7 +192,7 @@ const Memberlist = ({fet, setSec}) => {
              </Zoom>
              <Grid item xs={12}>
             {Loaded ? (
-                <Grid container style={{overflow: 'hidden'}} className='mt-3'>
+                <Grid container className='mt-3'>
                     {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
                        <Grid item md={3} data-aos="zoom-in">
                        <div className='mb-5 p-1' onClick={() => ChangeRoute(item.name)}>

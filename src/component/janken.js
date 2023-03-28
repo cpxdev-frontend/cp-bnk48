@@ -1,9 +1,10 @@
 import React from 'react';
 import { Typography, ListItem, Zoom, IconButton,
-    Card, CardHeader, CardContent, ListItemText, Grow, Fade,ListItemSecondaryAction, List, Checkbox } from '@material-ui/core';
+    Card, CardHeader, CardContent, ListItemText, Grow, Fade,ListItemSecondaryAction, List, Checkbox, CardActionArea, Button } from '@material-ui/core';
     import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AOS from "aos";
 import moment from 'moment';
+import Swal from 'sweetalert2';
 
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
@@ -15,14 +16,71 @@ const timeline = {
     live: 0
 }
 
-const Janken = ({fet, setSec, width}) => {
+const pageid = [
+  "4oXKD",
+  "p_aa0w3k3m4c",
+  "p_crbfzg4m4c",
+  "p_py0ugr4m4c",
+  "p_5ahs135m4c",
+  "p_lfwmnj6m4c"
+]
 
-    const [Loaded, setLoaded] = React.useState(false);
-    const [news, setNews] = React.useState([]);
+const Janken = ({fet, setSec, width}) => {
+  const [position, setPosition] = React.useState(0);
+    const [result, setResult] = React.useState("https://lookerstudio.google.com/embed/reporting/8b2d0acb-54ff-4d24-8ca0-fb77209be62f/page/" + pageid[position]);
+    const [max, setMax] = React.useState(0);
+    const FetchUpt = () => {
+      let tem = max
+      if (max == 5) {
+        Swal.fire({
+          title: "Too many attempt to  fetch result",
+          icon: 'error',
+          text: 'We temporary blocked your refresh for system performance reason.',
+        })
+      } else {
+        const link = result
+        setResult('')
+        setTimeout(() => {
+          setResult(link)
+        }, 100);
+        tem += 1
+        setMax(tem)
+      }
+    }
+
+const BackPage = () => {
+  if (max < 5) {
+    let pos = position
+    pos -= 1
+    setPosition(pos)
+    setResult("https://lookerstudio.google.com/embed/reporting/8b2d0acb-54ff-4d24-8ca0-fb77209be62f/page/" + pageid[pos])
+  }
+}
+const LockChange = () => {
+  setResult(result)
+}
+const NextPage = () => {
+  if (max < 5) {
+    let pos = position
+    pos += 1
+    setPosition(pos)
+    setResult("https://lookerstudio.google.com/embed/reporting/8b2d0acb-54ff-4d24-8ca0-fb77209be62f/page/" + pageid[pos])
+  }
+}
+
     React.useEffect(() => {
       AOS.init({ duration: 1000 });
       document.body.scrollTop = document.documentElement.scrollTop = 0;
-      
+      setInterval(() => {
+        let tem = max
+        if (max > 0) {
+          tem -= 1
+          setMax(tem)
+        }
+      }, 30000);
+      setInterval(() => {
+        document.querySelectorAll(".embedding-page-navigation .pageInfo").forEach(a=>a.style.display = "none !important");
+      }, 1);
         setSec('Janken Tournament 2023')
     }, [])
 
@@ -74,7 +132,7 @@ const Janken = ({fet, setSec, width}) => {
     </Grow>
   </div>
           )}
-  <div className="stage pt-3 pb-2">
+  <div className="stage pt-3 pb-5">
     <div className='container'>
     <Card data-aos="zoom-in-up">
             <CardContent className='row'>
@@ -228,9 +286,7 @@ const Janken = ({fet, setSec, width}) => {
                     <iframe
                         width='100%'
                         height="450"
-                        loading="lazy"
                         allowfullscreen
-                        referrerpolicy="no-referrer-when-downgrade"
                         className='mt-3'
                         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC2NRQHCT_h6ivqJSUmPLKL7o7ZDegGAlg&q=union hall thailand">
                         </iframe>
@@ -241,7 +297,24 @@ const Janken = ({fet, setSec, width}) => {
             <CardContent className='row'>
                 <div className='col-md'>
                     <Typography variant='h5'>Tournament Result</Typography>
-                    <Typography variant='body1'>Result will be announced in {moment.unix(1681102800).local().format('DD MMMM YYYY HH:mm')}</Typography>
+                    <Typography variant='body1'>Good news, real-time results will be announced soon. along with during the live broadcast</Typography>
+                    <iframe width="100%" onClick={() => LockChange()} height={width > 700 ? "500" : "200"} src={result} allowfullscreen></iframe>
+                  <CardActionArea>
+                    <Button color='primary' onClick={() => FetchUpt()}>Fetch result</Button>
+                    <Button color='primary' onClick={() => window.open(result, '_blank')}>View this page on new tab</Button>
+                  </CardActionArea>
+                  <CardActionArea>
+                    {
+                      position > 0 && (
+                        <Button color='primary' onClick={() => BackPage()}>Previous Page</Button>
+                      )
+                    }
+                    {
+                      position < pageid.length - 1  && (
+                        <Button color='primary' onClick={() => NextPage()}>Next Page</Button>
+                      )
+                    }
+                  </CardActionArea>
                 </div>
             </CardContent>
         </Card>

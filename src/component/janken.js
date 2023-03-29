@@ -162,10 +162,10 @@ const NextPage = () => {
             <CardContent className='row'>
                 <div className='col-md mt-5' data-aos="slide-right">
                     <Typography variant='h5'>Tournament Host and Judge</Typography>
-                    <Typography variant='body1'>Coming soon</Typography>
+                    <Typography variant='body1'>Kan Kantathavorn</Typography>
                 </div>
-                <div className='col-md-3' data-aos="slide-left">
-                    <img src='https://www.pngitem.com/pimgs/b/105-1052804_creepy-silhouette-png.png' width='100%' />
+                <div className='col-md-6' data-aos="slide-left">
+                    <img src='https://pbs.twimg.com/media/FsXu1-LacAAoRAq?format=png&name=large' width='100%' />
                 </div>
             </CardContent>
         </Card>

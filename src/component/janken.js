@@ -302,7 +302,7 @@ const NextPage = () => {
                       width > 800 ?(
                         <iframe width="100%" onClick={() => LockChange()} height={"500"} src={result} allowfullscreen></iframe>
                       ) : (
-                        <iframe width="100%" onClick={() => LockChange()} height={"1000"} src={result} allowfullscreen></iframe>
+                        <iframe width="100%" onClick={() => LockChange()} height={"800"} src={result} allowfullscreen></iframe>
                       )
                     }
                   <CardActionArea>

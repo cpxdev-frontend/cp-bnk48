@@ -27,7 +27,7 @@ const pageid = [
 
 const Janken = ({fet, setSec, width}) => {
   const [position, setPosition] = React.useState(0);
-    const [result, setResult] = React.useState("https://lookerstudio.google.com/embed/reporting/8b2d0acb-54ff-4d24-8ca0-fb77209be62f/page/" + pageid[position]);
+    const [result, setResult] = React.useState(width > 800 ? ("https://lookerstudio.google.com/embed/reporting/8b2d0acb-54ff-4d24-8ca0-fb77209be62f/page/" + pageid[position]) : 'https://lookerstudio.google.com/embed/reporting/22b2222d-2235-4f02-9605-04af96c9f2dc/');
     const [max, setMax] = React.useState(0);
     const FetchUpt = () => {
       let tem = max
@@ -298,11 +298,18 @@ const NextPage = () => {
                 <div className='col-md'>
                     <Typography variant='h5'>Tournament Result</Typography>
                     <Typography variant='body1'>Good news, real-time results will be announced soon. along with during the live broadcast</Typography>
-                    <iframe width="100%" onClick={() => LockChange()} height={width > 700 ? "500" : "200"} src={result} allowfullscreen></iframe>
+                    {
+                      width > 800 ?(
+                        <iframe width="100%" onClick={() => LockChange()} height={"500"} src={result} allowfullscreen></iframe>
+                      ) : (
+                        <iframe width="100%" onClick={() => LockChange()} height={"1000"} src={result} allowfullscreen></iframe>
+                      )
+                    }
                   <CardActionArea>
                     <Button color='primary' onClick={() => FetchUpt()}>Fetch result</Button>
                     <Button color='primary' onClick={() => window.open(result, '_blank')}>View this page on new tab</Button>
                   </CardActionArea>
+                  {width > 800 && (
                   <CardActionArea>
                     {
                       position > 0 && (
@@ -315,6 +322,7 @@ const NextPage = () => {
                       )
                     }
                   </CardActionArea>
+                  )}
                 </div>
             </CardContent>
         </Card>

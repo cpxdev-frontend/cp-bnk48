@@ -77,7 +77,7 @@ const NextPage = () => {
           tem -= 1
           setMax(tem)
         }
-      }, 30000);
+      }, 10000);
       setInterval(() => {
         document.querySelectorAll(".embedding-page-navigation .pageInfo").forEach(a=>a.style.display = "none !important");
       }, 1);

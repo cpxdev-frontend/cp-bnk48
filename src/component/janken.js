@@ -22,7 +22,8 @@ const pageid = [
   "p_crbfzg4m4c",
   "p_py0ugr4m4c",
   "p_5ahs135m4c",
-  "p_lfwmnj6m4c"
+  "p_lfwmnj6m4c",
+  "p_8ckw9f9n4c"
 ]
 
 const Janken = ({fet, setSec, width}) => {

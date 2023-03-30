@@ -249,6 +249,13 @@ React.useEffect(() => {
           });
           
           con.onclose(error => {
+            const controller = new AbortController()
+
+
+          const timeoutId = setTimeout(() => controller.abort(), 6000)
+
+          fetch(url, { signal: controller.signal }).catch(response => {
+            clearTimeout(timeoutId)
             document.getElementById("root").style.display = "none";
             Swal.fire({
               title: 'System is under maintenance',
@@ -257,6 +264,7 @@ React.useEffect(() => {
               allowOutsideClick: false,
               showConfirmButton: false
             })
+          })
         });
   }
 }, [con]);

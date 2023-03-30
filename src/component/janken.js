@@ -90,7 +90,7 @@ const NextPage = () => {
         {width >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/sub13th.jpg" width={width} />
+           <img src="https://pbs.twimg.com/media/FrGWVQoaUAARhYE?format=webp&name=large" width={width} />
               </Fade>
       </div>
         )}
@@ -166,7 +166,7 @@ const NextPage = () => {
                     <Typography variant='body1'>Kan Kantathavorn</Typography>
                 </div>
                 <div className='col-md-6' data-aos="slide-left">
-                    <img src='https://pbs.twimg.com/media/FsXu1-LacAAoRAq?format=png&name=large' width='100%' />
+                    <img src='https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/kan.png' width='100%' />
                 </div>
             </CardContent>
         </Card>

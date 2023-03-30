@@ -233,6 +233,7 @@ React.useEffect(() => {
           .then(result => {
             con.on("responsestatus", function (res) {
               if (res =='fail') {
+                setpopup(false)
                  document.getElementById("root").style.display = "none";
                    Swal.fire({
                      title: 'System is under maintenance',
@@ -245,21 +246,10 @@ React.useEffect(() => {
                      window.location.reload()
                    })
               }
-          }).catch(e => {
-            document.getElementById("root").style.display = "none";
-            Swal.fire({
-              title: 'System is under maintenance',
-              text: 'Please check your internet connection and try again. Or you can contact us for ask more information.',
-              icon: 'error',
-              allowOutsideClick: false,
-              showConfirmButton: true,
-              confirmButtonText: 'Refresh'
-            }).then(() => {
-              window.location.reload()
-            })
-          });
+          })
           })
           .catch(e => {
+            setpopup(false)
             document.getElementById("root").style.display = "none";
             Swal.fire({
               title: 'System is under maintenance',
@@ -274,6 +264,7 @@ React.useEffect(() => {
           });
           
           con.onclose(error => {
+            setpopup(false)
             document.getElementById("root").style.display = "none";
             Swal.fire({
               title: 'Connection lost',

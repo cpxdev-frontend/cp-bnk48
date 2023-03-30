@@ -264,6 +264,8 @@ React.useEffect(() => {
               allowOutsideClick: false,
               showConfirmButton: false
             })
+          }).then(() => {
+            con.start()
           })
         });
   }

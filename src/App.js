@@ -250,8 +250,8 @@ React.useEffect(() => {
           .catch(e => {
             document.getElementById("root").style.display = "none";
             Swal.fire({
-              title: 'System is under maintenance',
-              text: 'You can contact us for ask more information.',
+              title: 'Connection lost',
+              text: 'Please check your internet connection and try again.',
               icon: 'error',
               allowOutsideClick: false,
               showConfirmButton: true,
@@ -264,8 +264,8 @@ React.useEffect(() => {
           con.onclose(error => {
             document.getElementById("root").style.display = "none";
             Swal.fire({
-              title: 'System is under maintenance',
-              text: 'You can contact us for ask more information.',
+              title: 'Connection lost',
+              text: 'Please check your internet connection and try again.',
               icon: 'error',
               allowOutsideClick: false,
               showConfirmButton: true,

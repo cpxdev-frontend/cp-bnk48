@@ -104,10 +104,11 @@ const NextPage = () => {
                 </Typography>
                 <hr />
                 <Typography color="textSecondary">
-                The Senbatsu of Destiny is back!
+                  <CardHeader title='The Senbatsu of Destiny is back!' subheader='ศึกแห่งโชคชะตาได้กลับมาอีกครั้ง' />
                 </Typography>
                     <Typography color="textSecondary">
-                        Destiny is hard to predict and cannot be avoided. All candidated BNK48 and CGM48 will be bet on ordinary games that everyone plays. But can decide the fate of Senbatsu at any time.
+                    <CardHeader title='Destiny is hard to predict and cannot be avoided. All candidated BNK48 and CGM48 will be bet on ordinary games that everyone plays. But can decide the fate of Senbatsu at any time.'
+                    subheader='โชคชะตาที่ยากจะคาดเดาได้มาถึงแล้ว เมื่อสมาชิก BNK48 และ CGM48 จะนำเกมที่หลายคนคุ้นเคย สู่การชี้ชะตาการเป็นเซมบัตสึในครั้งนี้' /> 
                     </Typography>
               </CardContent>
             </Card>
@@ -123,10 +124,11 @@ const NextPage = () => {
                 </Typography>
                 <hr />
                 <Typography color="textSecondary">
-                The Senbatsu of Destiny is back!
+                  <CardHeader title='The Senbatsu of Destiny is back!' subheader='ศึกแห่งโชคชะตาได้กลับมาอีกครั้ง' />
                 </Typography>
                     <Typography color="textSecondary">
-                        Destiny is hard to predict and cannot be avoided. All candidated BNK48 and CGM48 will be bet on ordinary games that everyone plays. But can decide the fate of Senbatsu at any time.
+                    <CardHeader title='Destiny is hard to predict and cannot be avoided. All candidated BNK48 and CGM48 will be bet on ordinary games that everyone plays. But can decide the fate of Senbatsu at any time.'
+                    subheader='โชคชะตาที่ยากจะคาดเดาได้มาถึงแล้ว เมื่อสมาชิก BNK48 และ CGM48 จะนำเกมที่หลายคนคุ้นเคย สู่การชี้ชะตาการเป็นเซมบัตสึในครั้งนี้' /> 
                     </Typography>
               </CardContent>
     </Card>
@@ -138,33 +140,33 @@ const NextPage = () => {
     <Card data-aos="zoom-in-up">
             <CardContent className='row'>
                 <div className='col-md'>
-                    <Typography variant='h5'>The Senbutsu battle with Destiny of Rock-Paper-Scissors!</Typography>
-                    <Typography variant='body1'>It is a simple rule, but everything is possible throughout tournament.</Typography>
+                    <Typography variant='h5'><CardHeader title='The Senbutsu battle with Destiny of Rock-Paper-Scissors!' subheader='การชี้ชะตาด้วยเกมเป่ายิ้งฉุบในตำนาน' /></Typography>
+                    <Typography variant='body1'><CardHeader title='It is a simple rule, but everything is possible throughout tournament.' subheader='เกมที่หลายคนคุ้นเคย แต่ต้องอย่าลืมว่า ทุกอย่างก็อาจเกิดขึ้นทุกเมื่อในตลอกการแข่งขันเช่นกัน' /></Typography>
                 </div>
             </CardContent>
         </Card>
         <Card className='mt-4' data-aos="zoom-in-down">
             <CardContent className='row'>
                 <div className='col-md'>
-                    <Typography variant='h5'>Excitement with every breath</Typography>
-                    <Typography variant='body1'>Sixteen-Senbatsu and The one of winner of this tournament is Center Position of BNK48 4th Album. It is a tournament that can win results every second of the competition. (Even the Host or Judge himself)</Typography>
+                    <Typography variant='h5'><CardHeader title='Excitement with every breath' subheader='ตื่นเต้นในทุกลมหายใจ' /></Typography>
+                    <Typography variant='body1'><CardHeader title='The their target are Sixteen-Senbatsu and The one of winner of this tournament is Center Position of BNK48 4th Album. It is a tournament that can win results every second of the competition. (Even the Host or Judge himself)' subheader='เป้าหมายของพวกเธอคือตำแหน่งหนึ่งใน 16 เซมบัตสึและ Janken Queen หรือตำแหน่งเซ็นเตอร์ของอัลบั้มที่สี่ของ BNK48 นี่จึงเป็นการแข้่งขันที่คุณสามารถลุ้นผลได้ทุกวินาที แม้กระทั่งพิธีกรหรือกรรมการก็ตาม' /></Typography>
                 </div>
             </CardContent>
         </Card>
         <Card className='mt-4' data-aos="zoom-in-right">
             <CardContent className='row'>
                 <div className='col-md'>
-                    <Typography variant='h5'>The mini-contest with special costume of member's designing</Typography>
-                    <Typography variant='body1'>All costume of candidated members are designed and weared by herself. Who is the winner of the best costume in this tournament?</Typography>
+                    <Typography variant='h5'><CardHeader title="The mini-contest with special costume of member's designing" subheader='เพิ่มสีสันให้กับงานด้วยการประกวดชุดแต่งกายสำหรับการแข่งขันที่ออกแบบโดยตัวเมมเบอร์เอง' /></Typography>
+                    <Typography variant='body1'><CardHeader title='All costume of candidated members are designed and weared by herself. Do you think that who is the winner of the best costume in this tournament?' subheader='เมื่อชุดสำหรับแข่งขันที่ออกแบบโดยเมมอร์แต่ละคนเอง คุณคิดว่าใครจะได้รางวัลชุดดีเด่นประจำงานในครั้งนี้ อาจจะเป็นเมมเบอร์ที่คุณติดตามอยู่หรือไม่?' /></Typography>
                 </div>
             </CardContent>
         </Card>
         <Card className='mt-4' data-aos="flip-right">
             <CardContent className='row'>
                 <div className={'col-md ' + (width > 800 ? 'mt-5': '')} data-aos="slide-right">
-                    <Typography variant='h5'>Tournament Host and Judge</Typography>
-                    <Typography variant='body1'>Kan Kantathavorn</Typography>
-                    <Typography variant='subtitles1'>Achievement: TV Host (Mask Singer 12, I Can See Your Voices Thailand, The Wall Duet), DJ and Actor</Typography>
+                    <Typography variant='h5'><CardHeader title="Tournament Host and Judge" subheader='พบกับพิธีกรและกรรมการที่มากความสามารถ และพร้อมมอบความสนุกตลอดทั้งทัวนาเม้นท์นี้' /></Typography>
+                    <Typography variant='body1'><CardHeader title="Kan Kantathavorn" subheader='กันต์ กันตถาวร' /></Typography>
+                    <Typography variant='subtitle2'>Achievement: TV Host (Mask Singer 12, I Can See Your Voices Thailand, The Wall Duet), DJ and Actor</Typography>
                 </div>
                 <div className='col-md-4' data-aos="slide-left">
                     <img src='https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/kan.png' width='100%' />

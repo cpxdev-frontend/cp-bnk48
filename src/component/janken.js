@@ -253,31 +253,6 @@ const NextPage = () => {
                     )
                   }
                 </ListItem>
-                <ListItem data-aos="fade-right" className={(timeline.live > 0 ? (moment().unix() >= timeline.event + 21600 ? 'text-secondary' : '') : '')}>
-                  <ListItemText primary="LIVE Streaming" secondary={timeline.live > 0 ? (moment.unix(timeline.event).local().format('DD MMMM YYYY HH:mm:ss')) : 'Please wait for announcement from BNK48 Official'} />
-                 
-                  {
-                    timeline.live > 0 && moment().unix() >= timeline.live && moment().unix() <= timeline.live + 21600 && (
-                        <ListItemSecondaryAction>
-                        <IconButton edge="end">
-                     <FiberManualRecordIcon className='text-success' />
-                   </IconButton>
-                 </ListItemSecondaryAction>
-                     
-                    )
-                  }
-                   {
-                     timeline.live > 0 && moment().unix() >= timeline.live + 21600 && (
-                        <ListItemSecondaryAction>
-                        <Checkbox
-                          checked={true}
-                          tabIndex={-1}
-                          disabled={true}
-                        />
-                  </ListItemSecondaryAction>
-                    )
-                  }
-                </ListItem>
                 </List>
             
             </CardContent>
@@ -301,7 +276,7 @@ const NextPage = () => {
             <CardContent className='row'>
                 <div className='col-md'>
                     <Typography variant='h5'>Tournament Result</Typography>
-                    <Typography variant='body1'>Good news, real-time results will be announced soon. along with during the live broadcast</Typography>
+                    <Typography variant='body1'>Good news, real-time results will be announced soon. along with during the tournament has been started. (Please note that don't have LIVE streaming of this tournament)</Typography>
                     {
                       width > 800 ?(
                         <iframe width="100%" onClick={() => LockChange()} height={"500"} src={result} allowfullscreen></iframe>

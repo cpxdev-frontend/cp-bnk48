@@ -132,7 +132,7 @@ const Memberlist = ({fet, setSec, width}) => {
         <>
         <h3 className='text-center mt-4'>Members</h3>
         <br />
-        <div className="stage text-center justify-content-center pt-5 pb-2">
+        <div className="stage text-center pt-5 pb-2">
             {Loaded && mem.length > 0 && (
             <Card className={"text-left " + (width > 700 ? 'ml-3 mr-3' : 'ml-2 mr-2')}>
             <TextField label="Search Member" value={search} className="m-3" onChange={(e) => SearchEng(e.target.value)} />
@@ -194,7 +194,7 @@ const Memberlist = ({fet, setSec, width}) => {
              </Zoom>
              <Grid item xs={12}>
             {Loaded ? (
-                <Grid container className='mt-3'>
+                <Grid container className='mt-3 justify-content-center'>
                     {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
                        <Grid item md={3} data-aos="zoom-in">
                        <div className='mb-5 p-1' onClick={() => ChangeRoute(item.name)}>

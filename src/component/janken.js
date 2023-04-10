@@ -5,8 +5,15 @@ import { Typography, ListItem, Zoom, IconButton,
 import AOS from "aos";
 import moment from 'moment';
 import Swal from 'sweetalert2';
+import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
 
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const timeline = {
     reserved: 1679108400,//1679108400
@@ -26,7 +33,25 @@ const pageid = [
   "p_8ckw9f9n4c"
 ]
 
+const useStyles = makeStyles((theme) => ({
+  large: {
+    width: theme.spacing(10),
+    height: theme.spacing(10),
+  },
+  rank: {
+    width: theme.spacing(20),
+  },
+  img: {
+    width: theme.spacing(30),
+  },
+}));
+
 const Janken = ({fet, setSec, width}) => {
+  const classes = useStyles();
+  const History = useHistory()
+  
+  const [rank, setRank] = React.useState([]); 
+  const [ts, setts] = React.useState('Updating'); 
   const [position, setPosition] = React.useState(0);
     const [result, setResult] = React.useState(width > 800 ? ("https://lookerstudio.google.com/embed/reporting/8b2d0acb-54ff-4d24-8ca0-fb77209be62f/page/" + pageid[position]) : 'https://lookerstudio.google.com/embed/reporting/22b2222d-2235-4f02-9605-04af96c9f2dc/');
     const [max, setMax] = React.useState(0);
@@ -72,6 +97,21 @@ const NextPage = () => {
     React.useEffect(() => {
       AOS.init({ duration: 1000 });
       document.body.scrollTop = document.documentElement.scrollTop = 0;
+      setts('Updating')
+      fetch(fet + '/bnk48/jankenlist2023', {
+        method :'post'
+    })
+        .then(response => response.json())
+        .then(data => {
+            setRank(data.response)
+            setts(moment().format("DD MMMM YYYY HH:mm:ss"))
+        }).catch(() => {
+          setRank([])
+          setts(moment().format("DD MMMM YYYY HH:mm:ss") + ' (Error fetching)')
+        })
+
+
+
       setInterval(() => {
         let tem = max
         if (max > 0) {
@@ -90,7 +130,7 @@ const NextPage = () => {
         {width >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://pbs.twimg.com/media/FrGWVQoaUAARhYE?format=webp&name=large" width={width} />
+           <img src="https://pbs.twimg.com/media/FtP1unWaUAAu6zC?format=jpg&name=large" width={width} />
               </Fade>
       </div>
         )}
@@ -174,108 +214,65 @@ const NextPage = () => {
             </CardContent>
         </Card>
 
-        <Card className='mt-4' data-aos="fade-down">
-            <CardContent className='row'>
-                <CardHeader title='Tournament Timeline' />
-                <List className='col-12'>
-                <ListItem data-aos="fade-right" onClick={() => window.open('https://www.eventpop.me/e/14753/bnk48janken2023', '_blank')} className={moment().unix() >= timeline.closed ? 'text-secondary' : ''}>
-                  <ListItemText primary="Reserve ticket on Eventpop website and application (Click here to navigate to reserved a ticket)" secondary={moment.unix(timeline.reserved).local().format('DD MMMM YYYY HH:mm:ss') + ' to ' + moment.unix(timeline.closed).local().format('DD MMMM YYYY HH:mm:ss')} />
-                 
-                  {
-                    moment().unix() >= timeline.reserved && moment().unix() <= timeline.closed && (
-                        <ListItemSecondaryAction>
-                        <IconButton edge="end">
-                     <FiberManualRecordIcon className='text-success' />
-                   </IconButton>
-                 </ListItemSecondaryAction>
-                     
-                    )
-                  }
-                   {
-                     moment().unix() >= timeline.closed && (
-                        <ListItemSecondaryAction>
-                        <Checkbox
-                          checked={true}
-                          tabIndex={-1}
-                          disabled={true}
-                        />
-                  </ListItemSecondaryAction>
-                    )
-                  }
-                </ListItem>
-                <ListItem data-aos="fade-right" className={moment().unix() >= timeline.closed ? 'text-secondary' : ''}>
-                  <ListItemText primary="Door Open" secondary={moment.unix(timeline.door).local().format('DD MMMM YYYY HH:mm:ss')} />
-                 
-                  {
-                    moment().unix() >= timeline.door && moment().unix() <= timeline.event && (
-                        <ListItemSecondaryAction>
-                        <IconButton edge="end">
-                     <FiberManualRecordIcon className='text-success' />
-                   </IconButton>
-                 </ListItemSecondaryAction>
-                     
-                    )
-                  }
-                   {
-                     moment().unix() >= timeline.closed && (
-                        <ListItemSecondaryAction>
-                        <Checkbox
-                          checked={true}
-                          tabIndex={-1}
-                          disabled={true}
-                        />
-                  </ListItemSecondaryAction>
-                    )
-                  }
-                </ListItem>
-                <ListItem data-aos="fade-right" className={moment().unix() >= timeline.event + 21600 ? 'text-secondary' : ''}>
-                  <ListItemText primary="Event started" secondary={moment.unix(timeline.event).local().format('DD MMMM YYYY HH:mm:ss')} />
-                 
-                  {
-                    moment().unix() >= timeline.event && moment().unix() <= timeline.event + 21600 && (
-                        <ListItemSecondaryAction>
-                        <IconButton edge="end">
-                     <FiberManualRecordIcon className='text-success' />
-                   </IconButton>
-                 </ListItemSecondaryAction>
-                     
-                    )
-                  }
-                   {
-                     moment().unix() >= timeline.event + 21600 && (
-                        <ListItemSecondaryAction>
-                        <Checkbox
-                          checked={true}
-                          tabIndex={-1}
-                          disabled={true}
-                        />
-                  </ListItemSecondaryAction>
-                    )
-                  }
-                </ListItem>
-                </List>
-            
+        <Card className='mt-5' data-aos='fade-down'>
+            <CardContent>
+              <CardHeader title="Result of Janken Tournament" subheader={'Latest update: ' + ts} data-aos='flip-down' />
+              <hr />
+              <TableContainer>
+                <Table stickyHeader aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell className={classes.rank}>Rank</TableCell>
+                      <TableCell className={classes.img} align="center">Member Image</TableCell>
+                      <TableCell align="center">Name</TableCell>
+                      <TableCell align="center">Band</TableCell>
+                      <TableCell align="right">Team</TableCell>
+                      <TableCell align="right">Generation</TableCell>
+                      <TableCell align="right">Win Scores</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  {rank.length > 0 ? rank.map((item, i) => (
+                    <TableBody key={item.id} className={(item.jankenRank == 1 ? 'centerGE' : '') + ' cur'}
+                      data-toggle="tooltip" data-placement="bottom" title={(item.jankenRank == 1 ? item.name + ' is the Janken Queen (Winner of Janken Tournament 2023) and Center position and Senbatsu of BNK48 4th Album' : item.name + ' is Senbatsu of BNK48 4th Album')}
+                      onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.name.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.name.toLowerCase(), '_target') : ''}
+                      data-aos='fade-right'
+                   >
+                        <TableCell component="th" className={classes.rank}>
+                          {item.jankenRank}
+                        </TableCell>
+                        <TableCell align="center" className={classes.img}>
+                        <img src={item.img} className={classes.large + ' cir avatarlimit'} />
+                          </TableCell>
+                          <TableCell align="center">
+                          {item.fullnameEn[0]}  {item.fullnameEn[1]} ({item.name})
+                          </TableCell>
+                          <TableCell align="center">
+                          {item.ref.includes('bnk48') ? 'BNK48' : item.ref.includes('cgm48') ? 'CGM48' : ''}
+                          </TableCell>
+                          <TableCell align="right">
+                          {item.team == "" ? 'None' : item.team}
+                          </TableCell>
+                          <TableCell align="right">
+                          {item.gen == "" ? 'None' : item.gen}
+                          </TableCell>
+                          <TableCell align="right">
+                          {item.jankenScore}
+                          </TableCell>
+                  </TableBody>
+                  )): (
+                    <TableBody>
+                       <TableCell colSpan={8} align='center'>No record(s) found</TableCell>
+                  </TableBody>
+                  )}
+                </Table>
+              </TableContainer>
             </CardContent>
-        </Card>
-        <Card className='mt-4' data-aos="zoom-in">
-            <CardContent className='row'>
-                <div className='col-md'>
-                    <Typography variant='h5'>How to go to this event</Typography>
-                    <Typography variant='body1'>This event is located at Union Hall of Union Mall Latprao, Bangkok, Thailand. However, that day is weekend which maybe traffic jam. Please allow travel time in advance or go through public transportation.</Typography>
-                    <iframe
-                        width='100%'
-                        height="450"
-                        allowfullscreen
-                        className='mt-3'
-                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC2NRQHCT_h6ivqJSUmPLKL7o7ZDegGAlg&q=union hall thailand">
-                        </iframe>
-                </div>
-            </CardContent>
-        </Card>
+          </Card>
+        
         <Card data-aos="zoom-in-down" className='mt-4'>
             <CardContent className='row'>
                 <div className='col-md'>
-                    <Typography variant='h5'>Tournament Result</Typography>
+                    <Typography variant='h5'>Tournament Chart</Typography>
                     <Typography variant='body1'>Good news, real-time results will be announced soon. along with during the tournament has been started. (Please note that don't have LIVE streaming of this tournament)</Typography>
                     {
                       width > 800 ?(
@@ -285,7 +282,6 @@ const NextPage = () => {
                       )
                     }
                   <CardActionArea>
-                    <Button color='primary' onClick={() => FetchUpt()}>Fetch result</Button>
                     <Button color='primary' onClick={() => window.open(result, '_blank')}>View this page on new tab</Button>
                   </CardActionArea>
                   {width > 800 && (

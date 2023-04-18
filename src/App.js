@@ -180,7 +180,8 @@ function App() {
   const [memUpdate, setUpdate] = React.useState([]);
   const [stream, setStream] = React.useState(null);
   const [tokenID, setToken] = React.useState('');
-  const [point, setPoint] = React.useState(0);
+  const [time, setTime] = React.useState(0);
+  const [memDate, setMemBirth] = React.useState('');
 
   const [anchorEl, setAnchorEl] = React.useState(null)
   
@@ -294,6 +295,7 @@ React.useEffect(() => {
         if (data.obj != 'none') {
           setKami(data.obj.img)
           setKname(data.obj.name)
+          setMemBirth(data.obj.birth)
           setToken(data.wallet)
           localStorage.setItem('i', data.uname)
           // FetchWallet(fetdata, data.wallet)
@@ -426,19 +428,7 @@ React.useEffect(() => {
       })
           .then(response => response.text())
           .then(data => {
-            if (parseInt(data) < iiwakelaunch) {
-              var diffTime = iiwakelaunch - parseInt(data);
-              var duration = moment.duration(diffTime*1000, 'milliseconds');
-              duration = moment.duration(duration - 1000, 'milliseconds');
-              const counttime = duration.days() + ' day(s) ' + (duration.hours() + " hour(s) " + duration.minutes() + " minute(s) " + duration.seconds() + " second(s) ")
-              Swal.fire({
-                title: 'BNK48 13th Single \"iiWake Maybe\" is soon.',
-                text: 'Please wait in ' + counttime + ' to Music Video is released. You can watch the first performance in BNK48 Fan Space and T-POP Megeverse',
-                footer: "Event has been started in " + moment.unix(iiwakelaunch).local().format("DD MMMM YYYY HH:mm:ss") + " (Refered from Local timezone)",
-                icon: 'info',
-                iconColor: 'rgb(203, 150, 194)'
-              })
-            }
+            setTime(parseInt(data))
           }).catch(() => {
             
           })
@@ -989,14 +979,14 @@ React.useEffect(() => {
                 </ListItem>
                </>
              )} */}
+                     {kamin != "-" && memDate == moment.unix(time).local().format('YYYY-M-DD') && (
+                      <ListItem className='text-muted' button>
+                        <ListItemText primary={"Today is " + kamin + " Birthday. Click her profile to view info and bless her on Twitter."}/>
+                      </ListItem>
+                     )}
                      <ListItem className='text-info' button>
                        <ListItemText primary='Feature will be unavaliable when you not sign in' secondary='Choose and share your Kami-Oshi member, Fandom group view and add new event' />
                      </ListItem>
-                     {kamin != "-" && kamicheckbirth == true && (
-                      <ListItem className='text-muted' button>
-                        <ListItemText primary="Today is her Birthday. Click her profile to view info and bless her on Twitter." />
-                      </ListItem>
-                     )}
            </DialogContent>
            <DialogActions>
            <Button onClick={(e) => {Signout(e)}} className="text-danger">

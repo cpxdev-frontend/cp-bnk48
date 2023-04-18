@@ -189,7 +189,6 @@ function App() {
   const [allDone, setAllDone] = React.useState(false);
   const [styleFade, setSty] = React.useState(0);
   
-  const [kamicheckbirth, setKamiBirth] = React.useState(false);
   const [Prof, setPro] = React.useState('');
 
   const ref = React.useRef(null)

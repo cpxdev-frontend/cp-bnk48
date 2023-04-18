@@ -189,6 +189,7 @@ function App() {
   const [styleFade, setSty] = React.useState(0);
   
   const [kamicheckbirth, setKamiBirth] = React.useState(false);
+  const [Prof, setPro] = React.useState('');
 
   const ref = React.useRef(null)
   const [footerHeight, setFooterH] = React.useState(0)
@@ -289,6 +290,7 @@ React.useEffect(() => {
       .then(data => {
         setLogLoad(false)
         setOpen(false)
+        setPro(data.img)
         if (data.obj != 'none') {
           setKami(data.obj.img)
           setKname(data.obj.name)
@@ -688,7 +690,7 @@ React.useEffect(() => {
                    }}
                    badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
                  >
-                  <Avatar alt={localStorage.getItem("i")} src={JSON.parse(localStorage.getItem("loged")).user.photoURL} />
+                  <Avatar alt={localStorage.getItem("i")} src={Prof} />
                  </Badge>
                  </ListItemIcon>
               )}
@@ -882,7 +884,7 @@ React.useEffect(() => {
                     }}
                     badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
                   >
-                    <Avatar alt={localStorage.getItem("i")} src={JSON.parse(localStorage.getItem("loged")).user.photoURL} />
+                    <Avatar alt={localStorage.getItem("i")} src={Prof} />
                   </Badge>
                   
                   </ListItemIcon>

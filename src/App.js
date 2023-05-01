@@ -25,7 +25,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import 'sweetalert2/dist/sweetalert2.min.css'
 import moment from 'moment'
 import { AppBar, Toolbar,Typography, IconButton, Drawer, FormControlLabel, Switch, ListItem, ListItemIcon, Divider, ListItemText,
-Dialog, DialogActions, Button, DialogTitle, DialogContent, Avatar, Badge, CardContent, CardMedia, Slide, Grow, Fade, TextField, Menu, MenuItem } from '@material-ui/core';
+Dialog, DialogActions, Button, Fab, DialogTitle, DialogContent, Avatar, Badge, CardContent, CardMedia, Slide, Grow, Fade, TextField, Menu, MenuItem } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
@@ -101,6 +101,12 @@ const useStyles = makeStyles((theme) => ({
     right: theme.spacing(1),
     position: 'absolute',
   },
+  fab: {
+    position: 'fixed',
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+    zIndex:600
+  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -118,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
   },
   fabButton: {
     position: 'fixed',
-    zIndex: 1000,
+    zIndex: 500,
     bottom: 30,
     left: window.innerWidth > 600 ? 100 : 20,
     width: "auto",
@@ -190,6 +196,7 @@ function App() {
   const [styleFade, setSty] = React.useState(0);
   
   const [Prof, setPro] = React.useState('');
+  const [ adsClose, setAdsBth] = React.useState(false)
 
   const ref = React.useRef(null)
   const [footerHeight, setFooterH] = React.useState(0)
@@ -461,6 +468,9 @@ React.useEffect(() => {
 
     var dem = setInterval(function(){ 
       if (Fet().ul !== '') {
+        setTimeout(() => {
+          setAdsBth(true)
+        }, 2500);
         clearInterval(dem)
         var timeo = setInterval(function(){ 
           if (sessionStorage.getItem('ads') != null) {
@@ -1134,8 +1144,13 @@ transitionDuration={500}
   }
   return (
     <div className="container mt-5 mb-5">
+    {adsClose && (
+     <Fab onClick={() => setAllDone(true)} className={cls.fab} color='primary'>
+        Skip
+      </Fab>
+    )}
       {width > 900 ? (
-         <div className="row" onDoubleClick={() => setAllDone(true)}>
+         <div className="row">
          <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 500 }}>
            <div className="col pr-0">
                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/1.jpg" width="100%" />
@@ -1174,7 +1189,7 @@ transitionDuration={500}
          </Grow>
        </div>
       ) : (
-        <div className="row" onDoubleClick={() => setAllDone(true)}>
+        <div className="row">
         <Fade in={styleFade != 0 ? true : false} timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: 100 }}>
           <div className="col pr-0">
               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/1.jpg" width="100%" />

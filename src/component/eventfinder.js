@@ -33,7 +33,7 @@ const Finder = ({fet, setSec, width}) => {
         var R = 10000000; // metres
 
         if (position1.place != undefined) {
-            if (position1.locate != undefined && !position1.place.includes('IAMP')) {
+            if ((position1.locate != undefined || position1.locate != null) && !position1.place.includes('IAMP')) {
                 var lat1=parseFloat(position1.locate[0]);
                 var lon1=parseFloat(position1.locate[1]);
                 var φ1 = degToRad(lat1);
@@ -49,7 +49,7 @@ const Finder = ({fet, setSec, width}) => {
                 var d = R * c;
                 return d;
             }
-            if (position1.locate == undefined && position1.place.includes('IAMP')) {
+            if ((position1.locate == undefined || position1.locate == null) && position1.place.includes('IAMP')) {
                 var lat1=position1.placeobj.placeCoodinate[0];
                 var lon1=position1.placeobj.placeCoodinate[1];
                 var φ1 = degToRad(lat1);
@@ -91,6 +91,7 @@ const Finder = ({fet, setSec, width}) => {
 
             setSignal(nearest);
         } 
+        setLoaded(true)
     }
 
     const FindAction = (data) => {
@@ -108,7 +109,6 @@ const Finder = ({fet, setSec, width}) => {
             })
             .then(response => response.json())
             .then(data => {
-                setLoaded(true)
                 setArr(data)
                 FindAction(data)
             })
@@ -125,7 +125,9 @@ const Finder = ({fet, setSec, width}) => {
         <>
         <h3 className='text-center mt-5'>BNK48 Event Finder</h3>
         {/* <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus, 4th Floor at The Mall Bangkapi. See navigate to Theater from <a href="https://goo.gl/maps/CFvM1PSbY7smBPkh9" target="_blank">here</a></p> */}
-        <p className='text-center container'>New feature for BNK48 Fans who want to see BNK48 events from your nearby.</p>
+        <p className='text-center'>New feature for BNK48 Fans who want to see BNK48 events from your nearby.</p>
+        <div className='container'>
+            
         {Loaded && nearest != null ? (
                <Card className='mb-3' data-aos="fade-right">
                <CardContent className='row'>
@@ -207,6 +209,7 @@ const Finder = ({fet, setSec, width}) => {
             </Zoom>
             </div>
         )}
+        </div>
         </>
     );
 }

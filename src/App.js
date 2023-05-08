@@ -34,7 +34,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 import PeopleIcon from '@material-ui/icons/People';
 import ListAltIcon from '@material-ui/icons/ListAlt';
-import EventIcon from '@mui/icons-material/Event';
+import EventIcon from '@material-ui/icons/Event';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import LanguageIcon from '@material-ui/icons/Language';
 import DnsIcon from '@material-ui/icons/Dns';

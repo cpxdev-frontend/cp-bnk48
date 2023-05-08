@@ -63,6 +63,7 @@ import OriCom from './component/originalcontent';
 import MusicCom from './component/streaming';
 import Offici from './component/official';
 import ShowTime from './component/showtime';
+import EventFind from './component/eventfinder';
 import Api from './component/apisupport';
 import Account from './component/account';
 import FollowCom from './component/follow';
@@ -906,6 +907,7 @@ React.useEffect(() => {
                   <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/originalcontent" render={() => <OriCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/event" render={() => <EventFind fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

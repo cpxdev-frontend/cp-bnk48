@@ -34,7 +34,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 import PeopleIcon from '@material-ui/icons/People';
 import ListAltIcon from '@material-ui/icons/ListAlt';
-import AcUnitIcon from '@material-ui/icons/AcUnit'
+import EventIcon from '@mui/icons-material/Event';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import LanguageIcon from '@material-ui/icons/Language';
 import DnsIcon from '@material-ui/icons/Dns';
@@ -763,6 +763,12 @@ React.useEffect(() => {
                     <YouTubeIcon />
                   </ListItemIcon>
                   <ListItemText primary="Music Video" />
+                </ListItem>
+                <ListItem component={Link} to='/event' className={window.location.pathname == '/event' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <EventIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Event Finder' />
                 </ListItem>
                 <ListItem component={Link} to='/music' className={window.location.pathname == '/music' ? 'activeNav' : ''} button>
                   <ListItemIcon>

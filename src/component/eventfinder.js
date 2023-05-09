@@ -2,9 +2,10 @@ import React from 'react'
 import AOS from 'aos'
 import moment from 'moment';
 import { Typography, ListItem, Zoom, ListItemText,
-    Card, CardActionArea, CardContent, CardMedia, Grow, Fade, Tooltip } from '@material-ui/core';
+    Card, CardActionArea, CardContent, IconButton, Grow, Fade, Tooltip, CardHeader } from '@material-ui/core';
 
     import LocationOnIcon from '@material-ui/icons/LocationOn';
+    import CachedIcon from '@material-ui/icons/Cached';
 
 const Finder = ({fet, setSec, width}) => {
     const [Loaded, setLoaded] = React.useState(false);
@@ -72,7 +73,7 @@ const Finder = ({fet, setSec, width}) => {
     const progress = (cood, data) => {
         let arr = []
         for(var i=0;i<data.length;i++){
-            if (distance(data[i],cood) != null && moment.unix() <= data[i].timerange[0] - 604800) {
+            if (distance(data[i],cood) != null && moment().unix() >= data[i].timerange[0] - 604800) {
                 arr.push({
                  distance: distance(data[i],cood),
                  data: data[i]
@@ -95,6 +96,7 @@ const Finder = ({fet, setSec, width}) => {
     }
 
     const FindAction = (data) => {
+        setLoaded(false)
         navigator.geolocation.getCurrentPosition(function(position) {
             progress(position.coords, data)
           });
@@ -123,9 +125,17 @@ const Finder = ({fet, setSec, width}) => {
 
     return ( 
         <>
-        <h3 className='text-center mt-5'>BNK48 Event Finder</h3>
+        <CardHeader className='container mt-5' title='BNK48 Event Finder' subheader='New feature for BNK48 Fans who want to see BNK48 events from your nearby.'
+         action={
+            <IconButton onClick={() =>
+                Loaded == true ? FindAction(Arr) : null
+            }>
+              <CachedIcon />
+            </IconButton>
+          } />
+       
         {/* <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus, 4th Floor at The Mall Bangkapi. See navigate to Theater from <a href="https://goo.gl/maps/CFvM1PSbY7smBPkh9" target="_blank">here</a></p> */}
-        <p className='text-center'>New feature for BNK48 Fans who want to see BNK48 events from your nearby.</p>
+ 
         <div className='container'>
             
         {Loaded && nearest != null ? (

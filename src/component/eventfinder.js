@@ -12,6 +12,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
     const [Arr, setArr] = React.useState([]);
     const [nearest, setSignal] = React.useState(null);
     const [eventPlace, setEventPlace] = React.useState('');
+    const [refresh, setRefresh] = React.useState(false);
 
     function degToRad(deg) {
         return deg * (Math.PI / 180.0);
@@ -74,7 +75,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
         let arr = []
 
         for(var i=0;i<data.length;i++){
-            if (distance(data[i],cood) != null && distance(data[i],cood) <= 15000 && moment().unix() >= data[i].timerange[0] - 604800) {
+            if (distance(data[i],cood) != null && distance(data[i],cood) <= 30000 && moment().unix() >= data[i].timerange[0] - 604800) {
                 arr.push({
                  distance: distance(data[i],cood),
                  data: data[i]
@@ -127,7 +128,11 @@ const Finder = ({fet, setSec, width, kamin}) => {
 
     const FindAction = (data) => {
         setLoaded(false)
+        setRefresh(false)
         navigator.geolocation.getCurrentPosition(function(position) {
+            setTimeout(() => {
+                setRefresh(true)
+            }, 10000);
             progress(position.coords, data)
           });
     }
@@ -156,12 +161,14 @@ const Finder = ({fet, setSec, width, kamin}) => {
     return ( 
         <>
         <CardHeader className='container mt-5' title='BNK48 Event Finder' subheader='New feature for BNK48 Fans who want to see BNK48 events from your nearby.'
-         action={
-            <IconButton onClick={() =>
-                Loaded == true ? FindAction(Arr) : null
-            }>
-              <CachedIcon />
-            </IconButton>
+        action={
+            refresh ? (
+                <IconButton onClick={() =>
+                    Loaded == true ? FindAction(Arr) : null
+                }>
+                  <CachedIcon />
+                </IconButton>
+            ) : null
           } />
        
         {/* <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus, 4th Floor at The Mall Bangkapi. See navigate to Theater from <a href="https://goo.gl/maps/CFvM1PSbY7smBPkh9" target="_blank">here</a></p> */}

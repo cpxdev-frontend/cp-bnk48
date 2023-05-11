@@ -230,7 +230,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                         </div>
                        )}
                        {nearest.distance >= 25000 ? (
-                        <p data-aos="zoom-in-right" className='mt-3'>The event is stay far (about {(nearest.distance / 1000).toFixed(2)} kilometers). However, you can take a taxi or drive yourself and suggested to planning your trip ahead of time.</p>
+                        <p data-aos="zoom-in-right" className='mt-3'>The event place is quite far (about {(nearest.distance / 1000).toFixed(2)} kilometers). However, you can take a taxi or drive yourself and suggested to planning your trip ahead of time.</p>
                        ) :nearest.distance >= 0.5 && nearest <= 25000 ? (
                         <p data-aos="zoom-in-right" className='mt-3'>Approximate distance of {(nearest.distance / 1000).toFixed(2)} kilometers from your current address.</p>
                        ) : (

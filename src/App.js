@@ -51,6 +51,7 @@ import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import TheatersIcon from '@material-ui/icons/Theaters';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
 import SlideshowIcon from '@material-ui/icons/Slideshow';
+import PartyModeIcon from '@material-ui/icons/PartyMode';
 
 import Home from './component/home';
 import MemberList from './component/members';
@@ -58,6 +59,7 @@ import LiveCom from './component/livestream'
 import MamSam from './component/memberdetail';
 import TokenCom from './component/token';
 import News from './component/news';
+import Anni from './component/anniversarydebut';
 import MvCom from './component/music';
 import OriCom from './component/originalcontent';
 import MusicCom from './component/streaming';
@@ -734,6 +736,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="News" />
                 </ListItem>
+                <ListItem component={Link} to='/anniversary' className={window.location.pathname == '/anniversary' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <PartyModeIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="6th years anniversary first debut" />
+                </ListItem>
                 <ListItem component={Link} to='/janken' className={window.location.pathname == '/janken' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <SlideshowIcon />
@@ -910,6 +918,7 @@ React.useEffect(() => {
                   <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} />} />
                   <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/anniversary" render={() => <Anni fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/originalcontent" render={() => <OriCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

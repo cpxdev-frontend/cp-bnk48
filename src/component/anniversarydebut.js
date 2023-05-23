@@ -74,7 +74,7 @@ const Anni = ({fet, setSec, width}) => {
         })
         .then(response => response.text())
         .then(data => {
-          if (parseInt(data) < 1685667600) {
+          if (parseInt(data) >= 1685667600) {
             setOn(true)
             FetchData()
           } else {
@@ -146,12 +146,33 @@ const Anni = ({fet, setSec, width}) => {
                 <CardHeader title='BNK48 Event Story Timeline' />
             <Timeline>
             <TimelineEvent 
-                title="Announcing the establishment of sister band in Thailand"
-                subtitle="JAPAN Expo 2016 at Central World"
-                           createdAt="2016-09-12 10:06 PM"
-            >
-                I received the payment for $543. Should be shipping the item within a couple of hours.
-                    </TimelineEvent>
+                    title="Announcing the establishment of sister band of AKB48"
+                    subtitle="JAPAN Expo 2016 at Central World"
+                    createdAt={moment.unix(1467824400).format('DD MMMM YYYY') + ' - '+ moment.unix(1468083600).format('DD MMMM YYYY')}
+                >
+                    The first announcement of sister band of AKB48 such ass BNK48, MNL48, TPE48 (AKB48 Team TP).
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The birth of BNK48"
+                    subtitle="JAPAN Expo 2017 at Central World"
+                    createdAt={moment.unix(1486832400).format('DD MMMM YYYY')}
+                >
+                    The debut of BNK48 in Japan Expo 2017. That is officially grand opening of BNK48.
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The first show of BNK48"
+                    subtitle="Quartier Gallery at The Emquartier"
+                    createdAt={moment.unix(1496336400).format('DD MMMM YYYY')}
+                >
+                    The first official performance of BNK48.
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The first Handshake event"
+                    subtitle="Central Bangna"
+                    createdAt={moment.unix(1503680400).format('DD MMMM YYYY') + ' - '+ moment.unix(1503766800).format('DD MMMM YYYY')}
+                >
+                    The first handshake event (BNK48 1st Single "Aitakata" Handshake event).
+                </TimelineEvent>
             </Timeline>
             </div>
             </>

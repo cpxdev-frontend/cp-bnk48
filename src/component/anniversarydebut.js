@@ -5,6 +5,8 @@ import { Typography, ListItem, Zoom, IconButton,
 import AOS from "aos";
 import moment from 'moment'
 import { ConsoleLogger } from '@microsoft/signalr/dist/esm/Utils';
+import {Timeline, TimelineEvent} from 'react-event-timeline'
+
 
 const Anni = ({fet, setSec, width}) => {
 
@@ -16,13 +18,17 @@ const Anni = ({fet, setSec, width}) => {
 
     const remainEvent = (unixStart) => {
         setInterval(() => {
-            let start = moment(); // some random moment in time (in ms)
-        let end = moment.unix(unixStart); // some random moment after start (in ms)
-        const ms = end.diff(start)
-        const date = moment.duration(ms)
-        // execution
-        let f = Math.floor(date.asDays()) + ' Day(s) ' + moment.utc(ms).format("H") + ' Hour(s) ' + moment.utc(ms).format("mm") + ' Minute(s) '+ moment.utc(ms).format("ss") + ' Second(s)';
-        setTime(f)
+            if (moment.unix() >= 1685667600) {
+                setTime("It's time to be celebration, please scroll below")
+            } else {
+                let start = moment(); // some random moment in time (in ms)
+                let end = moment.unix(unixStart); // some random moment after start (in ms)
+                const ms = end.diff(start)
+                const date = moment.duration(ms)
+                // execution
+                let f = Math.floor(date.asDays()) + ' Day(s) ' + moment.utc(ms).format("H") + ' Hour(s) ' + moment.utc(ms).format("mm") + ' Minute(s) '+ moment.utc(ms).format("ss") + ' Second(s)';
+                setTime(f)
+            }
         }, 1000);
     }
 
@@ -68,7 +74,7 @@ const Anni = ({fet, setSec, width}) => {
         })
         .then(response => response.text())
         .then(data => {
-          if (parseInt(data) >= 1685667600) {
+          if (parseInt(data) < 1685667600) {
             setOn(true)
             FetchData()
           } else {
@@ -96,14 +102,14 @@ const Anni = ({fet, setSec, width}) => {
           <Card className="col-md-4 m-5">
               <CardContent>
               <Typography variant="h5" component="h2">
-                BNK48 6th Anniversary first debut celebration
+                    BNK48 6th years Anniversary first debut celebration
                 </Typography>
                 <hr />
                 <Typography color="textSecondary">
-                Fresh news about BNK48 right here!
+                Let's celebration together
                 </Typography>
                 <Typography color="textSecondary">
-                    {online ? "It's time to be celebration, please scroll bellow" : 'This event will be soon in ' + time}
+                    {online ? "It's time to be celebration, please scroll below" : 'This event will be soon in ' + time}
                 </Typography>
               </CardContent>
             </Card>
@@ -115,23 +121,41 @@ const Anni = ({fet, setSec, width}) => {
   <Card className="bnktheme ml-2 mr-2">
       <CardContent>
         <Typography variant="h5" component="h2">
-        BNK48 6th Anniversary first debut celebration
+        BNK48 6th years Anniversary first debut celebration
         </Typography>
         <hr />
         <Typography color="textSecondary">
-          Fresh news about BNK48 right here!
+          Let's celebration together
         </Typography>
         <Typography color="textSecondary">
-        {online ? "It's time to be celebration, please scroll bellow" : 'This event will be soon in ' + time}
+        {online ? "It's time to be celebration, please scroll below" : 'This event will be soon in ' + time}
         </Typography>
       </CardContent>
     </Card>
     </Grow>
   </div>
           )}
-  <div className="stage pb-2">
-  
-  </div>
+          {online && (
+            <>
+            <Card className='mb-5 text-center'>
+                <CardContent>
+                    Welcome to BNK48 6th years Anniversary first debut celebration. This is online gallery to to bring back the memories of these girls group.
+                </CardContent>
+            </Card>
+            <div className="stage pb-2" style={{opacity: 0.9}}>
+                <CardHeader title='BNK48 Event Story Timeline' />
+            <Timeline>
+            <TimelineEvent 
+                title="Announcing the establishment of sister band in Thailand"
+                subtitle="JAPAN Expo 2016 at Central World"
+                           createdAt="2016-09-12 10:06 PM"
+            >
+                I received the payment for $543. Should be shipping the item within a couple of hours.
+                    </TimelineEvent>
+            </Timeline>
+            </div>
+            </>
+          )}
         </>
     );
 }

@@ -75,7 +75,7 @@ const Anni = ({fet, setSec, width}) => {
         })
         .then(response => response.text())
         .then(data => {
-          if (parseInt(data) < 1685667600) {
+          if (parseInt(data) >= 1685667600) {
             setOn(true)
             FetchData()
           } else {

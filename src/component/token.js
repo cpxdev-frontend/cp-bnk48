@@ -196,13 +196,16 @@ const HomeCom = ({fet, gp, setSec, width}) => {
                     <Typography>
                         These are all you know about trading and using BNK Token which we can do.
                     <ListItem>
-                    <ListItemText primary="1. Update app and apply wallet" secondary="You not need to download additional application to drain phone storage. Just update iAM48 Application to version 1.8.00 or above. Then open app and you will see token tab on below of application. (Middle Tab) And reading Acceptment confirmation and create 6 digits pin to login BNK Token wallet" />
+                    <ListItemText primary="1. Update app and apply wallet" secondary="You not need to download additional application to drain phone storage. Just update iAM48 Application. Then open app and you will see token tab on below of application. (Middle Tab) And reading Acceptment confirmation and create 6 digits pin to login BNK Token wallet" />
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="2. If you see verify email popup alert, don't be check your email inbox!" secondary="Some user may receive popup alert to verify email. We take personal and account information strictly. You need to verify email and re-login account again to done. If you have any issue. Please contact Talen Connect Teams in app." />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="3. See more using Token in BNK Token page" secondary={(<p>See more update for BNK Token <a href='https://www.scb.co.th/th/about-us/news/feb-2565/bnk-governance-token.html' target='_blank'>here</a></p>)} />
+                  <ListItemText primary="3. Wallet Verification" secondary={(<p>Starting June 1, 2023, you are required to verify by e-KYC (Electronic Know Your Customer) to verify wallet ownership and enhance transaction security. See more description <a href='https://www.facebook.com/BNKToken/posts/pfbid0bRX1ubBdvoJLqeZo8UbotxSHZMFCpVSqyMC54LQ9KBvExC7Z7rGzgJrB49oMTZPbl' target='_blank'>here</a></p>)} />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="4. See more using Token in BNK Token page" secondary={(<p>See more update for BNK Token <a href='https://www.scb.co.th/th/about-us/news/feb-2565/bnk-governance-token.html' target='_blank'>here</a></p>)} />
                   </ListItem>
                     </Typography>
                 </CardContent>

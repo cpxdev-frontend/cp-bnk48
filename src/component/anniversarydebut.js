@@ -1,11 +1,12 @@
 import React from 'react';
-import { Typography, ListItem, Zoom, IconButton,
-    Card, CardHeader, CardContent, CardMedia, Grow, Fade } from '@material-ui/core';
+import { Typography, CardActionArea, Zoom, Grid,
+    Card, CardHeader, CardContent, CardMedia, Grow, Fade, Container } from '@material-ui/core';
     import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AOS from "aos";
 import moment from 'moment'
 import { ConsoleLogger } from '@microsoft/signalr/dist/esm/Utils';
 import {Timeline, TimelineEvent} from 'react-event-timeline'
+import MusicCom from './MusicComRe'
 
 
 const Anni = ({fet, setSec, width}) => {
@@ -39,7 +40,7 @@ const Anni = ({fet, setSec, width}) => {
                 .then(response => response.text())
                 .then(data => {
                     setLoaded(true)
-                  const json = data.replaceAll('From "', "From '").replaceAll('One Take"', "One Take'").replaceAll('บ้านเธอ"', "บ้านเธอ'").replaceAll('คนนี้"', "คนนี้'")
+                  const json = JSON.parse(data.replaceAll('From "', "From '").replaceAll('One Take"', "One Take'").replaceAll('บ้านเธอ"', "บ้านเธอ'").replaceAll('คนนี้"', "คนนี้'"))
                   setPlaylist(json.items)
                 })
                 .catch((error) => {
@@ -74,7 +75,7 @@ const Anni = ({fet, setSec, width}) => {
         })
         .then(response => response.text())
         .then(data => {
-          if (parseInt(data) >= 1685667600) {
+          if (parseInt(data) < 1685667600) {
             setOn(true)
             FetchData()
           } else {
@@ -174,6 +175,60 @@ const Anni = ({fet, setSec, width}) => {
                     The first handshake event (BNK48 1st Single "Aitakata" Handshake event).
                 </TimelineEvent>
             </Timeline>
+            </div>
+            <div className="stage pb-2 text-center" style={{opacity: 0.9}}>
+                <CardHeader title='BNK48 6th Anniversary Celebration Playlist' subheader="Let's join celebrate together. Provided by Spotify" />
+                <Container>
+         <Grid container spacing={2} className='justify-content-center mt-3'>
+              {play.length > 0 ? play.map((item,i) => (
+                   <Grid key={item.track.id} item md={3} data-aos="zoom-in">
+                <Card className={'text-center mb-3' + (width < 700 ? ' bnktheme' : '')}>
+                  <CardContent>
+                    <CardActionArea onClick={() => window.open(item.track.external_urls.spotify, '_blank').focus()}>
+                  <Typography variant="h5" component="h2">
+                    {item.track.name}
+                    </Typography>
+                    <hr />
+                    <CardMedia
+                        className='mb-3'
+                        src={item.track.album.images[0].url}
+                        component="img"
+                    />
+                     <Typography variant="body1">
+                        {item.track.album.album_type =='single' && item.track.album.total_tracks == 1 ? 'The single song by ' + item.track.artists[0].name : item.track.album.album_type =='single' && item.track.album.total_tracks > 1 ? 'This Extended Play (EP) included ' + item.track.album.total_tracks +' tracks.'  : 'This Studio Album included ' + item.track.album.total_tracks +' tracks.' }
+                    </Typography>
+                    <Typography variant="subtitle1" color="textSecondary">
+                        Release date: {new Date(item.track.album.release_date).toDateString()}
+                    </Typography>
+                    </CardActionArea>
+                  </CardContent>
+                </Card>
+                </Grid>
+              )) : (
+                <Zoom in={true} timeout={{ enter: 200, exit: 200}}>
+                 <Card className='p-5 text-center mt-5 col-12'>
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-5 mb-5' />
+                Connect to service
+          </Card>
+              </Zoom>
+              )}
+        </Grid>
+        </Container>
+            </div>
+            <div className="stage pb-2 text-center" style={{opacity: 0.9}}>
+                <CardHeader title='BNK48 6th Anniversary Rewind Music Video' subheader="Threw back to all BNK48 music video in memories. Let's do it! Provided by Youtube" />
+                <div className='row justify-content-center'>
+                {vdo.length > 0 ? vdo.map((item,i) => (
+                       <MusicCom item={item} i={i} />
+                 )) : (
+                    <Zoom in={true} timeout={{ enter: 200, exit: 200}}>
+                 <Card className='p-5 text-center col-12 mt-5'>
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-5 mb-5' />
+                Connect to service
+          </Card>
+              </Zoom>
+                 )}
+        </div>
             </div>
             </>
           )}

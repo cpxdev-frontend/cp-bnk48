@@ -7,6 +7,7 @@ import moment from 'moment'
 import { ConsoleLogger } from '@microsoft/signalr/dist/esm/Utils';
 import {Timeline, TimelineEvent} from 'react-event-timeline'
 import MusicCom from './MusicComRe'
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 
 const Anni = ({fet, setSec, width}) => {
@@ -144,35 +145,148 @@ const Anni = ({fet, setSec, width}) => {
                 </CardContent>
             </Card>
             <div className="stage pb-2" style={{opacity: 0.9}}>
-                <CardHeader title='BNK48 Event Story Timeline' />
+                <CardHeader title='BNK48 Event Story Timeline' subheader='Notes: This timeline only includes events that the average person may have heard of. Some events may not be in this timeline.' />
             <Timeline>
             <TimelineEvent 
                     title="Announcing the establishment of sister band of AKB48"
                     subtitle="JAPAN Expo 2016 at Central World"
-                    createdAt={moment.unix(1467824400).format('DD MMMM YYYY') + ' - '+ moment.unix(1468083600).format('DD MMMM YYYY')}
+                    createdAt={moment.unix(1467824400).utc().format('DD MMMM YYYY') + ' - '+ moment.unix(1468083600).utc().format('DD MMMM YYYY')}
                 >
                     The first announcement of sister band of AKB48 such ass BNK48, MNL48, TPE48 (AKB48 Team TP).
                 </TimelineEvent>
                 <TimelineEvent 
-                    title="The birth of BNK48"
+                    title="The birth of BNK48 and the borning of the first BNK48 Captain"
                     subtitle="JAPAN Expo 2017 at Central World"
-                    createdAt={moment.unix(1486832400).format('DD MMMM YYYY')}
+                    createdAt={moment.unix(1486832400).utc().format('DD MMMM YYYY')}
                 >
-                    The debut of BNK48 in Japan Expo 2017. That is officially grand opening of BNK48.
+                    The debut of BNK48 in Japan Expo 2017. That is officially grand opening of BNK48. And the first date of Cherprang as BNK48 captain.
                 </TimelineEvent>
                 <TimelineEvent 
                     title="The first show of BNK48"
                     subtitle="Quartier Gallery at The Emquartier"
-                    createdAt={moment.unix(1496336400).format('DD MMMM YYYY')}
+                    createdAt={moment.unix(1496336400).utc().format('DD MMMM YYYY')}
                 >
                     The first official performance of BNK48.
+                </TimelineEvent>
+                 <TimelineEvent 
+                    title="The grand openning of Digital LIVE Studio"
+                    subtitle="The Emquartier"
+                    createdAt={moment.unix(1496466000).utc().format('DD MMMM YYYY')}
+                >
+                    Digital LIVE Studio is a place where the BNK48 members have a space to meet their fans. Under a clear glass wall so that everyone who walks by can see them.
                 </TimelineEvent>
                 <TimelineEvent 
                     title="The first Handshake event"
                     subtitle="Central Bangna"
-                    createdAt={moment.unix(1503680400).format('DD MMMM YYYY') + ' - '+ moment.unix(1503766800).format('DD MMMM YYYY')}
+                    createdAt={moment.unix(1503680400).utc().format('DD MMMM YYYY') + ' - '+ moment.unix(1503766800).utc().format('DD MMMM YYYY')}
                 >
                     The first handshake event (BNK48 1st Single "Aitakata" Handshake event).
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The first of 3rd Single 'Shonichi' live performance"
+                    subtitle="Rajamangala National Stadium"
+                    createdAt={moment.unix(1521781200).utc().format('DD MMMM YYYY')}
+                >
+                    The first live performance in the largest outdoor area which BNK48 has arranged.
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The Starto Concert"
+                    subtitle="Bangkok International Trade & Exhibition Centre (BITEC)"
+                    createdAt={moment.unix(1522558800).utc().format('DD MMMM YYYY')}
+                >
+                    The first BNK48 LIVE concert. And the announcement place of the first BNK48 album 'RIVER'
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The 1st Stage of BNK48 Theater"
+                    subtitle="BNK48 Campus, The Mall Bangkapi"
+                    createdAt={moment.unix(1524718800).utc().format('DD MMMM YYYY')}
+                >
+                    The first stage show of BNK48 at BNK48 Theater. BNK48 Theater the their theater. So that the BNK48 members have the opportunity to fully show their singing and dancing performances. Including fans will receive exclusive access to viewing because you have to randomly have access to see because seats are limited. And are inherent in almost all circles of the 48 Group's culture.
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The 1st Together Concert"
+                    subtitle="Central World"
+                    createdAt={moment.unix(1536987600).utc().format('DD MMMM YYYY')}
+                >
+                    The first BNK48 1st and 2nd Generation concert. And also the first performance of the 4th Single 'Kimi wa melody'
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The 1st of BNK48 General Election Announcement"
+                    subtitle="Impact Arena Muangthongthani"
+                    createdAt={moment.unix(1548478800).utc().format('DD MMMM YYYY')}
+                >
+                    The first of BNK48 General Election Result Announcement for BNK48 6th Single 'Beginner'. And That is the one of the largest event forever.
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The 1st of BNK48 Sportday"
+                    subtitle="Indoor Stadium Huamark"
+                    createdAt={moment.unix(1567918800).utc().format('DD MMMM YYYY')}
+                >
+                    The first of BNK48 Sportday. And it is one of the activities held in the tradition of 48 Group culture.
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="BNK48 3rd Generation first meeting"
+                    subtitle="BNK48 Campus, The Mall Bangkapi"
+                    createdAt={moment.unix(1599627600).utc().format('DD MMMM YYYY')}
+                >
+                    The first meeting of BNK48 3rd Generation
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The first BNK48 original song in main single list."
+                    subtitle="Online only (Covid-19 outbreak reason)"
+                    createdAt={moment.unix(1622610000).utc().format('DD MMMM YYYY')}
+                >
+                    The first BNK48 original song which under as main song of single is released 'D-AAA | ดีอะ' in BNK48 10th Single.
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="BNK Governance Token Platform launching"
+                    subtitle="Digital LIVE Studio at MBK Center"
+                    createdAt={moment.unix(1654146000).utc().format('DD MMMM YYYY')}
+                >
+                    The future of 48 Group merchandise trading with Utility digital token undered by Independent Artist Management and Token X (subsidiary of SCB X PCL.)
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The first Request Hours Concert"
+                    subtitle="Union Hall, Union Mall"
+                    createdAt={moment.unix(1668920400).utc().format('DD MMMM YYYY')}
+                >
+                    The first of BNK48 and CGM48 Request Hours concert. Request Hours is a concert that allows fans to participate in arranging a set of songs that will be performed. where the BNK48 and CGM48 members themselves never knew in advance what songs they would have to perform
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="Farewells are not just a myth."
+                    subtitle="Terminal Rama 3"
+                    createdAt={moment.unix(1668920400).utc().format('DD MMMM YYYY')}
+                >
+                    BNK48 1st generation special single 'Jiwaru Days' is released. The farewell single of 19 BNK48 members who are already terminated the BNK48 members contract
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="The last BNK48 stage of BNK48 1st Generation full team members"
+                    subtitle="BNK48 Campus, The Mall Bangkapi"
+                    createdAt={moment.unix(1671339600).utc().format('DD MMMM YYYY')}
+                >
+                    The last of BNK48 1st Generation stage. It is a stage in memory of many BNK48 fans.
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="Cherprang's acceptance of Shihainin"
+                    subtitle="SF Cinema at MBK Center"
+                    createdAt={moment.unix(1672203600).utc().format('DD MMMM YYYY')}
+                >
+                    That announcement made her have three roles: Shihainin (BNK48 Manager), Captain and also member too.
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="Cherprang's graduation announcement"
+                    subtitle="Union Hall, Union Mall"
+                    createdAt={moment.unix(1681016400).utc().format('DD MMMM YYYY')}
+                >
+                    There is many important events in that day. First, it's the secondary of Janken Tournament. Second, Cherprang has benn announcement to graduated from BNK48. As a result, she ended her role as captain of BNK48 as well (she still as Shihainin). The finally, BNK48 14th Single has been announcement including announcing her last concert.
+                </TimelineEvent>
+                <TimelineEvent 
+                    title="BNK48 14th Single first performance"
+                    subtitle="Bangkok City Hall"
+                    createdAt={moment.unix(1685682000).utc().format('DD MMMM YYYY')}
+                    icon={<StarBorderIcon />}
+                >
+                    The first performance of BNK48 14th single 'Promise - สัญญานะ' which be soon and including participating in the Music Video filming as well. And it's the 6th year anniversary of the first debut of BNK48 too.
                 </TimelineEvent>
             </Timeline>
             </div>

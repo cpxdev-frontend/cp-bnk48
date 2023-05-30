@@ -8,7 +8,7 @@ import { ConsoleLogger } from '@microsoft/signalr/dist/esm/Utils';
 import {Timeline, TimelineEvent} from 'react-event-timeline'
 import MusicCom from './MusicComRe'
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-
+import { Gallery } from "react-grid-gallery";
 
 const Anni = ({fet, setSec, width}) => {
 
@@ -17,6 +17,8 @@ const Anni = ({fet, setSec, width}) => {
     const [Loaded, setLoaded] = React.useState(false);
     const [play, setPlaylist] = React.useState([]);
     const [vdo, setVdo] = React.useState([]);
+
+    const [gal, setGal] = React.useState( []);
 
     const remainEvent = (unixStart) => {
         setInterval(() => {
@@ -40,7 +42,6 @@ const Anni = ({fet, setSec, width}) => {
                 })
                 .then(response => response.text())
                 .then(data => {
-                    setLoaded(true)
                   const json = JSON.parse(data.replaceAll('From "', "From '").replaceAll('One Take"', "One Take'").replaceAll('บ้านเธอ"', "บ้านเธอ'").replaceAll('คนนี้"', "คนนี้'"))
                   setPlaylist(json.items)
                 })
@@ -53,15 +54,31 @@ const Anni = ({fet, setSec, width}) => {
                     })
                     .then(response => response.json())
                     .then(data => {
-                        setLoaded(true)
                         setVdo(data.items)
                     })
                     .catch((error) => {
                         setLoaded(true)
                     console.error('Error:', error);
                     });
+                    fetch(encodeURI(fet + '/bnk48/bnkdebutgallery'), {
+                        method: 'post', // or 'PUT'
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                           let temp = []
+                            for (let index = 0; index < data.items.length; index++) {
+                                temp.push({
+                                    src: data.items[index].thumbnailLink.replace('=s220', '=s700')
+                                })
+                            }
+                            setGal(temp)
+                        })
+                        .catch((error) => {
+                            setLoaded(true)
+                        console.error('Error:', error);
+                        });
             setInterval(() => {
-                if (vdo.length > 0 && play.length > 0) {
+                if (vdo.length > 0 && play.length > 0 && gal.length > 0) {
                     setLoaded(true)
                 } 
             }, 1000);
@@ -144,7 +161,7 @@ const Anni = ({fet, setSec, width}) => {
                     Welcome to BNK48 6th years Anniversary first debut celebration. This is online gallery to to bring back the memories of these girls group.
                 </CardContent>
             </Card>
-            <div className="stage pb-2" style={{opacity: 0.9}}>
+            <div className="stage pb-2" style={{opacity: 0.95}}>
                 <CardHeader title='BNK48 Event Story Timeline' subheader='Notes: This timeline only includes events that the average person may have heard of. Some events may not be in this timeline.' />
             <Timeline>
             <TimelineEvent 
@@ -342,6 +359,21 @@ const Anni = ({fet, setSec, width}) => {
           </Card>
               </Zoom>
                  )}
+        </div>
+        <div className="stage pb-2 text-center" style={{opacity: 0.9}}>
+                <CardHeader title='BNK48 Memories Gallery' subheader="Storage Provided by Google Drive. Photos from BNK48 official and another cameramen" />
+                <div className='container'>
+                {vdo.length > 0 ?  (
+                    <Gallery images={gal} />
+                 ) : (
+                    <Zoom in={true} timeout={{ enter: 200, exit: 200}}>
+                 <Card className='p-5 text-center col-12 mt-5'>
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-5 mb-5' />
+                Connect to service
+          </Card>
+              </Zoom>
+                 )}
+                </div>
         </div>
             </div>
             </>

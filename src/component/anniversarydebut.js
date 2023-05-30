@@ -23,7 +23,7 @@ const Anni = ({fet, setSec, width}) => {
     const remainEvent = (unixStart) => {
         setInterval(() => {
             if (moment.unix() >= 1685667600) {
-                setTime("It's time to be celebration, please scroll below")
+                setTime("It's time to be celebration, please refresh this page to continue")
             } else {
                 let start = moment(); // some random moment in time (in ms)
                 let end = moment.unix(unixStart); // some random moment after start (in ms)

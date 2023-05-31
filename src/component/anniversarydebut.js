@@ -95,6 +95,7 @@ const Anni = ({fet, setSec, width}) => {
         .then(data => {
           if (parseInt(data) >= 1685667600) {
             setOn(true)
+            navigator.vibrate([200, 200]);
             FetchData()
           } else {
             remainEvent(1685667600)

@@ -211,7 +211,7 @@ const AccountMana = ({fet, setSec, width}) => {
                     ) : (
                         <p>Your Kami-Oshi is <a className='cur' onClick={() => History.push('/member/' + data.obj.name.toLowerCase())}>{data.obj.fullnameEn[0]} {data.obj.fullnameEn[1]} ({data.obj.name} BNK48)</a></p>
                     )}
-                    <div className='cur' onClick={() => window.open('//tpopplatform.pages.dev', '_blank')}>
+                    <div className='cur' onClick={() => window.open('//cp-tpop.pages.dev/membership', '_blank')}>
                       Notes: You can change your profile image by Login with same account credential on T-POP Megaverse Platform (Click here to Continue)
                     </div>
                     {width > 1100 && data.obj != null && data.obj.twelvethsingle != undefined && data.obj.twelvethsingle.includes('bnk12thsing/main') && (
@@ -226,20 +226,6 @@ const AccountMana = ({fet, setSec, width}) => {
                             />
                           }
                           label={"Show your Kami-Oshi as Background on BNK48 Fan Space Homepage (BNK48 12th Single \"Believers\" campaign)"}
-                        />
-                    )}
-                    {width > 1100 && data.obj != null && data.obj.gen == 1 && (
-                          <FormControlLabel
-                          className='ml-2 pt-4'
-                          control={
-                            <Switch
-                              checked={jiwaback}
-                              name="jiwa"
-                              onChange={()=> setJiwa(!jiwaback)}
-                              color="primary"
-                            />
-                          }
-                          label={"Show your Kami-Oshi as Video-Background on BNK48 Fan Space Homepage (BNK48 1st Generation Special Single \"Jiwaru Days\" campaign)"}
                         />
                     )}
                 </div>

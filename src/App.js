@@ -1170,39 +1170,31 @@ transitionDuration={500}
     )}
       {width > 900 ? (
          <div className="row">
-         <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 500 }}>
-           <div className="col pr-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/1.jpg" width="100%" />
+           <div className="col pr-0" data-aos='flip-right'>
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/1.jpg" width="100%" />
            </div>
-         </Fade>
-         <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 300 : 400 }}>
-           <div className="col p-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/2.jpg" width="100%" />
+           <div className="col p-0" data-aos='flip-right'>
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/2.jpg" width="100%" />
            </div>
-         </Fade>
-         <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 400 : 300 }}>
-           <div className="col p-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/3.jpg" width="100%" />
+           <div className="col p-0" data-aos='flip-right'>
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/3.jpg" width="100%" />
            </div>
-         </Fade>
-           <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 500 :  0 }}>
-           <div className="col pl-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/4.jpg" width="100%" />
+           <div className="col pl-0" data-aos='flip-right'>
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/4.jpg" width="100%" />
            </div>
-         </Fade>
          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-             <AlertTitle>BNK48 13th Single "ii-Wake Maybe" has released on both Music video and music streaming platform.</AlertTitle>
-               Double click or tap on image to skip this page
+             <AlertTitle>BNK48 14th Single "Promise - สัญญานะ" has been soon.</AlertTitle>
+              Double click or tap on image to skip this page
              </Alert>
              </div>
          </Grow>
          <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-             <AlertTitle>BNK48 13th Single "ii-Wake Maybe" has released on both Music video and music streaming platform.</AlertTitle>
-                    Double click/tap here on image or wait 10 seconds to skip this page
+             <AlertTitle>BNK48 14th Single "Promise - สัญญานะ" has been soon.</AlertTitle>
+              Double click or tap on image to skip this page
              </Alert>
              </div>
          </Grow>

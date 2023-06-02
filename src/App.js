@@ -1176,10 +1176,10 @@ transitionDuration={500}
            <div className="col p-0" data-aos='flip-right'>
                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/2.jpg" width="100%" />
            </div>
-           <div className="col p-0" data-aos='flip-right'>
+           <div className="col p-0" data-aos='flip-left'>
                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/3.jpg" width="100%" />
            </div>
-           <div className="col pl-0" data-aos='flip-right'>
+           <div className="col pl-0" data-aos='flip-left'>
                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/4.jpg" width="100%" />
            </div>
          <Grow in={uri != '' && geready ? true : false} timeout={1000}>

@@ -561,10 +561,10 @@ function capitalizeFirstLetter(string) {
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                                     </h4>
                                         {item.sing13 != undefined && item.sing13 == '' && width <= 600 && (
-                                            <marquee className='cur' onClick={() => session13thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
+                                            <marquee className='cur' onClick={() => session14thSingle(item)}>BNK48 14th Single "Promise - สัญญานะ" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
                                         )}
                                          {item.sing13 != undefined && item.sing13 == '' && width > 600 && (
-                                            <p className='cur' onClick={() => session14thSingle(item)}>BNK48 13th Single "ii-Wake Maybe" is now on both Music Video and music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
+                                            <p className='cur' onClick={() => session14thSingle(item)}>BNK48 14th Single "Promise - สัญญานะ" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
                                         )}
 
 

@@ -560,10 +560,10 @@ function capitalizeFirstLetter(string) {
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                                     </h4>
-                                        {item.sing13 != undefined && item.sing13 == '' && width <= 600 && (
+                                        {item.sing14 != undefined && item.sing14 == '' && width <= 600 && (
                                             <marquee className='cur' onClick={() => session14thSingle(item)}>BNK48 14th Single "Promise - สัญญานะ" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
                                         )}
-                                         {item.sing13 != undefined && item.sing13 == '' && width > 600 && (
+                                         {item.sing14 != undefined && item.sing14 == '' && width > 600 && (
                                             <p className='cur' onClick={() => session14thSingle(item)}>BNK48 14th Single "Promise - สัญญานะ" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
                                         )}
 

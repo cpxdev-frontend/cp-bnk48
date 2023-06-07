@@ -3,17 +3,17 @@
   "name": "BNK48 Fan Space",
   "icons": [
     {
-      "src": "https://pbs.twimg.com/profile_images/1422908801166962698/n6bV6uEO_400x400.jpg",
+      "src": "https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnklogo.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "https://pbs.twimg.com/profile_images/1422908801166962698/n6bV6uEO_400x400.jpg",
+      "src": "https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnklogo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://pbs.twimg.com/profile_images/1422908801166962698/n6bV6uEO_400x400.jpg",
+      "src": "https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnklogo.png",
       "type": "image/png",
       "sizes": "512x512"
     }

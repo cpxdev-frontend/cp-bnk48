@@ -972,7 +972,7 @@ React.useEffect(() => {
            <ListItem onClick={() => {
               const last = window.location.href
               History.push("/member/" + kamin.toLowerCase())
-              if (last.includes('/member')) {
+              if (last.includes('/member/')) {
                 History.go(0)
               }
               setMemDl(false)

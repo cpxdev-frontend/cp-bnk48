@@ -53,6 +53,7 @@ import TheatersIcon from '@material-ui/icons/Theaters';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
 import SlideshowIcon from '@material-ui/icons/Slideshow';
 import PartyModeIcon from '@material-ui/icons/PartyMode';
+import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 
 import Home from './component/home';
 import MemberList from './component/members';
@@ -76,6 +77,7 @@ import RequestCom from './component/requesthour';
 import JankenCom from './component/janken';
 import RegisCom from './component/register';
 import Fenetwork from './component/48groupnetwork';
+import BmaCom from './component/bma';
 
 import GeCom from './component/ge';
 import GeMana from './component/geevent/gemanage';
@@ -732,6 +734,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="Members" />
                 </ListItem>
+                <ListItem component={Link} to='/bma' className={window.location.pathname == '/bma' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <AirportShuttleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Please visit ... too (ฝาก...ด้วยนะ)" />
+                </ListItem>
                 <ListItem component={Link} to='/news' className={window.location.pathname == '/news' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <ListAltIcon />
@@ -935,6 +943,7 @@ React.useEffect(() => {
                   <Route path="/janken" render={() => <JankenCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/48group" render={() => <Fenetwork fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/bma" render={() => <BmaCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   {
                     login && (
                       <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

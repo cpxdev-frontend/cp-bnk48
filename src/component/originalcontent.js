@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardHeader, CardContent, CardMedia, Typography, Zoom, CardActions, IconButton, ButtonGroup } from '@material-ui/core';
+import { Card, Button, CardContent, CardMedia, Typography, Zoom, CardActions, IconButton, ButtonGroup } from '@material-ui/core';
 import MusicCom from './originalcontentRe'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpotify, faItunes, faDeezer, faYoutube, faTiktok, faYoutubeSquare } from '@fortawesome/free-brands-svg-icons'
@@ -29,6 +29,9 @@ const Music = ({gp, fet, setSec}) => {
             <>
             <h3 className='text-center mt-5'>BNK48 Original Content</h3>
             <p className='text-center'>All original content from BNK48 members in everyweek. Powered by Youtube</p>
+            <div className='text-center mb-5'>
+                <Button color="primary" href='https://www.youtube.com/playlist?list=PL6s4BOFw0ckDK7bkTV4fYoBitVdpOFVv0' target='_blank' variant='contained'>Click here to watch it on Youtube Playlist</Button>
+            </div>
             {Loaded ? (
                  <div className="stage pt-5 pl-3 pr-3">
                  <br />

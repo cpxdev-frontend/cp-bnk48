@@ -1,13 +1,18 @@
 import React from 'react'
 
-import { Card, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, MenuItem, Button, ButtonGroup, Grid } from '@material-ui/core';
+import { Card, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, CardMedia, Button, CardHeader, Grid, Avatar } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import AOS from "aos";
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import Swal from 'sweetalert2';
+import Carousel from 'react-material-ui-carousel'
  
 mapboxgl.accessToken = 'pk.eyJ1IjoiY3B4dGgyMDE3IiwiYSI6ImNsZHY0MzN6bTBjNzEzcXJmamJtN3BsZ3AifQ.mYNwWaYKsiLeYXngFDtaWQ';
-
+const bnk = {
+  path: 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/bnk14thsing/',
+  type: '.jpg'
+}
 const Memberlist = ({fet, setSec, width, login}) => {
   const [data, setData] = React.useState(null);
   const [list, setList] = React.useState([]);
@@ -52,20 +57,12 @@ const Memberlist = ({fet, setSec, width, login}) => {
                   .setLngLat(coodinate).addTo(map.current).setPopup(popup)
                   
               }
-              map.current.on("dblclick", (e) => {
+              map.current.on("click", (e) => {
                 const marker = JSON.parse(JSON.stringify(e.target._popups[0]._lngLat));
                 console.log(marker)
                 const d = res.response.filter(x => x.coodinate[0]  == marker.lat && x.coodinate[1]  == marker.lng);
                 if (d.length > 0) {
-                  if (login != null) {
-                    setData(d[0])
-                  } else {
-                    Swal.fire({
-                      title: "Please login to membership to continue.",
-                      icon: 'warning',
-                      iconColor: 'rgb(203, 150, 194)',
-                    })
-                  }
+                  setData(d[0])
                 }
               });
               setList(res.response)
@@ -74,7 +71,9 @@ const Memberlist = ({fet, setSec, width, login}) => {
           .catch(() => {});
     }, [])
 
-
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
  
 
     return ( 
@@ -91,16 +90,50 @@ const Memberlist = ({fet, setSec, width, login}) => {
           <Dialog
           open={data != null}
           onClose={() => setData(null)}
+          maxWidth='lg'
         >
-          <DialogTitle id="alert-dialog-title">{data.placeName}</DialogTitle>
+          <DialogTitle id="alert-dialog-title"><CardHeader title={data.placeName} subheader={data.locateIn} /></DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Let Google help apps determine location. This means sending anonymous location data to
-              Google, even when no apps are running.
+          {login ? (
+            <Carousel interval={8000} autoPlay={false}>
+            <Card>
+              <img src={data.src} width="100%" />
+            </Card>
+            <Card>
+            <CardMedia
+                component='iframe'
+                height={450}
+                src={'https://www.youtube.com/embed/' + data.videoTag +'?mute=1'}
+                allowFullScreen
+            />
+            </Card>
+           </Carousel>
+          ) : (
+            <Card>
+              <img src={data.src} width="100%" />
+            </Card>
+          )}
+            <DialogContentText id="alert-dialog-description" className='pt-3'>
+              {login && (
+               <div className='mb-4'>
+               <h5>
+               BNK48 Members included
+               </h5>
+                <AvatarGroup max={4}>
+                  {
+                    data.memberIncluded.map((it) => (
+                      <Avatar onClick={() => History.push('/member/' + it.toLowerCase())} alt={it} style={{width: 50, height: 50}} src={bnk.path + it.toLowerCase() + bnk.type} />
+                    ))
+                  }
+                </AvatarGroup>
+                <p>{data.memberIncluded.join(', ')}</p>
+               </div>
+              )}
+              {data.description}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button color="primary" variant='outlined'>
+            <Button href={data.placeLink} target="_blank" color="primary" variant='outlined'>
               See direction on Google Map
             </Button>
             <Button onClick={() => setData(null)} color="primary">

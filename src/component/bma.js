@@ -134,7 +134,7 @@ const Memberlist = ({fet, setSec, width, login}) => {
           </DialogContent>
           <DialogActions>
             <Button href={data.placeLink} target="_blank" color="primary" variant='outlined'>
-              See direction on Google Map
+              Get direction
             </Button>
             <Button onClick={() => setData(null)} color="primary">
               Close

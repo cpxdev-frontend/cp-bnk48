@@ -943,7 +943,7 @@ React.useEffect(() => {
                   <Route path="/janken" render={() => <JankenCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/48group" render={() => <Fenetwork fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-                  <Route path="/bma" render={() => <BmaCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/bma" render={() => <BmaCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} login={login} />} />
                   {
                     login && (
                       <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

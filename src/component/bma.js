@@ -1,13 +1,15 @@
 import React from 'react'
 
-import { Card, CardActionArea, CardContent, CardMedia, TextField, Zoom, MenuItem, Button, ButtonGroup, Grid } from '@material-ui/core';
+import { Card, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, MenuItem, Button, ButtonGroup, Grid } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import AOS from "aos";
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import Swal from 'sweetalert2';
  
 mapboxgl.accessToken = 'pk.eyJ1IjoiY3B4dGgyMDE3IiwiYSI6ImNsZHY0MzN6bTBjNzEzcXJmamJtN3BsZ3AifQ.mYNwWaYKsiLeYXngFDtaWQ';
 
-const Memberlist = ({fet, setSec, width}) => {
+const Memberlist = ({fet, setSec, width, login}) => {
+  const [data, setData] = React.useState(null);
   const [list, setList] = React.useState([]);
     const mapContainer = React.useRef(null);
     const map = React.useRef(null);
@@ -51,8 +53,20 @@ const Memberlist = ({fet, setSec, width}) => {
                   
               }
               map.current.on("dblclick", (e) => {
-                const marker = e.target._popups[0]._lngLat;
-                console.log(marker);
+                const marker = JSON.parse(JSON.stringify(e.target._popups[0]._lngLat));
+                console.log(marker)
+                const d = res.response.filter(x => x.coodinate[0]  == marker.lat && x.coodinate[1]  == marker.lng);
+                if (d.length > 0) {
+                  if (login != null) {
+                    setData(d[0])
+                  } else {
+                    Swal.fire({
+                      title: "Please login to membership to continue.",
+                      icon: 'warning',
+                      iconColor: 'rgb(203, 150, 194)',
+                    })
+                  }
+                }
               });
               setList(res.response)
             }
@@ -73,6 +87,28 @@ const Memberlist = ({fet, setSec, width}) => {
             <div ref={mapContainer} className="map-container" />
            </Card>
         </div>
+        {data != null && (
+          <Dialog
+          open={data != null}
+          onClose={() => setData(null)}
+        >
+          <DialogTitle id="alert-dialog-title">{data.placeName}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Let Google help apps determine location. This means sending anonymous location data to
+              Google, even when no apps are running.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button color="primary" variant='outlined'>
+              See direction on Google Map
+            </Button>
+            <Button onClick={() => setData(null)} color="primary">
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+        )}
         </>
      );
 }

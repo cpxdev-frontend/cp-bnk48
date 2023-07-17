@@ -147,15 +147,17 @@ const Memberlist = ({fet, setSec, width, login}) => {
               <div className='col-md-12 mb-5' data-aos="zoom-in-down">
               <Card>
               <CardHeader
-               avatar={
-                <AvatarGroup max={4}>
-                {
-                  item.memberIncluded.map((it) => (
-                    <Avatar onClick={() => History.push('/member/' + it.toLowerCase())} alt={it} style={{width: 50, height: 50}} src={bnk.path + it.toLowerCase() + bnk.type} />
-                  ))
-                }
-              </AvatarGroup>
-              }
+                avatar={
+                  login ? (
+                   <AvatarGroup max={4}>
+                   {
+                     item.memberIncluded.map((it) => (
+                       <Avatar onClick={() => History.push('/member/' + it.toLowerCase())} alt={it} style={{width: 50, height: 50}} src={bnk.path + it.toLowerCase() + bnk.type} />
+                     ))
+                   }
+                 </AvatarGroup>
+                  ) : null
+                 }
                 title={item.placeName}
                 subheader={item.locateIn}
               />
@@ -171,6 +173,7 @@ const Memberlist = ({fet, setSec, width, login}) => {
               <Card>
               <CardHeader
                 avatar={
+                 login ? (
                   <AvatarGroup max={4}>
                   {
                     item.memberIncluded.map((it) => (
@@ -178,6 +181,7 @@ const Memberlist = ({fet, setSec, width, login}) => {
                     ))
                   }
                 </AvatarGroup>
+                 ) : null
                 }
                 title={item.placeName}
                 subheader={item.locateIn}

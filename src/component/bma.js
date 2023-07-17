@@ -76,6 +76,11 @@ const Memberlist = ({fet, setSec, width, login}) => {
     }
  
 
+    const ListClick = (item) => {
+      map.current.setCenter([item.coodinate[1], item.coodinate[0]]);
+      setData(item)
+    }
+
     return ( 
         <>
         <h3 className='text-center mt-4'>Please visit ... too (ฝาก...ด้วยนะ)</h3>
@@ -145,22 +150,24 @@ const Memberlist = ({fet, setSec, width, login}) => {
          <div className={width > 600 ? 'row pt-5 m-5' : 'row pt-4 m-2'}>
           {list.length > 0 ? list.map((item, i) => data == null && (
               <div className='col-md-12 mb-5' data-aos="zoom-in-down">
-              <Card>
+              <Card onClick={() => ListClick(item)}>
               <CardHeader
-                avatar={
-                  login ? (
-                   <AvatarGroup max={4}>
-                   {
-                     item.memberIncluded.map((it) => (
-                       <Avatar onClick={() => History.push('/member/' + it.toLowerCase())} alt={it} style={{width: 50, height: 50}} src={bnk.path + it.toLowerCase() + bnk.type} />
-                     ))
-                   }
-                 </AvatarGroup>
-                  ) : null
-                 }
                 title={item.placeName}
                 subheader={item.locateIn}
               />
+               <CardContent>
+                  {
+                    login ? (
+                      <AvatarGroup max={4}>
+                      {
+                        item.memberIncluded.map((it) => (
+                          <Avatar onClick={() => History.push('/member/' + it.toLowerCase())} alt={it} style={{width: 50, height: 50}} src={bnk.path + it.toLowerCase() + bnk.type} />
+                        ))
+                      }
+                    </AvatarGroup>
+                    ) : null
+                  }
+              </CardContent>
             </Card>
             </div>
           )) : (
@@ -170,22 +177,24 @@ const Memberlist = ({fet, setSec, width, login}) => {
           )}
           {list.length > 0 ? list.map((item, i) => data != null && data.threadId == item.threadId && (
               <div className='col-md-12 mb-5' data-aos="zoom-in-down">
-              <Card>
+              <Card onClick={() => ListClick(item)}>
               <CardHeader
-                avatar={
-                 login ? (
-                  <AvatarGroup max={4}>
-                  {
-                    item.memberIncluded.map((it) => (
-                      <Avatar onClick={() => History.push('/member/' + it.toLowerCase())} alt={it} style={{width: 50, height: 50}} src={bnk.path + it.toLowerCase() + bnk.type} />
-                    ))
-                  }
-                </AvatarGroup>
-                 ) : null
-                }
                 title={item.placeName}
                 subheader={item.locateIn}
               />
+              <CardContent>
+                  {
+                    login ? (
+                      <AvatarGroup max={4}>
+                      {
+                        item.memberIncluded.map((it) => (
+                          <Avatar onClick={() => History.push('/member/' + it.toLowerCase())} alt={it} style={{width: 50, height: 50}} src={bnk.path + it.toLowerCase() + bnk.type} />
+                        ))
+                      }
+                    </AvatarGroup>
+                    ) : null
+                  }
+              </CardContent>
             </Card>
             </div>
           )) : (

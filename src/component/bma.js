@@ -62,6 +62,7 @@ const Memberlist = ({fet, setSec, width, login}) => {
                 console.log(marker)
                 const d = res.response.filter(x => x.coodinate[0]  == marker.lat && x.coodinate[1]  == marker.lng);
                 if (d.length > 0) {
+                  map.current.setCenter([d[0].coodinate[1], d[0].coodinate[0]]);
                   setData(d[0])
                 }
               });

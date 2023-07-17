@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Card, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, CardMedia, Button, CardHeader, Grid, Avatar } from '@material-ui/core';
+import { Card, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, CardMedia, Button, CardHeader, CardContent, Avatar } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import AOS from "aos";

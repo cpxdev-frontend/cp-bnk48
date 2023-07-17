@@ -82,7 +82,7 @@ const Memberlist = ({fet, setSec, width, login}) => {
         <p className='text-center mt-4'>Let's take a tour around Bangkok with BNK48 and Bangkok Metropolitan Administration</p>
         <br />
         <div className="stage pt-3 text-center">
-           <Card className='container pt-3 pb-3' data-aos="zoom-in">
+           <Card className='container pt-3 pb-3 mb-3' data-aos="zoom-in">
             <div ref={mapContainer} className="map-container" />
            </Card>
         </div>
@@ -142,6 +142,54 @@ const Memberlist = ({fet, setSec, width, login}) => {
           </DialogActions>
         </Dialog>
         )}
+         <div className={width > 600 ? 'row pt-5 m-5' : 'row pt-4 m-2'}>
+          {list.length > 0 ? list.map((item, i) => data == null && (
+              <div className='col-md-12 mb-5' data-aos="zoom-in-down">
+              <Card>
+              <CardHeader
+               avatar={
+                <AvatarGroup max={4}>
+                {
+                  item.memberIncluded.map((it) => (
+                    <Avatar onClick={() => History.push('/member/' + it.toLowerCase())} alt={it} style={{width: 50, height: 50}} src={bnk.path + it.toLowerCase() + bnk.type} />
+                  ))
+                }
+              </AvatarGroup>
+              }
+                title={item.placeName}
+                subheader={item.locateIn}
+              />
+            </Card>
+            </div>
+          )) : (
+            <div className='text-center'>
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+          </div>
+          )}
+          {list.length > 0 ? list.map((item, i) => data != null && data.threadId == item.threadId && (
+              <div className='col-md-12 mb-5' data-aos="zoom-in-down">
+              <Card>
+              <CardHeader
+                avatar={
+                  <AvatarGroup max={4}>
+                  {
+                    item.memberIncluded.map((it) => (
+                      <Avatar onClick={() => History.push('/member/' + it.toLowerCase())} alt={it} style={{width: 50, height: 50}} src={bnk.path + it.toLowerCase() + bnk.type} />
+                    ))
+                  }
+                </AvatarGroup>
+                }
+                title={item.placeName}
+                subheader={item.locateIn}
+              />
+            </Card>
+            </div>
+          )) : (
+            <div className='text-center'>
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+          </div>
+          )}
+           </div>
         </>
      );
 }

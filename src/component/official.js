@@ -92,7 +92,7 @@ const Offi = ({fet, setSec, width}) => {
                            <Grow in={!fetLLoad} timeout={300}>
                                <div className='d-flex justify-content-center'>
                            <TwitterTweetEmbed
-                               tweetId={para.link.replace("https://tweet.whateveritworks.org/bnk48official/status/", "").replace("#m", "")}
+                               tweetId={para.link.replace("https://india.unofficialbird.com/bnk48official/status/", "").replace("#m", "")}
                                onLoad={() => setFet(false)}
                                />
                                </div>

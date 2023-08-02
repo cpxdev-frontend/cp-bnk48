@@ -75,7 +75,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
         let arr = []
 
         for(var i=0;i<data.length;i++){
-            if (distance(data[i],cood) != null && distance(data[i],cood) <= 100000 && moment().unix() >= data[i].timerange[0] - 604800) {
+            if (distance(data[i],cood) != null && distance(data[i],cood) <= 100000 && moment().unix() >= data[i].timerange[0] - 604800 && (data[i].timerange[1] > 0 && moment().unix() < data[i].timerange[1])) {
                 arr.push({
                  distance: distance(data[i],cood),
                  data: data[i]

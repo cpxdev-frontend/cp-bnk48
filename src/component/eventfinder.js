@@ -89,15 +89,16 @@ const Finder = ({fet, setSec, width, kamin}) => {
         const numbers = arr.map((item) => item.distance);
 
         if (arr.length > 0) {
-            let smallestNumber = numbers.reduce((min, current) => {
+            const smallestNumber = numbers.reduce((min, current) => {
                 return current < min ? current : min;
             });
-            smallestNumber = smallestNumber.reduce((min, obj) => {
-                const timestampValue = obj.data.timestamp[0];
+         
+            const incoming = arr.reduce((min, obj) => {
+                const timestampValue = obj.data.timerange[0];
                 return Math.min(min, timestampValue);
               }, Infinity);
 
-            const nearesttemp = arr.filter(x=> x.distance == smallestNumber)[0]
+            const nearesttemp = arr.filter(x=> x.distance == smallestNumber && x.data.timerange[0] == incoming)[0]
             const position1 = nearesttemp.data
 
             if ((position1.locate != undefined || position1.locate != null) && !position1.place.includes('IAMP')) {

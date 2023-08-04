@@ -92,14 +92,11 @@ const Finder = ({fet, setSec, width, kamin}) => {
             const smallestNumber = numbers.reduce((min, current) => {
                 return current < min ? current : min;
             });
-<<<<<<< HEAD
-=======
          
             const incoming = arr.reduce((min, obj) => {
                 const timestampValue = obj.data.timerange[0];
                 return Math.min(min, timestampValue);
               }, Infinity);
->>>>>>> a4dee4e7f088c24c24e93ee1a663210f827547d9
 
             const nearesttemp = arr.filter(x=> x.distance == smallestNumber && x.data.timerange[0] == incoming)[0]
             const position1 = nearesttemp.data

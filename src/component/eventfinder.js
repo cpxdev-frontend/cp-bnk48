@@ -75,7 +75,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
         let arr = []
 
         for(var i=0;i<data.length;i++){
-            if (distance(data[i],cood) != null && distance(data[i],cood) <= 100000 && moment().unix() >= data[i].timerange[0] - 604800) {
+            if (distance(data[i],cood) != null && distance(data[i],cood) <= 100000 && moment().unix() >= data[i].timerange[0] - 604800 && (data[i].timerange[1] > 0 && moment().unix() < data[i].timerange[1])) {
                 arr.push({
                  distance: distance(data[i],cood),
                  data: data[i]
@@ -92,8 +92,16 @@ const Finder = ({fet, setSec, width, kamin}) => {
             const smallestNumber = numbers.reduce((min, current) => {
                 return current < min ? current : min;
             });
+<<<<<<< HEAD
+=======
+         
+            const incoming = arr.reduce((min, obj) => {
+                const timestampValue = obj.data.timerange[0];
+                return Math.min(min, timestampValue);
+              }, Infinity);
+>>>>>>> a4dee4e7f088c24c24e93ee1a663210f827547d9
 
-            const nearesttemp = arr.filter(x=> x.distance == smallestNumber)[0]
+            const nearesttemp = arr.filter(x=> x.distance == smallestNumber && x.data.timerange[0] == incoming)[0]
             const position1 = nearesttemp.data
 
             if ((position1.locate != undefined || position1.locate != null) && !position1.place.includes('IAMP')) {

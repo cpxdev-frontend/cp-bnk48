@@ -569,10 +569,10 @@ function capitalizeFirstLetter(string) {
 
 
                                         {janken != null && width <= 600 && (
-                                            <marquee className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Single by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></marquee>
+                                            <marquee className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Album "Gingham Check" by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></marquee>
                                         )}
                                          {janken != null && width > 600 && (
-                                            <p className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Single by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></p>
+                                            <p className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Album "Gingham Check" by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></p>
                                         )}
 
 

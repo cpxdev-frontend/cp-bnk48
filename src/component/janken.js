@@ -233,7 +233,7 @@ const NextPage = () => {
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
                     <TableBody key={item.id} className={(item.jankenRank == 1 ? 'centerGE' : '') + ' cur'}
-                      data-toggle="tooltip" data-placement="bottom" title={(item.jankenRank == 1 ? item.name + ' is the Janken Queen (Winner of Janken Tournament 2023) and Center position and Senbatsu of BNK48 4th Album' : item.name + ' is Senbatsu of BNK48 4th Album')}
+                      data-toggle="tooltip" data-placement="bottom" title={(item.jankenRank == 1 ? item.name + ' is the Janken Queen (Winner of Janken Tournament 2023) and Center position and Senbatsu of BNK48 4th Album \"Gingham Check\"' : item.name + ' is Senbatsu of BNK48 4th Album \"Gingham Check\"')}
                       onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.name.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.name.toLowerCase(), '_target') : ''}
                       data-aos='fade-right'
                    >

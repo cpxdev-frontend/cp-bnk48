@@ -6,7 +6,6 @@ import { Typography, ListItem, Zoom, ListItemText,
 
     import LocationOnIcon from '@material-ui/icons/LocationOn';
     import CachedIcon from '@material-ui/icons/Cached';
-import { TramRounded } from '@material-ui/icons';
 
 const Finder = ({fet, setSec, width, kamin}) => {
     const [Loaded, setLoaded] = React.useState(false);
@@ -129,10 +128,9 @@ const Finder = ({fet, setSec, width, kamin}) => {
                 setRefresh(true)
             }, 30000);
             progress(position.coords, data)
-          }, function(err) {
-            alert(err.message)
-            setLoaded(true)
-          },{timeout:10000});
+          }, function(ex) {
+            alert(ex.message)
+          }, {timeout: 10000});
     }
 
     React.useEffect(() => {

@@ -3,7 +3,7 @@ import AOS from 'aos'
 import moment from 'moment';
 import { Typography, ListItem, Zoom, ListItemText,
     Card, CardActionArea, CardContent, IconButton, Grow, Fade, Tooltip, CardHeader } from '@material-ui/core';
-import mapboxgl from 'mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import CachedIcon from '@material-ui/icons/Cached';
 

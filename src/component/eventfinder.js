@@ -132,7 +132,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
           map.current.addControl(
             new mapboxgl.GeolocateControl({
                 fitBoundsOptions: {
-                    maxZoom: 12
+                    maxZoom: 9
                 },
               positionOptions: {
               enableHighAccuracy: false

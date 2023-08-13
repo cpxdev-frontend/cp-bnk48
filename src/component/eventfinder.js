@@ -20,21 +20,15 @@ const Finder = ({fet, setSec, width, kamin}) => {
     const map = React.useRef(null);
 
     const remainEvent = (unixStart) => {
-        setInterval(() => {
-            if (moment.unix() >= 1685667600) {
-                setTime("It's time to be celebration, please refresh this page to continue")
-            } else {
-                let start = moment(); // some random moment in time (in ms)
-                let end = moment.unix(unixStart); // some random moment after start (in ms)
-                const ms = end.diff(start)
-                const date = moment.duration(ms)
-                // execution
-                let f = Math.floor(date.asDays()) + ' Day(s) ' + moment.utc(ms).format("H") + ' Hour(s) ' + moment.utc(ms).format("mm") + ' Minute(s) '+ moment.utc(ms).format("ss") + ' Second(s)';
-                setTime(f)
-            }
-        }, 1000);
+        let start = moment(); // some random moment in time (in ms)
+        let end = moment.unix(unixStart); // some random moment after start (in ms)
+        const ms = end.diff(start)
+        const date = moment.duration(ms)
+        // execution
+        let f = Math.floor(date.asDays()) + ' Day(s) ' + moment.utc(ms).format("H") + ' Hour(s) ' + moment.utc(ms).format("mm") + ' Minute(s) ';
+        return f
     }
-    
+
     const progress = (data) => {
         if (data.place.includes('IAMP') || (!data.place.includes('IAMP')  && data.locate != null)) {
             setRe(false)

@@ -37,7 +37,6 @@ const Memberlist = ({fet, setSec, width, login}) => {
           maxZoom:20,
           minZoom: 8
           });
-          
           fetch('https://cpxdevapi' + (Math.floor(Math.random() * 2) + 1).toString() +'.azurewebsites.net/bnk48/getbmaproject',{
             method: 'post'
           })
@@ -58,6 +57,9 @@ const Memberlist = ({fet, setSec, width, login}) => {
                   
               }
               map.current.on("click", (e) => {
+                if (e.target._popups[0] == undefined) {
+                  return;
+              }
                 const marker = JSON.parse(JSON.stringify(e.target._popups[0]._lngLat));
                 console.log(marker)
                 const d = res.response.filter(x => x.coodinate[0]  == marker.lat && x.coodinate[1]  == marker.lng);

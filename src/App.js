@@ -794,12 +794,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="Released album and single" />
                 </ListItem>
-                {/* <ListItem component={Link} to='/officialupdate' className={window.location.pathname == '/officialupdate' ? 'activeNav' : ''} button>
+                <ListItem component={Link} to='/officialupdate' className={window.location.pathname == '/officialupdate' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <LanguageIcon />
                   </ListItemIcon>
                   <ListItemText primary="Official Update" />
-                </ListItem> */}
+                </ListItem>
                 <ListItem component={Link} to='/theaterstage' className={window.location.pathname == '/theaterstage' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <MovieIcon />
@@ -934,7 +934,7 @@ React.useEffect(() => {
                   <Route path="/originalcontent" render={() => <OriCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/event" render={() => <EventFind fet={Fet().ul} setSec={(v) => setSec(v)} width={width} kamin={kamin} />} />
                   <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-                  {/* <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} /> */}
+                  <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/bnk48inmemories" render={() => <Graduated fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

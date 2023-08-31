@@ -54,7 +54,7 @@ const Offi = ({fet, setSec, width}) => {
                 return url.replace("https://nitter.d420.de/bnk48official/status/", "").replace("#m", "")
             }
             if (url.includes('nitter.nicfab.eu')) {
-                return url.replace("https://nitter.d420.de/bnk48official/status/", "").replace("#m", "")
+                return url.replace("https://nitter.nicfab.eu/bnk48official/status/", "").replace("#m", "")
             }
             if (url.includes('nitter.unixfox.eu')) {
                 return url.replace("https://nitter.unixfox.eu/bnk48official/status/", "").replace("#m", "")

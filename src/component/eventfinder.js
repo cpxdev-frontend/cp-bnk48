@@ -182,7 +182,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
               for (let i=0; i< data.length; i++){
                 if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
                     if (data[i].place.includes('IAMP') ) {
-                        const coodinate = [data[i].placeObj.placeCoodinate[1], data.placeObj.placeCoodinate[0]]
+                        const coodinate = [data[i].placeObj.placeCoodinate[1], data[i].placeObj.placeCoodinate[0]]
                         const popup = new mapboxgl.Popup()
                           .setHTML('<p id="'+ data[i].newsId + '">' + data[i].title +'</p>')
                           .addTo(map.current);

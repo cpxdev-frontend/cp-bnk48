@@ -529,6 +529,34 @@ function capitalizeFirstLetter(string) {
                   })
                }
         }
+        const session4thAl = (url) => {
+            if (localStorage.getItem("loged") == null) {
+                Swal.fire({
+                   title: "BNK48 4th Album Image",
+                   text: "This content is exclusively for BNK48 Fan Space Membership only, please login as Google Account and try again",
+                   icon: 'error',
+                 })
+               } else {
+                const img = 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/bnk4thalbum/pcpop/' + url.name.toLowerCase() + '.png'
+                Swal.fire({
+                    title: "BNK48 4th Album \"Gingham Check\" Image",
+                    imageUrl: img,
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Download',
+                    denyButtonColor: '#3AA504',
+                    denyButtonText: 'Listening it!',
+                    footer: 'You can hold tap or right click on image then save it to your phone or PC',
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      window.open(img, '_blank')
+                    } else if (result.isDenied) {
+                     window.open('https://bnk48.bfan.link/0810-GinghamCheckTH', '_blank')
+                   }
+                  })
+               }
+        }
 
         return (  
         <>
@@ -566,6 +594,14 @@ function capitalizeFirstLetter(string) {
                                          {item.sing14 != undefined && item.sing14 == '' && width > 600 && (
                                             <p className='cur' onClick={() => session14thSingle(item)}>BNK48 14th Single "Promise - สัญญานะ" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
                                         )}
+
+
+                                        {/* {item["4tha"] != undefined && item["4tha"] == '' && width <= 600 && (
+                                            <marquee className='cur' onClick={() => session4thAl(item)}>BNK48 4th Album "Gingham Check" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
+                                        )}
+                                         {item["4tha"] != undefined && item["4tha"] == '' && width > 600 && (
+                                            <p className='cur' onClick={() => session4thAl(item)}>BNK48 4th Album "Gingham Check" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
+                                        )} */}
 
 
                                         {janken != null && width <= 600 && (

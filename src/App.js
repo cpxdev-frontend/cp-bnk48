@@ -1180,16 +1180,16 @@ transitionDuration={500}
       {width > 900 ? (
          <div className="row">
            <div className="col pr-0" data-aos='flip-right'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/1.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/1.webp" width="100%" />
            </div>
            <div className="col p-0" data-aos='flip-right'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/2.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/2.webp" width="100%" />
            </div>
            <div className="col p-0" data-aos='flip-left'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/3.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/3.webp" width="100%" />
            </div>
            <div className="col pl-0" data-aos='flip-left'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/4.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/4.webp" width="100%" />
            </div>
          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>

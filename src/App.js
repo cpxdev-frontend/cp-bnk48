@@ -1191,22 +1191,22 @@ transitionDuration={500}
            <div className="col pl-0" data-aos='flip-left'>
                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/4.webp" width="100%" />
            </div>
-         <Grow in={uri != '' && geready ? true : false} timeout={1000}>
-         <div className={cls.fabButton}>
-             <Alert severity="info">
-             <AlertTitle>BNK48 14th Single "Promise - สัญญานะ" has been out on Both Music Video and common music streaming platform.</AlertTitle>
+           <Grow in={uri != '' && geready ? true : false} timeout={1000}>
+        <div className={cls.fabButton}>
+            <Alert severity="info">
+              <AlertTitle>BNK48 4th Album "Gingham Check" has been out on music streaming platform. And stay tuned on Youtube.</AlertTitle>
               Double click or tap on image to skip this page
-             </Alert>
-             </div>
-         </Grow>
-         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
-         <div className={cls.fabButton}>
-             <Alert severity="info">
-             <AlertTitle>BNK48 14th Single "Promise - สัญญานะ" has been out on Both Music Video and common music streaming platform.</AlertTitle>
-              Double click or tap on image to skip this page
-             </Alert>
-             </div>
-         </Grow>
+            </Alert>
+            </div>
+        </Grow>
+        <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
+        <div className={cls.fabButton}>
+            <Alert severity="info">
+            <AlertTitle>BNK48 4th Album "Gingham Check" has been out on music streaming platform. And stay tuned on Youtube.</AlertTitle>
+                    Double click/tap here on image or wait 10 seconds to skip this page
+            </Alert>
+            </div>
+        </Grow>
        </div>
       ) : (
         <div className="row">

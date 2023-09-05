@@ -68,7 +68,7 @@ const Stream = ({fet, setSec, width}) => {
       };
     return ( 
         <>
-        <AppBar position="static">
+        <AppBar position="static" className='mt-2'>
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
             <Tab label="LIVE Room 1" {...a11yProps(0)} />
             {streaminfo != null && streaminfo.filter(x => x.link != '').length > 1 && (

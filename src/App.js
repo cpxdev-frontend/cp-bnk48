@@ -345,7 +345,7 @@ React.useEffect(() => {
         if (data.length == 1 && data[0].link == '-') {
           setLive(false)
         } else {
-          if (data.filter(x => x.link != '-').length == 2) {
+          if (data.filter(x => x.link != '').length == 2) {
             const randomNumber = Math.random(); 
             if (randomNumber < 0.5) {
               setStream(data[0])

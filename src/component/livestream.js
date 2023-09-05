@@ -47,7 +47,7 @@ const Stream = ({fet, setSec, width}) => {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.length == 1 && data[0].link == '-') {
+                if (data.length == 1 && data[0].link == '') {
                     setSec('No Live today')
                 } else {
                     setSec('[Live] ' + data[0].title)
@@ -79,14 +79,14 @@ const Stream = ({fet, setSec, width}) => {
         <TabPanel value={value} index={0}>
             <Card>
                 <CardContent className='text-center align-center'>
-                    {streaminfo != null && streaminfo[0].link != '-' ? (
+                    {streaminfo != null && streaminfo[0].link != '' ? (
                         <CardHeader title='Live Streaming Station' subheader={(streaminfo[0].livestatus == 'live' ? '[LIVE] "' + streaminfo[0].title : streaminfo[0].title) + '" by ' + streaminfo[0].uploader} />
                     ): (
                         <CardHeader title='Live Streaming Station' subheader='Special Live Streaming will coming soon' />
                     )}
                 
                     <div className='container' data-aos="zoom-out-up">
-                        {streaminfo != null && streaminfo[0].link == '-' ? (
+                        {streaminfo != null && streaminfo[0].link == '' ? (
                             <iframe src={streaminfo[0].link} width="100%" height={width >1200 ? 700 : '100%'} allowFullScreen />
                         ) : (
                             <h6>Stream not found</h6>
@@ -95,18 +95,18 @@ const Stream = ({fet, setSec, width}) => {
                 </CardContent>
             </Card>
         </TabPanel>
-        {streaminfo != null && streaminfo.filter(x => x.link != '-').length > 1 && (
+        {streaminfo != null && streaminfo.filter(x => x.link != '').length > 1 && (
         <TabPanel value={value} index={1}>
          <Card>
                 <CardContent className='text-center align-center'>
-                    {streaminfo != null && streaminfo[1].link != '-' ? (
+                    {streaminfo != null && streaminfo[1].link != '' ? (
                         <CardHeader title='Live Streaming Station' subheader={(streaminfo[1].livestatus == 'live' ? '[LIVE] "' + streaminfo[1].title : streaminfo[1].title) + '" by ' + streaminfo[1].uploader} />
                     ): (
                         <CardHeader title='Live Streaming Station' subheader='Special Live Streaming will coming soon' />
                     )}
                 
                     <div className='container' data-aos="zoom-out-up">
-                        {streaminfo != null && streaminfo[1].link == '-' ? (
+                        {streaminfo != null && streaminfo[1].link == '' ? (
                             <iframe src={streaminfo[1].link} width="100%" height={width >1200 ? 700 : '100%'} allowFullScreen />
                         ) : (
                             <h6>Stream not found</h6>

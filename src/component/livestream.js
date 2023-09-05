@@ -79,8 +79,8 @@ const Stream = ({fet, setSec, width}) => {
         <TabPanel value={value} index={0}>
             <Card>
                 <CardContent className='text-center align-center'>
-                    {streaminfo != null ? (
-                        <CardHeader title='Live Streaming Station' subheader={(streaminfo.livestatus == 'live' ? '[LIVE] "' + streaminfo.title : streaminfo.title) + '" by ' + streaminfo.uploader} />
+                    {streaminfo != null && streaminfo[0].link != '-' ? (
+                        <CardHeader title='Live Streaming Station' subheader={(streaminfo[0].livestatus == 'live' ? '[LIVE] "' + streaminfo[0].title : streaminfo[0].title) + '" by ' + streaminfo[0].uploader} />
                     ): (
                         <CardHeader title='Live Streaming Station' subheader='Special Live Streaming will coming soon' />
                     )}
@@ -95,12 +95,12 @@ const Stream = ({fet, setSec, width}) => {
                 </CardContent>
             </Card>
         </TabPanel>
-        {streaminfo != null && streaminfo.filter(x => x.link != '').length > 1 && (
+        {streaminfo != null && streaminfo.filter(x => x.link != '-').length > 1 && (
         <TabPanel value={value} index={1}>
          <Card>
                 <CardContent className='text-center align-center'>
-                    {streaminfo != null ? (
-                        <CardHeader title='Live Streaming Station' subheader={(streaminfo.livestatus == 'live' ? '[LIVE] "' + streaminfo.title : streaminfo.title) + '" by ' + streaminfo.uploader} />
+                    {streaminfo != null && streaminfo[1].link != '-' ? (
+                        <CardHeader title='Live Streaming Station' subheader={(streaminfo[1].livestatus == 'live' ? '[LIVE] "' + streaminfo[1].title : streaminfo[1].title) + '" by ' + streaminfo[1].uploader} />
                     ): (
                         <CardHeader title='Live Streaming Station' subheader='Special Live Streaming will coming soon' />
                     )}

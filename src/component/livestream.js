@@ -71,7 +71,7 @@ const Stream = ({fet, setSec, width}) => {
         <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
             <Tab label="LIVE Room 1" {...a11yProps(0)} />
-            {streaminfo != null && streaminfo.length > 1 && (
+            {streaminfo != null && streaminfo.filter(x => x.link != '').length > 1 && (
                 <Tab label="LIVE Room 2" {...a11yProps(1)} />
             )}
         </Tabs>
@@ -86,7 +86,7 @@ const Stream = ({fet, setSec, width}) => {
                     )}
                 
                     <div className='container' data-aos="zoom-out-up">
-                        {streaminfo != null && streaminfo[0].link == '' ? (
+                        {streaminfo != null && streaminfo[0].link != '' ? (
                             <iframe src={streaminfo[0].link} width="100%" height={width >1200 ? 700 : '100%'} allowFullScreen />
                         ) : (
                             <h6>Stream not found</h6>
@@ -106,7 +106,7 @@ const Stream = ({fet, setSec, width}) => {
                     )}
                 
                     <div className='container' data-aos="zoom-out-up">
-                        {streaminfo != null && streaminfo[1].link == '' ? (
+                        {streaminfo != null && streaminfo[1].link != '' ? (
                             <iframe src={streaminfo[1].link} width="100%" height={width >1200 ? 700 : '100%'} allowFullScreen />
                         ) : (
                             <h6>Stream not found</h6>

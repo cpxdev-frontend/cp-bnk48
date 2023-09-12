@@ -23,7 +23,7 @@ var reg = 'Loading';
 //       }
 //     }
 // });
-ul = 'https://cpxdevapi' + (Math.floor(Math.random() * 2) + 1).toString() +'.azurewebsites.net'
+ul = 'https://cpxdevservice.onrender.com'
         reg = 'Worldwide'
 
 function Flowup() {

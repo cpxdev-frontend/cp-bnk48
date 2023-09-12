@@ -172,7 +172,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
               trackUserLocation: true,
             })
             );
-          fetch('https://cpxdevapi' + (Math.floor(Math.random() * 2) + 1).toString() +'.azurewebsites.net/bnk48/getadsupdate',{
+          fetch('https://cpxdevservice.onrender.com/bnk48/getadsupdate',{
             method: 'post'
           })
           .then(response => response.json())

@@ -37,7 +37,7 @@ const Memberlist = ({fet, setSec, width, login}) => {
           maxZoom:20,
           minZoom: 8
           });
-          fetch('https://cpxdevapi' + (Math.floor(Math.random() * 2) + 1).toString() +'.azurewebsites.net/bnk48/getbmaproject',{
+          fetch('https://cpxdevservice.onrender.com/bnk48/getbmaproject',{
             method: 'post'
           })
           .then(response => response.json())

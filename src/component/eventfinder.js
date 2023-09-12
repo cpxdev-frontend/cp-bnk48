@@ -352,7 +352,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                            </a>
                            )
                        }
-                       {kamin != '-' && nearest != null && (nearest.memtag.indexOf(kamin.toLowerCase()) != -1 || nearest.memtag.indexOf('All') != -1 || nearest.memtag.indexOf('All') != -1) && (
+                       {kamin != '' && kamin != '-' && nearest != null && (nearest.memtag.indexOf(kamin.toLowerCase()) != -1 || nearest.memtag.indexOf('All') != -1 || nearest.memtag.indexOf('All') != -1) && (
                         <div className="alert alert-info mt-3" role="alert">
                             <p>Your Kami-Oshi ({kamin} BNK48) has joined to this event. You should not miss it!</p>
                         </div>
@@ -364,6 +364,14 @@ const Finder = ({fet, setSec, width, kamin}) => {
                             {nearest.memtag.map((img) => (
                                 <Avatar alt={img} src={bnk.path + img + bnk.type} />
                             ))}
+                        </AvatarGroup>
+                            </div>
+                       )}
+                        {nearest.memtag.indexOf('All') == 0 && !nearest.memtag[0].includes("gen") && (
+                        <div className='container mt-2 row'>
+                            <p className='pt-2'>BNK48 Member(s):&nbsp;</p>
+                            <AvatarGroup max={6}>
+                            <Avatar alt="all" src="https://i.scdn.co/image/ab6761610000e5ebf8f0b96fab8115d0465886b0" />
                         </AvatarGroup>
                             </div>
                        )}

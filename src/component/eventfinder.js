@@ -362,7 +362,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                             <p className='pt-2'>BNK48 Member(s):&nbsp;</p>
                             <AvatarGroup max={6}>
                             {nearest.memtag.map((img) => (
-                                <Avatar alt={img} src={bnk.path + img + bnk.type} />
+                                <Avatar alt={img} className="cur" onClick={() => window.open('/member/' + img, '_blank')} src={bnk.path + img + bnk.type} />
                             ))}
                         </AvatarGroup>
                             </div>
@@ -371,7 +371,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                         <div className='container mt-2 row'>
                             <p className='pt-2'>BNK48 Member(s):&nbsp;</p>
                             <AvatarGroup max={6}>
-                            <Avatar alt="all" src="https://i.scdn.co/image/ab6761610000e5ebf8f0b96fab8115d0465886b0" />
+                            <Avatar className="cur" onClick={() => window.open('/memberlist', '_blank')} alt="all" src="https://i.scdn.co/image/ab6761610000e5ebf8f0b96fab8115d0465886b0" />
                         </AvatarGroup>
                             </div>
                        )}

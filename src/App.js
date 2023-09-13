@@ -508,7 +508,11 @@ React.useEffect(() => {
         }, 9500);
         setUri(Fet().ul)
         FetchKami(Fet().ul)
-        FetLive(Fet().ul)
+        if (window.location.pathname.includes('/mana')) {
+          setLive(false)
+        } else {
+          FetLive(Fet().ul)
+        }
         FetchPopNews(Fet().ul)
       }
   }, 10);
@@ -517,7 +521,11 @@ React.useEffect(() => {
 
   setInterval(function(){ 
     if (Fet().ul !== '') {
-     FetLive(Fet().ul)
+      if (window.location.pathname.includes('/mana')) {
+        setLive(false)
+      } else {
+        FetLive(Fet().ul)
+      }
     }
 }, 60000);
 

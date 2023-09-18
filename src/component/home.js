@@ -273,7 +273,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
                  />
                <CardContent>
                    <h5>{item.name}</h5>
-                   <p>Birthday: {moment(item.birthday).format('DD MMMM YYYY')} ({moment(item.birthday).format('M') == new Date().getMonth() + 1 && parseInt(moment(item.birthday).format('D')) - new Date().getDate() > 0 ? (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old | ' + ((parseInt(moment(item.birthday).format('D')) - new Date().getDate()) == 1 ? 'in tomorrow' : (parseInt(moment(item.birthday).format('D')) - new Date().getDate()) + ' day(s) to go') : item.birthday == moment.utc().local().format('YYYY-MM-DD') ? (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old' : (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old | already passed'})</p>
+                   <p>Birthday: {moment(item.birthday).format('DD MMMM YYYY')} ({moment(item.birthday).format('M') == new Date().getMonth() + 1 && parseInt(moment(item.birthday).format('D')) - new Date().getDate() > 0 ? (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old | ' + ((parseInt(moment(item.birthday).format('D')) - new Date().getDate()) == 1 ? 'in tomorrow' : (parseInt(moment(item.birthday).format('D')) - new Date().getDate()) + ' day(s) to go') : moment(item.birthday).format('DD MMMM') == moment().format('DD MMMM') ? (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old' : (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old | already passed'})</p>
                </CardContent>
              </CardActionArea>
               </Card> 

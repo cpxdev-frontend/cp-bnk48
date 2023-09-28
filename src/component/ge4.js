@@ -102,7 +102,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
   const ResultFetch = () => {
     setts('Updating')
     fetch(fet + '/bnk48/ge4analysisResult', {
-      method :'post'
+      method :'get'
   })
       .then(response => response.json())
       .then(data => {
@@ -320,7 +320,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
 
         <div className={'stage ' + (width > 700 ? 'p-5' : 'p-2')}>
           <div className='row mt-5 ml-1 mr-1'>
-          <Card className={(width > 700 ? '' : 'mb-5') + ' col-md-5'} data-aos='zoom-in-right'>
+          <Card className={(width > 700 ? '' : 'mb-5') + ' col-md-12'} data-aos='zoom-in-right'>
             <CardContent>
               <CardHeader title="TimeLine of Election" subheader="Notes: Timeline are subject to change as appropriate due to the situation of the epidemic of Covid-19." />
               <hr />

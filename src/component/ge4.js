@@ -446,29 +446,29 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
                     <TableBody key={item.id}
-                      onClick={() => item.response.ref.includes('bnk48') ? History.push('/member/' + item.memid.toLowerCase()) : item.response.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.memid.toLowerCase(), '_target') : ''}
+                      onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.memid.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.memid.toLowerCase(), '_target') : ''}
                       data-aos='fade-right'
                    >
                         <TableCell component="th" className={classes.rank}>
                           {i}
                         </TableCell>
                         <TableCell align="center" className={classes.img}>
-                        <img src={item.response.img} className={classes.large + ' cir avatarlimit'} />
+                        <img src={item.img} className={classes.large + ' cir avatarlimit'} />
                           </TableCell>
                           <TableCell align="center">
-                          {item.response.fullnameEn[0]}  {item.response.fullnameEn[1]} ({item.response.name})
+                          {item.fullnameEn[0]}  {item.fullnameEn[1]} ({item.name})
                           </TableCell>
                           <TableCell align="center">
-                          {item.response.ref.includes('bnk48') ? 'BNK48' : item.response.ref.includes('cgm48') ? 'CGM48' : ''}
+                          {item.ref.includes('bnk48') ? 'BNK48' : item.ref.includes('cgm48') ? 'CGM48' : ''}
                           </TableCell>
                           {
-                            item.response.ref.includes('cgm48') ? (
+                            item.ref.includes('cgm48') ? (
                               <TableCell align="right">
-                              {item.response.team == "" ? 'None' : item.response.team}
+                              {item.team == "" ? 'None' : item.team}
                               </TableCell>
                             ) : (
                               <TableCell align="right">
-                              {item.response.team == "" ? 'None' : item.response.team[0]}
+                              {item.team == "" ? 'None' : item.team[0]}
                               </TableCell>
                             )
                           }

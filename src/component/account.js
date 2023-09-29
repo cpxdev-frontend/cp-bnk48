@@ -214,26 +214,12 @@ const AccountMana = ({fet, setSec, width}) => {
                     <div className='cur' onClick={() => window.open('//cp-tpop.pages.dev/membership', '_blank')}>
                       Notes: You can change your profile image by Login with same account credential on T-POP Megaverse Platform (Click here to Continue)
                     </div>
-                    {width > 1100 && data.obj != null && data.obj.twelvethsingle != undefined && data.obj.twelvethsingle.includes('bnk12thsing/main') && (
-                          <FormControlLabel
-                          className='ml-2 pt-4'
-                          control={
-                            <Switch
-                              checked={customback}
-                              name="reduce"
-                              onChange={()=> setBack(!customback)}
-                              color="primary"
-                            />
-                          }
-                          label={"Show your Kami-Oshi as Background on BNK48 Fan Space Homepage (BNK48 12th Single \"Believers\" campaign)"}
-                        />
-                    )}
+                   
                 </div>
             </div>
             <div className='row'>
                     <p className='pt-3'>Account Link: </p>
                     <Button onClick={() => Updateparam(0)} className='m-1' variant='contained' color='primary' disabled={data.googleId != '' ? true : false}>{data.googleId != '' ? 'Google Account: Already Linked' : 'Link to Google Account'}</Button>
-                    <Button onClick={() => Updateparam(1)} className='m-1' variant='contained' color='primary' disabled={data.twitterId != '' ? true : false}>{data.twitterId != '' ? 'Twitter Account: Already Registered' : 'Link to Twitter Account'}</Button>
                     <Button onClick={() => Updateparam(2)} className='m-1' variant='contained' color='primary' disabled={data.yahooId != '' ? true : false}>{data.yahooId != '' ? 'Yahoo Account: Already Registered' : 'Link to Yahoo Account'}</Button>
             </div>
             <Backdrop className={classes.backdrop} open={Load}>

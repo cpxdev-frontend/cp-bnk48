@@ -204,7 +204,7 @@ const NextPage = () => {
         <Card className='mt-4' data-aos="flip-right">
             <CardContent className='row'>
                 <div className={'col-md ' + (width > 800 ? 'mt-5': '')} data-aos="slide-right">
-                    <Typography variant='h5'><CardHeader title="Tournament Host and Judge" subheader='พบกับพิธีกรและกรรมการที่มากความสามารถ และพร้อมมอบความสนุกตลอดทั้งทัวนาเม้นท์นี้' /></Typography>
+                    <Typography variant='h5'><CardHeader title="Tournament Moderator and Judge" subheader='พบกับพิธีกรและกรรมการที่มากความสามารถ และพร้อมมอบความสนุกตลอดทั้งทัวนาเม้นท์นี้' /></Typography>
                     <Typography variant='body1'><CardHeader title="Kan Kantathavorn" subheader='กันต์ กันตถาวร' /></Typography>
                     <Typography className='pl-3' variant='subtitle2'>Achievement: TV Host (Mask Singer 12, I Can See Your Voices Thailand, The Wall Duet), DJ and Actor</Typography>
                 </div>

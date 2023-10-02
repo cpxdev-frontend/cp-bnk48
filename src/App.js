@@ -80,6 +80,7 @@ import Fenetwork from './component/48groupnetwork';
 import BmaCom from './component/bma';
 
 import GeCom from './component/ge';
+import Ge4Com from './component/ge4';
 import GeMana from './component/geevent/gemanage';
 
 import Fet from './fetch'
@@ -775,6 +776,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="6th years anniversary first debut" />
                 </ListItem>
+                <ListItem component={Link} to='/ge4' className={window.location.pathname == '/ge4' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <HowToVoteIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='BNK48 16th Single General Election' />
+                </ListItem>
                 <ListItem component={Link} to='/janken' className={window.location.pathname == '/janken' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <SlideshowIcon />
@@ -973,6 +980,7 @@ React.useEffect(() => {
                   }
 
                   <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/ge4" render={() => <Ge4Com fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} width={width} />} />
                 </BasicSwitch>

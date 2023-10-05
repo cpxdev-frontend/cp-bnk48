@@ -679,6 +679,22 @@ React.useEffect(() => {
    
   }
 
+  const checkUser = () => {
+    if (window.localStorage.getItem("loged") != null) {
+        switch (JSON.parse(window.localStorage.getItem("loged")).providerId) {
+          case "google.com":
+            return "Google"
+          case "microsoft.com":
+            return "Microsoft"
+          case "yahoo.com":
+            return "Yahoo"
+          default:
+            break;
+        }
+    }
+    return ''
+  }
+
 
   if (uri != '' && allDone) {
     return (<>      
@@ -913,7 +929,7 @@ React.useEffect(() => {
                         <ListItemIcon>
                           <VpnKeyIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Login Fan Space Membership" secondary='Public Beta State'/>
+                        <ListItemText primary="Login Fan Space Membership" secondary='Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need'/>
                       </ListItem>
                         <Menu
                           id="lock-menu"
@@ -942,7 +958,7 @@ React.useEffect(() => {
                   </Badge>
                   
                   </ListItemIcon>
-                  <ListItemText primary="You're logged in" secondary={localStorage.getItem("i")} />
+                  <ListItemText primary={"You're logged in as " + checkUser() + " account"} secondary={localStorage.getItem("i")} />
                 </ListItem>
                 )}
                     </>

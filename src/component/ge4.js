@@ -450,7 +450,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       data-aos='fade-right'
                    >
                         <TableCell component="th" className={classes.rank}>
-                          {i}
+                          {i + 1}
                         </TableCell>
                         <TableCell align="center" className={classes.img}>
                         <img src={item.img} className={classes.large + ' cir avatarlimit'} />

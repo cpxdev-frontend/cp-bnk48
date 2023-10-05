@@ -125,7 +125,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
 
   React.useEffect(() => {
     AOS.init({ duration: 1000 });
-    setSec('BNK48 12th Single Senbatsu General Election')
+    setSec('BNK48 16th Single Senbatsu General Election')
     ResultFetch()
     // setInterval(function () {
     //   if (moment().unix() >= timesch.announ - 3600 && moment().unix() <= timesch.announ + 86400) {

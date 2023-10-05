@@ -579,7 +579,7 @@ React.useEffect(() => {
         provider = new GoogleAuthProvider();
         break;
       case 2:
-        provider = new TwitterAuthProvider();
+        provider = new OAuthProvider("microsoft.com");
         break;
       case 3:
         provider = new OAuthProvider("yahoo.com");
@@ -923,6 +923,7 @@ React.useEffect(() => {
                           onClose={() => setAnchorEl(null)}
                         >
                           <MenuItem onClick={(e) => loginAction(1)}>Google Account</MenuItem>
+                          <MenuItem onClick={(e) => loginAction(2)}>Microsoft Account</MenuItem>
                           <MenuItem onClick={(e) => loginAction(3)}>Yahoo Account</MenuItem>
                         </Menu>
                         </>

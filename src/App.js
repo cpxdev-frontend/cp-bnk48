@@ -971,7 +971,11 @@ React.useEffect(() => {
                   <Route path="/theaterstage" render={() => <ShowTime fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/janken" render={() => <JankenCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-                  <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  {
+                    !login && (
+                      <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                    )
+                  }
                   <Route path="/48group" render={() => <Fenetwork fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/bma" render={() => <BmaCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} login={login} />} />
                   {

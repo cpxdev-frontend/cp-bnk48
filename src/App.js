@@ -66,7 +66,6 @@ import MvCom from './component/music';
 import OriCom from './component/originalcontent';
 import MusicCom from './component/streaming';
 import Offici from './component/official';
-import ShowTime from './component/showtime';
 import EventFind from './component/eventfinder';
 import Api from './component/apisupport';
 import Account from './component/account';
@@ -846,12 +845,6 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="Official Update" />
                 </ListItem>
-                <ListItem component={Link} to='/theaterstage' className={window.location.pathname == '/theaterstage' ? 'activeNav' : ''} button>
-                  <ListItemIcon>
-                    <MovieIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Theater Stage Showtime" />
-                </ListItem>
                 <ListItem component={Link} to='/token' className={window.location.pathname == '/token' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <MonetizationOnIcon />
@@ -984,7 +977,6 @@ React.useEffect(() => {
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/bnk48inmemories" render={() => <Graduated fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-                  <Route path="/theaterstage" render={() => <ShowTime fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/janken" render={() => <JankenCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   {

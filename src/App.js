@@ -1099,7 +1099,7 @@ transitionDuration={500}
     (<Carousel interval={8000}>{
       newspop.map((item, i) => (
         <>
-        <DialogTitle id="alert-dialog-title">{item.priority != undefined ? 'Announcement' : 'Advertisement'} - {item.title}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{item.title.includes("Birthday") ? 'Birthday Celebration' : 'Advertisement'} - {item.title}</DialogTitle>
           <DialogContent>
             <CardContent>
               <CardMedia src={item.src} component="img" width={80} />
@@ -1151,7 +1151,7 @@ transitionDuration={500}
       ))
     }</Carousel>) : (
       <>
-      <DialogTitle id="alert-dialog-title">{newspop[0].priority != undefined ? 'Announcement' : 'Advertisement'} - {newspop[0].title}</DialogTitle>
+      <DialogTitle id="alert-dialog-title">{newspop[0].title.includes("Birthday") ? 'Birthday Celebration' : 'Advertisement'} - {newspop[0].title}</DialogTitle>
         <DialogContent>
           <CardContent>
             <CardMedia src={newspop[0].src} component="img" width={80} />

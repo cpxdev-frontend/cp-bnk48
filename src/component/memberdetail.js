@@ -178,7 +178,7 @@ function capitalizeFirstLetter(string) {
                             setTimeout(() => {
                                 if (localStorage.getItem('kamibirth') == null) {
                                     Swal.fire({
-                                        title: "Don't be alarmed. This is new feature for Fan Space Membership. you maybe feel vibrate from your device when today is youe Kami-Oshi's birthday.",
+                                        title: "Don't be alarmed. This is new feature for Fan Space Membership. you maybe feel vibrate from your device when today is your Kami-Oshi's birthday.",
                                         icon: 'info',
                                         iconColor: 'rgb(203, 150, 194)',
                                       }).then(() => {

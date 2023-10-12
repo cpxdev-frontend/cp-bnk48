@@ -1147,7 +1147,7 @@ transitionDuration={500}
               {item.memtag.length > 0 && (<div>
                 Member included {
                   (item.memtag.map((nametag, ii) => (
-                    <a href={nametag == 'All' || nametag == 'ge' ? ("/memberlist") :nametag.includes('gen') ? ("/memberlist?filter=gen&val=" + nametag.replace("gen" , "")) :nametag.includes('team_') ? ("/memberlist?filter=team&val=" + nametag.replace("team_" , "")): ("/member/" + nametag)} target='_blank'>
+                    <a onClick={() => nametag == 'All' || nametag == 'ge' ? History.push("/memberlist") :nametag.includes('gen') ? History.push("/memberlist?filter=gen&val=" + nametag.replace("gen" , "")) :nametag.includes('team_') ? History.push("/memberlist?filter=team&val=" + nametag.replace("team_" , "")): History.push("/member/" + nametag)}>
                     {nametag == 'ge' ? 'All 48 winners of BNK48 12th Single Senbutsu General Election' : nametag.includes('gen') === true ? 'BNK48 Generation ' + nametag.replace("gen" , "")  : nametag.includes('team_') ? 'Team ' + nametag.replace("team_" , "").toUpperCase() : (ii == 0 ? capitalizeFirstLetter(nametag) : ', ' + capitalizeFirstLetter(nametag))}
                     </a>
                   )))
@@ -1198,7 +1198,7 @@ transitionDuration={500}
               {newspop[0].memtag.length > 0 && (<div>
                 Member included {
                   (newspop[0].memtag.map((nametag, ii) => (
-                    <a href={nametag == 'All' || nametag == 'ge' ? ("/memberlist") :nametag.includes('gen') ? ("/memberlist?filter=gen&val=" + nametag.replace("gen" , "")) :nametag.includes('team_') ? ("/memberlist?filter=team&val=" + nametag.replace("team_" , "")): ("/member?name=" + nametag)} target='_blank'>
+                    <a onClick={() => nametag == 'All' || nametag == 'ge' ? History.push("/memberlist") :nametag.includes('gen') ? History.push("/memberlist?filter=gen&val=" + nametag.replace("gen" , "")) :nametag.includes('team_') ? History.push("/memberlist?filter=team&val=" + nametag.replace("team_" , "")): History.push("/member?name=" + nametag)}>
                     {nametag == 'ge' ? 'All 48 winners of BNK48 12th Single Senbutsu General Election' : (ii == 0 ? capitalizeFirstLetter(nametag) : nametag.includes('gen') ? 'BNK48 Generation ' + nametag.replace("gen" , "") : nametag.includes('team_') ? 'Team ' + nametag.replace("team_" , "").toUpperCase() : ', ' + capitalizeFirstLetter(nametag))}
                     </a>
                   )))

@@ -575,7 +575,7 @@ React.useEffect(() => {
     if (link.includes('https:') || link.includes('http:')) {
       window.open(link, '_blank')
     } else {
-      history.push(link)
+      History.push(link)
     }
   }
 

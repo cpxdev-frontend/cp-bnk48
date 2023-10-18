@@ -155,9 +155,11 @@ const Ge = ({fet, timesch, setSec, width}) => {
   //     ResultFetch()
   //   }
   // }
-
   const ToggleDialog = (sw, uri) => {
-    setCandi('https://pbs.twimg.com/media/F6TKZQ1akAA6_a1?format=jpg&name=large')
+    if(uri != '') {
+      setCandiUrl(uri)
+    }
+    setCandi(sw)
   }
 
   const opt ={
@@ -166,6 +168,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
         ToggleDialog(true, '')
     }  
   },
+  
   animation: {
     onComplete: () => {
       delayed = true;

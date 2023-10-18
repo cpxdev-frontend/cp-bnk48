@@ -157,20 +157,13 @@ const Ge = ({fet, timesch, setSec, width}) => {
   // }
 
   const ToggleDialog = (sw, uri) => {
-    if(uri != '') {
-      setCandiUrl('https://pbs.twimg.com/media/F6TKZQ1akAA6_a1?format=jpg&name=large')
-    }
-    setCandi(sw)
+    setCandi('https://pbs.twimg.com/media/F6TKZQ1akAA6_a1?format=jpg&name=large')
   }
 
   const opt ={
     onClick: function(e, element) {
       if(element.length > 0) {
-        if (element[0].index >= 0 && element[0].index <= 2) {
-          ToggleDialog(true, 'https://yt3.ggpht.com/Cy69lvYdueTXV8PNLpCr6Z_k1YiKMH4wFzZe1WN19Ofz1D3Ov6jbt2KuStdQalsj0f9elLdVZo5H=s1024-c-fcrop64=1,00000016ffffffe9-nd-v1')
-        } else if (element[0].index >= 3) {
-          ToggleDialog(true, 'https://yt3.ggpht.com/pD8B-UrGtEdWQL81s_ovgBbhkGKkELF7BxvugevH7_GR_dZ-kZYQsmN0ZjpSkXr0GGNldMD5l84xEnI=s1024-c-fcrop64=1,00000000ffffffff-nd-v1')
-        }
+        ToggleDialog(true, '')
     }  
   },
   animation: {

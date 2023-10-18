@@ -26,8 +26,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const timeline = {
-  votestart: 1698771600,
-  voteend: 1701968399,
+  votestart: 1698814800,
+  voteend: 1701957600,
   voteannounce : 1702054800,
   votethank:1702141200
 }
@@ -403,6 +403,15 @@ const Ge = ({fet, timesch, setSec, width}) => {
             </CardContent>
           </Card>
           
+          <Card className={(width > 700 ? 'ml-3' : '') + ' col-md'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+            <CardContent>
+            <CardHeader title="General Election Fully Announcement" subheader='All about voting your member to winning this election from Shihainin is here.' />
+              <hr />
+              <div className='row justify-content-center'>
+                <iframe src="https://www.youtube.com/embed/Rz-0xSjKO4w?autoplay=1&mute=1&controls=0&loop=1&playlist=Rz-0xSjKO4w" frameborder="0"></iframe>
+              </div>
+            </CardContent>
+          </Card>
 
           <Card className={(width > 700 ? 'ml-3' : '') + ' col-md'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>

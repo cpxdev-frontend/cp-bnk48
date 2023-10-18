@@ -410,7 +410,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
             </CardContent>
           </Card>
 
-          <Card className={(width > 700 ? 'ml-3' : '') + ' col-md'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+          <Card className={(width > 700 ? 'ml-3' : '') + ' col-md mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>
             <CardHeader title="General Election Candidate Summary" subheader='We have 64 BNK48 and CGM48 members who candidated' />
               <hr />

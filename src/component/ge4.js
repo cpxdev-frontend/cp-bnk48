@@ -25,39 +25,50 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Grow ref={ref} {...props} />;
 });
 
+const timeline = {
+  votestart: 1698771600,
+  voteend: 1701968399,
+  voteannounce : 1702054800,
+  votethank:1702141200
+}
+
 const piedata = {
-  labels: ['BNK48 Team BIII', 'BNK48 Team NV', 'BNK48 Team Trainee', 'CGM48'],
+  labels: ['BNK48 Team BIII', 'BNK48 Team NV', 'BNK48 Team Trainee', 'CGM48 Team C', 'CGM48 Team Trainee'],
   datasets: [
     {
       label: '# members',
-      data: [8, 13, 21, 20],
+      data: [12, 14, 11, 16, 11],
       backgroundColor: [
         '#0a6302',
         '#ff85d4',
         '#cb96c2',
         '#49C5A8',
+        '#7af5d8'
       ],
       borderColor: [
         '#0a6302',
         '#ff85d4',
         '#cb96c2',
         '#49C5A8',
+        '#7af5d8'
       ],
       borderWidth: 0,
     },
   ],
   }
   const piedata1 = {
-    labels: ['BNK48 1st Generation', 'BNK48 2nd Generation', 'BNK48 3rd Generation', 'CGM48'],
+    labels: ['BNK48 1st Generation', 'BNK48 2nd Generation', 'BNK48 3rd Generation', 'BNK48 4th Generation', 'CGM48 1st Generation', 'CGM48 2nd Generation'],
     datasets: [
       {
         label: '# members',
-        data: [11, 13, 18, 20],
+        data: [1, 9, 16, 11, 21, 6],
         backgroundColor: [
-          '#0a6302',
+          '#f505a0',
           '#ff85d4',
           '#cb96c2',
+          '#f5c9ed',
           '#49C5A8',
+          '#7af5d8'
         ],
         borderColor: [
           '#0a6302',
@@ -89,6 +100,7 @@ const useStyles = makeStyles((theme) => ({
 const Ge = ({fet, timesch, setSec, width}) => {
   const History = useHistory()
   const classes = useStyles();
+  const [candiTog, setCandiTog] = React.useState(false); 
 
 
   const [rank, setRank] = React.useState([]); 
@@ -155,7 +167,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
   const opt ={
     onClick: function(e, element) {
       if(element.length > 0) {
-        ToggleDialog(true, 'https://pbs.twimg.com/media/F6TKZQ1akAA6_a1?format=jpg&name=large')
+        ToggleDialog(true, '')
     }  
   },
   animation: {
@@ -178,36 +190,27 @@ const Ge = ({fet, timesch, setSec, width}) => {
     // const cur = 1649501999;
     switch(meth) {
       case 1:
-        if(cur > timesch.regis.close) {
+        if(cur > timeline.voteend) {
           dcn = 0
-        } else if(cur >= timesch.regis.open && cur <= timesch.regis.close) {
+        } else if(cur >= timeline.votestart && cur <= timeline.voteend) {
           dcn = 1
         } else {
           dcn = 2
         }
         break;
       case 2:
-        if(cur > timesch.vote.close) {
+        if(cur > timeline.voteannounce + 21600) {
           dcn = 0
-        } else if(cur >= timesch.vote.open && cur <= timesch.vote.close) {
+        } else if(cur >= timeline.voteannounce && cur <= timeline.voteannounce + 21600) {
           dcn = 1
         } else {
           dcn = 2
         }
         break;
       case 3:
-        if(cur > timesch.announ) {
+        if(cur > timeline.votethank + 2629743) {
           dcn = 0
-        } else if(cur >= timesch.vote.close && cur <= timesch.announ) {
-          dcn = 1
-        } else {
-          dcn = 2
-        }
-        break;
-      case 4:
-        if(cur > timesch.announ + 86400) {
-          dcn = 0
-        } else if(cur >= timesch.announ && cur <= timesch.announ + 86400) {
+        } else if(cur >= timeline.votethank && cur <= timeline.votethank + 2629743) {
           dcn = 1
         } else {
           dcn = 2
@@ -322,12 +325,12 @@ const Ge = ({fet, timesch, setSec, width}) => {
           <div className='row mt-5 ml-1 mr-1'>
           <Card className={(width > 700 ? '' : 'mb-5') + ' col-md-12'} data-aos='zoom-in-right'>
             <CardContent>
-              <CardHeader title="TimeLine of Election" subheader="Notes: Timeline are subject to change as appropriate due to the situation of the epidemic of Covid-19." />
+              <CardHeader title="TimeLine of Election" subheader="Notes: Timeline are subject to change as appropriate." />
               <hr />
-              {/* <div className='row justify-content-center mb-5'> 
+              <div className='row justify-content-center mb-5'> 
               <List className='col-md-8'>
                 <ListItem>
-                  <ListItemText className={CheckTZ(1) == 0 ? 'text-muted' : CheckTZ(1) == 1 ? 'text-success' : ''} primary="Members Registration for Election" secondary="Jan 11-24, 2022" />
+                  <ListItemText className={CheckTZ(1) == 0 ? 'text-muted' : CheckTZ(1) == 1 ? 'text-success' : ''} primary="Vote open" secondary="Nov 1, 2023 - Dec 7, 2023" />
                   {
                     CheckTZ(1) == 0 && (
                       <ListItemSecondaryAction>
@@ -350,7 +353,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   }
                 </ListItem>
                 <ListItem>
-                  <ListItemText className={CheckTZ(2) == 0 ? 'text-muted' : CheckTZ(2) == 1 ? 'text-success' : ''} primary="Open Vote" secondary="Mar 10, 2022" />
+                  <ListItemText className={CheckTZ(2) == 0 ? 'text-muted' : CheckTZ(2) == 1 ? 'text-success' : ''} primary="Election result announcement" secondary="Dec 9, 2023" />
                   {
                     CheckTZ(2) == 0 && (
                       <ListItemSecondaryAction>
@@ -373,7 +376,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   }
                 </ListItem>
                 <ListItem>
-                  <ListItemText className={CheckTZ(3) == 0 ? 'text-muted' : CheckTZ(3) == 1 ? 'text-success' : ''} primary="Close Vote" secondary="Apr 7, 2022" />
+                  <ListItemText className={CheckTZ(3) == 0 ? 'text-muted' : CheckTZ(3) == 1 ? 'text-success' : ''} primary="Thank you Event" secondary="Dec 10, 2023" />
                   {
                     CheckTZ(3) == 0 && (
                       <ListItemSecondaryAction>
@@ -395,38 +398,52 @@ const Ge = ({fet, timesch, setSec, width}) => {
                     )
                   }
                 </ListItem>
-                <ListItem>
-                  <ListItemText className={CheckTZ(4) == 0 ? 'text-muted' : CheckTZ(4) == 1 ? 'text-success' : ''} primary="Announcement Result" secondary="Apr 9, 2022" />
-                  {
-                    CheckTZ(4) == 0 && (
-                      <ListItemSecondaryAction>
-                        <Checkbox
-                          checked={true}
-                          tabIndex={-1}
-                          disabled={true}
-                        />
-                  </ListItemSecondaryAction>
-                    )
-                  }
-                   {
-                    CheckTZ(4) == 1 && (
-                      <ListItemSecondaryAction>
-                         <IconButton edge="end">
-                      <FiberManualRecordIcon className='text-success' />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                    )
-                  }
-                </ListItem>
               </List>
-              </div> */}
-              <div className='row justify-content-center mb-5 text-center'>
-                Timeline will be soon officially.
+              </div>
+            </CardContent>
+          </Card>
+          
+
+          <Card className={(width > 700 ? 'ml-3' : '') + ' col-md'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+            <CardContent>
+            <CardHeader title="General Election Candidate Summary" subheader='We have 64 BNK48 and CGM48 members who candidated' />
+              <hr />
+              <div className='row justify-content-center'>
+                <div className='col-md-8'>
+                  <div className='col-md-12 text-center'>
+                  <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={candiTog}
+                            onChange={() => setCandiTog(!candiTog)}
+                            name="checkedB"
+                            color="primary"
+                          />
+                        }
+                        label="Filter by Generation"
+                      />
+                    </div>
+                    {candiTog ? (
+                      <div className='col-md-12'>
+                      <Doughnut
+                        data={piedata1}
+                        options={opt}
+                      />
+                    </div>
+                    ) : (
+                      <div className='col-md-12'>
+                      <Doughnut
+                        data={piedata}
+                        options={opt}
+                      />
+                    </div>
+                    )}
+                  </div>
               </div>
             </CardContent>
           </Card>
           </div>
-          
+
           
           <Card className='mt-5' data-aos='fade-down'>
             <CardContent>

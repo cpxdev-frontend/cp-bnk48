@@ -158,7 +158,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
 
   const ToggleDialog = (sw, uri) => {
     if(uri != '') {
-      setCandiUrl(uri)
+      setCandiUrl('https://pbs.twimg.com/media/F6TKZQ1akAA6_a1?format=jpg&name=large')
     }
     setCandi(sw)
   }

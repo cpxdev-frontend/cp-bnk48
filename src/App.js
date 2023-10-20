@@ -43,7 +43,7 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import CodeIcon from '@material-ui/icons/Code';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
-import MovieIcon from '@material-ui/icons/Movie';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import PanToolIcon from '@material-ui/icons/PanTool';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
@@ -59,6 +59,7 @@ import Home from './component/home';
 import MemberList from './component/members';
 import LiveCom from './component/livestream'
 import MamSam from './component/memberdetail';
+import Shi from './component/shihainin';
 import TokenCom from './component/token';
 import News from './component/news';
 import Anni from './component/anniversarydebut';
@@ -781,11 +782,11 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="Members" />
                 </ListItem>
-                <ListItem component={Link} to='/bma' className={window.location.pathname == '/bma' ? 'activeNav' : ''} button>
+                <ListItem component={Link} to='/shihainin' className={window.location.pathname == '/shihainin' ? 'activeNav' : ''} button>
                   <ListItemIcon>
-                    <AirportShuttleIcon />
+                    <AccountCircleIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Please visit ... too (ฝาก...ด้วยนะ)" />
+                  <ListItemText primary='Shihainin Palace' />
                 </ListItem>
                 <ListItem component={Link} to='/news' className={window.location.pathname == '/news' ? 'activeNav' : ''} button>
                   <ListItemIcon>
@@ -852,6 +853,12 @@ React.useEffect(() => {
                     <LanguageIcon />
                   </ListItemIcon>
                   <ListItemText primary="Official Update" />
+                </ListItem>
+                <ListItem component={Link} to='/bma' className={window.location.pathname == '/bma' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <AirportShuttleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Please visit ... too (ฝาก...ด้วยนะ)" />
                 </ListItem>
                 <ListItem component={Link} to='/token' className={window.location.pathname == '/token' ? 'activeNav' : ''} button>
                   <ListItemIcon>
@@ -975,6 +982,7 @@ React.useEffect(() => {
                   <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} />} />
                   <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/shihainin" render={() => <Shi fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} />} />
                   <Route path="/anniversary" render={() => <Anni fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/token" render={() => <TokenCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

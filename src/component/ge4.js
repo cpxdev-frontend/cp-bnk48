@@ -158,7 +158,8 @@ const Ge = ({fet, timesch, setSec, width}) => {
   // }
 
   const ToggleDialog = (sw, uri) => {
-    setCandi('https://pbs.twimg.com/media/F6TKZQ1akAA6_a1?format=jpg&name=large')
+    setCandiUrl('https://pbs.twimg.com/media/F6TKZQ1akAA6_a1?format=jpg&name=large')
+    setCandi(!candi)
   }
 
   const opt ={
@@ -400,12 +401,12 @@ const Ge = ({fet, timesch, setSec, width}) => {
             </CardContent>
           </Card>
           
-          <Card className={(width > 700 ? 'ml-3' : '') + ' col-md'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+          <Card className={' col-md mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>
             <CardHeader title="General Election Fully Announcement" subheader='All about voting your member to winning this election from Shihainin is here.' />
               <hr />
               <div className='row justify-content-center'>
-                <iframe src="https://www.youtube.com/embed/Rz-0xSjKO4w?autoplay=1&mute=1&controls=0&loop=1&playlist=Rz-0xSjKO4w" frameborder="0"></iframe>
+                <iframe src="https://www.youtube.com/embed/Rz-0xSjKO4w?autoplay=0&mute=1&controls=0&loop=1&playlist=Rz-0xSjKO4w" height="500px" width="100%" frameborder="0"></iframe>
               </div>
             </CardContent>
           </Card>

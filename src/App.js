@@ -652,41 +652,6 @@ React.useEffect(() => {
     }
   }
 
-  const setTokenDialog = () => {
-    setLoadToken(true)
-    fetch(uri + '/bnk48/upttokenid?i='  + (JSON.parse(localStorage.getItem("loged")).googleId).toString() + '&wallet=' + survey, {
-      method :'post'
-  })
-      .then(response => response.text())
-      .then(data => {
-        if (data == "true") {
-          setMemDl(false)
-          Swal.fire({
-            title: 'Your iAM Wallet code has been link to Fan Space successfully.',
-            icon: 'success',
-            iconColor: 'rgb(203, 150, 194)'
-          }).then(() => {
-            window.location.reload()
-          })
-        } else {
-          setLoadToken(false)
-          Swal.fire({
-            title: 'Your iAM Wallet code is incorrect.',
-            icon: 'error',
-            iconColor: 'rgb(203, 150, 194)'
-          })
-        }
-      }).catch(() => {
-        setLoadToken(false)
-        Swal.fire({
-          title: 'Cannot connect to server. please try again',
-          icon: 'error',
-          iconColor: 'rgb(203, 150, 194)'
-        })
-      })
-   
-  }
-
   const checkUser = () => {
     if (window.localStorage.getItem("loged") != null) {
         switch (JSON.parse(window.localStorage.getItem("loged")).providerId) {

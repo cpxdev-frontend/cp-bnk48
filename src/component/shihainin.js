@@ -232,9 +232,6 @@ function capitalizeFirstLetter(string) {
                                         )}
                                         <hr />
                                     <>
-                                     {item.shihainin != undefined && (
-                                         <p class="badge text-light" style={{backgroundColor: "#BF953F"}}>BNK48 Manager (Shihainin)</p>
-                                     )}
                                         <h6><LocationOnIcon fontSize="small"/> {item.province}</h6>
                                         <h6><AccountCircleIcon fontSize="small"/> Assigned to Shihainin since {moment(item.starting).local().format('DD MMMM YYYY')} [{remainEvent(moment(item.starting).unix())}]</h6>
                                         {birthday ? (

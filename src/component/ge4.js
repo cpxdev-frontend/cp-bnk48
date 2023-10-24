@@ -400,6 +400,30 @@ const Ge = ({fet, timesch, setSec, width}) => {
               </div>
             </CardContent>
           </Card>
+
+          <Card className={'mr-1 col-md mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+            <CardContent>
+            <CardHeader title="How to Vote" subheader='This general election, it has something changed from past election. please read below carefully' />
+              <hr />
+              <div className='row justify-content-center'>
+              <ListItem>
+                    <ListItemText primary='1. This general election must be used "GE4 Event-Based Token" for voting. Not "BNK Governance Token (BNK Token)"' />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary='2. You have 2 ways to get GE4 Token. First choice, you can buy BNK48 15th Single "Kibouteki Refrain" CD (Earned 2 GE4 Tokens), Photobook (Earned 2 GE4 Tokens) or Music Code package (Earned 3 GE4 Tokens).' />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary='3. Or second choice, you can use BNK Token for exchange to GE4 Token by get Music Code (Earned 2 GE4 Tokens), Music Code and Digital Asset [NFT - Limited Quantity] (Earned 3 GE4 Tokens) or Music Code and Original Art Toys [Limited Quantity] (Earned 16 GE4 Tokens)' />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="4. You can vote members for this election at least 1 GE4 Event-Based Token. Unlimited maximum token voted per time." />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="5. GE4 Event-Based Tokens will be expired on midnight of December 11, 2023 (UTC +07:00). And you cannot used with another upcoming BNK48 and CGM48 events." />
+                  </ListItem>
+              </div>
+            </CardContent>
+          </Card>
           
           <Card className={' col-md mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>
@@ -411,7 +435,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
             </CardContent>
           </Card>
 
-          <Card className={(width > 700 ? 'ml-3' : '') + ' col-md mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+          <Card className={(width > 700 ? 'ml-1' : '') + ' col-md mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>
             <CardHeader title="General Election Candidate Summary" subheader='We have 64 BNK48 and CGM48 members who candidated' />
               <hr />

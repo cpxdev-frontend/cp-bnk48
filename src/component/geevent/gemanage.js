@@ -50,7 +50,30 @@ const GeMana = ({fet}) => {
 
     const [load, setLoad] = React.useState(false); 
 
+    const [member, setMember] = React.useState([]); 
+    const [ranklist, setRankList] = React.useState([]); 
+    const [rank, setRank] = React.useState(0); 
+    const [memwin, setMemwin] = React.useState(''); 
+    const [ge4body, setBody] = React.useState(''); 
+    const [tokenCount, setToken] = React.useState(''); 
+
+
     const LoadMem = (val) => {
+        fetch(fet + '/bnk48/ge4ListDropdown', {
+            method: 'GET', // or 'PUT'
+          })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                setMember(data.res)
+            })
+            .catch((error) => {
+              alert('Server cannot be respond. Access denied')
+              window.location.href = "/"
+            });
+
+
+
         setCg(val)
         let temp = []
         if (val == false) {
@@ -91,6 +114,15 @@ const GeMana = ({fet}) => {
     }
 
     const ListSt = () => {
+        let a = []
+            for(let i = 1 ; i < 49; i++){
+                a.push(i)
+            }
+            setRankList(a)
+
+
+
+
         let temp = []
         const Number = 48
         for (let i = 0; i < Number; i++) {
@@ -218,6 +250,49 @@ const GeMana = ({fet}) => {
         }
     }
 
+    const subGE4 = (e) => {
+        e.preventDefault()
+        if (rank == 0 || rank == '0') {
+            return;
+        }
+        if (!window.confirm("Are you sure")) {
+            return;
+          }
+          setLoad(true)
+          fetch(fet + '/bnk48/ge4insert', {
+              method: 'PUT', // or 'PUT'
+              headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(ge4body)
+          })
+          .then(response => response.text())
+          .then(data => {
+            setLoad(false)
+              alert('ok')
+          })
+          .catch((error) => {
+              alert("System will be temporary error for a while. Please try again")
+              setLoad(false)
+              setStr("")
+              setChannel("")
+          });
+    }
+
+    const setVal = (v) => {
+        setMemwin(v)
+        const check = member.filter(x => x.id == v);
+        if (check.length > 0) {
+                 setBody({
+                    rank: parseInt(rank),
+                    label : check[0].label,
+                    token: parseFloat(tokenCount),
+                    val : check[0].id
+                })
+        }
+    }
+
     if (done) {
       return ( 
           <>
@@ -265,6 +340,57 @@ const GeMana = ({fet}) => {
                         >
                             {streamplat.length > 0 && streamplat.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                                </MenuItem>
+                            ))}
+                    </TextField>
+                </div>
+                <Button color='primary' type='submit'>Update</Button>
+            </CardContent>
+            </form>
+
+            <form autoComplete='off' onSubmit={subGE4}>
+                <h4>GE4</h4>
+            <CardContent className='row pl-5 pr-5'>
+                <div className='col-md-3'>
+                <TextField
+                        required={true}
+                        fullWidth={true}
+                        select
+                        label="rank"
+                        value={rank}
+                        onChange={(e) => setRank(e.target.value)}
+                        >
+                            {ranklist.length > 0 && ranklist.map((option) => (
+                                <MenuItem key={option} value={option}>
+                                {option}
+                                </MenuItem>
+                            ))}
+                    </TextField>
+                </div>
+                <div className='col-md-3'>
+                    <TextField
+                        required={true}
+                        label="Token Spent"
+                        value={tokenCount}
+                        fullWidth={true}
+                        className="mb-3"
+                        type="text"
+                        onChange={(e) => setToken(e.target.value)}
+                    />
+                </div>
+                <div className='col-md-5'>
+                <TextField
+                        required={true}
+                        fullWidth={true}
+                        select
+                        label="Members"
+                        value={memwin}
+                        className="mb-3"
+                        onChange={(e) => setVal(e.target.value)}
+                        >
+                            {member.length > 0 && member.map((option) => (
+                                <MenuItem key={option.id} value={option.id}>
                                 {option.label}
                                 </MenuItem>
                             ))}

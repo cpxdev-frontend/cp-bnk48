@@ -113,7 +113,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
 
   const ResultFetch = () => {
     setts('Updating')
-    fetch(fet + '/bnk48/ge4analysisResult', {
+    fetch(fet + '/bnk48/ge4Result', {
       method :'get'
   })
       .then(response => response.json())
@@ -478,11 +478,11 @@ const Ge = ({fet, timesch, setSec, width}) => {
           
           <Card className='mt-5' data-aos='fade-down'>
             <CardContent>
-              <CardHeader title="Result of Election (Just Forecasting. Powered by Google Bard AI)" subheader={'Latest update: ' + ts} data-aos='flip-down' />
+              <CardHeader title="Result of Election (Preliminary Announcement)" subheader={'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">
-                <caption className='text-right'>Note: This is only a prediction made by the artificial intelligence system. Based on the results of past General elections and the popularity of each member. The results may be inaccurate. See full result <a href={ref} target='_blank'>here</a></caption>
+                {/* <caption className='text-right'>Note: This is only a prediction made by the artificial intelligence system. Based on the results of past General elections and the popularity of each member. The results may be inaccurate. See full result <a href={ref} target='_blank'>here</a></caption> */}
                   <TableHead>
                     <TableRow>
                       <TableCell className={classes.rank}>Rank</TableCell>
@@ -490,6 +490,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       <TableCell align="center">Name</TableCell>
                       <TableCell align="center">Band</TableCell>
                       <TableCell align="right">Team</TableCell>
+                      <TableCell align="right">Token</TableCell>
                     </TableRow>
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
@@ -520,6 +521,9 @@ const Ge = ({fet, timesch, setSec, width}) => {
                               </TableCell>
                             )
                           }
+                           <TableCell align="right">
+                          {item.ge4token}
+                          </TableCell>
                   </TableBody>
                   )): (
                     <TableBody>

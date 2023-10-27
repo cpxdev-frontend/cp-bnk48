@@ -1,7 +1,9 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Fade, Grow, Drawer, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, FormControlLabel , Switch,Backdrop, Avatar, CardActionArea } from '@material-ui/core';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { Card, Fade, Grow, Drawer, Typography, Zoom, Link, Breadcrumbs, Button, ButtonGroup, Toolbar, IconButton, Slide, CardContent, FormControlLabel , Switch,Backdrop, Avatar, CardActionArea } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -26,12 +28,17 @@ import Swal from 'sweetalert2'
 import AOS from "aos";
 
 import IRBio from './ir/bio'
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 var pm = new Audio('https://cdn.pixabay.com/download/audio/2022/03/14/audio_a791c6fdc8.mp3?filename=firework-show-short-64657.mp3')
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
 
 const fwoptions = {
     speed: 3,
@@ -99,6 +106,7 @@ function capitalizeFirstLetter(string) {
         
         const [play, onPlay] = React.useState(false);
         const [GEPoster, setGEPoster] = React.useState('');
+        const [fol, setFollowName] = React.useState('');
         const [customback, setBack] = React.useState(false);
         
         const numberWithCommasx = (x) => {
@@ -122,6 +130,7 @@ function capitalizeFirstLetter(string) {
 
             const fetchfollower = (name) => {
                  setFollow(true)
+                 setFollowName(name)
                 fetch(fet + '/bnk48/getfollower?name=' + name  , {
                     method :'post'
                  })
@@ -420,6 +429,19 @@ function capitalizeFirstLetter(string) {
             if (c != null && c != "") {
                 setSec('Loading Member description')
                 if (localStorage.getItem("loged") != null) {
+    
+                  fetch(fet + '/bnk48/getge4poster?name=' + c.toLowerCase()  , {
+                    method :'post'
+                 })
+                 .then(response => response.json())
+                  .then(data => {
+                    if (data.status == true) {
+                        setGEPoster(data.src)
+                    }
+                 }).catch(() => {
+                    
+                  });
+
                     fetch(fet + '/bnk48/getbnkkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
                       method :'get'
                   })
@@ -452,12 +474,10 @@ function capitalizeFirstLetter(string) {
                                 if (data.response.ge != "") {
                                     const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1)
                                     setNewspop(obj)
-                                    setGEPoster(data.follower)
                                     fetchfollower(data.follower)
                                 } else {
                                     const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1)
                                     setNewspop(obj)
-                                    setGEPoster(data.follower)
                                     fetchfollower(data.follower)
                                 }
                             }).catch(() => {
@@ -560,6 +580,27 @@ function capitalizeFirstLetter(string) {
                   })
                }
         }
+
+                    const showge4 = (u) => {
+                        Swal.fire({
+                            title: "BNK48 16th Single Senbatsu General Election Poster Image",
+                            imageUrl: u,
+                            showDenyButton: true,
+                            showCancelButton: true,
+                            confirmButtonText: 'Download',
+                            denyButtonColor: '#3AA504',
+                            denyButtonText: 'Go to GE4 Lobby page',
+                            footer: 'You can hold tap or right click on image then save it to your phone or PC',
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                            window.open(u, '_blank')
+                        } else if (result.isDenied) {
+                            History.push('/ge4')
+                          }
+                        })
+                    }
+
         const session4thAl = (url) => {
             if (localStorage.getItem("loged") == null) {
                 Swal.fire({
@@ -591,6 +632,17 @@ function capitalizeFirstLetter(string) {
 
         return (  
         <>
+        <Snackbar open={GEPoster != '' ? true : false}  anchorOrigin={{ vertical:  window.innerWidth > 700 ? 'top' : 'bottom', horizontal:'center' }}
+        message={capitalizeFirstLetter(mem) +' BNK48 is candidated of BNK48 16th Single Senbatsu General Election. Click VIEW to see her poster.'}
+        action={
+            <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+            <Button onClick={()=> showge4(GEPoster)}>View</Button>
+            <IconButton size="small" onClick={() => setGEPoster('')} aria-label="close" color="inherit">
+          <CloseIcon fontSize="small" />
+        </IconButton>
+          </ButtonGroup>
+          }>
+        </Snackbar>
             <div className="pt-5 pb-2">
                 <h3 className={width > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' BNK48' : 'Fetching Header'}</h3>
                 <Breadcrumbs className={width > 600 ? ' ml-5' : ' ml-3'} aria-label="breadcrumb">
@@ -642,8 +694,7 @@ function capitalizeFirstLetter(string) {
                                             <p className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Album "Gingham Check" by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></p>
                                         )} */}
 
-
-                                       {loadfollow ? (
+                                        {loadfollow ? (
                                             <Skeleton />
                                         ):(
                                             <>
@@ -652,7 +703,7 @@ function capitalizeFirstLetter(string) {
                                                     <p>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : numberWithCommasx(follower)} followers on Instagram</p>
                                                 </Zoom>
                                             ): (
-                                                <button className='cur btn btn-info' onClick={() => fetchfollower(GEPoster)}>Something went wrong, please click here to refresh page</button>
+                                                <button className='cur btn btn-info' onClick={() => fetchfollower(fol)}>Something went wrong, please click here to refresh page</button>
                                             )}
                                             </>
                                         )}

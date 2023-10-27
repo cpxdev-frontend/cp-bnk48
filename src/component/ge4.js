@@ -112,7 +112,11 @@ const Ge = ({fet, timesch, setSec, width}) => {
   const [urlstream, setStream] = React.useState(''); 
 
   const ResultFetch = () => {
-    setts('Updating')
+    if (moment().unix() >= 1698926400 && moment().unix() <= 1698933600) {
+      setts('LIVE Report')
+    } else {
+      setts('Updating')
+    }
     fetch(fet + '/bnk48/ge4Result', {
       method :'get'
   })
@@ -120,7 +124,11 @@ const Ge = ({fet, timesch, setSec, width}) => {
       .then(data => {
           setRank(data.res)
           setRef(data.ref)
-          setts(moment().format("DD MMMM YYYY HH:mm:ss"))
+          if (moment().unix() >= 1698926400 && moment().unix() <= 1698933600) {
+            setts('LIVE Report')
+          } else {
+            setts(moment().format("DD MMMM YYYY HH:mm:ss"))
+          }
       }).catch(() => {
         setRank([])
         setts(moment().format("DD MMMM YYYY HH:mm:ss") + ' (Error fetching)')
@@ -139,12 +147,11 @@ const Ge = ({fet, timesch, setSec, width}) => {
     AOS.init({ duration: 1000 });
     setSec('BNK48 16th Single Senbatsu General Election')
     ResultFetch()
-    // setInterval(function () {
-    //   if (moment().unix() >= timesch.announ - 3600 && moment().unix() <= timesch.announ + 86400) {
-    //     ResultFetch()
-    //     setSpam(0)
-    //   }
-    // }, 60000);
+    setInterval(function () {
+      if (moment().unix() >= 1698926400 && moment().unix() <= 1698933600) {
+        ResultFetch();
+      }
+    }, 60000);
   }, [])
 
   // const Refresh = () => {

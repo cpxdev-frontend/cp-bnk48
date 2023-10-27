@@ -112,7 +112,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
   const [urlstream, setStream] = React.useState(''); 
 
   const ResultFetch = () => {
-    if (moment().unix() >= 1698926400 && moment().unix() <= 1698933600) {
+    if (moment().unix() >= 1698922800 && moment().unix() <= 1698933600) {
       setts('LIVE Report')
     } else {
       setts('Updating')
@@ -124,7 +124,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
       .then(data => {
           setRank(data.res)
           setRef(data.ref)
-          if (moment().unix() >= 1698926400 && moment().unix() <= 1698933600) {
+          if (moment().unix() >= 1698922800 && moment().unix() <= 1698933600) {
             setts('LIVE Report')
           } else {
             setts(moment().format("DD MMMM YYYY HH:mm:ss"))
@@ -148,7 +148,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
     setSec('BNK48 16th Single Senbatsu General Election')
     ResultFetch()
     setInterval(function () {
-      if (moment().unix() >= 1698926400 && moment().unix() <= 1698933600) {
+      if (moment().unix() >= 1698922800 && moment().unix() <= 1698933600) {
         ResultFetch();
       }
     }, 60000);
@@ -485,7 +485,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
           
           <Card className='mt-5' data-aos='fade-down'>
             <CardContent>
-              <CardHeader title="Result of Election (Preliminary Announcement)" subheader={'Latest update: ' + ts} data-aos='flip-down' />
+            <CardHeader title="Result of Election (Preliminary Announcement)" subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">

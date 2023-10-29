@@ -106,6 +106,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
   const [rank, setRank] = React.useState([]); 
   const [ref, setRef] = React.useState(''); 
   const [candi, setCandi] = React.useState(false); 
+  const [moni, setMoni] = React.useState(false); 
   
   const [candiUrl, setCandiUrl] = React.useState(''); 
   const [ts, setts] = React.useState('Updating'); 
@@ -485,7 +486,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
           
           <Card className='mt-5' data-aos='fade-down'>
             <CardContent>
-            <CardHeader title="Result of Election (Preliminary Announcement)" subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
+            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={"Result of Election (Preliminary Announcement)" + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">
@@ -559,6 +560,83 @@ const Ge = ({fet, timesch, setSec, width}) => {
               <DialogActions>
              
               <Button onClick={() => ToggleDialog(false, '')} className="text-dark">
+                  Close
+              </Button>
+              </DialogActions>
+          </Dialog>
+          <Dialog
+              fullScreen
+              TransitionComponent={Transition}
+              open={moni}
+              onClose={() => setMoni(false)}
+              fullWidth={true}
+              maxWidth='xl'
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+          >
+              <DialogContent>
+              <Card className='mt-3' data-aos='fade-down'>
+            <CardContent>
+            <CardHeader title="Result of Election (Preliminary Announcement)" subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
+              <hr />
+              <TableContainer>
+                <Table stickyHeader aria-label="simple table">
+                {/* <caption className='text-right'>Note: This is only a prediction made by the artificial intelligence system. Based on the results of past General elections and the popularity of each member. The results may be inaccurate. See full result <a href={ref} target='_blank'>here</a></caption> */}
+                  <TableHead>
+                    <TableRow>
+                      <TableCell className={classes.rank}>Rank</TableCell>
+                      <TableCell className={classes.img} align="center">Member Image</TableCell>
+                      <TableCell align="center">Name</TableCell>
+                      <TableCell align="center">Band</TableCell>
+                      <TableCell align="right">Team</TableCell>
+                      <TableCell align="right">Token</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  {rank.length > 0 ? rank.map((item, i) => (
+                    <TableBody key={item.id}
+                      onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.memid.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.memid.toLowerCase(), '_target') : ''}
+                      data-aos='fade-right'
+                   >
+                        <TableCell component="th" className={classes.rank}>
+                          {i + 1}
+                        </TableCell>
+                        <TableCell align="center" className={classes.img}>
+                        <img src={item.img} className={classes.large + ' cir avatarlimit'} />
+                          </TableCell>
+                          <TableCell align="center">
+                          {item.fullnameEn[0]}  {item.fullnameEn[1]} ({item.name})
+                          </TableCell>
+                          <TableCell align="center">
+                          {item.ref.includes('bnk48') ? 'BNK48' : item.ref.includes('cgm48') ? 'CGM48' : ''}
+                          </TableCell>
+                          {
+                            item.ref.includes('cgm48') ? (
+                              <TableCell align="right">
+                              {item.team == "" ? 'None' : item.team}
+                              </TableCell>
+                            ) : (
+                              <TableCell align="right">
+                              {item.team == "" ? 'None' : item.team[0]}
+                              </TableCell>
+                            )
+                          }
+                           <TableCell align="right">
+                          {item.ge4token}
+                          </TableCell>
+                  </TableBody>
+                  )): (
+                    <TableBody>
+                       <TableCell colSpan={6} align='center'>No record(s) found</TableCell>
+                  </TableBody>
+                  )}
+                </Table>
+              </TableContainer>
+            </CardContent>
+          </Card>
+              </DialogContent>
+              <DialogActions>
+             
+              <Button onClick={() => setMoni(false)} className="text-dark">
                   Close
               </Button>
               </DialogActions>

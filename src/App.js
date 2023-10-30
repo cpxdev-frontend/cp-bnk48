@@ -751,7 +751,7 @@ React.useEffect(() => {
                   <ListItemIcon>
                     <AccountCircleIcon />
                   </ListItemIcon>
-                  <ListItemText primary='Shihainin Palace' />
+                  <ListItemText primary='Shihainin House' />
                 </ListItem>
                 <ListItem component={Link} to='/news' className={window.location.pathname == '/news' ? 'activeNav' : ''} button>
                   <ListItemIcon>

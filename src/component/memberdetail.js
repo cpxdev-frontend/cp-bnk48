@@ -712,7 +712,9 @@ function capitalizeFirstLetter(string) {
                                         <hr />
                                     <>
                                      {item.shihainin != undefined && (
-                                         <p class="badge text-light" style={{backgroundColor: "#BF953F"}}>BNK48 Manager (Shihainin)</p>
+                                        <CardActionArea className="mb-3" onClick={() => History.push('/shihainin')}>
+                                            <p class="badge text-light" style={{backgroundColor: "#BF953F"}}>BNK48 Manager (Shihainin)</p>
+                                         </CardActionArea>
                                      )}
                                     {item.captain != undefined && (
                                         <p className="mb-3 badge badge-pill badge-warning">BNK48 {item.captain}</p>

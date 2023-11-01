@@ -973,7 +973,9 @@ React.useEffect(() => {
                     )
                   }
 
-                  <Route path="/ge3" render={() => <GeCom fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/ge3" render={() => {
+                    History.push('/ge4')
+                  }} />
                   <Route path="/ge4" render={() => <Ge4Com fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} width={width} />} />

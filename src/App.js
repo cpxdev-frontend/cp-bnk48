@@ -831,12 +831,6 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary='Blockchain Technology' />
                 </ListItem>
-                <ListItem component={Link} to='/ge3' className={window.location.pathname == '/ge3' ? 'activeNav' : ''} button>
-                  <ListItemIcon>
-                    <HowToVoteIcon />
-                  </ListItemIcon>
-                  <ListItemText primary='BNK48 12th Single General Election' />
-                </ListItem>
                 <ListItem component={Link} to='/requesthour' className={window.location.pathname == '/requesthour' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <TheatersIcon />

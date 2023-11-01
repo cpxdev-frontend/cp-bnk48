@@ -28,6 +28,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const timeline = {
   votestart: 1698814800,
   voteend: 1701957600,
+  votepriannonce:1698926400,
   voteannounce : 1702054800,
   votethank:1702141200
 }
@@ -222,6 +223,15 @@ const Ge = ({fet, timesch, setSec, width}) => {
           dcn = 2
         }
         break;
+      case 4:
+        if(cur > timeline.votepriannonce + 10800) {
+          dcn = 0
+        } else if(cur >= timeline.votepriannonce && cur <= timeline.votepriannonce + 10800) {
+          dcn = 1
+        } else {
+          dcn = 2
+        }
+        break;
       default:
       break;
     }
@@ -359,7 +369,30 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   }
                 </ListItem>
                 <ListItem>
-                  <ListItemText className={CheckTZ(2) == 0 ? 'text-muted' : CheckTZ(2) == 1 ? 'text-success' : ''} primary="Election result announcement" secondary="Dec 9, 2023" />
+                  <ListItemText className={CheckTZ(4) == 0 ? 'text-muted' : CheckTZ(2) == 1 ? 'text-success' : ''} primary="Preliminary result announcement" secondary="Nov 2, 2023 19:00 PM (UTC +07:00)" />
+                  {
+                    CheckTZ(4) == 0 && (
+                      <ListItemSecondaryAction>
+                        <Checkbox
+                          checked={true}
+                          tabIndex={-1}
+                          disabled={true}
+                        />
+                  </ListItemSecondaryAction>
+                    )
+                  }
+                   {
+                    CheckTZ(4) == 1 && (
+                      <ListItemSecondaryAction>
+                         <IconButton edge="end">
+                      <FiberManualRecordIcon className='text-success' />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                    )
+                  }
+                </ListItem>
+                <ListItem>
+                  <ListItemText className={CheckTZ(2) == 0 ? 'text-muted' : CheckTZ(2) == 1 ? 'text-success' : ''} primary="Final Election result announcement" secondary="Dec 9, 2023" />
                   {
                     CheckTZ(2) == 0 && (
                       <ListItemSecondaryAction>

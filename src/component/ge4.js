@@ -98,6 +98,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const ulink = 'mgiGk--GYjs'
+
 const Ge = ({fet, timesch, setSec, width}) => {
   const History = useHistory()
   const classes = useStyles();
@@ -457,7 +459,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                     <ListItemText primary='3. Or second choice, you can use BNK Token for exchange to GE4 Token by get Music Code (Earned 2 GE4 Tokens), Music Code and Digital Asset [NFT - Limited Quantity] (Earned 3 GE4 Tokens) or Music Code and Original Art Toys [Limited Quantity] (Earned 16 GE4 Tokens)' />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="4. You can vote members for this election at least 1 GE4 Event-Based Token. Unlimited maximum token voted per time." />
+                    <ListItemText primary="4. You can vote members for this election at least 0.01 GE4 Event-Based Token. Unlimited maximum token voted per time." />
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="5. GE4 Event-Based Tokens will be expired on midnight of December 11, 2023 (UTC +07:00). And you cannot used with another upcoming BNK48 and CGM48 events." />
@@ -516,6 +518,15 @@ const Ge = ({fet, timesch, setSec, width}) => {
           </Card>
           </div>
 
+          <Card className={' col-md-12 mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+            <CardContent>
+            <CardHeader title="General Election LIVE Announcement" subheader='General Electio Announcement LIVE.' />
+              <hr />
+              <div className='row justify-content-center'>
+                <iframe src={"https://www.youtube.com/embed/" + ulink + "?autoplay=0&mute=1&controls=0&loop=1&playlist=" + ulink} height="500px" width="100%" frameborder="0"></iframe>
+              </div>
+            </CardContent>
+          </Card>
           
           <Card className='mt-5' data-aos='fade-down'>
             <CardContent>

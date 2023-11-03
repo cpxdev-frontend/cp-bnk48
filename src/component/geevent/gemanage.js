@@ -271,6 +271,7 @@ const GeMana = ({fet}) => {
           .then(data => {
             setLoad(false)
               alert('ok')
+              setToken('')
           })
           .catch((error) => {
               alert("System will be temporary error for a while. Please try again")

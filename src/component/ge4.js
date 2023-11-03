@@ -546,12 +546,13 @@ const Ge = ({fet, timesch, setSec, width}) => {
                     </TableRow>
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
-                    <TableBody key={item.id}
-                      onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.memid.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.memid.toLowerCase(), '_target') : ''}
-                      data-aos='fade-right'
-                   >
+                     <TableBody key={item.id} className={(item.rank == 1 ? 'centerGE' : item.rank > 1 && item.rank <= 16 ? 'senGE' : item.rank > 16 && item.rank <= 32 ? 'nextGE' : '') + ' cur'}
+                     data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.name + ' is both Center position and Senbatsu of BNK48 12th Single' : item.rank > 1 && item.rank <= 16 ? item.name + ' is Senbatsu of BNK48 12th Single (Belivers)' : item.rank > 16 && item.rank <= 32 ? item.name + ' is participate in second song of BNK48 12th Single "Make Noise"' : item.name +' is participate in The third song of BNK48 12th Single "Kinou Yori Motto Suki"') + (moment().unix() < timesch.vote.close ? ' (2nd Preliminary Result)' : '')}
+                     onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.memid.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.memid.toLowerCase(), '_target') : ''}
+                     data-aos='fade-right'
+                  >
                         <TableCell component="th" className={classes.rank}>
-                          {i + 1}
+                          {item.rank}
                         </TableCell>
                         <TableCell align="center" className={classes.img}>
                         <img src={item.img} className={classes.large + ' cir avatarlimit'} />

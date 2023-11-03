@@ -575,7 +575,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                             )
                           }
                            <TableCell align="right">
-                          {item.ge4token}
+                          {numberWithCommas(item.ge4token)}
                           </TableCell>
                   </TableBody>
                   )): (

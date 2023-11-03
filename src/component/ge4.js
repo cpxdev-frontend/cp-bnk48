@@ -518,7 +518,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
           </Card>
           </div>
 
-          <Card className={' col-md-12 mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+          {/* <Card className={' col-md-12 mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>
             <CardHeader title="General Election LIVE Announcement" subheader='General Electio Announcement LIVE.' />
               <hr />
@@ -526,7 +526,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                 <iframe src={"https://www.youtube.com/embed/" + ulink + "?autoplay=0&mute=1&controls=0&loop=1&playlist=" + ulink} height="500px" width="100%" frameborder="0"></iframe>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
           
           <Card className='mt-5' data-aos='fade-down'>
             <CardContent>
@@ -665,7 +665,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                             )
                           }
                            <TableCell align="right">
-                          {item.ge4token}
+                          {item.ge4token.toFixed(2)}
                           </TableCell>
                   </TableBody>
                   )): (

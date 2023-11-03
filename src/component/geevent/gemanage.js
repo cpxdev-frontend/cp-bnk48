@@ -259,7 +259,7 @@ const GeMana = ({fet}) => {
             return;
           }
           setLoad(true)
-          fetch(fet + '/bnk48/ge4insert', {
+          fetch('https://cpxstatusservice.azurewebsites.net/ge4result', {
               method: 'PUT', // or 'PUT'
               headers: {
                   'Accept': 'application/json',

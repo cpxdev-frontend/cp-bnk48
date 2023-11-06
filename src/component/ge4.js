@@ -123,7 +123,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
     } else {
       setts('Updating')
     }
-    fetch(fet + (moment().unix() >= 1702087200 ? "/bnk48/ge4ResultFinal" : '/bnk48/ge4Result'), {
+    fetch(fet + (moment().unix() >= 1698804000 ? "/bnk48/ge4ResultFinal" : '/bnk48/ge4Result'), {
       method :'get'
   })
       .then(response => response.json())

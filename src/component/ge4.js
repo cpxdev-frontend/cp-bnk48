@@ -547,12 +547,12 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       <TableCell align="right">Team</TableCell>
                       <TableCell align="right">Token</TableCell>
                       {
-                        resultH == false || (resultH == true && moment().unix() < 1702098000) && (
+                        resultH == false || (resultH == true && moment().unix() < 1702076400) && (
                           <TableCell align="right">Preliminary Result</TableCell>
                         )
                       }
                        {
-                        resultH == true && moment().unix() >= 1702098000 && (
+                        resultH == true && moment().unix() >= 1702076400 && (
                           <TableCell align="right">Semi-Final Result</TableCell>
                         )
                       }
@@ -663,12 +663,12 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       <TableCell align="right">Team</TableCell>
                       <TableCell align="right">Token</TableCell>
                       {
-                        resultH == false || (resultH == true && moment().unix() < 1702098000) && (
+                        resultH == false || (resultH == true && moment().unix() < 1702076400) && (
                           <TableCell align="right">Preliminary Result</TableCell>
                         )
                       }
                        {
-                        resultH == true && moment().unix() >= 1702098000 && (
+                        resultH == true && moment().unix() >= 1702076400 && (
                           <TableCell align="right">Semi-Final Result</TableCell>
                         )
                       }
@@ -723,7 +723,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   </TableBody>
                   )): (
                     <TableBody>
-                         <TableCell colSpan={(resultH == false || (resultH == true && moment().unix() < 1702098000)) ? 7 : resultH == true && moment().unix() >= 1702098000 ? 8 : 6} align='center'>No record(s) found</TableCell>
+                         <TableCell colSpan={(resultH == false || (resultH == true && moment().unix() < 1702076400)) ? 7 : resultH == true && moment().unix() >= 1702076400 ? 8 : 6} align='center'>No record(s) found</TableCell>
                   </TableBody>
                   )}
                 </Table>

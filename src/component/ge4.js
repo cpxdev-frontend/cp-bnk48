@@ -115,20 +115,23 @@ const Ge = ({fet, timesch, setSec, width}) => {
   const [ts, setts] = React.useState('Updating'); 
   const [urlstream, setStream] = React.useState(''); 
 
+  const [resultH, setResultHeader] = React.useState(undefined); 
+
   const ResultFetch = () => {
-    if (moment().unix() >= 1698922800 && moment().unix() <= 1698933600) {
+    if (moment().unix() >= 1702098000 && moment().unix() <= 1702130400) {
       setts('LIVE Report')
     } else {
       setts('Updating')
     }
-    fetch(fet + '/bnk48/ge4Result', {
+    fetch(fet + (moment().unix() >= 1702087200 ? "/bnk48/ge4ResultFinal" : '/bnk48/ge4Result'), {
       method :'get'
   })
       .then(response => response.json())
       .then(data => {
           setRank(data.res)
           setRef(data.ref)
-          if (moment().unix() >= 1698922800 && moment().unix() <= 1698933600) {
+          setResultHeader(data.semi)
+          if (moment().unix() >= 1702098000 && moment().unix() <= 1702130400) {
             setts('LIVE Report')
           } else {
             setts(moment().format("DD MMMM YYYY HH:mm:ss"))
@@ -152,7 +155,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
     setSec('BNK48 16th Single Senbatsu General Election')
     ResultFetch()
     setInterval(function () {
-      if (moment().unix() >= 1698922800 && moment().unix() <= 1698933600) {
+      if (moment().unix() >= 1702098000 && moment().unix() <= 1702130400) {
         ResultFetch();
       }
     }, 60000);
@@ -530,7 +533,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
           
           <Card className='mt-5' data-aos='fade-down'>
             <CardContent>
-            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={"Result of Election (Preliminary Announcement)" + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
+            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true ? "Result of Election (Semi-Final Announcement)" : resultH == false ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">
@@ -543,6 +546,16 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       <TableCell align="center">Band</TableCell>
                       <TableCell align="right">Team</TableCell>
                       <TableCell align="right">Token</TableCell>
+                      {
+                        item.diff != undefined && (
+                          <TableCell align="right">Preliminary Result</TableCell>
+                        )
+                      }
+                       {
+                        item.diff2 != undefined && (
+                          <TableCell align="right">Semi-Final Result</TableCell>
+                        )
+                      }
                     </TableRow>
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
@@ -577,10 +590,24 @@ const Ge = ({fet, timesch, setSec, width}) => {
                            <TableCell align="right">
                           {numberWithCommas(item.ge4token)}
                           </TableCell>
+                          {
+                        item.diff != undefined && (
+                          <TableCell align="right">
+                          {item.diff}
+                          </TableCell>
+                        )
+                      }
+                       {
+                        item.diff2 != undefined && (
+                          <TableCell align="right">
+                          {item.diff2}
+                          </TableCell>
+                        )
+                      }
                   </TableBody>
                   )): (
                     <TableBody>
-                       <TableCell colSpan={6} align='center'>No record(s) found</TableCell>
+                         <TableCell colSpan={(resultH == true || (resultH == false && item.diff2 == undefined)) ? 7 : resultH == false && item.diff2 != undefined ? 8 : 6} align='center'>No record(s) found</TableCell>
                   </TableBody>
                   )}
                 </Table>
@@ -622,11 +649,11 @@ const Ge = ({fet, timesch, setSec, width}) => {
               <DialogContent>
               <Card className='mt-3' data-aos='fade-down'>
             <CardContent>
-            <CardHeader title="Result of Election (Preliminary Announcement)" subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
+            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true ? "Result of Election (Semi-Final Announcement)" : resultH == false ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">
-                {/* <caption className='text-right'>Note: This is only a prediction made by the artificial intelligence system. Based on the results of past General elections and the popularity of each member. The results may be inaccurate. See full result <a href={ref} target='_blank'>here</a></caption> */}
+                <caption className='text-right'>Note: These general election result announcement may be inaccurate. Please check the official results at BNK48 Official</caption>
                   <TableHead>
                     <TableRow>
                       <TableCell className={classes.rank}>Rank</TableCell>
@@ -635,11 +662,21 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       <TableCell align="center">Band</TableCell>
                       <TableCell align="right">Team</TableCell>
                       <TableCell align="right">Token</TableCell>
+                      {
+                        item.diff != undefined && (
+                          <TableCell align="right">Preliminary Result</TableCell>
+                        )
+                      }
+                       {
+                        item.diff2 != undefined && (
+                          <TableCell align="right">Semi-Final Result</TableCell>
+                        )
+                      }
                     </TableRow>
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
                     <TableBody key={item.id}
-                      onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.memid.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.memid.toLowerCase(), '_target') : ''}
+                      onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.name.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.name.toLowerCase(), '_target') : ''}
                       data-aos='fade-right'
                    >
                         <TableCell component="th" className={classes.rank}>
@@ -666,12 +703,26 @@ const Ge = ({fet, timesch, setSec, width}) => {
                             )
                           }
                            <TableCell align="right">
-                          {item.ge4token.toFixed(2)}
+                          {numberWithCommas(item.ge4token)}
                           </TableCell>
+                          {
+                        item.diff != undefined && (
+                          <TableCell align="right">
+                          {item.diff}
+                          </TableCell>
+                        )
+                      }
+                       {
+                        item.diff2 != undefined && (
+                          <TableCell align="right">
+                          {item.diff2}
+                          </TableCell>
+                        )
+                      }
                   </TableBody>
                   )): (
                     <TableBody>
-                       <TableCell colSpan={6} align='center'>No record(s) found</TableCell>
+                       <TableCell colSpan={(resultH == true || (resultH == false && item.diff2 == undefined)) ? 7 : resultH == false && item.diff2 != undefined ? 8 : 6} align='center'>No record(s) found</TableCell>
                   </TableBody>
                   )}
                 </Table>

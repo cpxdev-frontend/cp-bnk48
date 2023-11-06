@@ -547,7 +547,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       <TableCell align="right">Team</TableCell>
                       <TableCell align="right">Token</TableCell>
                       {
-                        resultH == false && (
+                        resultH == false || (resultH == true && moment().unix() < 1702098000) && (
                           <TableCell align="right">Preliminary Result</TableCell>
                         )
                       }
@@ -663,7 +663,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       <TableCell align="right">Team</TableCell>
                       <TableCell align="right">Token</TableCell>
                       {
-                        resultH == false && (
+                        resultH == false || (resultH == true && moment().unix() < 1702098000) && (
                           <TableCell align="right">Preliminary Result</TableCell>
                         )
                       }

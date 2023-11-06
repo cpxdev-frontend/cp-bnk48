@@ -123,7 +123,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
     } else {
       setts('Updating')
     }
-    fetch(fet + (moment().unix() >= 1698804000 ? "/bnk48/ge4ResultFinal" : '/bnk48/ge4Result'), {
+    fetch(fet + (moment().unix() >= 1701396000 ? "/bnk48/ge4ResultFinal" : '/bnk48/ge4Result'), {
       method :'get'
   })
       .then(response => response.json())
@@ -533,11 +533,11 @@ const Ge = ({fet, timesch, setSec, width}) => {
           
           <Card className='mt-5' data-aos='fade-down'>
             <CardContent>
-            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true ? "Result of Election (Semi-Final Announcement)" : resultH == false ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
+            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true && moment().unix() < 1702098000 ? "Result of Election (Semi-Final Announcement)" : resultH == false || (resultH == true && moment().unix() >= 1702098000) ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">
-                {/* <caption className='text-right'>Note: This is only a prediction made by the artificial intelligence system. Based on the results of past General elections and the popularity of each member. The results may be inaccurate. See full result <a href={ref} target='_blank'>here</a></caption> */}
+                <caption className='text-right'>Note: These general election result announcement may be inaccurate. Please check the official results at BNK48 Official</caption>
                   <TableHead>
                     <TableRow>
                       <TableCell className={classes.rank}>Rank</TableCell>
@@ -552,7 +552,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                         )
                       }
                        {
-                        resultH == true && (
+                        resultH == true && moment().unix() >= 1702098000 && (
                           <TableCell align="right">Semi-Final Result</TableCell>
                         )
                       }
@@ -607,7 +607,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   </TableBody>
                   )): (
                     <TableBody>
-                         <TableCell colSpan={(resultH == true || (resultH == false && item.diff2 == undefined)) ? 7 : resultH == false && item.diff2 != undefined ? 8 : 6} align='center'>No record(s) found</TableCell>
+                         <TableCell colSpan={(resultH == false || (resultH == true && moment().unix() < 1702098000)) ? 7 : resultH == true && moment().unix() >= 1702098000 ? 8 : 6} align='center'>No record(s) found</TableCell>
                   </TableBody>
                   )}
                 </Table>
@@ -649,7 +649,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
               <DialogContent>
               <Card className='mt-3' data-aos='fade-down'>
             <CardContent>
-            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true ? "Result of Election (Semi-Final Announcement)" : resultH == false ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
+            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true && moment().unix() < 1702098000 ? "Result of Election (Semi-Final Announcement)" : resultH == false || (resultH == true && moment().unix() >= 1702098000) ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">
@@ -668,19 +668,20 @@ const Ge = ({fet, timesch, setSec, width}) => {
                         )
                       }
                        {
-                        resultH == true && (
+                        resultH == true && moment().unix() >= 1702098000 && (
                           <TableCell align="right">Semi-Final Result</TableCell>
                         )
                       }
                     </TableRow>
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
-                    <TableBody key={item.id}
-                      onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.name.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.name.toLowerCase(), '_target') : ''}
-                      data-aos='fade-right'
-                   >
+                     <TableBody key={item.id} className={(item.rank == 1 ? 'centerGE' : item.rank > 1 && item.rank <= 16 ? 'senGE' : item.rank > 16 && item.rank <= 32 ? 'nextGE' : '') + ' cur'}
+                     data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.name + ' is both Center position and Senbatsu of BNK48 16th Single' : item.rank > 1 && item.rank <= 16 ? item.name + ' is Senbatsu of BNK48 16th Single' : item.rank > 16 && item.rank <= 32 ? item.name + ' is participate in second song of BNK48 16th Single' : item.name +' is participate in The third song of BNK48 16th Single')}
+                     onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.memid.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.memid.toLowerCase(), '_target') : ''}
+                     data-aos='fade-right'
+                  >
                         <TableCell component="th" className={classes.rank}>
-                          {i + 1}
+                          {item.rank}
                         </TableCell>
                         <TableCell align="center" className={classes.img}>
                         <img src={item.img} className={classes.large + ' cir avatarlimit'} />
@@ -722,7 +723,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   </TableBody>
                   )): (
                     <TableBody>
-                       <TableCell colSpan={(resultH == true || (resultH == false && item.diff2 == undefined)) ? 7 : resultH == false && item.diff2 != undefined ? 8 : 6} align='center'>No record(s) found</TableCell>
+                         <TableCell colSpan={(resultH == false || (resultH == true && moment().unix() < 1702098000)) ? 7 : resultH == true && moment().unix() >= 1702098000 ? 8 : 6} align='center'>No record(s) found</TableCell>
                   </TableBody>
                   )}
                 </Table>

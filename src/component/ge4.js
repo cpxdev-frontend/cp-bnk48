@@ -547,12 +547,12 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       <TableCell align="right">Team</TableCell>
                       <TableCell align="right">Token</TableCell>
                       {
-                        item.diff != undefined && (
+                        resultH == false && (
                           <TableCell align="right">Preliminary Result</TableCell>
                         )
                       }
                        {
-                        item.diff2 != undefined && (
+                        resultH == true && (
                           <TableCell align="right">Semi-Final Result</TableCell>
                         )
                       }

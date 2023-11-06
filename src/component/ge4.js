@@ -561,7 +561,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   {rank.length > 0 ? rank.map((item, i) => (
                      <TableBody key={item.id} className={(item.rank == 1 ? 'centerGE' : item.rank > 1 && item.rank <= 16 ? 'senGE' : item.rank > 16 && item.rank <= 32 ? 'nextGE' : '') + ' cur'}
                      data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.name + ' is both Center position and Senbatsu of BNK48 16th Single' : item.rank > 1 && item.rank <= 16 ? item.name + ' is Senbatsu of BNK48 16th Single' : item.rank > 16 && item.rank <= 32 ? item.name + ' is participate in second song of BNK48 16th Single' : item.name +' is participate in The third song of BNK48 16th Single')}
-                     onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.memid.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.memid.toLowerCase(), '_target') : ''}
+                     onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.name.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.name.toLowerCase(), '_target') : ''}
                      data-aos='fade-right'
                   >
                         <TableCell component="th" className={classes.rank}>
@@ -677,7 +677,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   {rank.length > 0 ? rank.map((item, i) => (
                      <TableBody key={item.id} className={(item.rank == 1 ? 'centerGE' : item.rank > 1 && item.rank <= 16 ? 'senGE' : item.rank > 16 && item.rank <= 32 ? 'nextGE' : '') + ' cur'}
                      data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.name + ' is both Center position and Senbatsu of BNK48 16th Single' : item.rank > 1 && item.rank <= 16 ? item.name + ' is Senbatsu of BNK48 16th Single' : item.rank > 16 && item.rank <= 32 ? item.name + ' is participate in second song of BNK48 16th Single' : item.name +' is participate in The third song of BNK48 16th Single')}
-                     onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.memid.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.memid.toLowerCase(), '_target') : ''}
+                     onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.name.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.name.toLowerCase(), '_target') : ''}
                      data-aos='fade-right'
                   >
                         <TableCell component="th" className={classes.rank}>

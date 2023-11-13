@@ -27,8 +27,10 @@ import {
         color: '#fff',
       },
     }));
+let api;
+let timerIntervalOTP;
 
-const AccountMana = ({fet, setSec, width}) => {
+const AccountMana = ({fet, setSec, width, triggerUpdate}) => {
     const [Load, setLoad] = React.useState(false);
     const History = useHistory()
     const classes = useStyles();
@@ -55,6 +57,112 @@ const AccountMana = ({fet, setSec, width}) => {
                   localStorage.removeItem('jiwa')
               }
               }, [jiwaback]);
+
+        const getverify = () => {
+          Swal.fire({
+            title: "How to verify your account",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: "Get Started",
+            text: 'After you click the "Get Started" button, you will receive an OTP sent to the email address you provided during registration. Please copy that OTP code into next dialog to confirm it. If OTP is correct, your account will be verified scuccessfully.',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              setLoad(true)
+              fetch(fet + '/bnk48/reverify?i=' + JSON.parse(localStorage.getItem('loged')).user.uid , {
+                method :'post'
+              })
+              .then(response => response.json())
+              .then(data => {
+                  setLoad(false)
+                  if (data.status == true) {
+                    Swal.fire({
+                      title: 'Please confirm to verify Fan Space Membership Account by enter OTP. Please check your email inbox.',
+                      html: 'Please enter OTP in <strong></strong> second(s). OTP RefID is <b>' + data.otp + '</b>',
+                      input: 'text',
+                      inputAttributes: {
+                          autocapitalize: 'off',
+                          placeholder: "Enter OTP which we sent to your current email",
+                          maxlength: 6,
+                          required: true
+                      },
+                      allowOutsideClick: false,
+                      showDenyButton: true,
+                      confirmButtonText: 'Confirm',
+                      denyButtonText: `Cancel`,
+                      timer: 180000,
+                      didOpen: () => {
+                          Swal.showLoading();
+                          api = setTimeout(() => {
+                              Swal.hideLoading();
+                              clearTimeout(api);
+                          }, 3000)
+                          timerIntervalOTP = setInterval(() => {
+                              Swal.getHtmlContainer().querySelector('strong')
+                                  .textContent = (Swal.getTimerLeft() / 1000)
+                                      .toFixed(0)
+                          }, 100)
+                      },
+                      preConfirm: function (val) {
+                          if (val.length === 0 || val.length < 6) {
+                              Swal.showValidationMessage(`Please enter OTP to confirm changing`)
+                          }
+                          return { otpget: val };
+                      },
+                      didClose: () => {
+                        if (Swal.getTimerLeft() < 100) {
+                          Swal.fire({
+                              title: 'OTP is expired',
+                              text: 'Please try again.',
+                              icon: "error"
+                          })
+                        }
+                      },
+                      willClose: () => {
+                          clearTimeout(api);
+                          clearInterval(timerIntervalOTP);
+                      }
+                  }).then((result) => {
+                      if (result.isConfirmed) {
+                        setLoad(true)
+                        fetch(fet + "/bnk48/setverify?i=" + JSON.parse(localStorage.getItem('loged')).user.uid + "&otp=" + result.value.otpget + "&refid=" + data.otp, {
+                          method: 'put'
+                        })
+                          .then(x => x.json())
+                          .then(y => {
+                              if (y.verified == true) {
+                                  Swal.fire({
+                                      title: 'Verify success',
+                                      text: "Thank you for verify your account",
+                                      icon: "success"
+                                  }).then(() => {
+                                    Fetch();
+                                    triggerUpdate();
+                                  })
+                              } else {
+                                  Swal.fire({
+                                      title: 'Something went wrong',
+                                      text: y.message,
+                                      icon: "error"
+                                  })
+                              }
+                          }).catch(() => {
+                              
+                          });
+                      }
+                  })
+                  } else {
+                    Swal.fire({
+                      title: "Error while send OTP, please try again",
+                      icon: 'error',
+                      text: 'Please take for a while or contact us.',
+                    })
+                  }
+              }).catch(() => {
+                  setData(null)
+              })
+            }
+          });
+        }
 
 
         const Fetch= () => {
@@ -214,7 +322,11 @@ const AccountMana = ({fet, setSec, width}) => {
                     <div className='cur' onClick={() => window.open('//cp-tpop.pages.dev/membership', '_blank')}>
                       Notes: You can change your profile image by Login with same account credential on T-POP Megaverse Platform (Click here to Continue)
                     </div>
-                   
+                   {
+                    !data.verified && (
+                      <Button onClick={() => getverify()} className='mt-3' variant='contained' color='primary'>Click here to verify your account</Button>
+                    )
+                   }
                 </div>
             </div>
             <div className='row'>

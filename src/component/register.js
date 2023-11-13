@@ -14,6 +14,9 @@ import {
   import { makeStyles } from '@material-ui/core/styles';
 import AOS from "aos";
 
+let api;
+let timerIntervalOTP;
+
 const useStyles = makeStyles((theme) => ({
     backdrop: {
       zIndex: theme.zIndex.drawer + 1,

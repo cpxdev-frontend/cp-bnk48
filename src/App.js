@@ -972,7 +972,7 @@ React.useEffect(() => {
                   <Route exact path="/" render={() => <Home kamin={kamin} fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-                  <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} />} />
+                  <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} verify={verify} />} />
                   <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/shihainin" render={() => <Shi fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} />} />
                   <Route path="/anniversary" render={() => <Anni fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

@@ -308,13 +308,13 @@ React.useEffect(() => {
       .then(data => {
         setLogLoad(false)
         setOpen(false)
+        setVerify(data.verified)
         setPro(data.img)
         if (data.obj != 'none') {
           setKami(data.obj.img)
           setKname(data.obj.name)
           setMemBirth(data.obj.birth)
           setToken(data.wallet)
-          setVerify(data.verified)
           localStorage.setItem('i', data.uname)
           // FetchWallet(fetdata, data.wallet)
         } else {

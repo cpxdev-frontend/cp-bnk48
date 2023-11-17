@@ -819,7 +819,7 @@ function capitalizeFirstLetter(string) {
                                      {item.graduated === true && item.graduatedDate != undefined && (
                                         <div className='border border-info pb-3 mt-2 pt-3 rounded text-center'>
                                         <h6>
-                                          Member Info of {item.name} BNK48 has been plan to removed from BNK48 Fan Space in {moment(item.graduatedDate + ' 00:00:00').utcOffset('+0700').local().format('DD MMMM YYYY HH:mm:ss')}.
+                                          Member info of {item.name} BNK48 has been plan to removed from BNK48 Fan Space in {moment(item.graduatedDate + ' 00:00:00').utcOffset('+0700').local().format('DD MMMM YYYY HH:mm:ss')}.
                                         </h6>
                                       </div>
                                      )}

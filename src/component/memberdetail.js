@@ -724,28 +724,12 @@ function capitalizeFirstLetter(string) {
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                                     </h4>
-                                        {/* {item.sing14 != undefined && item.sing14 == '' && width <= 600 && (
-                                            <marquee className='cur' onClick={() => session14thSingle(item)}>BNK48 14th Single "Promise - สัญญานะ" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
-                                        )}
-                                         {item.sing14 != undefined && item.sing14 == '' && width > 600 && (
-                                            <p className='cur' onClick={() => session14thSingle(item)}>BNK48 14th Single "Promise - สัญญานะ" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
-                                        )} */}
-
-
                                         {item["4tha"] != undefined && item["4tha"] == '' && width <= 600 && (
                                             <marquee className='cur' onClick={() => session4thAl(item)}>BNK48 4th Album "Gingham Check" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
                                         )}
                                          {item["4tha"] != undefined && item["4tha"] == '' && width > 600 && (
                                             <p className='cur' onClick={() => session4thAl(item)}>BNK48 4th Album "Gingham Check" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
                                         )}
-
-
-                                        {/* {janken != null && width <= 600 && (
-                                            <marquee className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Album "Gingham Check" by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></marquee>
-                                        )}
-                                         {janken != null && width > 600 && (
-                                            <p className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Album "Gingham Check" by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></p>
-                                        )} */}
 
                                         {loadfollow ? (
                                             <Skeleton />
@@ -832,10 +816,17 @@ function capitalizeFirstLetter(string) {
                                             <label className='col-md-12 mt-3 text-muted'>Notes: Click Tweet Button to blessing her on Twitter (Twitter login required)</label>
                                         </div> 
                                     )}
+                                     {item.graduated === true && item.graduatedDate != undefined && (
+                                        <div className='border border-info pb-3 mt-2 rounded text-center'>
+                                        <h6>
+                                          Member Info of {item.name} BNK48 has been plan to removed from BNK48 Fan Space in {moment().utc(item.graduatedDate + ' 17:00:00').local().format('DD MMMM YYYY HH:mm:ss')}.
+                                        </h6>
+                                      </div>
+                                     )}
                                 </div>
                         </Fade>
                     </Card>
-
+ 
 
                 {
                     item.ir != undefined && (

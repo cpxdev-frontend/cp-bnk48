@@ -724,13 +724,6 @@ function capitalizeFirstLetter(string) {
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                                     </h4>
-                                        {item["4tha"] != undefined && item["4tha"] == '' && width <= 600 && (
-                                            <marquee className='cur' onClick={() => session4thAl(item)}>BNK48 4th Album "Gingham Check" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
-                                        )}
-                                         {item["4tha"] != undefined && item["4tha"] == '' && width > 600 && (
-                                            <p className='cur' onClick={() => session4thAl(item)}>BNK48 4th Album "Gingham Check" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
-                                        )}
-
                                         {loadfollow ? (
                                             <Skeleton />
                                         ):(

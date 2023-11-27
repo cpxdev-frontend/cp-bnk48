@@ -201,15 +201,9 @@ const Ge = ({fet, timesch, setSec, width}) => {
     }, 60000);
   }, [])
 
-  // const Refresh = () => {
-  //   if (spam == 3) {
-  //     alert("You have temporary blocked because you get refresh too many times for system performance reason. Please wait a minute to continue.")
-  //   } else {
-  //     let i = spam + 1
-  //     setSpam(i)
-  //     ResultFetch()
-  //   }
-  // }
+  const getremain = () => {
+    return moment.unix(timeline.voteend).local().format('DD MMMM YYYY HH:mm')
+  }
 
   const ToggleDialog = (sw, uri) => {
     setCandiUrl('https://pbs.twimg.com/media/F6TKZQ1akAA6_a1?format=jpg&name=large')
@@ -810,7 +804,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                               <Typography variant="caption" component="p" color="textSecondary">
                                 You have the opportunity to cast your vote for BNK48 and/or CGM48 in the next <br />
                                 <b>{remainEvent(timeline.voteend)}</b><br/>
-                                on IAM48 Application until {moment().unix(timeline.voteend).format('DD MMMM YYYY HH:mm')}. The opportunity for them to be Senbutsu of BNK48 16th Single is up to you.
+                                on IAM48 Application until {getremain()}. The opportunity for them to be Senbutsu of BNK48 16th Single is up to you.
                               </Typography>
                             ) : (
                               <Typography variant="caption" component="p" color="textSecondary">
@@ -822,11 +816,11 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       </Box>
                     </Box>
                         {
-                            window.innerWidth <= 750 && (
+                            window.innerWidth <= 750 ? (
                               <Typography variant="caption" component="p" color="textSecondary">
-                                You have the opportunity to cast your vote for BNK48 and/or CGM48 to be Senbutsu of BNK48 16th Single in IAM48 Application until {moment().unix(timeline.voteend).format('DD MMMM YYYY HH:mm')}
+                                You have the opportunity to cast your vote for BNK48 and/or CGM48 to be Senbutsu of BNK48 16th Single in IAM48 Application until {getremain()}
                               </Typography>
-                            )
+                            ) : null
                           }
                   </DialogContent>
                 ) : (

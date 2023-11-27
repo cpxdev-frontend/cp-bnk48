@@ -28,7 +28,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const timeline = {
   votestart: 1698814800,
   voteend: 1701957600,
-  //voteend: 1701057055,
   votepriannonce:1698926400,
   voteannounce : 1702054800,
   votethank:1702141200
@@ -181,7 +180,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
     ResultFetch()
 
     const max = Math.floor((timeline.voteend - moment().unix()) / (timeline.voteend- timeline.votestart) * 100)
-    let m = -10;
+    let m = -5;
     r = setInterval(() => {
       if (sessionStorage.getItem('ads') != null) {
         if (m == max) {
@@ -811,7 +810,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                               <Typography variant="caption" component="p" color="textSecondary">
                                 You have the opportunity to cast your vote for BNK48 and/or CGM48 in the next <br />
                                 <b>{remainEvent(timeline.voteend)}</b><br/>
-                                The opportunity for them to be Senbutsu of BNK48 16th Single is up to you.
+                                on IAM48 Application until {moment().unix(timeline.voteend).format('DD MMMM YYYY HH:mm')}. The opportunity for them to be Senbutsu of BNK48 16th Single is up to you.
                               </Typography>
                             ) : (
                               <Typography variant="caption" component="p" color="textSecondary">
@@ -825,7 +824,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                         {
                             window.innerWidth <= 750 && (
                               <Typography variant="caption" component="p" color="textSecondary">
-                                You have the opportunity to cast your vote for BNK48 and/or CGM48 to be Senbutsu of BNK48 16th Single.
+                                You have the opportunity to cast your vote for BNK48 and/or CGM48 to be Senbutsu of BNK48 16th Single in IAM48 Application until {moment().unix(timeline.voteend).format('DD MMMM YYYY HH:mm')}
                               </Typography>
                             )
                           }

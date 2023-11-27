@@ -27,8 +27,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const timeline = {
   votestart: 1698814800,
-  // voteend: 1701957600,
-  voteend: 1701057055,
+  voteend: 1701957600,
+  //voteend: 1701057055,
   votepriannonce:1698926400,
   voteannounce : 1702054800,
   votethank:1702141200

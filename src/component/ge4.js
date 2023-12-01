@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, MenuItem,Typography, IconButton, FormControlLabel, DialogTitle, DialogContent, ListItem, DialogActions, Dialog, ListItemText,
+import { Box, CircularProgress,Typography, IconButton, FormControlLabel, DialogTitle, DialogContent, ListItem, DialogActions, Dialog, ListItemText,
 Card, CardContent, TextField, Button, ListItemSecondaryAction, List, Checkbox, Fade, Grow, CardHeader } from '@material-ui/core';
 import moment from 'moment';
 import StarsIcon from '@material-ui/icons/Stars';
@@ -28,10 +28,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const timeline = {
   votestart: 1698814800,
   voteend: 1701957600,
+  votebeforeclose: 604800,
   votepriannonce:1698926400,
   voteannounce : 1702054800,
   votethank:1702141200
 }
+
 
 const piedata = {
   labels: ['BNK48 Team BIII', 'BNK48 Team NV', 'BNK48 Team Trainee', 'CGM48 Team C', 'CGM48 Team Trainee'],
@@ -99,6 +101,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ulink = 'mgiGk--GYjs'
+var r;
 
 const Ge = ({fet, timesch, setSec, width}) => {
   const History = useHistory()
@@ -115,7 +118,29 @@ const Ge = ({fet, timesch, setSec, width}) => {
   const [ts, setts] = React.useState('Updating'); 
   const [urlstream, setStream] = React.useState(''); 
 
+  const [countdia, setCountdownDialog] = React.useState(true); 
+  const [count, setCount] = React.useState(0); 
+
   const [resultH, setResultHeader] = React.useState(undefined); 
+
+  const remainEvent = (unixStart) => {
+    let start = moment(); // some random moment in time (in ms)
+    let end = moment.unix(unixStart); // some random moment after start (in ms)
+    let ms = end.diff(start)
+    let date = moment.duration(ms)
+    // execution
+    let f = '';
+    if (Math.floor(date.asDays()) == 0 && Math.floor(moment.utc(ms).format("H")) > 0 && Math.floor(moment.utc(ms).format("mm")) > 0) {
+      f = 'the last ' + moment.utc(ms).format("HH") + ' Hour(s) ' + moment.utc(ms).format("mm") + ' Minute(s) reached!'
+    } else if (Math.floor(date.asDays()) == 0 && Math.floor(moment.utc(ms).format("H")) == 0 && Math.floor(moment.utc(ms).format("mm")) > 0) {
+      f= 'the final ' + moment.utc(ms).format("m") + ' Minute(s) reached'
+    } else if (Math.floor(date.asDays()) == 0 && Math.floor(moment.utc(ms).format("H")) == 0 && Math.floor(moment.utc(ms).format("mm")) == 0) {
+      f = 'Only last ' + moment.utc(ms).format("ss") + ' second(s)'
+    } else {
+      f = Math.floor(date.asDays()) + ' Day(s) ' + moment.utc(ms).format("H") + ' Hour(s) ' + moment.utc(ms).format("mm") + ' Minute(s) '
+    }
+    return f
+}
 
   const ResultFetch = () => {
     if (moment().unix() >= 1702098000 && moment().unix() <= 1702130400) {
@@ -154,6 +179,25 @@ const Ge = ({fet, timesch, setSec, width}) => {
     AOS.init({ duration: 1000 });
     setSec('BNK48 16th Single Senbatsu General Election')
     ResultFetch()
+
+    let max = Math.floor((timeline.voteend - moment().unix()) / (timeline.voteend- (timeline.voteend - timeline.votebeforeclose)) * 100)
+    if (max >= 100) {
+      max = 100;
+    }
+    let m = -5;
+    r = setInterval(() => {
+      if (sessionStorage.getItem('ads') != null) {
+        if (m == max) {
+          clearInterval(r)
+        } else {
+          m += 1
+        }
+        if (m > 0) {
+          setCount(m)
+        }
+      }
+    }, 50);
+    
     setInterval(function () {
       if (moment().unix() >= 1702098000 && moment().unix() <= 1702130400) {
         ResultFetch();
@@ -161,15 +205,9 @@ const Ge = ({fet, timesch, setSec, width}) => {
     }, 60000);
   }, [])
 
-  // const Refresh = () => {
-  //   if (spam == 3) {
-  //     alert("You have temporary blocked because you get refresh too many times for system performance reason. Please wait a minute to continue.")
-  //   } else {
-  //     let i = spam + 1
-  //     setSpam(i)
-  //     ResultFetch()
-  //   }
-  // }
+  const getremain = () => {
+    return moment.unix(timeline.voteend).local().format('DD MMMM YYYY HH:mm')
+  }
 
   const ToggleDialog = (sw, uri) => {
     setCandiUrl('https://pbs.twimg.com/media/F6TKZQ1akAA6_a1?format=jpg&name=large')
@@ -734,6 +772,87 @@ const Ge = ({fet, timesch, setSec, width}) => {
               <DialogActions>
              
               <Button onClick={() => setMoni(false)} className="text-dark">
+                  Close
+              </Button>
+              </DialogActions>
+          </Dialog>
+
+          <Dialog
+              fullScreen
+              TransitionComponent={Transition}
+              open={sessionStorage.getItem('ads') != null ? countdia : false}
+              onClose={() => setCountdownDialog(false)}
+              fullWidth={true}
+              maxWidth='sm'
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+          >
+              <DialogTitle id="alert-dialog-title">{(moment().unix() < timeline.voteend) ? 'Final Stretch is coming!' : ''}</DialogTitle>
+              {
+                (moment().unix() < timeline.voteend) ? (
+                  <DialogContent className='text-center'>
+                  <Box position="relative" display="inline-flex">
+                      <CircularProgress variant="determinate" size={window.innerWidth > 750 ? 700 : window.innerWidth - 100} value={count} />
+                      <Box
+                        top={0}
+                        left={0}
+                        bottom={0}
+                        right={0}
+                        position="absolute"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        {
+                            window.innerWidth > 750 ? (
+                              <Typography variant="caption" component="p" color="textSecondary">
+                                You have the opportunity to cast your vote for BNK48 and/or CGM48 in the next <br />
+                                <b>{remainEvent(timeline.voteend)}</b><br/>
+                                on IAM48 Application until {getremain()}. The opportunity for them to be Senbutsu of BNK48 16th Single is up to you.
+                              </Typography>
+                            ) : (
+                              <Typography variant="caption" component="p" color="textSecondary">
+                              <b>{remainEvent(timeline.voteend)}</b><br />remaining to vote
+                            </Typography>
+                            )
+                          }
+                       
+                      </Box>
+                    </Box>
+                        {
+                            window.innerWidth <= 750 ? (
+                              <Typography variant="caption" component="p" color="textSecondary">
+                                You have the opportunity to cast your vote for BNK48 and/or CGM48 to be Senbutsu of BNK48 16th Single in IAM48 Application until {getremain()}
+                              </Typography>
+                            ) : null
+                          }
+                  </DialogContent>
+                ) : (
+                  <DialogContent className='text-center'>
+                  <Box position="relative" display="inline-flex">
+                      <CircularProgress variant="determinate" size={window.innerWidth > 750 ? 700 : window.innerWidth - 100} value={100} />
+                      <Box
+                        top={0}
+                        left={0}
+                        bottom={0}
+                        right={0}
+                        position="absolute"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                          <Typography variant="p" component="h6" color="textSecondary">
+                              <b>BNK48 16th Single Senbutsu General Election vote is end.<br />Thank you for all support!</b>
+                            </Typography>
+                      </Box>
+                    </Box>
+                  </DialogContent>
+                )
+              }
+             
+              <DialogActions>
+             
+              <Button onClick={() => setCountdownDialog(false)} className="text-dark">
                   Close
               </Button>
               </DialogActions>

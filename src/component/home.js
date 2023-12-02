@@ -8,7 +8,7 @@ import { Typography, ListItem, Zoom, ListItemText,
 
 // const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@latest/bnk48/bnkfullmemhd.jpg'
 const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/ginghamchecksenspot.png'
-const defaultvideo = 'https://www.youtube.com/embed/VORoYGqEtwA?autoplay=1&mute=1&controls=0&loop=1&playlist=VORoYGqEtwA'
+const defaultvideo = 'https://www.youtube.com/embed/9AyELhXSxR4?autoplay=1&mute=1&controls=0&loop=1&playlist=9AyELhXSxR4'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);

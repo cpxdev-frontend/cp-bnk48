@@ -380,7 +380,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                         <div className='container mt-2 row'>
                             <p className='pt-2'>BNK48 Member(s):&nbsp;</p>
                             <AvatarGroup max={6}>
-                            <Avatar className="cur" onClick={() => window.open('/memberlist', '_blank')} alt="all" src="https://i.scdn.co/image/ab6761610000e5ebf8f0b96fab8115d0465886b0" />
+                            <Avatar className="cur" onClick={() => window.open('/memberlist', '_blank')} alt="all" src="https://i.scdn.co/image/ab6761610000e5eb9a8e137f59acc2662dd0aa50" />
                         </AvatarGroup>
                             </div>
                        )}

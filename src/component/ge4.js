@@ -648,6 +648,16 @@ const Ge = ({fet, timesch, setSec, width}) => {
               </TableContainer>
             </CardContent>
           </Card>
+
+            <Card className={' col-md-12 mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+            <CardContent>
+            <CardHeader title="View Blockchain Transactions" subheader='Powered by TOKEN X.' />
+              <hr />
+              <div className='row justify-content-center'>
+                <iframe src="https://scan.tokenx.finance/address/0xd5A00451385193d89aC4f16c52BA573a4118449d/token-transfers" title="ge4trans" width="100%" height="600px"/>
+              </div>
+            </CardContent>
+          </Card>
           
           <Dialog
               fullScreen

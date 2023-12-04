@@ -1238,29 +1238,29 @@ transitionDuration={500}
       {width > 900 ? (
          <div className="row">
            <div className="col pr-0" data-aos='flip-right'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/1.webp" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/1.jpg" width="100%" />
            </div>
            <div className="col p-0" data-aos='flip-right'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/2.webp" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/2.jpg" width="100%" />
            </div>
            <div className="col p-0" data-aos='flip-left'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/3.webp" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/3.jpg" width="100%" />
            </div>
            <div className="col pl-0" data-aos='flip-left'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pcmode/4.webp" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/4.jpg" width="100%" />
            </div>
            <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-              <AlertTitle>BNK48 4th Album "Gingham Check" has been out on music streaming platform. And stay tuned on Youtube.</AlertTitle>
-              Double click or tap on image to skip this page
+            <AlertTitle>BNK48 15th Single "Kibouteki Refrain" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
+                    Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>
         </Grow>
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>BNK48 4th Album "Gingham Check" has been out on music streaming platform. And stay tuned on Youtube.</AlertTitle>
+            <AlertTitle>BNK48 15th Single "Kibouteki Refrain" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
                     Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>
@@ -1269,67 +1269,87 @@ transitionDuration={500}
       ) : (
         <div className="row">
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/1.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/1.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/2.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/2.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/3.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/3.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/4.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/4.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/5.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/5.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/6.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/6.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/7.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/7.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/8.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/8.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/9.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/9.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/10.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/10.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/11.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/11.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/12.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/12.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/13.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/13.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/14.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/14.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/15.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/15.jpg" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/16.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/16.jpg" width="100%" />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos='flip-up'>
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/17.jpg" width="100%" />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos='flip-up'>
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/18.jpg" width="100%" />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos='flip-up'>
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/19.jpg" width="100%" />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos='flip-up'>
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/20.jpg" width="100%" />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" style={{marginBottom: 180}} data-aos='flip-up'>
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/21.jpg" width="100%" />
           </div>
       
 
@@ -1337,15 +1357,15 @@ transitionDuration={500}
         <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-              <AlertTitle>BNK48 4th Album "Gingham Check" has been out on music streaming platform. And stay tuned on Youtube.</AlertTitle>
-              Double click or tap on image to skip this page
+            <AlertTitle>BNK48 15th Single "Kibouteki Refrain" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
+                    Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>
         </Grow>
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>BNK48 4th Album "Gingham Check" has been out on music streaming platform. And stay tuned on Youtube.</AlertTitle>
+            <AlertTitle>BNK48 15th Single "Kibouteki Refrain" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
                     Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>

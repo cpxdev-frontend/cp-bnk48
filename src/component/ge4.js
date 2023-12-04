@@ -28,6 +28,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const timeline = {
   votestart: 1698814800,
   voteend: 1701957600,
+  votebeforeclose: 604800,
   votepriannonce:1698926400,
   voteannounce : 1702054800,
   votethank:1702141200
@@ -179,7 +180,10 @@ const Ge = ({fet, timesch, setSec, width}) => {
     setSec('BNK48 16th Single Senbatsu General Election')
     ResultFetch()
 
-    const max = Math.floor((timeline.voteend - moment().unix()) / (timeline.voteend- timeline.votestart) * 100)
+    let max = Math.floor((timeline.voteend - moment().unix()) / (timeline.voteend- (timeline.voteend - timeline.votebeforeclose)) * 100)
+    if (max >= 100) {
+      max = 100;
+    }
     let m = -5;
     r = setInterval(() => {
       if (sessionStorage.getItem('ads') != null) {

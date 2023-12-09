@@ -202,7 +202,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
       if (moment().unix() >= 1702098000 && moment().unix() <= 1702130400) {
         ResultFetch();
       }
-    }, 60000);
+    }, 30000);
   }, [])
 
   const getremain = () => {
@@ -584,16 +584,8 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       <TableCell align="center">Band</TableCell>
                       <TableCell align="right">Team</TableCell>
                       <TableCell align="right">Token</TableCell>
-                      {
-                        resultH == false || (resultH == true && moment().unix() < 1702076400) && (
-                          <TableCell align="right">Preliminary Result</TableCell>
-                        )
-                      }
-                       {
-                        resultH == true && moment().unix() >= 1702076400 && (
-                          <TableCell align="right">Semi-Final Result</TableCell>
-                        )
-                      }
+                      <TableCell align="right">1st Preliminary Result</TableCell>
+                      <TableCell align="right">2nd Preliminary Result</TableCell>
                     </TableRow>
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
@@ -628,28 +620,46 @@ const Ge = ({fet, timesch, setSec, width}) => {
                            <TableCell align="right">
                           {numberWithCommas(item.ge4token)}
                           </TableCell>
-                          {
-                        item.diff != undefined && (
-                          <TableCell align="right">
-                          {item.diff}
-                          </TableCell>
-                        )
-                      }
-                       {
-                        item.diff2 != undefined && (
-                          <TableCell align="right">
+                        <TableCell align="right">
+                        {item.diff}
+                        </TableCell>
+                        <TableCell align="right">
                           {item.diff2}
                           </TableCell>
-                        )
-                      }
                   </TableBody>
                   )): (
                     <TableBody>
-                         <TableCell colSpan={(resultH == false || (resultH == true && moment().unix() < 1702098000)) ? 7 : resultH == true && moment().unix() >= 1702098000 ? 8 : 6} align='center'>No record(s) found</TableCell>
+                         <TableCell colSpan={8} align='center'>No record(s) found</TableCell>
                   </TableBody>
                   )}
                 </Table>
               </TableContainer>
+              <List>
+                <ListItem>
+                  <ListItemText primary="General Election Status" secondary="Explain about status description for 1st and 2nd Preliminary Result" />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="1st Preliminary Result" secondary="The result of general election after open vote in 24 hours." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="2nd Preliminary Result" secondary="The result of general election before close vote about week." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Number in positive" secondary="This means that candidated BNK48 or CGM48 member who is 2nd Preliminary or Final ranking has increased from previous record." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Number in negaive" secondary="This means that candidated BNK48 or CGM48 member who is 2nd Preliminary or Final ranking has decreased from previous record." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="No Diff" secondary="This means that candidated BNK48 or CGM48 member who is 2nd Preliminary or Final ranking has not changed from previous record." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Un-Ranked" secondary="This means that candidated BNK48 or CGM48 member who is one of ranked in 1st Preliminary Result and not in ranking in 2nd Preliminary Result." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Re-Ranked" secondary="This means that candidated BNK48 or CGM48 member who is not in ranking in 1st Preliminary Result. But one of ranked in 2nd Preliminary Result or Final Result." />
+                </ListItem>
+              </List>
             </CardContent>
           </Card>
 
@@ -697,7 +707,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
               <DialogContent>
               <Card className='mt-3' data-aos='fade-down'>
             <CardContent>
-            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true && moment().unix() < 1702098000 ? "Result of Election (Semi-Final Announcement)" : resultH == false || (resultH == true && moment().unix() >= 1702098000) ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
+            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true && moment().unix() < 1702098000 ? "Result of Election (Semi-Final Announcement)" : resultH == false || (resultH == true && moment().unix() >= 1702098000) ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? '' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">
@@ -710,16 +720,8 @@ const Ge = ({fet, timesch, setSec, width}) => {
                       <TableCell align="center">Band</TableCell>
                       <TableCell align="right">Team</TableCell>
                       <TableCell align="right">Token</TableCell>
-                      {
-                        resultH == false || (resultH == true && moment().unix() < 1702076400) && (
-                          <TableCell align="right">Preliminary Result</TableCell>
-                        )
-                      }
-                       {
-                        resultH == true && moment().unix() >= 1702076400 && (
-                          <TableCell align="right">Semi-Final Result</TableCell>
-                        )
-                      }
+                      <TableCell align="right">1st Preliminary Result</TableCell>
+                      <TableCell align="right">2nd Preliminary Result</TableCell>
                     </TableRow>
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
@@ -754,28 +756,46 @@ const Ge = ({fet, timesch, setSec, width}) => {
                            <TableCell align="right">
                           {numberWithCommas(item.ge4token)}
                           </TableCell>
-                          {
-                        item.diff != undefined && (
                           <TableCell align="right">
-                          {item.diff}
-                          </TableCell>
-                        )
-                      }
-                       {
-                        item.diff2 != undefined && (
-                          <TableCell align="right">
+                        {item.diff}
+                        </TableCell>
+                        <TableCell align="right">
                           {item.diff2}
                           </TableCell>
-                        )
-                      }
                   </TableBody>
                   )): (
                     <TableBody>
-                         <TableCell colSpan={(resultH == false || (resultH == true && moment().unix() < 1702076400)) ? 7 : resultH == true && moment().unix() >= 1702076400 ? 8 : 6} align='center'>No record(s) found</TableCell>
+                         <TableCell colSpan={8} align='center'>No record(s) found</TableCell>
                   </TableBody>
                   )}
                 </Table>
               </TableContainer>
+              <List>
+                <ListItem>
+                  <ListItemText primary="General Election Status" secondary="Explain about status description for 1st and 2nd Preliminary Result" />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="1st Preliminary Result" secondary="The result of general election after open vote in 24 hours." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="2nd Preliminary Result" secondary="The result of general election before close vote about week." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Number in positive" secondary="This means that candidated BNK48 or CGM48 member who is 2nd Preliminary or Final ranking has increased from previous record." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Number in negaive" secondary="This means that candidated BNK48 or CGM48 member who is 2nd Preliminary or Final ranking has decreased from previous record." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="No Diff" secondary="This means that candidated BNK48 or CGM48 member who is 2nd Preliminary or Final ranking has not changed from previous record." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Un-Ranked" secondary="This means that candidated BNK48 or CGM48 member who is one of ranked in 1st Preliminary Result and not in ranking in 2nd Preliminary Result." />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="Re-Ranked" secondary="This means that candidated BNK48 or CGM48 member who is not in ranking in 1st Preliminary Result. But one of ranked in 2nd Preliminary Result or Final Result." />
+                </ListItem>
+              </List>
             </CardContent>
           </Card>
               </DialogContent>

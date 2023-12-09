@@ -30,7 +30,7 @@ const timeline = {
   voteend: 1701957600,
   votebeforeclose: 604800,
   votepriannonce:1698926400,
-  voteannounce : 1702054800,
+  voteannounce : 1702108800,
   votethank:1702141200
 }
 
@@ -100,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ulink = 'mgiGk--GYjs'
+const ulink = '4EGrHyXIvf0'
 var r;
 
 const Ge = ({fet, timesch, setSec, width}) => {
@@ -511,10 +511,10 @@ const Ge = ({fet, timesch, setSec, width}) => {
           
           <Card className={' col-md mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>
-            <CardHeader title="General Election Fully Announcement" subheader='All about voting your member to winning this election from Shihainin is here.' />
+            <CardHeader title="The General Election Final Announcement Master of Ceremonies (MC)" subheader='Meet Phuak Pongsatorn and Opal Panisara.' />
               <hr />
               <div className='row justify-content-center'>
-                <iframe src="https://www.youtube.com/embed/Rz-0xSjKO4w?autoplay=0&mute=1&controls=0&loop=1&playlist=Rz-0xSjKO4w" height="500px" width="100%" frameborder="0"></iframe>
+                <img src="https://pbs.twimg.com/media/GApFY9ha8AA6h-v?format=jpg&name=large" width="100%" />
               </div>
             </CardContent>
           </Card>
@@ -559,19 +559,19 @@ const Ge = ({fet, timesch, setSec, width}) => {
           </Card>
           </div>
 
-          {/* <Card className={' col-md-12 mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+          <Card className={' col-md-12 mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>
-            <CardHeader title="General Election LIVE Announcement" subheader='General Electio Announcement LIVE.' />
+            <CardHeader title="General Election LIVE Announcement" subheader='General Election Announcement LIVE.' />
               <hr />
               <div className='row justify-content-center'>
                 <iframe src={"https://www.youtube.com/embed/" + ulink + "?autoplay=0&mute=1&controls=0&loop=1&playlist=" + ulink} height="500px" width="100%" frameborder="0"></iframe>
               </div>
             </CardContent>
-          </Card> */}
+          </Card>
           
           <Card className='mt-5' data-aos='fade-down'>
             <CardContent>
-            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true && moment().unix() < 1702098000 ? "Result of Election (Semi-Final Announcement)" : resultH == false || (resultH == true && moment().unix() >= 1702098000) ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
+            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true && moment().unix() < 1702076400 ? "Result of Election (Semi-Final Announcement)" : resultH == false || (resultH == true && moment().unix() >= 1702076400) ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">
@@ -653,7 +653,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
             </CardContent>
           </Card>
 
-            <Card className={' col-md-12 mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
+            {/* <Card className={' col-md-12 mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>
             <CardHeader title="View Blockchain Transactions" subheader='Powered by TOKEN X.' />
               <hr />
@@ -661,7 +661,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                 <iframe src="https://scan.tokenx.finance/address/0xd5A00451385193d89aC4f16c52BA573a4118449d/token-transfers" title="ge4trans" width="100%" height="600px"/>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
           
           <Dialog
               fullScreen
@@ -790,7 +790,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
           <Dialog
               fullScreen
               TransitionComponent={Transition}
-              open={sessionStorage.getItem('ads') != null ? countdia : false}
+              open={false}
               onClose={() => setCountdownDialog(false)}
               fullWidth={true}
               maxWidth='sm'

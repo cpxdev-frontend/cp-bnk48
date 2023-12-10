@@ -314,7 +314,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
               </div>
               ) : (
                 <Fade in={true} timeout={800}>
-                <img src="https://pbs.twimg.com/media/F6PN4xsbUAAANhH?format=jpg&name=large"  width={width} />
+                <img src="https://pbs.twimg.com/media/GA4qOzpagAAY8f8?format=jpg&name=large"  width={width} />
                   </Fade>
               )}
           </div>
@@ -571,7 +571,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
           
           <Card className='mt-5' data-aos='fade-down'>
             <CardContent>
-            <CardHeader onClick={() => window.innerWidth > 1000 ? setMoni(true) : null} title={(resultH == true && moment().unix() < 1702076400 ? "Result of Election (Semi-Final Announcement)" : resultH == false || (resultH == true && moment().unix() >= 1702076400) ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full screen' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
+            <CardHeader onClick={() => window.open('https://lookerstudio.google.com/s/vZzzJXP_NBA', '_target')} title={(resultH == true && moment().unix() < 1702076400 ? "Result of Election (Semi-Final Announcement)" : resultH == false || (resultH == true && moment().unix() >= 1702076400) ? "Result of Election (Final Announcement)" : "Result of Election (Preliminary Announcement)") + (window.innerWidth > 1000 ? ' - Click here to view full result from Blockchain Technology' : '')} subheader={ts.includes('LIVE') ? (<div className='form-inline'><div class="circleload redload"></div>&nbsp;&nbsp;{ts}</div>) : 'Latest update: ' + ts} data-aos='flip-down' />
               <hr />
               <TableContainer>
                 <Table stickyHeader aria-label="simple table">

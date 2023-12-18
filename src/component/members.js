@@ -197,7 +197,7 @@ const Memberlist = ({fet, setSec, width}) => {
             {Loaded ? (
                 <Grid container className='mt-3 justify-content-center'>
                     {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
-                       <Grid item md={3} data-aos="zoom-in">
+                       <Grid item md={3} data-aos="zoom-in" data-aos-duration="1000">
                        <div className='mb-5 p-1' onClick={() => ChangeRoute(item.name)}>
                          <Card>
                              <CardActionArea>
@@ -233,7 +233,7 @@ const Memberlist = ({fet, setSec, width}) => {
               </Grid>
             ) : (
                 <Grid container className='mt-3 justify-content-center'>
-                <Grid item md={3} sm={12} data-aos="zoom-in" data-aos-duration="200">
+                <Grid item md={3} sm={12} data-aos="fade-in" data-aos-duration="200">
                 <div className='mb-5 p-1'>
                   <Card>
                   <CardActionArea>
@@ -245,7 +245,7 @@ const Memberlist = ({fet, setSec, width}) => {
                           </Card> 
                       </div>
                 </Grid>
-                <Grid item md={3} sm={12} data-aos="zoom-in" data-aos-duration="200">
+                <Grid item md={3} sm={12} data-aos="fade-in" data-aos-duration="200">
                 <div className='mb-5 p-1'>
                   <Card>
                   <CardActionArea>
@@ -257,7 +257,7 @@ const Memberlist = ({fet, setSec, width}) => {
                           </Card> 
                       </div>
                 </Grid>
-                <Grid item md={3} sm={12} data-aos="zoom-in" data-aos-duration="200">
+                <Grid item md={3} sm={12} data-aos="fade-in" data-aos-duration="200">
                 <div className='mb-5 p-1'>
                   <Card>
                   <CardActionArea>
@@ -269,7 +269,7 @@ const Memberlist = ({fet, setSec, width}) => {
                           </Card> 
                       </div>
                 </Grid>
-                <Grid item md={3} sm={12} data-aos="zoom-in" data-aos-duration="200">
+                <Grid item md={3} sm={12} data-aos="fade-in" data-aos-duration="200">
                 <div className='mb-5 p-1'>
                   <Card>
                   <CardActionArea>

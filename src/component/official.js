@@ -45,23 +45,25 @@ const Offi = ({fet, setSec, width}) => {
             
             if (order == true) {
 
-                const api = 'https://corsproxy.io/?https://publish.twitter.com/oembed?url=https://twitter.com/bnk48official/status/' + getxurl(val.link)
-                setLoadTweet(true)
-                fetch(api, {
-                    method: 'get', // or 'PUT'
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        setLoadTweet(false)
-                        let a = val
-                        a.html = data.html
-                        setpara(a)
-                        setFet(true)
-                    })
-                    .catch((error) => {
-                        setLoadTweet(false)
-                    console.error('Error:', error);
-                    });
+                // const api = 'https://corsproxy.io/?https://publish.twitter.com/oembed?url=https://twitter.com/bnk48official/status/' + getxurl(val.link)
+                // setLoadTweet(true)
+                // fetch(api, {
+                //     method: 'get', // or 'PUT'
+                //     })
+                //     .then(response => response.json())
+                //     .then(data => {
+                //         setLoadTweet(false)
+                //         let a = val
+                //         a.html = data.html
+                //         setpara(a)
+                //         setFet(true)
+                //     })
+                //     .catch((error) => {
+                //         setLoadTweet(false)
+                //     console.error('Error:', error);
+                //     });
+                setpara(val)
+                setFet(true)
 
             } else {
                 setFet(false)
@@ -76,8 +78,8 @@ const Offi = ({fet, setSec, width}) => {
             if (url.includes('nitter.privacydev.net')) {
                 return url.replace("https://nitter.privacydev.net/bnk48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.services.woodland.cafe')) {
-                return url.replace("https://nitter.services.woodland.cafe/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.woodland.cafe')) {
+                return url.replace("https://nitter.woodland.cafe/bnk48official/status/", "").replace("#m", "")
             }
             if (url.includes('nitter.x86-64-unknown-linux-gnu.zip')) {
                 return url.replace("https://nitter.x86-64-unknown-linux-gnu.zip/bnk48official/status/", "").replace("#m", "")
@@ -125,7 +127,7 @@ const Offi = ({fet, setSec, width}) => {
                        >
                            <DialogTitle id="alert-dialog-title">{'More tweet about "' + para.title.substring(0, 60) + '..."'}</DialogTitle>
                            <DialogContent>
-                           {/* <Grow in={!fetLLoad} timeout={300}>
+                           <Grow in={!fetLLoad} timeout={300}>
                                <div className='d-flex justify-content-center'>
                            <TwitterTweetEmbed
                                tweetId={getxurl(para.link)}
@@ -139,8 +141,8 @@ const Offi = ({fet, setSec, width}) => {
                                     <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                                     </div>
                                     </Zoom>
-                               )} */}
-                                <Typography variant="p" dangerouslySetInnerHTML={{ __html:  para.html}}></Typography>
+                               )}
+                                
                            </DialogContent>
                            <DialogActions>
                            <Button onClick={() => hand('')} className="text-dark">

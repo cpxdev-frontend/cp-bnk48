@@ -3,6 +3,7 @@ import { Card, CardActionArea, CardContent, CardMedia, TextField, Zoom, MenuItem
 import { useHistory } from 'react-router-dom';
 import vPack from './pack.json'
 import AOS from "aos";
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const Memberlist = ({fet, setSec, width}) => {
 
@@ -231,9 +232,56 @@ const Memberlist = ({fet, setSec, width}) => {
                 )}
               </Grid>
             ) : (
-                <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
-                </Zoom>
+               <Grid container className='mt-3 justify-content-center'>
+                       <Grid item md={3} data-aos="zoom-in">
+                       <div className='mb-5 p-1'>
+                         <Card>
+                         <CardActionArea>
+                                <Skeleton variant="rect" height={300} />
+                                 <CardContent>
+                                     <h5><Skeleton variant="text" /></h5>
+                                 </CardContent>
+                                 </CardActionArea>
+                                 </Card> 
+                             </div>
+                       </Grid>
+                       <Grid item md={3} data-aos="zoom-in">
+                       <div className='mb-5 p-1'>
+                         <Card>
+                         <CardActionArea>
+                                <Skeleton variant="rect" height={300} />
+                                 <CardContent>
+                                     <h5><Skeleton variant="text" /></h5>
+                                 </CardContent>
+                                 </CardActionArea>
+                                 </Card> 
+                             </div>
+                       </Grid>
+                       <Grid item md={3} data-aos="zoom-in">
+                       <div className='mb-5 p-1'>
+                         <Card>
+                         <CardActionArea>
+                                <Skeleton variant="rect" height={300} />
+                                 <CardContent>
+                                     <h5><Skeleton variant="text" /></h5>
+                                 </CardContent>
+                                 </CardActionArea>
+                                 </Card> 
+                             </div>
+                       </Grid>
+                       <Grid item md={3} data-aos="zoom-in">
+                       <div className='mb-5 p-1'>
+                         <Card>
+                         <CardActionArea>
+                                <Skeleton variant="rect" height={300} />
+                                 <CardContent>
+                                     <h5><Skeleton variant="text" /></h5>
+                                 </CardContent>
+                                 </CardActionArea>
+                                 </Card> 
+                             </div>
+                       </Grid>
+                 </Grid>
             )}
             </Grid>
         </div>

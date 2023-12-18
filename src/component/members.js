@@ -233,7 +233,7 @@ const Memberlist = ({fet, setSec, width}) => {
               </Grid>
             ) : (
                <Grid container className='mt-3 justify-content-center'>
-                       <Grid item md={3} data-aos="zoom-in">
+                       <Grid item md={3}>
                        <div className='mb-5 p-1'>
                          <Card>
                          <CardActionArea>
@@ -245,7 +245,7 @@ const Memberlist = ({fet, setSec, width}) => {
                                  </Card> 
                              </div>
                        </Grid>
-                       <Grid item md={3} data-aos="zoom-in">
+                       <Grid item md={3}>
                        <div className='mb-5 p-1'>
                          <Card>
                          <CardActionArea>
@@ -257,7 +257,7 @@ const Memberlist = ({fet, setSec, width}) => {
                                  </Card> 
                              </div>
                        </Grid>
-                       <Grid item md={3} data-aos="zoom-in">
+                       <Grid item md={3}>
                        <div className='mb-5 p-1'>
                          <Card>
                          <CardActionArea>
@@ -269,7 +269,7 @@ const Memberlist = ({fet, setSec, width}) => {
                                  </Card> 
                              </div>
                        </Grid>
-                       <Grid item md={3} data-aos="zoom-in">
+                       <Grid item md={3}>
                        <div className='mb-5 p-1'>
                          <Card>
                          <CardActionArea>

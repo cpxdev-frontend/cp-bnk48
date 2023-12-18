@@ -232,56 +232,56 @@ const Memberlist = ({fet, setSec, width}) => {
                 )}
               </Grid>
             ) : (
-               <Grid container className='mt-3 justify-content-center'>
-                       <Grid item md={3}>
-                       <div className='mb-5 p-1'>
-                         <Card>
-                         <CardActionArea>
-                                <Skeleton variant="rect" height={300} />
-                                 <CardContent>
-                                     <h5><Skeleton variant="text" /></h5>
-                                 </CardContent>
-                                 </CardActionArea>
-                                 </Card> 
-                             </div>
-                       </Grid>
-                       <Grid item md={3}>
-                       <div className='mb-5 p-1'>
-                         <Card>
-                         <CardActionArea>
-                                <Skeleton variant="rect" height={300} />
-                                 <CardContent>
-                                     <h5><Skeleton variant="text" /></h5>
-                                 </CardContent>
-                                 </CardActionArea>
-                                 </Card> 
-                             </div>
-                       </Grid>
-                       <Grid item md={3}>
-                       <div className='mb-5 p-1'>
-                         <Card>
-                         <CardActionArea>
-                                <Skeleton variant="rect" height={300} />
-                                 <CardContent>
-                                     <h5><Skeleton variant="text" /></h5>
-                                 </CardContent>
-                                 </CardActionArea>
-                                 </Card> 
-                             </div>
-                       </Grid>
-                       <Grid item md={3}>
-                       <div className='mb-5 p-1'>
-                         <Card>
-                         <CardActionArea>
-                                <Skeleton variant="rect" height={300} />
-                                 <CardContent>
-                                     <h5><Skeleton variant="text" /></h5>
-                                 </CardContent>
-                                 </CardActionArea>
-                                 </Card> 
-                             </div>
-                       </Grid>
-                 </Grid>
+                <Grid container className='mt-3 justify-content-center'>
+                <Grid item md={3} sm={12} data-aos="zoom-in" data-aos-duration="200">
+                <div className='mb-5 p-1'>
+                  <Card>
+                  <CardActionArea>
+                         <Skeleton variant="rect" height={300} />
+                          <CardContent>
+                              <h5><Skeleton variant="text" /></h5>
+                          </CardContent>
+                          </CardActionArea>
+                          </Card> 
+                      </div>
+                </Grid>
+                <Grid item md={3} sm={12} data-aos="zoom-in" data-aos-duration="200">
+                <div className='mb-5 p-1'>
+                  <Card>
+                  <CardActionArea>
+                         <Skeleton variant="rect" height={300} />
+                          <CardContent>
+                              <h5><Skeleton variant="text" /></h5>
+                          </CardContent>
+                          </CardActionArea>
+                          </Card> 
+                      </div>
+                </Grid>
+                <Grid item md={3} sm={12} data-aos="zoom-in" data-aos-duration="200">
+                <div className='mb-5 p-1'>
+                  <Card>
+                  <CardActionArea>
+                         <Skeleton variant="rect" height={300} />
+                          <CardContent>
+                              <h5><Skeleton variant="text" /></h5>
+                          </CardContent>
+                          </CardActionArea>
+                          </Card> 
+                      </div>
+                </Grid>
+                <Grid item md={3} sm={12} data-aos="zoom-in" data-aos-duration="200">
+                <div className='mb-5 p-1'>
+                  <Card>
+                  <CardActionArea>
+                         <Skeleton variant="rect" height={300} />
+                          <CardContent>
+                              <h5><Skeleton variant="text" /></h5>
+                          </CardContent>
+                          </CardActionArea>
+                          </Card> 
+                      </div>
+                </Grid>
+          </Grid>
             )}
             </Grid>
         </div>

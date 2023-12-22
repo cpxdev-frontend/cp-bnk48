@@ -1016,12 +1016,12 @@ React.useEffect(() => {
         window.innerWidth < 700 && (
           <BottomNavigation
               value={1}
-              style={{position:'fixed', bottom:0, zIndex:1060, width:'100%'}}
+              style={{position:'fixed', bottom:0, zIndex:1060, width:'100%', borderTopLeftRadius:20, borderTopRightRadius:20, backgroundColor: '#f5d0f2'}}
             >
               <BottomNavigationAction style={{marginTop: -10}} onClick={() => History.goBack()} icon={<ArrowBackIosIcon />} />
-              <BottomNavigationAction onClick={() => setOpen(true)} icon={<img width='100%' src='https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnklogo.png' />} />
+              <BottomNavigationAction style={{width:500, height:80, marginTop:-16, backgroundColor:'#f5d0f2', borderRadius:'50%'}} onClick={() => setOpen(true)} icon={<img width='100%' src='https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnklogo.png' />} />
               <BottomNavigationAction style={{marginTop: kamiimg != '' && kamiimg != '-'? -15 : 0}} icon=
-                {login&& (
+                {login ? (
                   <ListItemIcon onClick={() => setMemDl(true)} className={'cur'}>
                   {
                      verify ? (
@@ -1049,6 +1049,17 @@ React.useEffect(() => {
                      )
                    }
                   </ListItemIcon>
+               ) : (
+                <Badge
+                overlap="circular"
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                style={{marginTop: -10}}
+              >
+                <Avatar alt={localStorage.getItem("i")} src={Prof} />
+              </Badge>
                )} />
             </BottomNavigation>
         )

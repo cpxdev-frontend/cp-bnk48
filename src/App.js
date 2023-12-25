@@ -175,7 +175,7 @@ var myportdetect = url.searchParams.get("ref");
 var iiake
 
 function App() {
-  const [Section, setSec] = React.useState('');
+  const [Section, setSec] = React.useState('BNK48 Fansite for everyone');
   const [con, setConnection] = React.useState(null);
   const cls = useStyles();
   const History = useHistory()

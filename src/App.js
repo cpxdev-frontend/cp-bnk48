@@ -29,7 +29,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import 'sweetalert2/dist/sweetalert2.min.css'
 import moment from 'moment'
 import { AppBar, Toolbar,Typography, IconButton, Drawer, FormControlLabel, Switch, ListItem, ListItemIcon, Divider, ListItemText,
-Dialog, DialogActions, Button, Fab, DialogTitle, DialogContent, Avatar, Badge, CardContent, CardMedia, Slide, Grow, Fade, BottomNavigation, BottomNavigationAction, TextField, Menu, MenuItem } from '@material-ui/core';
+Dialog, DialogActions, Button, Fab, DialogTitle, DialogContent, Avatar, Badge, CardContent, CardMedia, Slide, Grow, Snackbar, BottomNavigation, BottomNavigationAction, TextField, Menu, MenuItem } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WarningIcon from '@material-ui/icons/Warning';
@@ -175,12 +175,14 @@ var myportdetect = url.searchParams.get("ref");
 
 var iiake
 
+
 function App() {
   const [Section, setSec] = React.useState('BNK48 Fansite for everyone');
   const [con, setConnection] = React.useState(null);
   const cls = useStyles();
   const History = useHistory()
   const [ Reduce, setReduce] = React.useState(false)
+  const [ ny, setNy] = React.useState(true)
   const [ EvtPop, setpopup] = React.useState(true)
   const [open, setOpen] = React.useState(false);
   const [uri, setUri] = React.useState('');
@@ -678,6 +680,12 @@ React.useEffect(() => {
 
   if (uri != '' && allDone) {
     return (<> 
+      <Snackbar open={ny} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={6000} onClose={() => setNy(false)}>
+      <Alert severity="info"  onClose={() => setNy(false)}>
+            <AlertTitle>Happy New Year 2024! Wishing all BNK48 Fan Space memberships and users happiness throughout the year and always in this Year of the Dragon.
+            </AlertTitle>
+            </Alert>
+      </Snackbar>
     {window.innerWidth >= 700 && (
        <Slide in={localStorage.getItem('lowgraphic') == null && width > 1100 ? !open : true} timeout={600} direction='down'>
        <AppBar position="sticky" className='bnktheme app-barcurve'>

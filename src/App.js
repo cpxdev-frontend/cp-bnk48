@@ -1190,7 +1190,7 @@ transitionDuration={500}
           <DialogContent>
             <CardContent>
             {item.video != undefined && item.video != "" ? (
-              <CardMedia src={item.video} component="iframe" width={80} />
+              <CardMedia src={item.video} component="iframe" width={"100%"} height={window.innerWidth * (0.4)} />
             ) : (
               <CardMedia src={item.src} component="img" width={80} />
             )}

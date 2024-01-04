@@ -216,6 +216,8 @@ function App() {
   const ref = React.useRef(null)
   const [footerHeight, setFooterH] = React.useState(0)
  
+  const [cro, setCro] = React.useState(8000)
+
   const [width, setRealwidth] = React.useState(window.innerWidth);
   function handleWindowResize() {
     setRealwidth(window.innerWidth);
@@ -1183,7 +1185,7 @@ transitionDuration={500}
   >
     
     {newspop.length > 1 ?
-    (<Carousel interval={8000}>{
+    (<Carousel interval={cro} onChange={(now, pr) => newspop[now].video != undefined && newspop[now].video != "" ? setCro(86400000) : setCro(8000)}>{
       newspop.map((item, i) => (
         <>
         <DialogTitle id="alert-dialog-title">{item.title.includes("birthday") ? 'Birthday Celebration' : 'Advertisement'} - {item.title}</DialogTitle>

@@ -793,23 +793,11 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="News" />
                 </ListItem>
-                <ListItem component={Link} to='/anniversary' className={window.location.pathname == '/anniversary' ? 'activeNav' : ''} button>
-                  <ListItemIcon>
-                    <PartyModeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="6th years anniversary first debut" />
-                </ListItem>
                 <ListItem component={Link} to='/ge4' className={window.location.pathname == '/ge4' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <HowToVoteIcon />
                   </ListItemIcon>
                   <ListItemText primary='BNK48 16th Single General Election' />
-                </ListItem>
-                <ListItem component={Link} to='/janken' className={window.location.pathname == '/janken' ? 'activeNav' : ''} button>
-                  <ListItemIcon>
-                    <SlideshowIcon />
-                  </ListItemIcon>
-                  <ListItemText primary='BNK48 and CGM48 Janken Tournament 2023' />
                 </ListItem>
                 <ListItem component={Link} to='/livestream' className={window.location.pathname == '/livestream' ? 'activeNav' : ''} button>
                   <ListItemIcon>
@@ -817,12 +805,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="Special Live" secondary={spcLive ? 'Livestream is launching' : ''} />
                 </ListItem>
-                <ListItem component={Link} to='/bnk48inmemories' className={window.location.pathname == '/bnk48inmemories' ? 'activeNav' : ''} button>
+                {/* <ListItem component={Link} to='/bnk48inmemories' className={window.location.pathname == '/bnk48inmemories' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <PanToolIcon />
                   </ListItemIcon>
                   <ListItemText primary="BNK48 Graduation Gallery" secondary="Rewind in memories of graduated members of BNK48" />
-                </ListItem>
+                </ListItem> */}
                 <ListItem component={Link} to='/originalcontent' className={window.location.pathname == '/originalcontent' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <SubscriptionsIcon />
@@ -864,6 +852,12 @@ React.useEffect(() => {
                     <MonetizationOnIcon />
                   </ListItemIcon>
                   <ListItemText primary='Blockchain Technology' />
+                </ListItem>
+                <ListItem component={Link} to='/janken' className={window.location.pathname == '/janken' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <SlideshowIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='BNK48 and CGM48 Janken Tournament 2023' />
                 </ListItem>
                 <ListItem component={Link} to='/requesthour' className={window.location.pathname == '/requesthour' ? 'activeNav' : ''} button>
                   <ListItemIcon>

@@ -1080,12 +1080,7 @@ React.useEffect(() => {
         <h6>Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
         <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for BNK48 supporting only.</h6>
       </footer>
-      <Snowfall
-        color="#fff"
-        snowflakeCount={window.innerWidth / 60}
-        style={{position: 'fixed'}}
-      />
-
+      
         {localStorage.getItem("loged") != null && (
            <Dialog
            open={localStorage.getItem("loged") != null ? MemberDl : false}

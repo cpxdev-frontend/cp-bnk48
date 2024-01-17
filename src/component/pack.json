@@ -53,6 +53,10 @@
           {
               "value": 4,
             "label": "4th Generation"
+            },
+            {
+              "value": 5,
+            "label": "5th Generation (Coming soon)"
             }
       ],
       "graduation": [

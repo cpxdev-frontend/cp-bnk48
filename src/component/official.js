@@ -81,8 +81,8 @@ const Offi = ({fet, setSec, width}) => {
             if (url.includes('nitter.woodland.cafe')) {
                 return url.replace("https://nitter.woodland.cafe/bnk48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.x86-64-unknown-linux-gnu.zip')) {
-                return url.replace("https://nitter.x86-64-unknown-linux-gnu.zip/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.moomoo.me')) {
+                return url.replace("https://nitter.moomoo.me/bnk48official/status/", "").replace("#m", "")
             }
             return url;
         }

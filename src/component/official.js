@@ -82,7 +82,7 @@ const Offi = ({fet, setSec, width}) => {
                 return url.replace("https://nitter.woodland.cafe/bnk48official/status/", "").replace("#m", "")
             }
             if (url.includes('nitter.moomoo.me')) {
-                return url.replace("https://nitter.moomoo.me/bnk48official/status/", "").replace("#m", "")
+                return url.replace("http://nitter.moomoo.me/bnk48official/status/", "").replace("#m", "")
             }
             return url;
         }

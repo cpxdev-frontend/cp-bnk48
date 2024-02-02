@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, Backdrop, AppBar, Box, Tabs, Tab,Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import moment from 'moment';
 import AOS from "aos";
 
 function TabPanel(props) {
@@ -36,13 +37,44 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
+  var m;
+
+
+  const numberWithCommasx = (x) => {
+    return parseInt(x).toLocaleString('en-US');
+}
+
 const Stream = ({fet, setSec, width}) => {
+  const [value, setValue] = React.useState(0);
     const classes = useStyles();
     const [streaminfo, setInfo] = React.useState(null);
     const [Load, setLoad] = React.useState(true);
+    const [comment, setCom] = React.useState(null);
+
+    const [comin, setCurrentCom] = React.useState(-1);
+
+      const fetchlivecomment = (id) => {
+        if (id == undefined) {
+          return;
+        }
+        fetch(fet + '/cgm48/getstreamcomment?id=' + id, {
+          method :'post'
+      })
+          .then(response => response.json())
+          .then(data => {
+            const newData = {
+              view: data.view,
+              comments: data.comments.filter(x => !x.snippet.textMessageDetails.messageText.includes('::'))
+            }
+            setCom(newData)
+
+            setCurrentCom(Math.floor(Math.random() * newData.comments.length))
+      })
+    }
+
     React.useEffect(() => {
         AOS.init({ duration: 1000 });
-        fetch(fet + '/bnk48/getstreamlist?ch=2', {
+        fetch(fet + '/cgm48/getstreamlist?ch=2', {
             method :'post'
         })
             .then(response => response.json())
@@ -53,6 +85,12 @@ const Stream = ({fet, setSec, width}) => {
                     setSec('[Live] ' + data[0].title)
                 }
               setInfo(data)
+
+              fetchlivecomment(data[0].id)
+              m = setInterval(() => {
+                fetchlivecomment(data[0].id)
+              }, 15000);
+
               setLoad(false)
             }).catch(() => {
               setLoad(false)
@@ -60,11 +98,18 @@ const Stream = ({fet, setSec, width}) => {
     },[])
 
 
-      const [value, setValue] = React.useState(0);
 
       const handleChange = (event, newValue) => {
         setValue(newValue);
+        setCom(null)
+        setCurrentCom(-1)
         setSec('[Live] ' + streaminfo[newValue].title)
+        clearInterval(m)
+        
+        fetchlivecomment(streaminfo[newValue].id)
+        m = setInterval(() => {
+          fetchlivecomment(streaminfo[newValue].id)
+        }, 8000);
       };
     return ( 
         <>
@@ -84,6 +129,12 @@ const Stream = ({fet, setSec, width}) => {
                     ): (
                         <CardHeader title='Live Streaming Station' subheader='Special Live Streaming will coming soon' />
                     )}
+
+                    {comment != null && comment.view != ""  && (
+                      <CardHeader title={window.innerWidth > 900 ? (<span class="badge badge-pill badge-info">
+                      There are currently {numberWithCommasx(comment.view)} time(s) watching this live.</span>) : (<span class="badge badge-pill badge-info">
+                      {numberWithCommasx(comment.view)} views</span>)} />
+                    )}
                 
                     <div className='container' data-aos="zoom-out-up">
                         {streaminfo != null && streaminfo[0].link != '' ? (
@@ -92,6 +143,15 @@ const Stream = ({fet, setSec, width}) => {
                             <h6>Stream not found</h6>
                         )}
                     </div>
+                </CardContent>
+                <CardContent>
+                {
+                  comment != null && comment.view != "" && comin > -1 && (
+                    <CardContent className='text-left align-start'>
+                      <CardHeader title={<div dangerouslySetInnerHTML={{ __html: comment.comments[comin].snippet.textMessageDetails.messageText }}></div>} subheader={'Comment from Youtube user since ' + moment(comment.comments[comin].snippet.publishedAt).local().format('DD MMMM YYYY HH:mm:ss')} />
+                  </CardContent>
+                  )
+                }
                 </CardContent>
             </Card>
         </TabPanel>
@@ -104,6 +164,12 @@ const Stream = ({fet, setSec, width}) => {
                     ): (
                         <CardHeader title='Live Streaming Station' subheader='Special Live Streaming will coming soon' />
                     )}
+
+                    {comment != null && comment.view != ""  && (
+                      <CardHeader title={window.innerWidth > 900 ? (<span class="badge badge-pill badge-info">
+                      There are currently {numberWithCommasx(comment.view)} time(s) watching this live.</span>) : (<span class="badge badge-pill badge-info">
+                      {numberWithCommasx(comment.view)} views</span>)} />
+                    )}
                 
                     <div className='container' data-aos="zoom-out-up">
                         {streaminfo != null && streaminfo[1].link != '' ? (
@@ -113,12 +179,21 @@ const Stream = ({fet, setSec, width}) => {
                         )}
                     </div>
                 </CardContent>
+                <CardContent>
+                {
+                  comment != null && comment.view != "" && comin > -1 && (
+                    <CardContent className='text-left align-start'>
+                      <CardHeader title={<div dangerouslySetInnerHTML={{ __html: comment.comments[comin].snippet.displayMessage }}></div>} subheader={'Comment from Youtube user since ' + moment(comment.comments[comin].snippet.publishedAt).local().format('DD MMMM YYYY HH:mm:ss')} />
+                  </CardContent>
+                  )
+                }
+                </CardContent>
             </Card>
         </TabPanel>
         )}
         <Card className='mt-3'>
           <CardContent className="text-center">
-            New feature: This is BNK48 LIVE Room. The new feature of watching BNK48 LIVE Sreaming event. The first Room can be detected from BNK48 Youtube official and another sponsership platform (for Press Promote etc.). The second Room can be detected from another sponsership platform (for Press Promote etc. - if included). You can switch LIVE Room which you want seamlessly.
+            New feature: This is CGM48 LIVE Room. The new feature of watching CGM48 LIVE Sreaming event. The first Room can be detected from CGM48 Youtube official and another sponsership platform (for Press Promote etc.). The second Room can be detected from another sponsership platform (for Press Promote etc. - if included). You can switch LIVE Room which you want seamlessly.
           </CardContent>
         </Card>
             <Backdrop className={classes.backdrop} open={Load}>

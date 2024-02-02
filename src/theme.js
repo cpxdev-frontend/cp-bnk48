@@ -2,7 +2,7 @@ import { createMuiTheme as createTheme } from '@material-ui/core';
 
 const theme = createTheme({
     typography: {
-        fontFamily: ['Anakotmai', 'san-serif'].join(',')
+        fontFamily: ['anakotmai', 'san-serif'].join(',')
     },
     palette: {
       primary: {

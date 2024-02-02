@@ -78,11 +78,11 @@ const Offi = ({fet, setSec, width}) => {
             if (url.includes('n.opnxng.com')) {
                 return url.replace("http://n.opnxng.com/bnk48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.1d4.us')) {
-                return url.replace("https://nitter.1d4.us/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.fdn.fr')) {
+                return url.replace("http://nitter.fdn.fr/bnk48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.holo-mix.com')) {
-                return url.replace("https://nitter.holo-mix.com/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.private.coffee')) {
+                return url.replace("https://nitter.private.coffee/bnk48official/status/", "").replace("#m", "")
             }
             return url;
         }

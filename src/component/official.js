@@ -81,13 +81,8 @@ const Offi = ({fet, setSec, width}) => {
             if (url.includes('nitter.1d4.us')) {
                 return url.replace("https://nitter.1d4.us/bnk48official/status/", "").replace("#m", "")
             }
-<<<<<<< HEAD
-            if (url.includes('nitter.moomoo.me')) {
-                return url.replace("https://nitter.moomoo.me/bnk48official/status/", "").replace("#m", "")
-=======
             if (url.includes('nitter.private.coffee')) {
                 return url.replace("https://nitter.private.coffee/bnk48official/status/", "").replace("#m", "")
->>>>>>> e397776f300a2cd552c7ed34d277b95ed281d5e6
             }
             return url;
         }

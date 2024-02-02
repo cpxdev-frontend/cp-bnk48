@@ -72,17 +72,17 @@ const Offi = ({fet, setSec, width}) => {
         }
 
         function getxurl(url) {
-            if (url.includes('nitter.d420.de')) {
-                return url.replace("https://nitter.d420.de/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.soopy.moe')) {
+                return url.replace("https://nitter.soopy.moe/bnk48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.privacydev.net')) {
-                return url.replace("https://nitter.privacydev.net/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('n.opnxng.com')) {
+                return url.replace("http://n.opnxng.com/bnk48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.woodland.cafe')) {
-                return url.replace("https://nitter.woodland.cafe/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.jakefrosty.com')) {
+                return url.replace("http://nitter.jakefrosty.com/bnk48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.moomoo.me')) {
-                return url.replace("http://nitter.moomoo.me/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.holo-mix.com')) {
+                return url.replace("https://nitter.holo-mix.com/bnk48official/status/", "").replace("#m", "")
             }
             return url;
         }

@@ -57,7 +57,7 @@ const Stream = ({fet, setSec, width}) => {
         if (id == undefined) {
           return;
         }
-        fetch(fet + '/cgm48/getstreamcomment?id=' + id, {
+        fetch(fet + '/bnk48/getstreamcomment?id=' + id, {
           method :'post'
       })
           .then(response => response.json())
@@ -74,7 +74,7 @@ const Stream = ({fet, setSec, width}) => {
 
     React.useEffect(() => {
         AOS.init({ duration: 1000 });
-        fetch(fet + '/cgm48/getstreamlist?ch=2', {
+        fetch(fet + '/bnk48/getstreamlist?ch=2', {
             method :'post'
         })
             .then(response => response.json())

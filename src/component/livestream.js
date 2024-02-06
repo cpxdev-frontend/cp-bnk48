@@ -193,7 +193,7 @@ const Stream = ({fet, setSec, width}) => {
         )}
         <Card className='mt-3'>
           <CardContent className="text-center">
-            New feature: This is CGM48 LIVE Room. The new feature of watching CGM48 LIVE Sreaming event. The first Room can be detected from CGM48 Youtube official and another sponsership platform (for Press Promote etc.). The second Room can be detected from another sponsership platform (for Press Promote etc. - if included). You can switch LIVE Room which you want seamlessly.
+            New feature: This is BNK48 LIVE Room. The new feature of watching BNK48 LIVE Sreaming event. The first Room can be detected from BNK48 Youtube official and another sponsership platform (for Press Promote etc.). The second Room can be detected from another sponsership platform (for Press Promote etc. - if included). You can switch LIVE Room which you want seamlessly.
           </CardContent>
         </Card>
             <Backdrop className={classes.backdrop} open={Load}>

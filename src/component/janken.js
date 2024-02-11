@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, ListItem, Zoom, IconButton,
-    Card, CardHeader, CardContent, ListItemText, Grow, Fade,ListItemSecondaryAction, List, Checkbox, CardActionArea, Button } from '@material-ui/core';
+    Card, CardHeader, CardContent, ListItemText, Grow, Fade,CardMedia, CardActions, Checkbox, CardActionArea, Button } from '@material-ui/core';
     import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AOS from "aos";
 import moment from 'moment';
@@ -189,7 +189,7 @@ const NextPage = () => {
             <CardContent className='row'>
                 <div className='col-md'>
                     <Typography variant='h5'><CardHeader title='Excitement with every breath' subheader='ตื่นเต้นในทุกลมหายใจ' /></Typography>
-                    <Typography variant='body1'><CardHeader title='The their target are Sixteen-Senbatsu and The one of winner of this tournament is Center Position of BNK48 4th Album. It is a tournament that can win results every second of the competition. (Even the Host or Judge himself)' subheader='เป้าหมายของพวกเธอคือตำแหน่งหนึ่งใน 16 เซมบัตสึและ Janken Queen หรือตำแหน่งเซ็นเตอร์ของอัลบั้มที่สี่ของ BNK48 นี่จึงเป็นการแข่งขันที่คุณสามารถลุ้นผลได้ทุกวินาที แม้กระทั่งพิธีกรหรือกรรมการก็ตาม' /></Typography>
+                    <Typography variant='body1'><CardHeader title='The their target are Sixteen-Senbatsu and The one of winner of this tournament is Center Position of BNK48 4th Album "Gingham Check". It is a tournament that can win results every second of the competition. (Even the Host or Judge himself)' subheader='เป้าหมายของพวกเธอคือตำแหน่งหนึ่งใน 16 เซมบัตสึและ Janken Queen หรือตำแหน่งเซ็นเตอร์ของอัลบั้มที่สี่ของ BNK48 นี่จึงเป็นการแข่งขันที่คุณสามารถลุ้นผลได้ทุกวินาที แม้กระทั่งพิธีกรหรือกรรมการก็ตาม' /></Typography>
                 </div>
             </CardContent>
         </Card>
@@ -301,6 +301,31 @@ const NextPage = () => {
                 </div>
             </CardContent>
         </Card>
+
+        <Card data-aos="zoom-in-down" className='mt-4 activeNav'>
+      <CardActionArea>
+        <div className='d-flex justify-content-center'>
+        <CardMedia
+          image="https://i.scdn.co/image/ab67616d0000b273d54e72b3ed9a365e901d4efe"
+          component='img'
+          className='w-50'
+        />
+        </div>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            BNK48 4th Album "Gingham Check"
+          </Typography>
+          <Typography variant="body1" color="textSecondary" component="p">
+            18 songs included
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" variant='outlined' onClick={() => window.open('https://bnk48.bfan.link/1018-GinghamCheckTH', '_blank')}>
+          Listen Now!
+        </Button>
+      </CardActions>
+    </Card>
     </div>
   </div>
         </>

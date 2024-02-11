@@ -177,12 +177,12 @@ const HomeCom = ({fet, gp, setSec, width}) => {
                 <CardContent>
                     <CardHeader className='text-center' title='What is BNK Token' />
                     <Typography>
-                        BNK Governance Token or BNK Token is digital crpto currency to use only for buying BNK48 good merchandise or service with token. As well as you have chance to pronounce your thinking or Election Voting. You maybe see common question below to more understanding about this.
+                        BNK Governance Token or BNK Token is digital crypto currency to use only for buying BNK48 good merchandise or service with token. As well as you have chance to pronounce your thinking or Election Voting. You maybe see common question below to more understanding about this.
                     <ListItem>
                     <ListItemText primary="Are BNK Tokens expired date?" secondary="No, you can keep your token until there is a change from holder company" />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Can I Top-up Token?" secondary="It's currently unavaliable to topup or deposit your cash and transfer to token right now. However, You can earn token from special airdrop or buying merchandise products and enter redeem code." />
+                    <ListItemText primary="Can I Top-up Token?" secondary="You can earn BNK Token by purchase merchandise like CD or Photobook of Single or Album of BNK48 or CGM48. And also buy and redeem on IAM48 Shop in 68 THB per 1 Token in IAM48 Application." />
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="What's Rate Exchange of Token to Thai Baht?" secondary="There is no fixed exchange rate. It maybe depending on many components, such as Demand or supply for trading at a time." />
@@ -205,7 +205,13 @@ const HomeCom = ({fet, gp, setSec, width}) => {
                   <ListItemText primary="3. Wallet Verification" secondary={(<p>Starting June 1, 2023, you are required to verify by e-KYC (Electronic Know Your Customer) to verify wallet ownership and enhance transaction security. See more description <a href='https://www.facebook.com/BNKToken/posts/pfbid0bRX1ubBdvoJLqeZo8UbotxSHZMFCpVSqyMC54LQ9KBvExC7Z7rGzgJrB49oMTZPbl' target='_blank'>here</a></p>)} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="4. See more using Token in BNK Token page" secondary={(<p>See more update for BNK Token <a href='https://www.scb.co.th/th/about-us/news/feb-2565/bnk-governance-token.html' target='_blank'>here</a></p>)} />
+                    <ListItemText primary="4. See more using Token in BNK Token page" secondary={(<p>See more update for BNK Token <a href='https://www.scb.co.th/en/about-us/news/feb-2022/bnk-governance-token.html' target='_blank'>here</a></p>)} />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="5. What is BNK Auction Token" secondary="BNK Auction Token (Blue Token) is another token which use for auction special rare merchandise (Like Photo Canvas with BNK48 or CGM48 signature etc.)." />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="6. How to earn BNK Auction Token" secondary="You need to top-up BNK Token at least 100 tokens before before the end of this month, earned amount of BNK Auction Token will be affected on next month. The amount of Auction Tokens depends on your Tier level (Silver or Gold). Please top-up BNK Token regularly to maintain your Tier rights and receive Auction Tokens continuously." />
                   </ListItem>
                     </Typography>
                 </CardContent>

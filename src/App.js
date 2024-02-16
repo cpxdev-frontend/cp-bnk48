@@ -1396,6 +1396,7 @@ transitionDuration={500}
           <div className="col" data-aos='flip-up'>
               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/16.png" width="100%" />
           </div>
+          <div className="w-100 mt-5 mb-5"></div>
       
 
         

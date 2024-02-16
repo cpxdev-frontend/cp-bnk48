@@ -1402,7 +1402,7 @@ transitionDuration={500}
         <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>BNK48 15th Single "Kibouteki Refrain" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
+            <AlertTitle>BNK48 16th Single has been release soon in Feb 22, 2024.</AlertTitle>
                     Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>
@@ -1410,7 +1410,7 @@ transitionDuration={500}
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>BNK48 15th Single "Kibouteki Refrain" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
+            <AlertTitle>BNK48 16th Single has been release soon in Feb 22, 2024.</AlertTitle>
                     Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>

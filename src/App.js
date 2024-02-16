@@ -1334,87 +1334,67 @@ transitionDuration={500}
       ) : (
         <div className="row">
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/1.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/1.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/2.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/2.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/3.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/3.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/4.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/4.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/5.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/5.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/6.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/6.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/7.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/7.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/8.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/8.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/9.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/9.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/10.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/10.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/11.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/11.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/12.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/12.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/13.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/13.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/14.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/14.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/15.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/15.png" width="100%" />
           </div>
           <div className="w-100"></div>
           <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/16.jpg" width="100%" />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/17.jpg" width="100%" />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/18.jpg" width="100%" />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/19.jpg" width="100%" />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/20.jpg" width="100%" />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" style={{marginBottom: 180}} data-aos='flip-up'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/phone/21.jpg" width="100%" />
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/16.png" width="100%" />
           </div>
       
 

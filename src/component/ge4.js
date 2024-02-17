@@ -341,7 +341,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                     <ListItemText primary="2. See election result announcement. Followed from live streaming platform anywhere. (For any users who want to save your internet usage)" />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="3. 16 members who are the winner of this general election will be a chance to work on the BNK48 16th single with producer team of JYP Publishing and and filming a music video in Korea." />
+                    <ListItemText primary="3. 16 members who are the winner of this general election will be a chance to work on the BNK48 16th single 'Kiss Me' with producer team of JYP Publishing and and filming a music video in Korea." />
                   </ListItem>
                 </Typography>
               </CardContent>
@@ -370,7 +370,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                     <ListItemText primary="2. See election result announcement. Followed from live streaming platform anywhere. (For any users who want to save your internet usage)" />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="3. 16 members who are the winner of this general election will be a chance to work on the BNK48 16th single with producer team of JYP Publishing and and filming a music video in Korea." />
+                    <ListItemText primary="3. 16 members who are the winner of this general election will be a chance to work on the BNK48 16th single 'Kiss Me' with producer team of JYP Publishing and and filming a music video in Korea." />
                   </ListItem>
                 </Typography>
               </CardContent>
@@ -590,7 +590,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
                      <TableBody key={item.id} className={(item.rank == 1 ? 'centerGE' : item.rank > 1 && item.rank <= 16 ? 'senGE' : item.rank > 16 && item.rank <= 32 ? 'nextGE' : '') + ' cur'}
-                     data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.name + ' is both Center position and Senbatsu of BNK48 16th Single' : item.rank > 1 && item.rank <= 16 ? item.name + ' is Senbatsu of BNK48 16th Single' : item.rank > 16 && item.rank <= 32 ? item.name + ' is participate in second song of BNK48 16th Single' : item.name +' is participate in The third song of BNK48 16th Single')}
+                     data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.name + ' is both Center position and Senbatsu of BNK48 16th Single "Kiss Me" ' : item.rank > 1 && item.rank <= 16 ? item.name + ' is Senbatsu of BNK48 16th Single "Kiss Me"' : item.rank > 16 && item.rank <= 32 ? item.name + ' is participate in second song of BNK48 16th Single' : item.name +' is participate in The third song of BNK48 16th Single')}
                      onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.name.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.name.toLowerCase(), '_target') : ''}
                      data-aos='fade-right'
                   >
@@ -726,7 +726,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                   </TableHead>
                   {rank.length > 0 ? rank.map((item, i) => (
                      <TableBody key={item.id} className={(item.rank == 1 ? 'centerGE' : item.rank > 1 && item.rank <= 16 ? 'senGE' : item.rank > 16 && item.rank <= 32 ? 'nextGE' : '') + ' cur'}
-                     data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.name + ' is both Center position and Senbatsu of BNK48 16th Single' : item.rank > 1 && item.rank <= 16 ? item.name + ' is Senbatsu of BNK48 16th Single' : item.rank > 16 && item.rank <= 32 ? item.name + ' is participate in second song of BNK48 16th Single' : item.name +' is participate in The third song of BNK48 16th Single')}
+                     data-toggle="tooltip" data-placement="bottom" title={(item.rank == 1 ? item.name + ' is both Center position and Senbatsu of BNK48 16th Single "Kiss Me"' : item.rank > 1 && item.rank <= 16 ? item.name + ' is Senbatsu of BNK48 16th Single "Kiss Me"' : item.rank > 16 && item.rank <= 32 ? item.name + ' is participate in second song of BNK48 16th Single' : item.name +' is participate in The third song of BNK48 16th Single')}
                      onClick={() => item.ref.includes('bnk48') ? History.push('/member/' + item.name.toLowerCase()) : item.ref.includes('cgm48') ? window.open('//cp-cgm48.pages.dev/member/' + item.name.toLowerCase(), '_target') : ''}
                      data-aos='fade-right'
                   >

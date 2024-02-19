@@ -72,14 +72,14 @@ const Offi = ({fet, setSec, width}) => {
         }
 
         function getxurl(url) {
-            if (url.includes('nitter.soopy.moe')) {
-                return url.replace("https://nitter.soopy.moe/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.fdn.fr')) {
+                return url.replace("https://nitter.fdn.fr/bnk48official/status/", "").replace("#m", "")
             }
-            if (url.includes('n.opnxng.com')) {
-                return url.replace("http://n.opnxng.com/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.mint.lgbt')) {
+                return url.replace("http://nitter.mint.lgbt/bnk48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.1d4.us')) {
-                return url.replace("https://nitter.1d4.us/bnk48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.holo-mix.com')) {
+                return url.replace("https://nitter.holo-mix.com/bnk48official/status/", "").replace("#m", "")
             }
             if (url.includes('nitter.private.coffee')) {
                 return url.replace("https://nitter.private.coffee/bnk48official/status/", "").replace("#m", "")

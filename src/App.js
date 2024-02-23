@@ -1302,22 +1302,13 @@ transitionDuration={500}
     )}
       {width > 900 ? (
          <div className="row">
-           <div className="col pr-0" data-aos='flip-right'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/1.jpg" width="100%" />
-           </div>
-           <div className="col p-0" data-aos='flip-right'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/2.jpg" width="100%" />
-           </div>
-           <div className="col p-0" data-aos='flip-left'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/3.jpg" width="100%" />
-           </div>
-           <div className="col pl-0" data-aos='flip-left'>
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/pc/4.jpg" width="100%" />
+           <div  data-aos='flip-right'>
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/kissme!.jpg" width="100%" />
            </div>
            <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>BNK48 15th Single "Kibouteki Refrain" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
+            <AlertTitle>BNK48 16th Single "Kiss Me" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
                     Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>
@@ -1325,7 +1316,7 @@ transitionDuration={500}
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>BNK48 15th Single "Kibouteki Refrain" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
+            <AlertTitle>BNK48 16th Single "Kiss Me" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
                     Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>
@@ -1403,7 +1394,7 @@ transitionDuration={500}
         <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>BNK48 16th Single "Kiss Me" has been release soon in Feb 22, 2024.</AlertTitle>
+            <AlertTitle>BNK48 16th Single "Kiss Me" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
                     Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>
@@ -1411,7 +1402,7 @@ transitionDuration={500}
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>BNK48 16th Single "Kiss Me" has been release soon in Feb 22, 2024.</AlertTitle>
+            <AlertTitle>BNK48 16th Single "Kiss Me" has been out on music streaming platform. And Music Video on Youtube.</AlertTitle>
                     Double click/tap here on image or wait 10 seconds to skip this page
             </Alert>
             </div>

@@ -53,7 +53,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
     React.useEffect(() => {
       AOS.init({ duration: 700 });
       document.body.scrollTop = document.documentElement.scrollTop = 0;
-        fetch(fet + '/bnk48/getmemberbybirth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+        fetch(fet + '/bnk48/getmemberbybirth?tz=' + Intl.DateTimeFormat().resolvedOptions().timeZone, {
             method :'post'
         })
   .then(response => response.json())

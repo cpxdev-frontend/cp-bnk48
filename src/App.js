@@ -395,7 +395,7 @@ React.useEffect(() => {
       .then(data => {
         
 
-        fetch(fet + '/bnk48/getmemberbybirth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+        fetch(fet + '/bnk48/getmemberbybirth?tz=' + Intl.DateTimeFormat().resolvedOptions().timeZone, {
           method :'post'
       })
         .then(response => response.json())

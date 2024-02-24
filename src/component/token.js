@@ -17,7 +17,7 @@ const HomeCom = ({fet, gp, setSec, width}) => {
       setSec('BNK Governance Token and Blockchain Technology')
       AOS.init({ duration: 1000 });
       document.body.scrollTop = document.documentElement.scrollTop = 0;
-        fetch(fet + '/bnk48/getmemberbybirth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+        fetch(fet + '/bnk48/getmemberbybirth?tz=' + Intl.DateTimeFormat().resolvedOptions().timeZone, {
             method :'post'
         })
   .then(response => response.json())

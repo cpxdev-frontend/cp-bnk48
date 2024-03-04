@@ -62,13 +62,11 @@ const Stream = ({fet, setSec, width}) => {
       })
           .then(response => response.json())
           .then(data => {
-            const newData = {
-              view: data.view,
-              comments: data.comments.filter(x => !x.snippet.textMessageDetails.messageText.includes('::'))
-            }
-            setCom(newData)
+            setCom(data)
 
-            setCurrentCom(Math.floor(Math.random() * newData.comments.length))
+            setCurrentCom(Math.floor(Math.random() * data.comments.length))
+            
+            console.log(data) 
       })
     }
 
@@ -109,7 +107,7 @@ const Stream = ({fet, setSec, width}) => {
         fetchlivecomment(streaminfo[newValue].id)
         m = setInterval(() => {
           fetchlivecomment(streaminfo[newValue].id)
-        }, 8000);
+        }, 15000);
       };
     return ( 
         <>
@@ -131,9 +129,8 @@ const Stream = ({fet, setSec, width}) => {
                     )}
 
                     {comment != null && comment.view != ""  && (
-                      <CardHeader title={window.innerWidth > 900 ? (<span class="badge badge-pill badge-info">
-                      There are currently {numberWithCommasx(comment.view)} time(s) watching this live.</span>) : (<span class="badge badge-pill badge-info">
-                      {numberWithCommasx(comment.view)} views</span>)} />
+                      <CardHeader title={(<span class="badge badge-pill badge-info">
+                      There are currently {numberWithCommasx(comment.view)} people(s) watching this live.</span>)} />
                     )}
                 
                     <div className='container' data-aos="zoom-out-up">
@@ -164,12 +161,6 @@ const Stream = ({fet, setSec, width}) => {
                     ): (
                         <CardHeader title='Live Streaming Station' subheader='Special Live Streaming will coming soon' />
                     )}
-
-                    {comment != null && comment.view != ""  && (
-                      <CardHeader title={window.innerWidth > 900 ? (<span class="badge badge-pill badge-info">
-                      There are currently {numberWithCommasx(comment.view)} time(s) watching this live.</span>) : (<span class="badge badge-pill badge-info">
-                      {numberWithCommasx(comment.view)} views</span>)} />
-                    )}
                 
                     <div className='container' data-aos="zoom-out-up">
                         {streaminfo != null && streaminfo[1].link != '' ? (
@@ -183,7 +174,7 @@ const Stream = ({fet, setSec, width}) => {
                 {
                   comment != null && comment.view != "" && comin > -1 && (
                     <CardContent className='text-left align-start'>
-                      <CardHeader title={<div dangerouslySetInnerHTML={{ __html: comment.comments[comin].snippet.displayMessage }}></div>} subheader={'Comment from Youtube user since ' + moment(comment.comments[comin].snippet.publishedAt).local().format('DD MMMM YYYY HH:mm:ss')} />
+                      <CardHeader title={<div dangerouslySetInnerHTML={{ __html: comment.comments[comin].snippet.textMessageDetails.messageText }}></div>} subheader={'Comment from Youtube user since ' + moment(comment.comments[comin].snippet.publishedAt).local().format('DD MMMM YYYY HH:mm:ss')} />
                   </CardContent>
                   )
                 }

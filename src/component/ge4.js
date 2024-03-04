@@ -370,7 +370,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
                     <ListItemText primary="2. See election result announcement. Followed from live streaming platform anywhere. (For any users who want to save your internet usage)" />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="3. 16 members who are the winner of this general election will be a chance to work on the BNK48 16th single 'Kiss Me' with producer team of JYP Publishing and and filming a music video in Korea." />
+                    <ListItemText primary="3. 16 members who are the winner of this general election will be a chance to work on the BNK48 16th single 'Kiss Me' with producer team of JYP Publishing." />
                   </ListItem>
                 </Typography>
               </CardContent>
@@ -382,7 +382,7 @@ const Ge = ({fet, timesch, setSec, width}) => {
 
         <div className={'stage ' + (width > 700 ? 'p-5' : 'p-2')}>
           <div className='row mt-5 ml-1 mr-1'>
-          <Card className={(width > 700 ? '' : 'mb-5') + ' col-md-12'} data-aos='zoom-in-right'>
+          {/* <Card className={(width > 700 ? '' : 'mb-5') + ' col-md-12'} data-aos='zoom-in-right'>
             <CardContent>
               <CardHeader title="TimeLine of Election" subheader="Notes: Timeline are subject to change as appropriate." />
               <hr />
@@ -483,7 +483,36 @@ const Ge = ({fet, timesch, setSec, width}) => {
               </List>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
+           <Card className={(width > 700 ? '' : 'mb-5') + ' col-md-12'} data-aos='zoom-in-right'>
+      <CardContent>
+      <Typography variant="h5" component="h2">
+                Highlight of BNK48 16th Single "Kiss Me!"
+                </Typography>
+                <hr />
+                <Typography color="textSecondary">
+                 5 Things you should know about the 16th Single of BNK48 which prduce with JYP Publishing
+                </Typography>
+                <hr />
+                <Typography variant="body1" component="p">
+                  <ListItem>
+                    <ListItemText primary="1. Song melody and music were produced by Lee Hae Sol." />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="2. Music Video production and song arrangement were produced by JYP Publishing team." />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="3. Thai lyric arrangement has produced by Tunwa Ketsuwan (Hye). He is the leader of T-POP band 'Paper Planes'. One of the success song are 'Bad Boy' in 168 million views reached on Youtube. He is also the person behind the work of many Thai artists." />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="4. The last single of three of BNK48 2nd Generation by 'Minmin Rachaya', 'Wee Weeraya' and 'Stang Tarisa' before graduation was announced." />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="5. The theme of the song is K-POP combined with J-POP perfectly." />
+                  </ListItem>
+                </Typography>
+              </CardContent>
+        </Card>
 
           <Card className={'mr-1 col-md mt-5'} data-aos={width > 650 ? 'zoom-in-left' : 'zoom-in-top'}>
             <CardContent>

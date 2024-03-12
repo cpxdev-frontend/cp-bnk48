@@ -130,7 +130,7 @@ const Stream = ({fet, setSec, width}) => {
 
                     {comment != null && comment.view != ""  && (
                       <CardHeader title={(<span class="badge badge-pill badge-info">
-                      There are currently {numberWithCommasx(comment.view)} people(s) watching this live.</span>)} />
+                      {numberWithCommasx(comment.view)} people(s) watching this live.</span>)} />
                     )}
                 
                     <div className='container' data-aos="zoom-out-up">

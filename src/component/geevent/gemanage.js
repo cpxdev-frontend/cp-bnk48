@@ -59,21 +59,7 @@ const GeMana = ({fet}) => {
 
 
     const LoadMem = (val) => {
-        fetch(fet + '/bnk48/ge4ListDropdown', {
-            method: 'GET', // or 'PUT'
-          })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                setMember(data.res)
-            })
-            .catch((error) => {
-              alert('Server cannot be respond. Access denied')
-              window.location.href = "/"
-            });
-
-
-
+       
         setCg(val)
         let temp = []
         if (val == false) {

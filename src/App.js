@@ -263,7 +263,7 @@ React.useEffect(() => {
                  document.getElementById("root").style.display = "none";
                    Swal.fire({
                      title: 'System is under maintenance',
-                     text: 'Please check your internet connection and try again. Or you can contact us at chinnathorn.p@gmail.com for ask more information.',
+                     text: 'Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.',
                      icon: 'error',
                      allowOutsideClick: false,
                      showConfirmButton: true,
@@ -279,7 +279,7 @@ React.useEffect(() => {
             document.getElementById("root").style.display = "none";
             Swal.fire({
               title: 'System is under maintenance',
-              text: 'Please check your internet connection and try again. Or you can contact us at chinnathorn.p@gmail.com for ask more information.',
+              text: 'Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.',
               icon: 'error',
               allowOutsideClick: false,
               showConfirmButton: true,

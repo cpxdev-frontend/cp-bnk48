@@ -106,7 +106,7 @@ const fetchapi = () => {
 </div>
 <hr />
 <div className={'row mt-5' + (data == null ? ' chartfixed' : '')}>
-        <div className='col-lg-4'>
+        <div className='col-md-4'>
             {data != null ? <div>
                 <Doughnut
                 plugins={[ChartDataLabels]}
@@ -115,7 +115,7 @@ const fetchapi = () => {
                         datalabels:{
                             color: '#454444',
                             formatter: (value, ctx) => {
-                                return numberWithCommas((value / data.allToken)*100) + '%';
+                                return numberWithCommas(value) + "\n("+ numberWithCommas((value / data.allToken)*100) + '%)';
                               }
                         }
                     }
@@ -135,7 +135,7 @@ const fetchapi = () => {
                       />
             </div> : <Skeleton height={800} width='100%' />}
         </div>
-        <div className='col-lg-8'>
+        <div className={'col-md-8' + (width < 700 ? ' mt-5' : '')}>
             {data != null ? <div>
                 <Bar
                         data={{
@@ -266,7 +266,7 @@ const fetchapi = () => {
               </TableContainer>
               {
                 data != null && fetready && (
-                    <Fab onClick={() => fetchapi()} style={{position: 'fixed', zIndex: 900, bottom: 100, right: 5}}>
+                    <Fab onClick={() => fetchapi()} style={{position: 'fixed', zIndex: 900, bottom: '35%', right: 5}}>
                         <RefreshIcon />
                     </Fab>
                 )

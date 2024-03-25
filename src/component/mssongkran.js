@@ -15,6 +15,7 @@ import { Doughnut } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar } from 'react-chartjs-2';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import AOS from "aos";
 
 ChartJS.register(ArcElement,LinearScale, CategoryScale,
     BarElement, Tooltip, Legend);
@@ -49,6 +50,7 @@ const SongChart = ({fet, setSec, width}) => {
     const [cgm, setCgm] = React.useState([])
 
 const fetchapi = () => {
+    AOS.init({ duration: 1000 });
     setData(null)
     setFet(false)
     fetch(fet + '/bnk48/mssongkran', {

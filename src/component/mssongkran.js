@@ -1,6 +1,6 @@
 import React from 'react'
 import Skeleton from '@material-ui/lab/Skeleton';
-
+import { useHistory } from 'react-router-dom';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale,
     BarElement } from 'chart.js';
     import Table from '@material-ui/core/Table';
@@ -42,6 +42,7 @@ function numberWithCommas(x) {
 var ox;
 const SongChart = ({fet, setSec, width}) => {
     const classes = useStyles();
+    const History = useHistory()
     const [data, setData] = React.useState(null)
     const [fetready, setFet] = React.useState(false)
     const [bnk, setBnk] = React.useState([])

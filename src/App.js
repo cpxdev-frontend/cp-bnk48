@@ -25,6 +25,7 @@ import auth from "./fbindex";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import DonutSmallIcon from '@material-ui/icons/DonutSmall';
 
 import 'sweetalert2/dist/sweetalert2.min.css'
 import moment from 'moment'
@@ -82,6 +83,7 @@ import JankenCom from './component/janken';
 import RegisCom from './component/register';
 import Fenetwork from './component/48groupnetwork';
 import BmaCom from './component/bma';
+import MsSongkran from './component/mssongkran';
 
 import GeCom from './component/ge';
 import Ge4Com from './component/ge4';
@@ -787,6 +789,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="News" />
                 </ListItem>
+                <ListItem component={Link} to='/mssongkran48' className={window.location.pathname == '/mssongkran48' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <DonutSmallIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Ms Songkran 48 (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
+                </ListItem>
                 <ListItem component={Link} to='/ge4' className={window.location.pathname == '/ge4' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <HowToVoteIcon />
@@ -1008,6 +1016,7 @@ React.useEffect(() => {
                   }} />
                   <Route path="/ge4" render={() => <Ge4Com fet={Fet().ul} timesch={timesch} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mana" render={() => <GeMana fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/mssongkran48" render={() => <MsSongkran fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} width={width} />} />
                 </BasicSwitch>
 

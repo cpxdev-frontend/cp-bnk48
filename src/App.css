@@ -262,3 +262,6 @@ iframe[id*="twitter-widget"] {
   .hoversense:hover{
     color: rgb(133, 1, 111);
   }
+  .chartfixed{
+    margin-top: -150px !important;
+  }

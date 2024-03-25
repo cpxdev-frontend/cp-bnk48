@@ -12,6 +12,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearSca
     import { makeStyles } from '@material-ui/core/styles';
     import Fab from '@material-ui/core/Fab';
 import { Doughnut } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar } from 'react-chartjs-2';
 import RefreshIcon from '@material-ui/icons/Refresh';
 
@@ -108,29 +109,26 @@ const fetchapi = () => {
         <div className='col-lg-4'>
             {data != null ? <div>
                 <Doughnut
+                plugins={[ChartDataLabels]}
+                options={{
+                    plugins:{
+                        datalabels:{
+                            color: '#454444',
+                            formatter: (value, ctx) => {
+                                return numberWithCommas((value / data.allToken)*100) + '%';
+                              }
+                        }
+                    }
+                }}
                         data={{
                             labels: data.onPie.labels,
                             datasets: [
                               {
                                 label: 'BNK48 and CGM48 members',
                                 data: data.onPie.data,
-                                backgroundColor: [
-                                  data.onPie.labels[0].includes('CGM48') ? '#00ffc3' : '#ff00d4',
-                                  data.onPie.labels[1].includes('CGM48') ? '#19fcc7' : '#ff29db',
-                                  data.onPie.labels[2].includes('CGM48') ? '#39facd' : '#ff3bde',
-                                  data.onPie.labels[3].includes('CGM48') ? '#61ffda' : '#ff61e5',
-                                  data.onPie.labels[4].includes('CGM48') ? '#87ffe3' : '#ff82ea',
-                                  data.onPie.labels[5].includes('CGM48') ? '#a6ffea' : '#ffb5f3'
-                                ],
-                                borderColor: [
-                                  data.onPie.labels[0].includes('CGM48') ? '#00ffc3' : '#ff00d4',
-                                  data.onPie.labels[1].includes('CGM48') ? '#19fcc7' : '#ff29db',
-                                  data.onPie.labels[2].includes('CGM48') ? '#39facd' : '#ff3bde',
-                                  data.onPie.labels[3].includes('CGM48') ? '#61ffda' : '#ff61e5',
-                                  data.onPie.labels[4].includes('CGM48') ? '#87ffe3' : '#ff82ea',
-                                  data.onPie.labels[5].includes('CGM48') ? '#a6ffea' : '#ffb5f3'
-                                ],
-                                borderWidth: 0,
+                                backgroundColor: data.onPie.labels.map((x) => x.includes('CGM48') ? '#49C5A8' : '#cb96c2'),
+                                borderColor: data.onPie.labels.map((x) => x.includes('CGM48') ? '#c2fcef' : '#fac5f1'),
+                                borderWidth: 1,
                               },
                             ],
                             }}
@@ -268,7 +266,7 @@ const fetchapi = () => {
               </TableContainer>
               {
                 data != null && fetready && (
-                    <Fab onClick={() => fetchapi()} style={{position: 'fixed', zIndex: 900, bottom: 250, right: 5}}>
+                    <Fab onClick={() => fetchapi()} style={{position: 'fixed', zIndex: 900, bottom: 100, right: 5}}>
                         <RefreshIcon />
                     </Fab>
                 )

@@ -793,7 +793,13 @@ React.useEffect(() => {
                   <ListItemIcon>
                     <DonutSmallIcon />
                   </ListItemIcon>
-                  <ListItemText primary='Ms Songkran 48 (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
+                  <ListItemText primary='Ms Songkran 48 First Round (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
+                </ListItem>
+                <ListItem component={Link} to='/mssongkran48final' className={window.location.pathname == '/mssongkran48final' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <DonutSmallIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Ms Songkran 48 Final Round (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
                 </ListItem>
                 <ListItem component={Link} to='/ge4' className={window.location.pathname == '/ge4' ? 'activeNav' : ''} button>
                   <ListItemIcon>

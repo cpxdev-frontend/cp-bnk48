@@ -84,6 +84,7 @@ import RegisCom from './component/register';
 import Fenetwork from './component/48groupnetwork';
 import BmaCom from './component/bma';
 import MsSongkran from './component/mssongkran';
+import MsSongkranF from './component/mssongkranfinal';
 
 import GeCom from './component/ge';
 import Ge4Com from './component/ge4';

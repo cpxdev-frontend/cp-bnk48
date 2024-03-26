@@ -6,6 +6,14 @@ import { Typography, ListItem, Zoom, ListItemText,
     import AOS from "aos";
     import Swal from 'sweetalert2'
 
+    function getRandomIntExcept(min, max, except) {
+      let randomNum;
+      do {
+        randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+      } while (randomNum === except);
+      return randomNum;
+    }
+
 // const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@latest/bnk48/bnkfullmemhd.jpg'
 const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/16thsinggrand.jpg'
 const defaultvideo = 'https://www.youtube.com/embed/O7mtKDllAg0?autoplay=1&mute=1&controls=0&loop=1&playlist=O7mtKDllAg0'
@@ -73,7 +81,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
         })
   .then(response => response.json())
   .then(data => {
-      setGenRan(ran)
+      setGenRan(moment().unix() >= 1714496400 ? getRandomIntExcept(1, 5, 2) : ran)
       setMem(data.response)
       setLoaded2(true)
   });

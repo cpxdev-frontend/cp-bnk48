@@ -213,6 +213,10 @@ const Memberlist = ({fet, setSec, width}) => {
                                      )}
                                      <br />
                                      {item.headcaptain != undefined && (
+                                         <p class="badge badge-pill badge-primary">BNK48 Captain</p>
+                                     )}
+                                     <br />
+                                      {item.captain != undefined && (
                                          <p class="badge badge-pill badge-info">BNK48 {item.captain}</p>
                                      )}
                                      <br />

@@ -747,6 +747,10 @@ function capitalizeFirstLetter(string) {
                                             <p class="badge text-light" style={{backgroundColor: "#BF953F"}}>BNK48 Manager (Shihainin)</p>
                                          </CardActionArea>
                                      )}
+                                    {item.headcaptain != undefined && (
+                                        <p className="mb-3 badge badge-pill badge-warning">BNK48 Captain</p>
+                                    )}
+                                    <br />
                                     {item.captain != undefined && (
                                         <p className="mb-3 badge badge-pill badge-warning">BNK48 {item.captain}</p>
                                     )}

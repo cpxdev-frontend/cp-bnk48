@@ -212,7 +212,7 @@ const Memberlist = ({fet, setSec, width}) => {
                                          <p class="badge text-light" style={{backgroundColor: "#BF953F"}}>BNK48 Manager (Shihainin)</p>
                                      )}
                                      <br />
-                                     {item.captain != undefined && (
+                                     {item.headcaptain != undefined && (
                                          <p class="badge badge-pill badge-info">BNK48 {item.captain}</p>
                                      )}
                                      <br />

@@ -84,7 +84,6 @@ import RegisCom from './component/register';
 import Fenetwork from './component/48groupnetwork';
 import BmaCom from './component/bma';
 import MsSongkran from './component/mssongkran';
-import MsSongkranF from './component/mssongkranfinal';
 
 import GeCom from './component/ge';
 import Ge4Com from './component/ge4';
@@ -795,12 +794,6 @@ React.useEffect(() => {
                     <DonutSmallIcon />
                   </ListItemIcon>
                   <ListItemText primary='Ms Songkran 48 First Round (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
-                </ListItem>
-                <ListItem component={Link} to='/mssongkran48final' className={window.location.pathname == '/mssongkran48final' ? 'activeNav' : ''} button>
-                  <ListItemIcon>
-                    <DonutSmallIcon />
-                  </ListItemIcon>
-                  <ListItemText primary='Ms Songkran 48 Final Round (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
                 </ListItem>
                 <ListItem component={Link} to='/ge4' className={window.location.pathname == '/ge4' ? 'activeNav' : ''} button>
                   <ListItemIcon>

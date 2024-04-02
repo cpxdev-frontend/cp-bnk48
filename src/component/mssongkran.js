@@ -73,9 +73,6 @@ const fetchapi = () => {
                         setFet(true)
                     }, 10000);
                 }); 
-            setTimeout(() => {
-                setFet(true)
-            }, 10000);
         }); 
 }
 

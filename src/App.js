@@ -1573,7 +1573,7 @@ function App() {
         </div>
 
         <footer
-          className={"fixed-buttom text-center text-dark bg-light pt-2"}
+          className={"fixed-bottom text-center text-dark bg-light pt-2"}
           style={{ paddingBottom: window.innerWidth < 700 ? 70 : 0 }}
           ref={ref}>
           <p style={{ fontSize: 12 }}>

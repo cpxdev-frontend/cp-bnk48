@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import { Card, Fade, Grow, Drawer, Typography, Zoom, Link, Breadcrumbs, Button, ButtonGroup, Toolbar, IconButton, Slide, CardContent, FormControlLabel , Switch,Backdrop, Avatar, CardActionArea } from '@material-ui/core';
+import { Card, Fade, Grow, Drawer, Typography, CardHeader, Zoom, Link, Breadcrumbs, Button, ButtonGroup, Toolbar, IconButton, Slide, CardContent, FormControlLabel , Switch,Backdrop, Avatar, CardActionArea, CardHeader } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -111,6 +111,7 @@ function capitalizeFirstLetter(string) {
         const [GEPro, setGEPromote] = React.useState('');
         const [fol, setFollowName] = React.useState('');
         const [customback, setBack] = React.useState(false);
+        const [live, setLive] = React.useState(null);
         
         const numberWithCommasx = (x) => {
             return parseInt(x).toLocaleString('en-US');
@@ -480,8 +481,6 @@ function capitalizeFirstLetter(string) {
                     
                   });
                 if (localStorage.getItem("loged") != null) {
-    
-
                     fetch(fet + '/bnk48/getbnkkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
                       method :'get'
                   })
@@ -506,7 +505,28 @@ function capitalizeFirstLetter(string) {
                     if (data.response == 'Not found this member in record.') {
                         History.push("/")
                     } else {
-                        getJanken(data.response.name)
+                        if (localStorage.getItem("loged") != null) {
+                            fetch(fet + '/bnk48/getmemberlivestatus?i=' + JSON.parse(localStorage.getItem("loged")).user.uid +'&mem=' + data.response.name, {
+                                method :'post'
+                            })
+                                .then(response => response.json())
+                                .then(dataads => {
+                                    if (dataads.status) {
+                                        if (dataads.isLive) {
+                                            setLive(dataads)
+                                        }
+                                    } else {
+                                        Swal.fire({
+                                            title: "System error",
+                                            text: "Contact support",
+                                            icon: 'error',
+                                          })
+                                    }
+                                }).catch(() => {
+                                    setNewspop([])
+                                })
+                        }
+                        
                         fetch(fet + '/bnk48/getadsupdate', {
                             method :'post'
                         })
@@ -697,6 +717,16 @@ function capitalizeFirstLetter(string) {
           </ButtonGroup>
           }>
         </Snackbar>
+
+        <Snackbar open={live != null} autoHideDuration={10000} onClose={() => setLive(null)} anchorOrigin={{ vertical: 'top',
+    horizontal: 'center'}}>
+        <Alert severity="info">
+            {live != null && (
+            <CardHeader title={<h6>{live.member} BNK48 is LIVE now on IAM48 Application. Let's watch it!</h6>} subheader={live.desc} />
+            )}
+        </Alert>
+        </Snackbar>
+
             <div className="pt-5 pb-2">
                 <h3 className={width > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' BNK48' : 'Fetching Header'}</h3>
                 <Breadcrumbs className={width > 600 ? ' ml-5' : ' ml-3'} aria-label="breadcrumb">

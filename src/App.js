@@ -246,6 +246,7 @@ function App() {
   const [footerHeight, setFooterH] = React.useState(0);
 
   const [cro, setCro] = React.useState(0);
+  const [live, setKamiLive] = React.useState(false);
 
   const [width, setRealwidth] = React.useState(window.innerWidth);
   function handleWindowResize() {
@@ -280,6 +281,32 @@ function App() {
 
     setConnection(newConnection);
   }, []);
+
+  React.useEffect(() => {
+    if (MemberDl && kamin != "-" && kamin != "") {
+      fetch('https://cpxdevservice.onrender.com/bnk48/getmemberlivestatus?i=' + JSON.parse(localStorage.getItem("loged")).user.uid +'&mem=' + kamin, {
+        method :'post'
+    })
+        .then(response => response.json())
+        .then(dataads => {
+            if (dataads.status) {
+                if (!dataads.isLive) {
+                    setLive(true)
+                } else {
+                  setLive(false)
+                }
+            } else {
+                Swal.fire({
+                    title: "System error",
+                    text: "Contact support",
+                    icon: 'error',
+                  })
+            }
+        }).catch(() => {
+            setNewspop([])
+        })
+    }
+  }, [MemberDl])
 
   React.useEffect(() => {
     if (con) {
@@ -1608,6 +1635,14 @@ function App() {
                   }}
                   button>
                   <ListItemIcon>
+                  <Badge
+                      overlap="circular"
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                      badgeContent={live ? 'LIVE' : null}
+                    >
                     <img
                       src={kamiimg}
                       className={
@@ -1615,6 +1650,7 @@ function App() {
                         " border border-white rounded-circle cir avatarlimit"
                       }
                     />
+                    </Badge>
                   </ListItemIcon>
                   <ListItemText
                     primary={"Your Kami-Oshi is " + kamin + " BNK48"}

@@ -290,10 +290,10 @@ function App() {
         .then(response => response.json())
         .then(dataads => {
             if (dataads.status) {
-                if (!dataads.isLive) {
-                    setLive(true)
+                if (dataads.isLive) {
+                  setKamiLive(true)
                 } else {
-                  setLive(false)
+                  setKamiLive(false)
                 }
             } else {
                 Swal.fire({
@@ -1641,6 +1641,8 @@ function App() {
                         vertical: 'top',
                         horizontal: 'right',
                       }}
+                      color="error"
+                      className="mr-4"
                       badgeContent={live ? 'LIVE' : null}
                     >
                     <img

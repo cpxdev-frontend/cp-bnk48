@@ -56,7 +56,7 @@ import {
   Snackbar,
   BottomNavigation,
   BottomNavigationAction,
-  TextField,
+  CardHeader,
   Menu,
   MenuItem,
 } from "@material-ui/core";
@@ -230,6 +230,7 @@ function App() {
   const [tokenID, setToken] = React.useState("");
   const [time, setTime] = React.useState(0);
   const [memDate, setMemBirth] = React.useState("");
+  const [ offline, setOffline] = React.useState(false)
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -280,7 +281,7 @@ function App() {
       .build();
 
     setConnection(newConnection);
-  }, []);
+  }, [con]);
 
   React.useEffect(() => {
     if (MemberDl && kamin != "-" && kamin != "") {
@@ -309,28 +310,14 @@ function App() {
   }, [MemberDl])
 
   React.useEffect(() => {
-    if (con) {
-      con
-        .start()
-        .then((result) => {
-          con.on("responsestatus", function (res) {
-            if (res == "fail") {
-              setpopup(false);
-              document.getElementById("root").style.display = "none";
-              Swal.fire({
-                title: "System is under maintenance",
-                text: "Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.",
-                icon: "error",
-                allowOutsideClick: false,
-                showConfirmButton: true,
-                confirmButtonText: "Refresh",
-              }).then(() => {
-                window.location.reload();
-              });
-            }
-          });
-        })
-        .catch((e) => {
+    fetch(Fet().ul + '/home/status', {
+      method :'get'
+  })
+      .then(response => response.text())
+      .then(data => {
+        if (data == "OK") {
+            setOffline(false)
+        } else {
           setpopup(false);
           document.getElementById("root").style.display = "none";
           Swal.fire({
@@ -343,24 +330,42 @@ function App() {
           }).then(() => {
             window.location.reload();
           });
-        });
-
-      con.onclose((error) => {
+        }
+      }).catch(() => {
         setpopup(false);
-        document.getElementById("root").style.display = "none";
-        Swal.fire({
-          title: "Connection lost",
-          text: "Please check your internet connection and click refresh button and try again.",
-          icon: "error",
-          allowOutsideClick: false,
-          showConfirmButton: true,
-          confirmButtonText: "Refresh",
-        }).then(() => {
-          window.location.reload();
-        });
-      });
-    }
-  }, [con]);
+          document.getElementById("root").style.display = "none";
+          Swal.fire({
+            title: "System is under maintenance",
+            text: "Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.",
+            icon: "error",
+            allowOutsideClick: false,
+            showConfirmButton: true,
+            confirmButtonText: "Refresh",
+          }).then(() => {
+            window.location.reload();
+          });
+      })
+   setInterval(() => {
+    fetch(Fet().ul + '/home/status', {
+      method :'get'
+  })
+      .then(response => response.text())
+      .then(data => {
+        if (data == "OK") {
+            setOffline(false)
+            if (login == null) {
+              window.location.reload()
+            }
+        } else {
+          setpopup(false)
+          setOffline(true)
+        }
+      }).catch(() => {
+        setpopup(false)
+          setOffline(true)
+      })
+   }, 5000);
+  }, []);
 
   const FetchKami = (fetdata) => {
     if (localStorage.getItem("loged") != null) {
@@ -773,6 +778,12 @@ function App() {
   if (uri != "" && allDone) {
     return (
       <>
+      <Snackbar open={offline}  ModalProps={{ onBackdropClick: false }} anchorOrigin={{ vertical: 'top',
+    horizontal: 'center'}}>
+        <Alert severity="warning">
+          <CardHeader title="Reconnecting to service" subheader="You leave from platform just on minutes." />
+        </Alert>
+        </Snackbar>
         {window.innerWidth >= 700 && (
           <Slide
             in={

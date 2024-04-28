@@ -309,63 +309,6 @@ function App() {
     }
   }, [MemberDl])
 
-  React.useEffect(() => {
-    fetch(Fet().ul + '/home/status', {
-      method :'get'
-  })
-      .then(response => response.text())
-      .then(data => {
-        if (data == "OK") {
-            setOffline(false)
-        } else {
-          setpopup(false);
-          document.getElementById("root").style.display = "none";
-          Swal.fire({
-            title: "System is under maintenance",
-            text: "Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.",
-            icon: "error",
-            allowOutsideClick: false,
-            showConfirmButton: true,
-            confirmButtonText: "Refresh",
-          }).then(() => {
-            window.location.reload();
-          });
-        }
-      }).catch(() => {
-        setpopup(false);
-          document.getElementById("root").style.display = "none";
-          Swal.fire({
-            title: "System is under maintenance",
-            text: "Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.",
-            icon: "error",
-            allowOutsideClick: false,
-            showConfirmButton: true,
-            confirmButtonText: "Refresh",
-          }).then(() => {
-            window.location.reload();
-          });
-      })
-   setInterval(() => {
-    fetch(Fet().ul + '/home/status', {
-      method :'get'
-  })
-      .then(response => response.text())
-      .then(data => {
-        if (data == "OK") {
-            setOffline(false)
-            if (login == null) {
-              window.location.reload()
-            }
-        } else {
-          setpopup(false)
-          setOffline(true)
-        }
-      }).catch(() => {
-        setpopup(false)
-          setOffline(true)
-      })
-   }, 5000);
-  }, []);
 
   const FetchKami = (fetdata) => {
     if (localStorage.getItem("loged") != null) {

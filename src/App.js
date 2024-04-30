@@ -106,7 +106,7 @@ import Api from "./component/apisupport";
 import Account from "./component/account";
 import FollowCom from "./component/follow";
 import PageErr from "./component/404";
-import Graduated from "./component/finallygraduated";
+import Graduated from "./component/graduation";
 import RequestCom from "./component/requesthour";
 import JankenCom from "./component/janken";
 import RegisCom from "./component/register";
@@ -914,12 +914,12 @@ function App() {
                 secondary={spcLive ? "Livestream is launching" : ""}
               />
             </ListItem>
-            {/* <ListItem component={Link} to='/bnk48inmemories' className={window.location.pathname == '/bnk48inmemories' ? 'activeNav' : ''} button>
+            <ListItem component={Link} to='/bnk48inmemories' className={window.location.pathname == '/bnk48inmemories' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <PanToolIcon />
                   </ListItemIcon>
                   <ListItemText primary="BNK48 Graduation Gallery" secondary="Rewind in memories of graduated members of BNK48" />
-                </ListItem> */}
+                </ListItem>
             <ListItem
               component={Link}
               to="/originalcontent"

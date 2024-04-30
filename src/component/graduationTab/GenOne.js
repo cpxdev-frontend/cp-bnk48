@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, CardActionArea, CardContent, CardMedia, Fade, Zoom, Grow, Typography, ButtonGroup, CardHeader } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import vPack from './pack.json'
+import vPack from '../pack.json'
 import AOS from "aos";
 import { Share } from 'react-twitter-widgets'
 import moment from 'moment'
 
-const Graduated = ({fet, setSec, width}) => {
+const GenOne = ({fet, setSec, width}) => {
 
     React.useEffect(() => {
         setSec('Graduation Gallery')
@@ -58,7 +58,7 @@ const Graduated = ({fet, setSec, width}) => {
     
 
     const ChangeRoute = (name, tag) =>{
-        const link = "https://twitter.com/intent/tweet?hashtags=" + name + "BNK48,fanspaceplatform,bnk48_1stgeneration," + tag.join(",") + "&original_referer=https://bnk48fan.cpxdev.tk&text=(Enter your moment to " + name+" BNK48 here)&url=https://bnk48fan.cpxdev.tk"
+        const link = "https://twitter.com/intent/tweet?hashtags=" + name + "BNK48,fanspaceplatform,bnk48_1stgeneration," + tag.join(",") + "&original_referer=https://cp-bnk48.pages.dev&text=(Enter your moment to " + name+" BNK48 here)&url=https://cp-bnk48.pages.dev"
         window.open(link, "_blank")
     }
 
@@ -67,17 +67,11 @@ const Graduated = ({fet, setSec, width}) => {
         <>
         {width > 1100 && (
           <div class="video-background">
-          {localStorage.getItem('lowgraphic') == null ? (
-            <div class="video-foreground" data-aos="zoom-out-up">
-            <iframe src="https://www.youtube.com/embed/JfuKXJUXRWQ?autoplay=1&mute=1&controls=0&loop=1&playlist=JfuKXJUXRWQ" frameborder="0"></iframe>
-          </div>
-          ) : (
-         <div data-aos="zoom-out">
+          <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/bnk1stgenfull.png" width={width} />
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/1stgen.jpg" width={width} />
                </Fade>
               </div>
-          )}
       </div>
         )}
 
@@ -88,7 +82,7 @@ const Graduated = ({fet, setSec, width}) => {
           <Card className="col-md-4 m-5">
               <CardContent>
               <Typography variant="h5" component="h2">
-                BNK48 Graduation
+                BNK48 1st Generation Graduation
                 </Typography>
                 <hr />
                     <Typography color="textSecondary">
@@ -104,7 +98,7 @@ const Graduated = ({fet, setSec, width}) => {
   <Card className="bnktheme ml-2 mr-2">
       <CardContent>
         <Typography variant="h5" component="h2">
-        BNK48 Graduation
+        BNK48 1st Generation Graduation
         </Typography>
         <hr />
                 <Typography color="textSecondary">
@@ -203,4 +197,4 @@ const Graduated = ({fet, setSec, width}) => {
 
 }
  
-export default Graduated;
+export default GenOne;

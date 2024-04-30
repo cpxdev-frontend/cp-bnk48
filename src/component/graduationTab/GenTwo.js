@@ -58,7 +58,7 @@ const GenTwo = ({fet, setSec, width}) => {
     
 
     const ChangeRoute = (name, tag) =>{
-        const link = "https://twitter.com/intent/tweet?hashtags=" + name + "BNK48,fanspaceplatform,bnk48_2ndgeneration," + name + ' ' + tag + "&original_referer=https://cp-bnk48.pages.dev&text=(Enter your moment to " + name+" BNK48 here)&url=https://cp-bnk48.pages.dev"
+        const link = "https://twitter.com/intent/tweet?hashtags=" + name + "BNK48,fanspaceplatform,bnk48_2ndgeneration," + name + tag + "&original_referer=https://cp-bnk48.pages.dev&text=(Enter your moment to " + name+" BNK48 here)&url=https://cp-bnk48.pages.dev"
         window.open(link, "_blank")
     }
 

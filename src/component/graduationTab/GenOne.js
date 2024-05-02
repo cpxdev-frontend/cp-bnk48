@@ -69,7 +69,7 @@ const GenOne = ({fet, setSec, width}) => {
           <div class="video-background">
           <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/1stgen.jpg" width={width} />
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket/main/bnk48/1stgenji.jpg" width={width} />
                </Fade>
               </div>
       </div>

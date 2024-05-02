@@ -99,13 +99,13 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
         setLoaded1(true)
     }
   });
- const ran = Math.floor(Math.random() * 4) + 1;
+ const ran = getRandomIntExcept(1, 5, 2);
  fetch(fet + '/bnk48/getmemberby?filter=gen&param=' + ran + '&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
             method :'post'
         })
   .then(response => response.json())
   .then(data => {
-      setGenRan(moment().unix() >= 1714496400 ? getRandomIntExcept(1, 5, 2) : ran)
+      setGenRan(ran)
       setMem(data.response)
       setLoaded2(true)
   });
@@ -373,7 +373,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
              </Card> 
           </div>
       )) : (
-          <h6>No BNK48 member birthday in today.</h6>
+          <h6>No BNK48 members.</h6>
       )}
       </div>
   ) : (

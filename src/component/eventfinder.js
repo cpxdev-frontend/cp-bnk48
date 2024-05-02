@@ -166,9 +166,9 @@ const Finder = ({fet, setSec, width, kamin}) => {
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v12',
             center: [100.4935089, 13.7524938],
-            zoom: 10,
+            zoom: 7,
             maxZoom:20,
-            minZoom: 8
+            minZoom: 1
           });
           
           map.current.addControl(

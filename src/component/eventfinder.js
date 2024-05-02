@@ -30,6 +30,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
     const [Arr, setArr] = React.useState([]);
     const [loc, setLocate] = React.useState([]);
     const [nearest, setSignal] = React.useState(null);
+    const [moreevent, setEvent] = React.useState([]);
     const [eventPlace, setEventPlace] = React.useState('');
 
     const mapContainer = React.useRef(null);
@@ -188,6 +189,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
           .then((data) => {
             if (map.current != null) {
               let geo = []
+              data = data.slice().sort((a, b) => b.timerange[0] - a.timerange[0]);
               for (let i=0; i< data.length; i++){
                 if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
                     if (data[i].place.includes('IAMP') ) {
@@ -242,27 +244,50 @@ const Finder = ({fet, setSec, width, kamin}) => {
               setArr(data)
               setLoaded(true)
               map.current.on("click", (e) => {
+                let inrecord = null;
+
                 if (e.target._popups[0] == undefined || refresh == false) {
                     return;
                 }
                 const marker = JSON.parse(JSON.stringify(e.target._popups[0]._lngLat));
                 let d = null;
+                
                 for (let i=0; i< data.length; i++){
                     if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
                         if (data[i].place.includes('IAMP') ) {
                             if (data[i].placeobj.placeCoodinate[0] == marker.lat && data[i].placeobj.placeCoodinate[1] == marker.lng) {
                                 d = data[i]
+                                inrecord = true;
                                 break;
                             }
                         } else {
                             if (data[i].locate[0] == marker.lat && data[i].locate[1] == marker.lng) {
                                     d = data[i]
+                                    inrecord = false;
                                     break;
                             }
                         }
                      }
                   }
                 
+                  if (inrecord != null) { 
+                    if (inrecord == true) {
+                        const set = data.filter( x=> x.place.includes('IAMP') && x.placeobj.placeCoodinate[0] == marker.lat && x.placeobj.placeCoodinate[1] == marker.lng);
+                        if (set.length > 1) {
+                            const getdata = set.slice().sort((a, b) => a.timerange[0] - b.timerange[0]);
+                            setEvent(getdata.filter(x => x.newsId != getdata[0].newsId))
+                        }
+                    } else {
+                        const set = data.filter( x=> (!x.place.includes('IAMP') && x.locate != null) && x.timerange[1] > 0 && x.locate[0] == marker.lat && x.locate[1] == marker.lng);
+                        if (set.length > 1) {
+                            const getdata = set.slice().sort((a, b) => a.timerange[0] - b.timerange[0]);
+                            setEvent(getdata.filter(x => x.newsId != getdata[0].newsId))
+                        }
+                    }
+                  }
+
+                  
+
                   if (d != null) {
                     if (d.place.includes('IAMP') ) {
                         map.current.setCenter([d.placeobj.placeCoodinate[1], d.placeobj.placeCoodinate[0]]);
@@ -298,6 +323,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
             <div ref={mapContainer} className="map-container" />
            </Card>
         {Loaded && nearest != null ? (
+              <>
                <Card className='mb-5' data-aos="fade-right" id="card">
                <CardContent className='row'>
                    <div className='col-md-5'>
@@ -395,6 +421,111 @@ const Finder = ({fet, setSec, width, kamin}) => {
                    </div>
                </CardContent>
            </Card>
+           {moreevent.length > 0 && (
+            <>
+            <CardHeader className='mt-5' title="More event soon" subheader="Show other BNK48 events soon at same location." />
+            {moreevent.map((mainitem) => (
+                 <Card className='mb-5' data-aos="fade-right">
+                 <CardContent className='row'>
+                     <div className='col-md-5'>
+                          {mainitem.video != undefined && mainitem.video != "" ? (
+                              <iframe src={mainitem.video} width="100%" height={window.innerWidth * (0.4)}></iframe>
+                          ) : (
+                              <img src={mainitem.src} width="100%" />
+                          )}
+                     </div>
+                     <div className='col-md mt-3'>
+                         <h4 data-aos="zoom-in-right">{mainitem.title}&nbsp;
+                         {mainitem.timerange[0] > 0 && mainitem.timerange[1] == 0 && mainitem.timerange[0] <= moment().unix() && (
+                             <span className='badge badge-success'>
+                                 Event has been started
+                             </span>
+                             )}
+                             {mainitem.timerange[0] > 0 && mainitem.timerange[1] > 0 && mainitem.timerange[0] < mainitem.timerange[1] &&
+                             moment().unix() >= mainitem.timerange[0] && moment().unix() <= mainitem.timerange[1] && (
+                             <span className='badge badge-success'>
+                                  Event is starting
+                             </span>
+                             )}
+                         </h4>
+                         {mainitem.timerange[0] > 0 && mainitem.timerange[0] > moment().unix() && (
+                             <p className='mt-1 mb-3'>
+                                 Event is coming soon in <b>{moment.unix(mainitem.timerange[0]).format('ddd DD MMMM yyyy H:mm A')} {moment().unix() >= mainitem.timerange[0] -259200 && moment().unix() < mainitem.timerange[0] && (
+                                 <i>
+                                     <br /> This event is soon in {remainEvent(mainitem.timerange[0])}
+                                 </i>
+                             )}</b>
+                             </p>
+                             )}
+                             {mainitem.timerange[0] > 0 && mainitem.timerange[1] == 0 && mainitem.timerange[0] <= moment().unix() && (
+                             <p className='mt-1 mb-3'>
+                                 Event has been started since <b>{moment.unix(mainitem.timerange[0]).format('ddd DD MMMM yyyy')}</b>
+                             </p>
+                             )}
+                             {mainitem.timerange[0] > 0 && mainitem.timerange[1] > 0 && mainitem.timerange[0] < mainitem.timerange[1] &&
+                             moment().unix() >= mainitem.timerange[0] && moment().unix() <= mainitem.timerange[1] && (
+                             <p className='mt-1 mb-3'>
+                                  Event is starting until <b>{moment.unix(mainitem.timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                             </p>
+                             )}
+                             
+                             
+                         <p className='text-muted mt-3' data-aos="zoom-in">{mainitem.desc}</p>
+                         {
+                             mainitem.link != '' && (
+                                 <div data-aos="fade-down">
+                                 <a onClick={() => pageDirect(mainitem.link)}>More detail of this event</a>
+                                 </div>
+                             )
+                         }
+                         {
+                             mainitem.place != '' && mainitem.place.includes('IAMP') && (
+                             <a href={mainitem.placeobj.ref} target='_blank' className='mt-1' data-toggle="tooltip" data-placement="down" title={mainitem.placeobj.placeDesc}>
+                                 <LocationOnIcon/> {mainitem.placeobj.placeName + ", " + mainitem.placeobj.placeProvince}
+                             </a>
+                             )
+                         }
+                         {
+                             mainitem.place != '' && !mainitem.place.includes('IAMP') && (
+                             <a href={mainitem.place} target='_blank' className='mt-1'>
+                                 <LocationOnIcon/> {eventPlace != '' ? eventPlace : 'Locating event place'}
+                             </a>
+                             )
+                         }
+                         {kamin != '' && kamin != '-' && mainitem != null && (mainitem.memtag.indexOf(kamin.toLowerCase()) != -1 || mainitem.memtag.indexOf('All') != -1 || mainitem.memtag.indexOf('All') != -1) && (
+                          <div className="alert alert-info mt-3" role="alert">
+                              <p>Your Kami-Oshi ({kamin} BNK48) has joined to this event. You should not miss it!</p>
+                          </div>
+                         )}
+                         {mainitem.memtag.indexOf('All') == -1 && !mainitem.memtag[0].includes("gen") && (
+                          <div className='container mt-2 row'>
+                              <p className='pt-2'>BNK48 Member(s):&nbsp;</p>
+                              <AvatarGroup max={6}>
+                              {mainitem.memtag.map((img) => (
+                                  <Avatar alt={img} className="cur" onClick={() => window.open('/member/' + img, '_blank')} src={bnk.path + img + bnk.type} />
+                              ))}
+                          </AvatarGroup>
+                              </div>
+                         )}
+                          {mainitem.memtag.indexOf('All') == 0 && !mainitem.memtag[0].includes("gen") && (
+                          <div className='container mt-2 row'>
+                              <p className='pt-2'>BNK48 Member(s):&nbsp;</p>
+                              <AvatarGroup max={6}>
+                              <Avatar className="cur" onClick={() => window.open('/memberlist', '_blank')} alt="all" src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket/main/bnk48/sing16all.png" />
+                          </AvatarGroup>
+                              </div>
+                         )}
+                         <br />
+                         <div onClick={() => scrollToTop()} className='cur mt-3 hoversense'>
+                              <a>Click to choose another BNK48 events</a>
+                         </div>
+                     </div>
+                 </CardContent>
+             </Card>
+            ))}
+            </>
+           )}
+              </>
         ) : Loaded && nearest == null ? (
             <Card className='text-center mb-3'>
             <CardContent className='row text-center'>

@@ -1046,25 +1046,6 @@ function App() {
               </ListItemIcon>
               <ListItemText primary="Follow and Support" />
             </ListItem>
-            {!login && (
-              <ListItem
-                component={Link}
-                to="/register"
-                className={
-                  window.location.pathname == "/register" ? "activeNav" : ""
-                }
-                button>
-                <ListItemIcon>
-                  <AssignmentReturnedIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="Register Membership"
-                  secondary="Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need"
-                />
-              </ListItem>
-            )}
-          </d>
-          <Divider />
           <ListItem
             onClick={() => {
               setOpen(false);
@@ -1089,6 +1070,25 @@ function App() {
             </ListItemIcon>
             <ListItemText primary={"Region: " + Fet().nme} />
           </ListItem>
+          </d>
+          <Divider />
+            {!login && (
+              <ListItem
+                component={Link}
+                to="/register"
+                className={
+                  window.location.pathname == "/register" ? "activeNav" : ""
+                }
+                button>
+                <ListItemIcon>
+                  <AssignmentReturnedIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Register Membership"
+                  secondary="Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need"
+                />
+              </ListItem>
+            )}
           {loginLoad ? (
             <ListItem onClick={() => setMemDl(true)} button>
               <ListItemIcon>

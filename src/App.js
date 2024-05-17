@@ -1,0 +1,2205 @@
+import "./App.css";
+import React from "react";
+import {
+  BrowserRouter,
+  Route,
+  Link,
+  Switch as BasicSwitch,
+  useHistory,
+} from "react-router-dom";
+import { Alert, AlertTitle } from "@material-ui/lab";
+import "aos/dist/aos.css";
+import { HubConnectionBuilder } from "@microsoft/signalr";
+import Snowfall from "react-snowfall";
+import AOS from "aos";
+
+import {
+  GoogleAuthProvider,
+  TwitterAuthProvider,
+  signInWithPopup,
+  signOut,
+  OAuthProvider,
+  deleteUser,
+} from "firebase/auth";
+import auth from "./fbindex";
+import "mapbox-gl/dist/mapbox-gl.css";
+
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import DonutSmallIcon from "@material-ui/icons/DonutSmall";
+
+import "sweetalert2/dist/sweetalert2.min.css";
+import moment from "moment";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Drawer,
+  FormControlLabel,
+  Switch,
+  ListItem,
+  ListItemIcon,
+  Divider,
+  ListItemText,
+  Dialog,
+  DialogActions,
+  Button,
+  Fab,
+  DialogTitle,
+  DialogContent,
+  Avatar,
+  Badge,
+  CardContent,
+  CardMedia,
+  Slide,
+  Grow,
+  Snackbar,
+  BottomNavigation,
+  BottomNavigationAction,
+  CardHeader,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import WarningIcon from "@material-ui/icons/Warning";
+
+import HomeIcon from "@material-ui/icons/Home";
+import CloseIcon from "@material-ui/icons/Close";
+import MenuIcon from "@material-ui/icons/Menu";
+import PeopleIcon from "@material-ui/icons/People";
+import ListAltIcon from "@material-ui/icons/ListAlt";
+import EventIcon from "@material-ui/icons/Event";
+import YouTubeIcon from "@material-ui/icons/YouTube";
+import LanguageIcon from "@material-ui/icons/Language";
+import DnsIcon from "@material-ui/icons/Dns";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import HowToVoteIcon from "@material-ui/icons/HowToVote";
+import CodeIcon from "@material-ui/icons/Code";
+import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import LiveTvIcon from "@material-ui/icons/LiveTv";
+import PanToolIcon from "@material-ui/icons/PanTool";
+import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import MusicNoteIcon from "@material-ui/icons/MusicNote";
+import TheatersIcon from "@material-ui/icons/Theaters";
+import AssignmentReturnedIcon from "@material-ui/icons/AssignmentReturned";
+import SlideshowIcon from "@material-ui/icons/Slideshow";
+import PartyModeIcon from "@material-ui/icons/PartyMode";
+import AirportShuttleIcon from "@material-ui/icons/AirportShuttle";
+
+import Home from "./component/home";
+import MemberList from "./component/members";
+import LiveCom from "./component/livestream";
+import MamSam from "./component/memberdetail";
+import Shi from "./component/shihainin";
+import TokenCom from "./component/token";
+import News from "./component/news";
+import Anni from "./component/anniversarydebut";
+import MvCom from "./component/music";
+import OriCom from "./component/originalcontent";
+import MusicCom from "./component/streaming";
+import Offici from "./component/official";
+import EventFind from "./component/eventfinder";
+import Api from "./component/apisupport";
+import Account from "./component/account";
+import FollowCom from "./component/follow";
+import PageErr from "./component/404";
+import Graduated from "./component/graduation";
+import RequestCom from "./component/requesthour";
+import JankenCom from "./component/janken";
+import RegisCom from "./component/register";
+import Fenetwork from "./component/48groupnetwork";
+import BmaCom from "./component/bma";
+import MsSongkran from "./component/mssongkran";
+
+import GeCom from "./component/ge";
+import Ge4Com from "./component/ge4";
+import GeMana from "./component/geevent/gemanage";
+
+import Fet from "./fetch";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
+import Carousel from "react-material-ui-carousel";
+import Swal from "sweetalert2";
+
+var checkloop;
+const drawerWidth = 240;
+const Client =
+  "961896647339-roenm2ee6i60ed2rhbe2sqee0unlqj0f.apps.googleusercontent.com";
+
+const iiwakelaunch = 1677402000;
+
+const useStyles = makeStyles((theme) => ({
+  sm: {
+    width: theme.spacing(3.8),
+    height: theme.spacing(3.8),
+  },
+  lg: {
+    width: theme.spacing(6),
+    height: theme.spacing(6),
+  },
+  search: {
+    right: theme.spacing(1),
+    position: "absolute",
+  },
+  fab: {
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+    zIndex: 600,
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  drawerHeader: {
+    display: "flex",
+    alignItems: "center",
+    padding: theme.spacing(0, 2),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: "flex-end",
+  },
+  fabButton: {
+    position: "fixed",
+    zIndex: 500,
+    bottom: 30,
+    left: window.innerWidth > 600 ? 100 : 20,
+    width: "auto",
+    right: window.innerWidth > 600 ? 100 : 20,
+  },
+}));
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+const SmallAvatar = withStyles((theme) => ({
+  root: {
+    width: 30,
+    height: 30,
+    border: `2px solid ${theme.palette.background.paper}`,
+  },
+}))(Avatar);
+
+const timesch = {
+  regis: {
+    open: 1641834000,
+    close: 1643043599,
+  },
+  vote: {
+    open: 1646888400,
+    close: 1649307600,
+  },
+  preannoun: 1647000000,
+  announ: 1649473200,
+};
+
+var url = new URL(window.location.href);
+var imgget = url.searchParams.get("imgstar");
+var myportdetect = url.searchParams.get("ref");
+
+var iiake;
+
+function App() {
+  const [Section, setSec] = React.useState("BNK48 Fansite for everyone");
+  const [con, setConnection] = React.useState(null);
+  const cls = useStyles();
+  const History = useHistory();
+  const [Reduce, setReduce] = React.useState(false);
+  const [ny, setNy] = React.useState(true);
+  const [EvtPop, setpopup] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
+  const [uri, setUri] = React.useState("");
+  const [login, setLogin] = React.useState(false);
+  const [MemberDl, setMemDl] = React.useState(false);
+  const [loginLoad, setLogLoad] = React.useState(false);
+  const [kamiimg, setKami] = React.useState("");
+  const [kamin, setKname] = React.useState("");
+  const [survey, setSur] = React.useState("");
+  const [ImgThumb, setImageThumb] = React.useState("");
+  const [spcLive, setLive] = React.useState(false);
+  const [geready, setReadyGE] = React.useState(false);
+  const [newspop, setNewspop] = React.useState([]);
+  const [memUpdate, setUpdate] = React.useState([]);
+  const [stream, setStream] = React.useState(null);
+  const [tokenID, setToken] = React.useState("");
+  const [time, setTime] = React.useState(0);
+  const [memDate, setMemBirth] = React.useState("");
+  const [ offline, setOffline] = React.useState(false)
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const [TokenLoad, setLoadToken] = React.useState(false);
+  const [allDone, setAllDone] = React.useState(false);
+  const [styleFade, setSty] = React.useState(0);
+
+  const [Prof, setPro] = React.useState("");
+  const [adsClose, setAdsBth] = React.useState(false);
+
+  const [verify, setVerify] = React.useState(false);
+
+  const ref = React.useRef(null);
+  const [footerHeight, setFooterH] = React.useState(0);
+
+  const [cro, setCro] = React.useState(0);
+  const [live, setKamiLive] = React.useState(false);
+
+  const [width, setRealwidth] = React.useState(window.innerWidth);
+  function handleWindowResize() {
+    setRealwidth(window.innerWidth);
+  }
+  React.useEffect(() => {
+    AOS.init({ duration: 800 });
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const currentP =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    window.scrollTo(0, currentP + 1);
+    window.scrollTo(0, currentP - 1);
+    window.scrollTo(0, currentP);
+  }, [Reduce]);
+
+  React.useEffect(() => {
+    if (ref.current != null) {
+      setFooterH(ref.current.clientHeight);
+    }
+  });
+
+  React.useEffect(() => {
+    const newConnection = new HubConnectionBuilder()
+      .withUrl("https://cpxdevservice.onrender.com/status")
+      .build();
+
+    setConnection(newConnection);
+  }, [con]);
+
+  React.useEffect(() => {
+    if (MemberDl && kamin != "-" && kamin != "") {
+      fetch('https://cpxdevservice.onrender.com/bnk48/getmemberlivestatus?i=' + JSON.parse(localStorage.getItem("loged")).user.uid +'&mem=' + kamin, {
+        method :'post'
+    })
+        .then(response => response.json())
+        .then(dataads => {
+            if (dataads.status) {
+                if (dataads.isLive) {
+                  setKamiLive(true)
+                } else {
+                  setKamiLive(false)
+                }
+            } else {
+                Swal.fire({
+                    title: "System error",
+                    text: "Contact support",
+                    icon: 'error',
+                  })
+            }
+        }).catch(() => {
+            setNewspop([])
+        })
+    }
+  }, [MemberDl])
+
+
+  const FetchKami = (fetdata) => {
+    if (localStorage.getItem("loged") != null) {
+      fetch(
+        fetdata +
+          "/bnk48/getbnkkami?i=" +
+          JSON.parse(localStorage.getItem("loged")).user.uid.toString(),
+        {
+          method: "get",
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setLogLoad(false);
+          setOpen(false);
+          setVerify(data.verified);
+          setPro(data.img);
+          if (data.obj != "none") {
+            setKami(data.obj.img);
+            setKname(data.obj.name);
+            setMemBirth(data.obj.birth);
+            setToken(data.wallet);
+            localStorage.setItem("i", data.uname);
+            // FetchWallet(fetdata, data.wallet)
+          } else {
+            setKami("-");
+            localStorage.setItem("i", data.uname);
+            setKname("-");
+          }
+          setLogin(true);
+        });
+    }
+  };
+
+  React.useEffect(() => {
+    document.title = Section + " | BNK48 Fans Space";
+  }, [Section]);
+
+  const ReduceAction = () => {
+    if (localStorage.getItem("lowgraphic") == null) {
+      localStorage.setItem("lowgraphic", "");
+      setReduce(true);
+    } else {
+      localStorage.removeItem("lowgraphic");
+      setReduce(false);
+    }
+  };
+
+  const FetLive = (fet) => {
+    if (window.location.pathname.includes("/mana")) {
+      setLive(false);
+      return;
+    }
+    fetch(fet + "/bnk48/getstreamlist?ch=2", {
+      method: "post",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length == 1 && data[0].link == "") {
+          setLive(false);
+        } else {
+          if (data.filter((x) => x.link != "").length == 2) {
+            const randomNumber = Math.random();
+            if (randomNumber < 0.5) {
+              setStream(data[0]);
+              setImageThumb(data[0].src);
+            } else {
+              setStream(data[1]);
+              setImageThumb(data[1].src);
+            }
+          } else {
+            setStream(data[0]);
+            setImageThumb(data[0].src);
+          }
+          setLive(true);
+        }
+      })
+      .catch(() => {
+        setLive(false);
+      });
+  };
+
+  const FetchPopNews = (fet) => {
+    if (sessionStorage.getItem("ads") == null) {
+      setpopup(true);
+    } else {
+      setpopup(false);
+    }
+
+    fetch(fet + "/bnk48/getadsupdate", {
+      method: "post",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        fetch(
+          fet +
+            "/bnk48/getmemberbybirth?tz=" +
+            Intl.DateTimeFormat().resolvedOptions().timeZone,
+          {
+            method: "post",
+          }
+        )
+          .then((response) => response.json())
+          .then((dres) => {
+            sessionStorage.setItem("ads", "i");
+            if (dres.count == 0) {
+              let tempd = [];
+              const withprio = data.filter((x) => x.priority != undefined);
+              const nonprio = data.filter((x) => x.priority == undefined);
+              for (let iw = 0; iw < withprio.length; iw++) {
+                tempd.push(withprio[iw]);
+              }
+
+              for (let ij = 0; ij < nonprio.length; ij++) {
+                tempd.push(nonprio[ij]);
+              }
+              setNewspop(tempd);
+
+              if (kamin !== "") {
+                setUpdate(
+                  tempd.filter(
+                    (x) =>
+                      x.memtag.indexOf(kamin.toLowerCase()) ||
+                      x.memtag.indexOf("All")
+                  )
+                );
+              }
+            } else {
+              let tempd = [];
+              const withprio = data.filter((x) => x.priority != undefined);
+              const nonprio = data.filter((x) => x.priority == undefined);
+              for (let iw = 0; iw < withprio.length; iw++) {
+                tempd.push(withprio[iw]);
+              }
+              for (let i = 0; i < dres.response.length; i++) {
+                if (
+                  dres.response[i].graduated == false ||
+                  (dres.response[i].graduated == true &&
+                    dres.response[i].gen == 1)
+                ) {
+                  tempd.push({
+                    title:
+                      "Happy birthday! " + dres.response[i].name + " BNK48",
+                    desc: "Today is her birthday! Let's celebrate each other together.",
+                    link: "/member/" + dres.response[i].name.toLowerCase(),
+                    src: dres.response[i].img,
+                    place: "",
+                    timerange: [
+                      moment(
+                        dres.response[i].birth + " 00:00:00",
+                        "YYYY-MM-DD HH:mm:ss"
+                      ).unix(),
+                      moment(
+                        dres.response[i].birth + " 23:59:59",
+                        "YYYY-MM-DD HH:mm:ss"
+                      ).unix(),
+                    ],
+                    memtag: [dres.response[i].name.toLowerCase()],
+                  });
+                }
+              }
+
+              for (let ij = 0; ij < nonprio.length; ij++) {
+                tempd.push(nonprio[ij]);
+              }
+              setNewspop(tempd);
+
+              if (kamin !== "") {
+                setUpdate(
+                  tempd.filter(
+                    (x) =>
+                      x.memtag.indexOf(kamin.toLowerCase()) ||
+                      x.memtag.indexOf("All")
+                  )
+                );
+              }
+            }
+          })
+          .catch(() => {});
+      })
+      .catch(() => {});
+  };
+
+  React.useEffect(() => {
+    iiake = setInterval(function () {
+      if (Fet().ul != "") {
+        clearInterval(iiake);
+
+        fetch(Fet().ul + "/tpop/time", {
+          method: "get",
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            setTime(parseInt(data));
+          })
+          .catch(() => {});
+      }
+    }, 10);
+  }, []);
+
+  React.useEffect(() => {
+    function isOdd() {
+      const ran = Math.floor(Math.random() * 1000 + 1);
+      return Math.abs(ran % 2) == 1;
+    }
+
+    setSty(isOdd() == true ? 2 : 1);
+    if (localStorage.getItem("lowgraphic") == null) {
+      setReduce(false);
+    } else {
+      setReduce(true);
+    }
+    if (localStorage.getItem("loged") == null) {
+      setLogin(false);
+    } else {
+      setLogin(true);
+    }
+
+    if (sessionStorage.getItem("ads") == null) {
+      setReadyGE(true);
+    } else {
+      setReadyGE(false);
+    }
+
+    var dem = setInterval(function () {
+      if (Fet().ul !== "") {
+        setTimeout(() => {
+          setAdsBth(true);
+        }, 2500);
+        clearInterval(dem);
+        var timeo = setInterval(function () {
+          if (sessionStorage.getItem("ads") != null) {
+            clearInterval(timeo);
+            setAllDone(true);
+          }
+
+          if (myportdetect != null && myportdetect == "myport") {
+            Swal.fire({
+              title: "Welcome MyPort User to BNK48 Fan Space.",
+              text: "This objective of this web platform are to be the center of BNK48 fans from around the world in once.",
+              footer:
+                "Notes: This is not BNK48 Official Website. You may be see at https://www.bnk48.com",
+              icon: "info",
+              iconColor: "rgb(203, 150, 194)",
+            });
+          }
+        }, 9500);
+        setUri(Fet().ul);
+        FetchKami(Fet().ul);
+        if (window.location.pathname.includes("/mana")) {
+          setLive(false);
+        } else {
+          FetLive(Fet().ul);
+        }
+        FetchPopNews(Fet().ul);
+      }
+    }, 10);
+
+    setInterval(function () {
+      if (Fet().ul !== "") {
+        if (window.location.pathname.includes("/mana")) {
+          setLive(false);
+        } else {
+          FetLive(Fet().ul);
+        }
+      }
+    }, 60000);
+  }, []);
+
+  const responseGoogle = (response) => {
+    localStorage.setItem("loged", JSON.stringify(response.profileObj));
+    fetch(
+      Fet().ul +
+        "/bnk48/addFanMember?i=" +
+        JSON.parse(localStorage.getItem("loged")).googleId.toString() +
+        "&usname=" +
+        JSON.parse(localStorage.getItem("loged")).name.toString() +
+        "&email=" +
+        JSON.parse(localStorage.getItem("loged")).email.toString(),
+      {
+        method: "POST", // or 'PUT'
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.text())
+      .then((data) => {
+        if (data == "false") {
+          FetchKami(Fet().ul);
+          setLogin(true);
+          setLogLoad(false);
+          setOpen(false);
+        } else {
+          alert("System will be temporary error for a while. Please try again");
+          setLogLoad(false);
+          setMemDl(false);
+          setLogin(false);
+          localStorage.removeItem("loged");
+          setOpen(false);
+        }
+      })
+      .catch((error) => {
+        alert("System will be temporary error for a while. Please try again");
+        setLogLoad(false);
+        setMemDl(false);
+        setLogin(false);
+        localStorage.removeItem("loged");
+        setOpen(false);
+      });
+  };
+
+  const pageDirect = (link) => {
+    if (link.includes("https:") || link.includes("http:")) {
+      window.open(link, "_blank");
+    } else {
+      History.push(link);
+    }
+  };
+
+  const loginAction = (action) => {
+    let provider = null;
+    switch (action) {
+      case 1:
+        provider = new GoogleAuthProvider();
+        break;
+      case 2:
+        provider = new OAuthProvider("microsoft.com");
+        break;
+      case 3:
+        provider = new OAuthProvider("yahoo.com");
+        break;
+      default:
+        return;
+    }
+    setLogLoad(true);
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        fetch(Fet().ul + "/bnk48/checklogin?i=" + result.user.uid, {
+          method: "get",
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            setAnchorEl(null);
+            if (data == "true") {
+              localStorage.setItem("loged", JSON.stringify(result));
+              FetchKami(Fet().ul);
+            } else {
+              setLogLoad(false);
+              setLogin(false);
+              // deleteUser(result.user);
+              Swal.fire({
+                title: "User not found",
+                text: "This user don't be register to our system. please try again.",
+                icon: "error",
+              });
+            }
+          });
+      })
+      .catch((error) => {
+        // Handle error.
+        setAnchorEl(null);
+        setOpen(false);
+        setLogLoad(false);
+        setMemDl(false);
+        Swal.fire({
+          title: "Login error or canceled by user",
+          text: "For exclusive feature. You need to login Fan Space Membership.",
+          icon: "warning",
+        });
+      });
+  };
+
+  const errorlog = (response) => {
+    setLogLoad(false);
+    console.log(response);
+  };
+
+  const Signout = (response) => {
+    setLogLoad(false);
+    setMemDl(false);
+    setLogin(false);
+    localStorage.removeItem("loged");
+    localStorage.removeItem("i");
+    setOpen(false);
+    setKname("");
+    setKami("");
+    if (window.location.pathname == "/account") {
+      History.push("/");
+    }
+  };
+
+  const checkUser = () => {
+    if (window.localStorage.getItem("loged") != null) {
+      switch (JSON.parse(window.localStorage.getItem("loged")).providerId) {
+        case "google.com":
+          return "Google";
+        case "microsoft.com":
+          return "Microsoft";
+        case "yahoo.com":
+          return "Yahoo";
+        default:
+          break;
+      }
+    }
+    return "";
+  };
+
+  if (uri != "" && allDone) {
+    return (
+      <>
+      <Snackbar open={offline}  ModalProps={{ onBackdropClick: false }} anchorOrigin={{ vertical: 'top',
+    horizontal: 'center'}}>
+        <Alert severity="warning">
+          <CardHeader title="Reconnecting to service" subheader="You leave from platform just on minutes." />
+        </Alert>
+        </Snackbar>
+        {window.innerWidth >= 700 && (
+          <Slide
+            in={
+              localStorage.getItem("lowgraphic") == null && width > 1100
+                ? !open
+                : true
+            }
+            timeout={600}
+            direction="down">
+            <AppBar position="sticky" className="bnktheme app-barcurve">
+              <Toolbar>
+                {open == false && (
+                  <IconButton
+                    onClick={() => setOpen(true)}
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu">
+                    <MenuIcon />
+                  </IconButton>
+                )}
+                <div className="cur" onClick={() => History.push("/")}>
+                  <Typography variant="h5" className="title">
+                    BNK48 Fans Space
+                  </Typography>
+                </div>
+                <div className={cls.search + " mt-2"}>
+                  {width > 1200 && (
+                    <FormControlLabel
+                      className={login ? "pb-3" : ""}
+                      control={
+                        <Switch
+                          checked={Reduce}
+                          name="reduce"
+                          onChange={() => ReduceAction()}
+                          color="secondary"
+                        />
+                      }
+                      label={Reduce ? "Focus on Efficiency" : "Focus on Modern"}
+                    />
+                  )}
+                  {login && (
+                    <ListItemIcon
+                      onClick={() => setMemDl(true)}
+                      className={(width > 1200 ? "mt-2" : "") + " cur"}>
+                      {verify ? (
+                        <Badge
+                          overlap="circular"
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                          }}
+                          badgeContent={
+                            kamiimg != "" && kamiimg != "-" ? (
+                              <img
+                                src={kamiimg}
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title={'"' + kamin + '" is your Kami-Oshi'}
+                                className={
+                                  cls.sm +
+                                  " border border-white rounded-circle cir avatarlimit"
+                                }
+                              />
+                            ) : (
+                              ""
+                            )
+                          }>
+                          <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                        </Badge>
+                      ) : (
+                        <Badge
+                          overlap="circular"
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                          }}
+                          badgeContent={
+                            <WarningIcon className="text-warning" />
+                          }>
+                          <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                        </Badge>
+                      )}
+                    </ListItemIcon>
+                  )}
+                </div>
+              </Toolbar>
+            </AppBar>
+          </Slide>
+        )}
+
+        <Drawer
+          className={cls.drawer}
+          variant="temporary"
+          color="primary"
+          anchor="left"
+          open={open}
+          classes={{
+            paper: cls.drawerPaper,
+          }}>
+          <div className={cls.drawerHeader} position="fixed">
+            <IconButton onClick={() => setOpen(false)} size="large">
+              <CloseIcon />
+            </IconButton>
+          </div>
+          <Divider />
+          <d onClick={() => setOpen(false)}>
+            <ListItem
+              component={Link}
+              className={window.location.pathname == "/" ? "activeNav" : ""}
+              to="/"
+              button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/memberlist"
+              className={
+                window.location.pathname == "/memberlist" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Members" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/shihainin"
+              className={
+                window.location.pathname == "/shihainin" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <AccountCircleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Shihainin House" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/news"
+              className={window.location.pathname == "/news" ? "activeNav" : ""}
+              button>
+              <ListItemIcon>
+                <ListAltIcon />
+              </ListItemIcon>
+              <ListItemText primary="News" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/mssongkran48"
+              className={
+                window.location.pathname == "/mssongkran48" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <DonutSmallIcon />
+              </ListItemIcon>
+              <ListItemText primary="Ms Songkran 48 First Round (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/ge4"
+              className={window.location.pathname == "/ge4" ? "activeNav" : ""}
+              button>
+              <ListItemIcon>
+                <HowToVoteIcon />
+              </ListItemIcon>
+              <ListItemText primary="BNK48 16th Single General Election" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/livestream"
+              className={
+                window.location.pathname == "/livestream" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <LiveTvIcon className={spcLive ? "text-success" : ""} />
+              </ListItemIcon>
+              <ListItemText
+                primary="Special Live"
+                secondary={spcLive ? "Livestream is launching" : ""}
+              />
+            </ListItem>
+            <ListItem component={Link} to='/bnk48inmemories' className={window.location.pathname == '/bnk48inmemories' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <PanToolIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="BNK48 Graduation Gallery" secondary="Rewind in memories of graduated members of BNK48" />
+                </ListItem>
+            <ListItem
+              component={Link}
+              to="/originalcontent"
+              className={
+                window.location.pathname == "/originalcontent"
+                  ? "activeNav"
+                  : ""
+              }
+              button>
+              <ListItemIcon>
+                <SubscriptionsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Original Content" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/mv"
+              className={window.location.pathname == "/mv" ? "activeNav" : ""}
+              button>
+              <ListItemIcon>
+                <YouTubeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Music Video" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/event"
+              className={
+                window.location.pathname == "/event" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <EventIcon />
+              </ListItemIcon>
+              <ListItemText primary="Event Finder" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/music"
+              className={
+                window.location.pathname == "/music" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <MusicNoteIcon />
+              </ListItemIcon>
+              <ListItemText primary="Released album and single" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/officialupdate"
+              className={
+                window.location.pathname == "/officialupdate" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <LanguageIcon />
+              </ListItemIcon>
+              <ListItemText primary="Official Update" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/bma"
+              className={window.location.pathname == "/bma" ? "activeNav" : ""}
+              button>
+              <ListItemIcon>
+                <AirportShuttleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Please visit ... too (ฝาก...ด้วยนะ)" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/token"
+              className={
+                window.location.pathname == "/token" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <MonetizationOnIcon />
+              </ListItemIcon>
+              <ListItemText primary="Blockchain Technology" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/janken"
+              className={
+                window.location.pathname == "/janken" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <SlideshowIcon />
+              </ListItemIcon>
+              <ListItemText primary="BNK48 and CGM48 Janken Tournament 2023" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/requesthour"
+              className={
+                window.location.pathname == "/requesthour" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <TheatersIcon />
+              </ListItemIcon>
+              <ListItemText primary="BNK48 and CGM48 Request Hour 2022" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/api"
+              className={window.location.pathname == "/api" ? "activeNav" : ""}
+              button>
+              <ListItemIcon>
+                <CodeIcon />
+              </ListItemIcon>
+              <ListItemText primary="API" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/follow"
+              className={
+                window.location.pathname == "/follow" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <ThumbUpAltIcon />
+              </ListItemIcon>
+              <ListItemText primary="Follow and Support" />
+            </ListItem>
+            {!login && (
+              <ListItem
+                component={Link}
+                to="/register"
+                className={
+                  window.location.pathname == "/register" ? "activeNav" : ""
+                }
+                button>
+                <ListItemIcon>
+                  <AssignmentReturnedIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Register Membership"
+                  secondary="Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need"
+                />
+              </ListItem>
+            )}
+          </d>
+          <Divider />
+          <ListItem
+            onClick={() => {
+              setOpen(false);
+              Swal.fire({
+                title:
+                  "Region mode will enhance system performance. Current region connection has been referenced by IP address",
+                showDenyButton: true,
+                confirmButtonText: "View System Status",
+                denyButtonText: `Close`,
+                icon: "info",
+                iconColor: "rgb(203, 150, 194)",
+              }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  window.open("//cp-cpxdevstatus.vercel.app", "_blank");
+                }
+              });
+            }}
+            button>
+            <ListItemIcon>
+              <DnsIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Region: " + Fet().nme} />
+          </ListItem>
+          {loginLoad ? (
+            <ListItem onClick={() => setMemDl(true)} button>
+              <ListItemIcon>
+                <img
+                  src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg"
+                  width="40px"
+                />
+              </ListItemIcon>
+              <ListItemText primary="Signing in" />
+            </ListItem>
+          ) : (
+            <>
+              {!login ? (
+                <>
+                  <ListItem
+                    onClick={(e) => setAnchorEl(e.currentTarget)}
+                    button>
+                    <ListItemIcon>
+                      <VpnKeyIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary="Login Fan Space Membership"
+                      secondary="Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need"
+                    />
+                  </ListItem>
+                  <Menu
+                    id="lock-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={() => setAnchorEl(null)}>
+                    <MenuItem onClick={(e) => loginAction(1)}>
+                      Google Account
+                    </MenuItem>
+                    <MenuItem onClick={(e) => loginAction(2)}>
+                      Microsoft Account
+                    </MenuItem>
+                    <MenuItem onClick={(e) => loginAction(3)}>
+                      Yahoo Account
+                    </MenuItem>
+                  </Menu>
+                </>
+              ) : (
+                <ListItem onClick={() => setMemDl(true)} button>
+                  <ListItemIcon>
+                    {verify ? (
+                      <Badge
+                        overlap="circular"
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "right",
+                        }}
+                        badgeContent={
+                          kamiimg != "" && kamiimg != "-" ? (
+                            <img
+                              src={kamiimg}
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title={'"' + kamin + '" is your Kami-Oshi'}
+                              className={
+                                cls.sm +
+                                " border border-white rounded-circle cir avatarlimit"
+                              }
+                            />
+                          ) : (
+                            ""
+                          )
+                        }>
+                        <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                      </Badge>
+                    ) : (
+                      <Badge
+                        overlap="circular"
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "right",
+                        }}
+                        badgeContent={<WarningIcon className="text-warning" />}>
+                        <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                      </Badge>
+                    )}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={"You're logged in as " + checkUser() + " account"}
+                    secondary={localStorage.getItem("i")}
+                  />
+                </ListItem>
+              )}
+            </>
+          )}
+        </Drawer>
+        <div style={{ marginBottom: footerHeight + "px" }}>
+          <BasicSwitch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Home
+                  kamin={kamin}
+                  fet={Fet().ul}
+                  gp={Reduce}
+                  ImgThumb={ImgThumb}
+                  stream={stream}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/memberlist"
+              render={() => (
+                <MemberList
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/livestream"
+              render={() => (
+                <LiveCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/member/:c"
+              render={() => (
+                <MamSam
+                  fet={Fet().ul}
+                  kamio={kamin}
+                  setSec={(v) => setSec(v)}
+                  triggerUpdate={() => FetchKami(Fet().ul)}
+                  width={width}
+                  verify={verify}
+                />
+              )}
+            />
+            <Route
+              path="/news"
+              render={() => (
+                <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
+              )}
+            />
+            <Route
+              path="/shihainin"
+              render={() => (
+                <Shi
+                  fet={Fet().ul}
+                  kamio={kamin}
+                  setSec={(v) => setSec(v)}
+                  triggerUpdate={() => FetchKami(Fet().ul)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/anniversary"
+              render={() => (
+                <Anni fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
+              )}
+            />
+            <Route
+              path="/token"
+              render={() => (
+                <TokenCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/mv"
+              render={() => (
+                <MvCom
+                  gp={Reduce}
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/originalcontent"
+              render={() => (
+                <OriCom
+                  gp={Reduce}
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/event"
+              render={() => (
+                <EventFind
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                  kamin={kamin}
+                />
+              )}
+            />
+            <Route
+              path="/music"
+              render={() => (
+                <MusicCom
+                  gp={Reduce}
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/officialupdate"
+              render={() => (
+                <Offici
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/api"
+              render={() => (
+                <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
+              )}
+            />
+            <Route
+              path="/follow"
+              render={() => (
+                <FollowCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/bnk48inmemories"
+              render={() => (
+                <Graduated
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/requesthour"
+              render={() => (
+                <RequestCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/janken"
+              render={() => (
+                <JankenCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            {!login && (
+              <Route
+                path="/register"
+                render={() => (
+                  <RegisCom
+                    fet={Fet().ul}
+                    setSec={(v) => setSec(v)}
+                    width={width}
+                    triggerUpdate={() => FetchKami(Fet().ul)}
+                  />
+                )}
+              />
+            )}
+            <Route
+              path="/48group"
+              render={() => (
+                <Fenetwork
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/bma"
+              render={() => (
+                <BmaCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                  login={login}
+                />
+              )}
+            />
+            {login && (
+              <Route
+                path="/account"
+                render={() => (
+                  <Account
+                    fet={Fet().ul}
+                    setSec={(v) => setSec(v)}
+                    width={width}
+                    triggerUpdate={() => FetchKami(Fet().ul)}
+                  />
+                )}
+              />
+            )}
+
+            <Route
+              path="/ge3"
+              render={() => {
+                History.push("/ge4");
+              }}
+            />
+            <Route
+              path="/ge4"
+              render={() => (
+                <Ge4Com
+                  fet={Fet().ul}
+                  timesch={timesch}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/mana"
+              render={() => (
+                <GeMana
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/mssongkran48"
+              render={() => (
+                <MsSongkran
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              exact
+              render={() => <PageErr setSec={(v) => setSec(v)} width={width} />}
+            />
+          </BasicSwitch>
+
+          {window.innerWidth < 700 && (
+            <BottomNavigation
+              value={1}
+              style={{
+                position: "fixed",
+                bottom: 0,
+                zIndex: 1060,
+                width: "100%",
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20,
+                backgroundColor: "#f5d0f2",
+              }}>
+              <BottomNavigationAction
+                style={{ marginTop: -10 }}
+                onClick={() => History.goBack()}
+                icon={<ArrowBackIosIcon />}
+              />
+              <BottomNavigationAction
+                style={{
+                  width: 500,
+                  height: 80,
+                  marginTop: -16,
+                  backgroundColor: "#f5d0f2",
+                  borderRadius: "50%",
+                }}
+                onClick={() => setOpen(true)}
+                icon={
+                  <img
+                    width="100%"
+                    src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnklogo.png"
+                  />
+                }
+              />
+              <BottomNavigationAction
+                style={{ marginTop: kamiimg != "" && kamiimg != "-" ? -15 : 0 }}
+                icon={
+                  login ? (
+                    <ListItemIcon
+                      onClick={() => setMemDl(true)}
+                      className={"cur"}>
+                      {verify ? (
+                        <Badge
+                          overlap="circular"
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                          }}
+                          badgeContent={
+                            kamiimg != "" && kamiimg != "-" ? (
+                              <img
+                                src={kamiimg}
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title={'"' + kamin + '" is your Kami-Oshi'}
+                                className={
+                                  cls.sm +
+                                  " border border-white rounded-circle cir avatarlimit"
+                                }
+                              />
+                            ) : (
+                              ""
+                            )
+                          }>
+                          <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                        </Badge>
+                      ) : (
+                        <Badge
+                          overlap="circular"
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                          }}
+                          badgeContent={
+                            <WarningIcon className="text-warning" />
+                          }>
+                          <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                        </Badge>
+                      )}
+                    </ListItemIcon>
+                  ) : (
+                    <Badge
+                      overlap="circular"
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "right",
+                      }}
+                      style={{ marginTop: -10 }}>
+                      <Avatar alt={localStorage.getItem("i")} src={""} />
+                    </Badge>
+                  )
+                }
+              />
+            </BottomNavigation>
+          )}
+        </div>
+
+        <footer
+          className={"fixed-bottom text-center text-dark bg-light pt-2"}
+          style={{ paddingBottom: window.innerWidth < 700 ? 70 : 0 }}
+          ref={ref}>
+          <p style={{ fontSize: 12 }}>
+            Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
+            <br /> All BNK48 and CGM48 contents are licensed by Independent
+            Artist Management (iAM). These member images and all events poster
+            is objective for BNK48 supporting only.
+          </p>
+        </footer>
+
+        {localStorage.getItem("loged") != null && (
+          <Dialog
+            open={localStorage.getItem("loged") != null ? MemberDl : false}
+            onClose={() => setMemDl(false)}
+            fullWidth={true}
+            maxWidth="sm"
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description">
+            <DialogTitle id="alert-dialog-title">
+              Are you sure to sign-out
+            </DialogTitle>
+            <DialogContent>
+              {kamin != undefined && kamin != "" && kamin != "-" ? (
+                <ListItem
+                  onClick={() => {
+                    const last = window.location.href;
+                    History.push("/member/" + kamin.toLowerCase());
+                    if (last.includes("/member/")) {
+                      History.go(0);
+                    }
+                    setMemDl(false);
+                  }}
+                  button>
+                  <ListItemIcon>
+                  <Badge
+                      overlap="circular"
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                      color="error"
+                      className="mr-4"
+                      badgeContent={live ? 'LIVE' : null}
+                    >
+                    <img
+                      src={kamiimg}
+                      className={
+                        cls.lg +
+                        " border border-white rounded-circle cir avatarlimit"
+                      }
+                    />
+                    </Badge>
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={"Your Kami-Oshi is " + kamin + " BNK48"}
+                    secondary={
+                      newspop.length > 0 &&
+                      newspop.filter(
+                        (x) =>
+                          ((x.memtag.indexOf(kamin.toLowerCase()) > -1 ||
+                            x.memtag.indexOf("All") > -1 ||
+                            x.memtag.indexOf("ge") > -1) &&
+                            x.timerange[1] == 0) ||
+                          ((x.memtag.indexOf(kamin.toLowerCase()) > -1 ||
+                            x.memtag.indexOf("All") > -1 ||
+                            x.memtag.indexOf("ge") > -1) &&
+                            x.timerange[1] > 0 &&
+                            moment().unix() <= x.timerange[1])
+                      ).length > 0
+                        ? "Your Kami-Oshi have " +
+                          newspop.filter(
+                            (x) =>
+                              x.memtag.indexOf(kamin.toLowerCase()) > -1 ||
+                              x.memtag.indexOf("All") > -1 ||
+                              x.memtag.indexOf("ge") > -1
+                          ).length +
+                          " incoming event(s). Click here to check it!"
+                        : "Click here to see more description of your Kami-Oshi"
+                    }
+                  />
+                </ListItem>
+              ) : (
+                <ListItem button>
+                  <ListItemIcon>
+                    <Avatar src="" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="You don't have any Kami-Oshi"
+                    secondary="Please choose your member which you love only once person."
+                  />
+                </ListItem>
+              )}
+              {/* {tokenID != '' ? (
+           <ListItem onClick={() => {
+            navigator.clipboard.writeText(tokenID);
+            alert('Your Wallet code has copied to clipboard');
+           }} button>
+             <ListItemText primary={'Your Token balance' + (point < 0.01 && tokenID != '' ? ' (Your BNK token is insufficient)' : '')} secondary={point + ' Token (s)'} />
+             </ListItem>
+             ) : (
+               <>
+                 <ListItem>
+                       <ListItemText primary="Now you can also check BNK Token balance from this site" secondary='Please enter your iAM wallet code below in first time (Check it in iAM48 application)' />
+                       </ListItem>
+                <ListItem>
+                      <ListItemText primary={(<TextField value={survey} onChange={(e) => setSur(e.target.value)} fullWidth label="Enter your wallet code here" disabled={TokenLoad} />)} secondary={TokenLoad == false ? (<Button onClick={() => setTokenDialog()} variant="contained" className='mt-1' color='primary'>Add</Button>):(<img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" className='mt-2' width="40px" />)} />
+                </ListItem>
+               </>
+             )} */}
+              {kamin != "-" &&
+                memDate == moment.unix(time).local().format("YYYY-M-DD") && (
+                  <ListItem className="text-muted" button>
+                    <ListItemText
+                      primary={
+                        "Today is " +
+                        kamin +
+                        " Birthday. Click her profile to view info and bless her on Twitter."
+                      }
+                    />
+                  </ListItem>
+                )}
+              <ListItem className="text-info" button>
+                <ListItemText
+                  primary="Feature will be unavaliable when you not sign in"
+                  secondary="Choose and share your Kami-Oshi member, Fandom group view and add new event"
+                />
+              </ListItem>
+              {!verify && (
+                <ListItem className="text-danger" button>
+                  <ListItemText
+                    primary={"Your account is unverified"}
+                    secondary="For keeping your account secure, please confirm your Fan Space Membership account to enjoy more feature of BNK48 Fan Space in 'Account Studio'"
+                  />
+                </ListItem>
+              )}
+            </DialogContent>
+            <DialogActions>
+              <Button
+                onClick={(e) => {
+                  Signout(e);
+                }}
+                className="text-danger">
+                Sign out
+              </Button>
+              <Button
+                onClick={(e) => {
+                  History.push("/account");
+                  setMemDl(false);
+                  setOpen(false);
+                }}
+                className="text-dark">
+                Account Studio
+              </Button>
+              <Button
+                onClick={(e) => {
+                  setMemDl(false);
+                }}
+                className="text-dark">
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+        )}
+
+        {newspop.length > 0 &&
+          window.location.pathname != "/mana" &&
+          window.location.pathname != "/member" && (
+            <Dialog
+              open={EvtPop}
+              onClose={() => {
+                setpopup(false);
+                sessionStorage.setItem("ads", "i");
+              }}
+              maxWidth="md"
+              scroll="body"
+              TransitionComponent={Grow}
+              transitionDuration={500}>
+              {newspop.length > 1 ? (
+                <Carousel
+                  interval={
+                    newspop[cro].video != undefined && newspop[cro].video != ""
+                      ? 180000
+                      : 8000
+                  }
+                  onChange={(now, pr) => setCro(now)}>
+                  {newspop.map((item, i) => (
+                    <>
+                      <DialogTitle id="alert-dialog-title">
+                        {item.title.includes("birthday")
+                          ? "Birthday Celebration"
+                          : "Advertisement"}{" "}
+                        - {item.title}
+                      </DialogTitle>
+                      <DialogContent>
+                        <CardContent>
+                          {item.video != undefined && item.video != "" ? (
+                            <CardMedia
+                              src={item.video}
+                              component="iframe"
+                              width={"100%"}
+                              height={window.innerWidth * 0.4}
+                            />
+                          ) : (
+                            <CardMedia
+                              src={item.src}
+                              component="img"
+                              width={80}
+                            />
+                          )}
+                          <Typography
+                            className="mt-3"
+                            variant="body2"
+                            component="p">
+                            {item.desc}
+                          </Typography>
+                          {item.timerange[0] > 0 && item.timerange[1] == 0 && (
+                            <p className="mt-1 mb-3">
+                              This event has been started since{" "}
+                              <b>
+                                {moment
+                                  .unix(item.timerange[0])
+                                  .format("ddd DD MMMM yyyy")}
+                              </b>
+                            </p>
+                          )}
+                          {item.timerange[0] > 0 &&
+                            item.timerange[1] > 0 &&
+                            item.timerange[0] < item.timerange[1] && (
+                              <p className="mt-1 mb-3">
+                                This event has been started in{" "}
+                                <b>
+                                  {moment
+                                    .unix(item.timerange[0])
+                                    .format("ddd DD MMMM yyyy H:mm A")}
+                                </b>{" "}
+                                to{" "}
+                                <b>
+                                  {moment
+                                    .unix(item.timerange[1])
+                                    .format("ddd DD MMMM yyyy H:mm A")}
+                                </b>
+                              </p>
+                            )}
+
+                          <a
+                            onClick={() => pageDirect(item.link)}
+                            className="mt-1 hoversense">
+                            Reference Link
+                          </a>
+                          <br />
+                          {item.place != "" && item.place.includes("IAMP") && (
+                            <a
+                              href={item.placeobj.ref}
+                              target="_blank"
+                              className="mt-1"
+                              data-toggle="tooltip"
+                              data-placement="down"
+                              title={item.placeobj.placeDesc}>
+                              <LocationOnIcon /> Location:{" "}
+                              {item.placeobj.placeName +
+                                ", " +
+                                item.placeobj.placeProvince}
+                            </a>
+                          )}
+                          {item.place != "" && !item.place.includes("IAMP") && (
+                            <a
+                              href={item.place}
+                              target="_blank"
+                              className="mt-1">
+                              <LocationOnIcon /> Where is this event?
+                            </a>
+                          )}
+                          <br />
+                          {item.memtag.length > 0 && (
+                            <div>
+                              Member included{" "}
+                              {item.memtag.map((nametag, ii) => (
+                                <a
+                                  className="hoversense"
+                                  onClick={() =>
+                                    nametag == "All" || nametag == "ge"
+                                      ? History.push("/memberlist")
+                                      : nametag.includes("gen")
+                                      ? History.push(
+                                          "/memberlist?filter=gen&val=" +
+                                            nametag.replace("gen", "")
+                                        )
+                                      : nametag.includes("team_")
+                                      ? History.push(
+                                          "/memberlist?filter=team&val=" +
+                                            nametag.replace("team_", "")
+                                        )
+                                      : History.push("/member/" + nametag)
+                                  }>
+                                  {nametag == "ge"
+                                    ? "All 48 winners of BNK48 12th Single Senbutsu General Election"
+                                    : nametag.includes("gen") === true
+                                    ? "BNK48 Generation " +
+                                      nametag.replace("gen", "")
+                                    : nametag.includes("team_")
+                                    ? "Team " +
+                                      nametag.replace("team_", "").toUpperCase()
+                                    : ii == 0
+                                    ? capitalizeFirstLetter(nametag)
+                                    : ", " + capitalizeFirstLetter(nametag)}
+                                </a>
+                              ))}
+                            </div>
+                          )}
+                        </CardContent>
+                      </DialogContent>
+                    </>
+                  ))}
+                </Carousel>
+              ) : (
+                <>
+                  <DialogTitle id="alert-dialog-title">
+                    {newspop[0].title.includes("birthday")
+                      ? "Birthday Celebration"
+                      : "Advertisement"}{" "}
+                    - {newspop[0].title}
+                  </DialogTitle>
+                  <DialogContent>
+                    <CardContent>
+                      {newspop[0].video != undefined &&
+                      newspop[0].video != "" ? (
+                        <CardMedia
+                          src={newspop[0].video}
+                          component="iframe"
+                          width={80}
+                        />
+                      ) : (
+                        <CardMedia
+                          src={newspop[0].src}
+                          component="img"
+                          width={80}
+                        />
+                      )}
+                      <Typography
+                        className="mt-3 tw"
+                        variant="body2"
+                        component="p">
+                        {newspop[0].desc}
+                      </Typography>
+
+                      {newspop[0].timerange[0] > 0 &&
+                        newspop[0].timerange[1] == 0 && (
+                          <p className="mt-1 mb-3">
+                            This event has been started since{" "}
+                            <b>
+                              {moment
+                                .unix(newspop[0].timerange[0])
+                                .format("ddd DD MMMM yyyy")}
+                            </b>
+                          </p>
+                        )}
+                      {newspop[0].timerange[0] > 0 &&
+                        newspop[0].timerange[1] > 0 &&
+                        newspop[0].timerange[0] < newspop[0].timerange[1] && (
+                          <p className="mt-1 mb-3">
+                            This event has been started in{" "}
+                            <b>
+                              {moment
+                                .unix(newspop[0].timerange[0])
+                                .format("ddd DD MMMM yyyy H:mm A")}
+                            </b>{" "}
+                            to{" "}
+                            <b>
+                              {moment
+                                .unix(newspop[0].timerange[1])
+                                .format("ddd DD MMMM yyyy H:mm A")}
+                            </b>
+                          </p>
+                        )}
+                      <a
+                        onClick={() => pageDirect(newspop[0].link)}
+                        className="mt-1 hoversense">
+                        Reference Link
+                      </a>
+                      <br />
+                      {newspop[0].place != "" &&
+                        newspop[0].place.includes("IAMP") && (
+                          <a
+                            href={newspop[0].placeobj.ref}
+                            target="_blank"
+                            className="mt-1"
+                            data-toggle="tooltip"
+                            data-placement="down"
+                            title={newspop[0].placeobj.placeDesc}>
+                            <LocationOnIcon /> Location:{" "}
+                            {newspop[0].placeobj.placeName +
+                              ", " +
+                              newspop[0].placeobj.placeProvince}
+                          </a>
+                        )}
+                      {newspop[0].place != "" &&
+                        !newspop[0].place.includes("IAMP") && (
+                          <a
+                            href={newspop[0].place}
+                            target="_blank"
+                            className="mt-1">
+                            <LocationOnIcon /> Where is this event?
+                          </a>
+                        )}
+                      {newspop[0].memtag.length > 0 && (
+                        <div>
+                          Member included{" "}
+                          {newspop[0].memtag.map((nametag, ii) => (
+                            <a
+                              className="hoversense"
+                              onClick={() =>
+                                nametag == "All" || nametag == "ge"
+                                  ? History.push("/memberlist")
+                                  : nametag.includes("gen")
+                                  ? History.push(
+                                      "/memberlist?filter=gen&val=" +
+                                        nametag.replace("gen", "")
+                                    )
+                                  : nametag.includes("team_")
+                                  ? History.push(
+                                      "/memberlist?filter=team&val=" +
+                                        nametag.replace("team_", "")
+                                    )
+                                  : History.push("/member?name=" + nametag)
+                              }>
+                              {nametag == "ge"
+                                ? "All 48 winners of BNK48 12th Single Senbutsu General Election"
+                                : ii == 0
+                                ? capitalizeFirstLetter(nametag)
+                                : nametag.includes("gen")
+                                ? "BNK48 Generation " +
+                                  nametag.replace("gen", "")
+                                : nametag.includes("team_")
+                                ? "Team " +
+                                  nametag.replace("team_", "").toUpperCase()
+                                : ", " + capitalizeFirstLetter(nametag)}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </CardContent>
+                  </DialogContent>
+                </>
+              )}
+
+              <DialogActions>
+                <Button
+                  onClick={() => {
+                    setpopup(false);
+                  }}
+                  className="text-dark">
+                  Close
+                </Button>
+              </DialogActions>
+            </Dialog>
+          )}
+      </>
+    );
+  }
+  return (
+    <div className="container mt-5 mb-5">
+      {adsClose && (
+        <Fab
+          onClick={() => setAllDone(true)}
+          className={cls.fab}
+          color="primary">
+          Skip
+        </Fab>
+      )}
+      {width > 900 ? (
+        <div className="row">
+          <div data-aos="flip-right">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/kissme!.jpg"
+              width="100%"
+            />
+          </div>
+          <Grow in={uri != "" && geready ? true : false} timeout={1000}>
+            <div className={cls.fabButton}>
+              <Alert severity="info">
+                <AlertTitle>
+                  BNK48 16th Single "Kiss Me" has been out on music streaming
+                  platform. And Music Video on Youtube.
+                </AlertTitle>
+                Double click/tap here on image or wait 10 seconds to skip this
+                page
+              </Alert>
+            </div>
+          </Grow>
+          <Grow in={uri != "" && !geready ? true : false} timeout={1000}>
+            <div className={cls.fabButton}>
+              <Alert severity="info">
+                <AlertTitle>
+                  BNK48 16th Single "Kiss Me" has been out on music streaming
+                  platform. And Music Video on Youtube.
+                </AlertTitle>
+                Double click/tap here on image or wait 10 seconds to skip this
+                page
+              </Alert>
+            </div>
+          </Grow>
+        </div>
+      ) : (
+        <div className="row">
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/1.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/2.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/3.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/4.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/5.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/6.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/7.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/8.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/9.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/10.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/11.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/12.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/13.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/14.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/15.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100"></div>
+          <div className="col" data-aos="flip-up">
+            <img
+              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/16.png"
+              width="100%"
+            />
+          </div>
+          <div className="w-100 mt-5 mb-5"></div>
+
+          <Grow in={uri != "" && geready ? true : false} timeout={1000}>
+            <div className={cls.fabButton}>
+              <Alert severity="info">
+                <AlertTitle>
+                  BNK48 16th Single "Kiss Me" has been out on music streaming
+                  platform. And Music Video on Youtube.
+                </AlertTitle>
+                Double click/tap here on image or wait 10 seconds to skip this
+                page
+              </Alert>
+            </div>
+          </Grow>
+          <Grow in={uri != "" && !geready ? true : false} timeout={1000}>
+            <div className={cls.fabButton}>
+              <Alert severity="info">
+                <AlertTitle>
+                  BNK48 16th Single "Kiss Me" has been out on music streaming
+                  platform. And Music Video on Youtube.
+                </AlertTitle>
+                Double click/tap here on image or wait 10 seconds to skip this
+                page
+              </Alert>
+            </div>
+          </Grow>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;

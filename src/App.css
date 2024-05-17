@@ -1,0 +1,270 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* { box-sizing: border-box; }
+.video-background {
+  background: #000;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -99;
+}
+.video-background-mob {
+  position: fixed;
+  width: 10%;
+  z-index: -99;
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground { height: 300%; top: -100%; }
+  .cover { height: 300%; top: -100%; }
+  .video-foreground-mob { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground { width: 300%; left: -100%; }
+  .cover { height: 300%; top: -100%; }
+  .video-foreground-mob { height: 300%; top: -100%; }
+}
+.cover{
+  height: 900px;
+}
+@media only screen and (max-width: 600px) {
+  .cover{
+    height: 0px;
+  }
+}
+.stage{
+  background-color: rgb(214, 214, 214);
+}
+
+.bnktheme{
+  background-color: rgb(203, 150, 194) !important;
+}
+
+.bnktext{
+  color: rgb(203, 150, 194) !important;
+}
+
+.grayimg {
+  opacity: 0.7;
+}
+
+iframe[id*="twitter-widget"] {
+  width: 500px !important; 
+}
+@media only screen and (max-width: 600px) {
+  iframe[id*="twitter-widget"] {
+    width: 100% !important; 
+  }
+}
+
+.fixedheader{
+  object-fit: cover;
+  overflow: auto;
+}
+
+.cir {
+  border-radius: 50%;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 700px;
+}
+
+.border-5 {
+  border-width:3px !important;
+}
+
+.nl {
+  white-space: pre-line
+}
+
+.app-barcurve {
+  border-bottom-right-radius: 18px !important;
+  border-bottom-left-radius: 18px !important;
+}
+
+.swal2-container {
+  z-index: 2147483647 !important;
+  width: 100vw !important;
+}
+
+.cur{
+  cursor: pointer;
+}
+.pt-10{
+  margin-top: 5% !important;
+}
+.tw{
+  white-space: pre-line !important;
+}
+.activeNav{
+  background-color: rgb(203, 150, 194) !important;
+}
+.centerGE{
+  background-color: gold;
+  color: #000;
+}
+.senGE{
+  background-color: lightblue;
+  color: #fff;
+}
+.nextGE{
+  background-color: limegreen;
+  color: #fff;
+}
+.avatarlimit{
+  object-fit:contain;
+}
+
+
+@keyframes up-right {
+  0% {
+      transform: scale(1);
+      opacity: .0
+  }
+  50% {
+      transform: scale (1, 5);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(1);
+      opacity: .0;
+  }
+}
+.circleload {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  opacity: .0;
+}
+.redload {
+  background-color: red;
+  -webkit-animation: up-right 1.5s infinite;
+  -moz-animation: up-right 1.5s infinite;
+  -o-animation: up-right 1.5s infinite;
+  animation: up-right 1.5s infinite;
+}
+
+
+/* .rank3 {
+  margin-top: 15% !important;
+  margin-bottom: 5% !important;
+} */
+.cardtrans {
+  background-color: transparent !important;
+  backdrop-filter: blur(20px);
+}
+.modcontain{
+  width: 100%;
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 90%;
+}
+
+
+.ripple {
+  background-color: #000d80;
+}
+
+.ripple:before,
+.ripple:after {
+  content: '';
+  display: block;
+  position: absolute;
+  border: 1px solid #21c500;
+}
+
+
+.ripple:before {
+  animation: ripple 2s linear infinite;
+}
+
+.ripple:after {
+  animation: ripple 2s linear 1s infinite;
+}
+
+@keyframes ripple{
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); opacity:1; }
+  100% { transform: scale(1.6); opacity:0; }
+}
+
+.zoomx {
+  transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.zoomx:hover {
+  transform: scale(1.6);
+}
+
+.map-container {
+  height: 700px;
+  }
+
+  @media only screen and (max-width: 700px) {
+    .map-container {
+      height: 400px;
+      }
+  }
+
+  .hoversense{
+    color: rgb(203, 150, 194);
+  }
+  .hoversense:hover{
+    color: rgb(133, 1, 111);
+  }
+  .chartfixed{
+    margin-top: -80px !important;
+  }
+  .MuiBadge-colorError{
+    margin-top: -10px !important;
+  }

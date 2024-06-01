@@ -129,7 +129,7 @@ const drawerWidth = 240;
 const Client =
   "961896647339-roenm2ee6i60ed2rhbe2sqee0unlqj0f.apps.googleusercontent.com";
 
-const anni = '01-06';
+const anni = '02-06';
 
 const fwoptions = {
   explosion: 5,

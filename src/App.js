@@ -12,6 +12,7 @@ import "aos/dist/aos.css";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 import Snowfall from "react-snowfall";
 import AOS from "aos";
+import { Fireworks } from 'fireworks-js/dist/react'
 
 import {
   GoogleAuthProvider,
@@ -128,7 +129,22 @@ const drawerWidth = 240;
 const Client =
   "961896647339-roenm2ee6i60ed2rhbe2sqee0unlqj0f.apps.googleusercontent.com";
 
-const iiwakelaunch = 1677402000;
+const anni = '01-06';
+
+const fwoptions = {
+  explosion: 5,
+  intensity:1,
+  traceSpeed: 1.05
+}
+
+const fwstyle = {
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  position: 'fixed',
+  background: 'transperent'
+}
 
 const useStyles = makeStyles((theme) => ({
   sm: {
@@ -716,9 +732,27 @@ function App() {
     return "";
   };
 
+  function ordinal_suffix_of(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
+
   if (uri != "" && allDone) {
     return (
       <>
+      {moment().format('DD-MM') == anni && (
+      <Fireworks options={fwoptions} style={fwstyle} />
+      )}
       <Snackbar open={offline}  ModalProps={{ onBackdropClick: false }} anchorOrigin={{ vertical: 'top',
     horizontal: 'center'}}>
         <Alert severity="warning">
@@ -747,7 +781,7 @@ function App() {
                 )}
                 <div className="cur" onClick={() => History.push("/")}>
                   <Typography variant="h5" className="title">
-                    BNK48 Fans Space
+                    {moment().format('DD-MM') == anni ? "BNK48 " + ordinal_suffix_of(new Date().getFullYear() - 2017) + ' Anniversary' : 'BNK48 Fans Space'}
                   </Typography>
                 </div>
                 <div className={cls.search + " mt-2"}>

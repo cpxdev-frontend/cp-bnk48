@@ -134,7 +134,7 @@ const anni = '01-06';
 const fwoptions = {
   explosion: 5,
   intensity:1,
-  traceSpeed: 1.05
+  traceSpeed: 1.6
 }
 
 const fwstyle = {

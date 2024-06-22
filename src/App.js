@@ -87,7 +87,7 @@ import MusicNoteIcon from "@material-ui/icons/MusicNote";
 import TheatersIcon from "@material-ui/icons/Theaters";
 import AssignmentReturnedIcon from "@material-ui/icons/AssignmentReturned";
 import SlideshowIcon from "@material-ui/icons/Slideshow";
-import PartyModeIcon from "@material-ui/icons/PartyMode";
+import SportsIcon from '@material-ui/icons/Sports';
 import AirportShuttleIcon from "@material-ui/icons/AirportShuttle";
 
 import Home from "./component/home";
@@ -908,6 +908,15 @@ function App() {
                 <ListAltIcon />
               </ListItemIcon>
               <ListItemText primary="News" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              onClick={() => window.open('https://cp-nekowar.pages.dev')}
+              button>
+              <ListItemIcon>
+                <SportsIcon />
+              </ListItemIcon>
+              <ListItemText primary="BNK48 and CGM48 3rd Sport Day - Neko War" secondary='External Link: https://cp-nekowar.pages.dev' />
             </ListItem>
             <ListItem
               component={Link}

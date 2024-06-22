@@ -23,7 +23,7 @@ var reg = 'Loading';
 //       }
 //     }
 // });
-ul = 'https://cpxdev-w7d4.onrender.com'
+ul = 'https://cpxdevweb.onrender.com'
         reg = 'Worldwide'
 
 function Flowup() {

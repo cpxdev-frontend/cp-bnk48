@@ -37,7 +37,7 @@ const Memberlist = ({fet, setSec, width, login}) => {
           maxZoom:20,
           minZoom: 8
           });
-          fetch('https://cpxdev-w7d4.onrender.com/bnk48/getbmaproject',{
+          fetch('https://cpxdevweb.onrender.com/bnk48/getbmaproject',{
             method: 'post'
           })
           .then(response => response.json())

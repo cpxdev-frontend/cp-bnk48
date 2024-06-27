@@ -303,7 +303,7 @@ const SongChart = ({ fet, setSec, width }) => {
           )}
         </div>
       </div>
-      <CardHeader className="mt-3" title="1st Round Result" />
+      {/* <CardHeader className="mt-3" title="1st Round Result" />
       <TableContainer>
         <Table stickyHeader aria-label="simple table">
           <caption className="text-right">
@@ -329,7 +329,7 @@ const SongChart = ({ fet, setSec, width }) => {
               <TableCell align="right">Win Rate (%)</TableCell>
             </TableRow>
           </TableHead>
-          {/* {data != null && bnk.length > 0 && cgm.length > 0 ? (
+          {data != null && bnk.length > 0 && cgm.length > 0 ? (
             data.list.map((item, i) => (
               <TableBody
                 key={item.header + item.desc}
@@ -423,7 +423,7 @@ const SongChart = ({ fet, setSec, width }) => {
         </Table>
       </TableContainer> */}
 
-      <CardHeader className="mt-3" title="Final Round Result" />
+      <CardHeader className="mt-3" title="Official Result" />
       <TableContainer>
         <Table stickyHeader aria-label="simple table">
           <caption className="text-right">

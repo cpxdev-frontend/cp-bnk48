@@ -901,16 +901,6 @@ function App() {
             </ListItem>
             <ListItem
               component={Link}
-              to="/news"
-              className={window.location.pathname == "/news" ? "activeNav" : ""}
-              button>
-              <ListItemIcon>
-                <ListAltIcon />
-              </ListItemIcon>
-              <ListItemText primary="News" />
-            </ListItem>
-            <ListItem
-              component={Link}
               onClick={() => window.open('https://cp-nekowar.pages.dev')}
               button>
               <ListItemIcon>

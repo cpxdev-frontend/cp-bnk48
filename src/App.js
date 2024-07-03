@@ -88,6 +88,7 @@ import TheatersIcon from "@material-ui/icons/Theaters";
 import AssignmentReturnedIcon from "@material-ui/icons/AssignmentReturned";
 import SlideshowIcon from "@material-ui/icons/Slideshow";
 import SportsIcon from '@material-ui/icons/Sports';
+import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import AirportShuttleIcon from "@material-ui/icons/AirportShuttle";
 
 import Home from "./component/home";
@@ -898,6 +899,15 @@ function App() {
                 <AccountCircleIcon />
               </ListItemIcon>
               <ListItemText primary="Shihainin House" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              onClick={() => window.open('https://lookerstudio.google.com/reporting/c6754958-49ba-4442-ad42-bb0880492129')}
+              button>
+              <ListItemIcon>
+                <FlightTakeoffIcon />
+              </ListItemIcon>
+              <ListItemText primary="365-Nichi no Kamihikouki 2024 – Final Announcement" secondary='External Link: Google Looker Studio' />
             </ListItem>
             <ListItem
               component={Link}

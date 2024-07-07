@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
 
   const Streamchannel = [
     {
+        label: 'KaofrangFie LIVE',
+        value: '1',
+    },
+    {
         label: 'BNK48 LIVE',
         value: '2',
     },

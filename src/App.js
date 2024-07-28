@@ -919,15 +919,6 @@ function App() {
             </ListItem>
             <ListItem
               component={Link}
-              onClick={() => window.open('https://cp-nekowar.pages.dev')}
-              button>
-              <ListItemIcon>
-                <SportsIcon />
-              </ListItemIcon>
-              <ListItemText primary="BNK48 and CGM48 3rd Sport Day - Neko War" secondary='External Link: https://cp-nekowar.pages.dev' />
-            </ListItem>
-            <ListItem
-              component={Link}
               to="/mssongkran48"
               className={
                 window.location.pathname == "/mssongkran48" ? "activeNav" : ""
@@ -2064,7 +2055,7 @@ function App() {
         <div className="row">
           <div data-aos="flip-right">
             <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/kissme!.jpg"
+              src="https://pbs.twimg.com/media/GTguFo9aoAAk9Po?format=jpg&name=4096x4096"
               width="100%"
             />
           </div>
@@ -2072,8 +2063,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 16th Single "Kiss Me" has been out on music streaming
-                  platform. And Music Video on Youtube.
+                BNK48 17th Single "Borderless" has been out on music streaming
+                platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page
@@ -2084,8 +2075,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 16th Single "Kiss Me" has been out on music streaming
-                  platform. And Music Video on Youtube.
+                BNK48 17th Single "Borderless" has been out on music streaming
+                platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page
@@ -2095,124 +2086,18 @@ function App() {
         </div>
       ) : (
         <div className="row">
-          <div className="col" data-aos="flip-up">
+          <div className="col" data-aos="fade-in">
             <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/1.png"
+              src="https://pbs.twimg.com/media/GTktNdabgAAD04a?format=jpg&name=large"
               width="100%"
             />
           </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/2.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/3.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/4.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/5.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/6.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/7.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/8.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/9.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/10.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/11.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/12.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/13.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/14.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/15.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100"></div>
-          <div className="col" data-aos="flip-up">
-            <img
-              src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/mobile/16.png"
-              width="100%"
-            />
-          </div>
-          <div className="w-100 mt-5 mb-5"></div>
 
           <Grow in={uri != "" && geready ? true : false} timeout={1000}>
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 16th Single "Kiss Me" has been out on music streaming
+                  BNK48 17th Single "Borderless" has been out on music streaming
                   platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
@@ -2224,8 +2109,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 16th Single "Kiss Me" has been out on music streaming
-                  platform. And Music Video on Youtube.
+                BNK48 17th Single "Borderless" has been out on music streaming
+                platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page

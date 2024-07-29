@@ -16,7 +16,7 @@ import { Typography, ListItem, Zoom, ListItemText,
 
 // const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/16thsinggrand.jpg'
 // const defaultvideo = 'https://www.youtube.com/embed/O7mtKDllAg0?autoplay=1&mute=1&controls=0&loop=1&playlist=O7mtKDllAg0'
-const defaultTheme = 'https://pbs.twimg.com/media/GRo6e9rbMAQnBhL?format=webp&name=large'
+const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/bnk17thsing.png'
 const defaultvideo = 'https://www.youtube.com/embed/tTxaboU2wYQ?autoplay=1&mute=1&controls=0&loop=1&playlist=tTxaboU2wYQ'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
     const History = useHistory()

@@ -217,7 +217,7 @@ const Memberlist = ({ fet, setSec, width }) => {
                 </Zoom>
                 <Grid item xs={12}>
                     {Loaded ? (
-                        <Grid container className='mt-3 justify-content-center' spacing={2}>
+                        <Grid container className='mt-3 justify-content-center' spacing={0}>
                             {
                                 mem.length > PER_PAGE && (
                                     <div className='col-md-12 d-flex justify-content-center mb-3'>

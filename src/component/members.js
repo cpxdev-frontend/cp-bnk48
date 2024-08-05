@@ -34,6 +34,10 @@ const Memberlist = ({ fet, setSec, width }) => {
     let _DATA = usePagination(mem, PER_PAGE);
 
     const handleChange = (e, p) => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
         setPagin(p);
         _DATA.jump(p);
     };

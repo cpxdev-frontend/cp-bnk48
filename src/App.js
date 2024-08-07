@@ -292,13 +292,13 @@ function App() {
     }
   });
 
-  React.useEffect(() => {
-    const newConnection = new HubConnectionBuilder()
-      .withUrl("https://cpxdevweb.onrender.com/status")
-      .build();
+  // React.useEffect(() => {
+  //   const newConnection = new HubConnectionBuilder()
+  //     .withUrl("https://cpxdevweb.onrender.com/status")
+  //     .build();
 
-    setConnection(newConnection);
-  }, [con]);
+  //   setConnection(newConnection);
+  // }, [con]);
 
   React.useEffect(() => {
     if (MemberDl && kamin != "-" && kamin != "") {

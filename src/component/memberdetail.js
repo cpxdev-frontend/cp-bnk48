@@ -462,7 +462,7 @@ function capitalizeFirstLetter(string) {
         }
 
         React.useEffect(() => {
-            AOS.init({ duration: 1000 });
+            // AOS.init({ duration: 1000 });
             document.body.scrollTop = document.documentElement.scrollTop = 0;
           
             if (c != null && c != "") {

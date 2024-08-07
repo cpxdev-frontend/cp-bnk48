@@ -462,7 +462,7 @@ function capitalizeFirstLetter(string) {
         }
 
         React.useEffect(() => {
-            AOS.init({ duration: 1000 });
+            // AOS.init({ duration: 1000 });
             document.body.scrollTop = document.documentElement.scrollTop = 0;
           
             if (c != null && c != "") {
@@ -712,7 +712,7 @@ function capitalizeFirstLetter(string) {
         </Alert>
         </Snackbar>
 
-            <div className="pt-5 pb-2">
+            <div className="pt-5 pb-2" data-aos="zoom-in" data-aos-duration="300">
                 <h3 className={width > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' BNK48' : 'Fetching Header'}</h3>
                 <Breadcrumbs className={width > 600 ? ' ml-5' : ' ml-3'} aria-label="breadcrumb">
                     <Link color="inherit" onClick={() => History.push("/memberlist")}>
@@ -730,13 +730,11 @@ function capitalizeFirstLetter(string) {
                             </Fade>
                             <Card className={(width > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"} key={i}>
                             <div className={width > 1600 ? 'col-md-3 mb-1' : 'col-lg-3 mb-1'}>
-                                <Zoom in={true} timeout={600} style={{ transitionDelay: 0}}>
-                                        <div className='p-3 pt-5'>
-                                        <Avatar src={item.img} style={{width: '100%', height: '100%'}} />
-                                        </div>
-                                </Zoom>
+                            <div className='p-3 pt-5' data-aos="zoom-in" data-aos-duration="600">
+                               <Avatar src={item.img} style={{width: '100%', height: '100%'}} />
                             </div>
-                            <Fade in={true} timeout={1200} style={{ transitionDelay: 600}}>
+                            </div>
+                            <div data-aos="fade-in" data-aos-duration="1200">
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                                     </h4>
@@ -836,7 +834,7 @@ function capitalizeFirstLetter(string) {
                                       </div>
                                      )}
                                 </div>
-                        </Fade>
+                        </div>
                     </Card>
  
 

@@ -19,7 +19,7 @@ const Contact = ({fet, setSec, width}) => {
         {width > 700 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://www.bnk48.com/data/Slidebanners/54/img_resize/110714hnqsu7.jpg" width={window.innerWidth} />
+           <img src="https://www.bnk48.com/data/Slidebanners/55/img_resize/015217egklt8.png" width={window.innerWidth} />
               </Fade>
       </div>
         )}

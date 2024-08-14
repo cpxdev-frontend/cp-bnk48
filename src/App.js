@@ -1258,7 +1258,7 @@ function App() {
         </Drawer>
         <div style={{ marginBottom: footerHeight + "px" }}>
           <TransitionGroup>
-            <CSSTransition timeout={600} classNames="fade" key={location.key}>
+            <CSSTransition timeout={400} classNames="fade" key={location.key}>
               <BasicSwitch>
                 <Route
                   exact

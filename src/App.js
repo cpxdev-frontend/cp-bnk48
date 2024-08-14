@@ -14,7 +14,6 @@ import { HubConnectionBuilder } from "@microsoft/signalr";
 import Snowfall from "react-snowfall";
 import AOS from "aos";
 import { Fireworks } from "fireworks-js/dist/react";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import {
   GoogleAuthProvider,
@@ -1257,297 +1256,279 @@ function App() {
           )}
         </Drawer>
         <div style={{ marginBottom: footerHeight + "px" }}>
-          <TransitionGroup>
-            <CSSTransition timeout={500} classNames="fade" key={location.key}>
-              <BasicSwitch>
-                <Route
-                  exact
-                  path="/"
-                  render={() => (
-                    <Home
-                      kamin={kamin}
-                      fet={Fet().ul}
-                      gp={Reduce}
-                      ImgThumb={ImgThumb}
-                      stream={stream}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+          <BasicSwitch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Home
+                  kamin={kamin}
+                  fet={Fet().ul}
+                  gp={Reduce}
+                  ImgThumb={ImgThumb}
+                  stream={stream}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/memberlist"
-                  render={() => (
-                    <MemberList
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/memberlist"
+              render={() => (
+                <MemberList
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/livestream"
-                  render={() => (
-                    <LiveCom
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/livestream"
+              render={() => (
+                <LiveCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/member/:c"
-                  render={() => (
-                    <MamSam
-                      fet={Fet().ul}
-                      kamio={kamin}
-                      setSec={(v) => setSec(v)}
-                      triggerUpdate={() => FetchKami(Fet().ul)}
-                      width={width}
-                      verify={verify}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/member/:c"
+              render={() => (
+                <MamSam
+                  fet={Fet().ul}
+                  kamio={kamin}
+                  setSec={(v) => setSec(v)}
+                  triggerUpdate={() => FetchKami(Fet().ul)}
+                  width={width}
+                  verify={verify}
                 />
-                <Route
-                  path="/news"
-                  render={() => (
-                    <News
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/news"
+              render={() => (
+                <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
+              )}
+            />
+            <Route
+              path="/shihainin"
+              render={() => (
+                <Shi
+                  fet={Fet().ul}
+                  kamio={kamin}
+                  setSec={(v) => setSec(v)}
+                  triggerUpdate={() => FetchKami(Fet().ul)}
+                  width={width}
                 />
-                <Route
-                  path="/shihainin"
-                  render={() => (
-                    <Shi
-                      fet={Fet().ul}
-                      kamio={kamin}
-                      setSec={(v) => setSec(v)}
-                      triggerUpdate={() => FetchKami(Fet().ul)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/anniversary"
+              render={() => (
+                <Anni fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
+              )}
+            />
+            <Route
+              path="/token"
+              render={() => (
+                <TokenCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/anniversary"
-                  render={() => (
-                    <Anni
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/mv"
+              render={() => (
+                <MvCom
+                  gp={Reduce}
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/token"
-                  render={() => (
-                    <TokenCom
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/originalcontent"
+              render={() => (
+                <OriCom
+                  gp={Reduce}
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/mv"
-                  render={() => (
-                    <MvCom
-                      gp={Reduce}
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/event"
+              render={() => (
+                <EventFind
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                  kamin={kamin}
                 />
-                <Route
-                  path="/originalcontent"
-                  render={() => (
-                    <OriCom
-                      gp={Reduce}
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/music"
+              render={() => (
+                <MusicCom
+                  gp={Reduce}
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/event"
-                  render={() => (
-                    <EventFind
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                      kamin={kamin}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/officialupdate"
+              render={() => (
+                <Offici
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/music"
-                  render={() => (
-                    <MusicCom
-                      gp={Reduce}
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/api"
+              render={() => (
+                <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
+              )}
+            />
+            <Route
+              path="/follow"
+              render={() => (
+                <FollowCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/officialupdate"
-                  render={() => (
-                    <Offici
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/bnk48inmemories"
+              render={() => (
+                <Graduated
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/api"
-                  render={() => (
-                    <Api
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/requesthour"
+              render={() => (
+                <RequestCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/follow"
-                  render={() => (
-                    <FollowCom
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/janken"
+              render={() => (
+                <JankenCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/bnk48inmemories"
-                  render={() => (
-                    <Graduated
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
-                />
-                <Route
-                  path="/requesthour"
-                  render={() => (
-                    <RequestCom
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
-                />
-                <Route
-                  path="/janken"
-                  render={() => (
-                    <JankenCom
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
-                />
-                {!login && (
-                  <Route
-                    path="/register"
-                    render={() => (
-                      <RegisCom
-                        fet={Fet().ul}
-                        setSec={(v) => setSec(v)}
-                        width={width}
-                        triggerUpdate={() => FetchKami(Fet().ul)}
-                      />
-                    )}
+              )}
+            />
+            {!login && (
+              <Route
+                path="/register"
+                render={() => (
+                  <RegisCom
+                    fet={Fet().ul}
+                    setSec={(v) => setSec(v)}
+                    width={width}
+                    triggerUpdate={() => FetchKami(Fet().ul)}
                   />
                 )}
-                <Route
-                  path="/48group"
-                  render={() => (
-                    <Fenetwork
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              />
+            )}
+            <Route
+              path="/48group"
+              render={() => (
+                <Fenetwork
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/bma"
-                  render={() => (
-                    <BmaCom
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                      login={login}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/bma"
+              render={() => (
+                <BmaCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                  login={login}
                 />
-                {login && (
-                  <Route
-                    path="/account"
-                    render={() => (
-                      <Account
-                        fet={Fet().ul}
-                        setSec={(v) => setSec(v)}
-                        width={width}
-                        triggerUpdate={() => FetchKami(Fet().ul)}
-                      />
-                    )}
+              )}
+            />
+            {login && (
+              <Route
+                path="/account"
+                render={() => (
+                  <Account
+                    fet={Fet().ul}
+                    setSec={(v) => setSec(v)}
+                    width={width}
+                    triggerUpdate={() => FetchKami(Fet().ul)}
                   />
                 )}
+              />
+            )}
 
-                <Route
-                  path="/ge3"
-                  render={() => {
-                    History.push("/ge4");
-                  }}
+            <Route
+              path="/ge3"
+              render={() => {
+                History.push("/ge4");
+              }}
+            />
+            <Route
+              path="/ge4"
+              render={() => (
+                <Ge4Com
+                  fet={Fet().ul}
+                  timesch={timesch}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/ge4"
-                  render={() => (
-                    <Ge4Com
-                      fet={Fet().ul}
-                      timesch={timesch}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/mana"
+              render={() => (
+                <GeMana
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/mana"
-                  render={() => (
-                    <GeMana
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              path="/mssongkran48"
+              render={() => (
+                <MsSongkran
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
                 />
-                <Route
-                  path="/mssongkran48"
-                  render={() => (
-                    <MsSongkran
-                      fet={Fet().ul}
-                      setSec={(v) => setSec(v)}
-                      width={width}
-                    />
-                  )}
-                />
-                <Route
-                  exact
-                  render={() => (
-                    <PageErr setSec={(v) => setSec(v)} width={width} />
-                  )}
-                />
-              </BasicSwitch>
-            </CSSTransition>
-          </TransitionGroup>
+              )}
+            />
+            <Route
+              exact
+              render={() => <PageErr setSec={(v) => setSec(v)} width={width} />}
+            />
+          </BasicSwitch>
 
           {window.innerWidth < 700 && (
             <BottomNavigation

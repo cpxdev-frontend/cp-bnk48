@@ -6,13 +6,15 @@ import {
   Link,
   Switch as BasicSwitch,
   useHistory,
+  useLocation,
 } from "react-router-dom";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import "aos/dist/aos.css";
 import { HubConnectionBuilder } from "@microsoft/signalr";
 import Snowfall from "react-snowfall";
 import AOS from "aos";
-import { Fireworks } from 'fireworks-js/dist/react'
+import { Fireworks } from "fireworks-js/dist/react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import {
   GoogleAuthProvider,
@@ -87,8 +89,8 @@ import MusicNoteIcon from "@material-ui/icons/MusicNote";
 import TheatersIcon from "@material-ui/icons/Theaters";
 import AssignmentReturnedIcon from "@material-ui/icons/AssignmentReturned";
 import SlideshowIcon from "@material-ui/icons/Slideshow";
-import SportsIcon from '@material-ui/icons/Sports';
-import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
+import SportsIcon from "@material-ui/icons/Sports";
+import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import AirportShuttleIcon from "@material-ui/icons/AirportShuttle";
 
 import Home from "./component/home";
@@ -130,22 +132,22 @@ const drawerWidth = 240;
 const Client =
   "961896647339-roenm2ee6i60ed2rhbe2sqee0unlqj0f.apps.googleusercontent.com";
 
-const anni = '02-06';
+const anni = "02-06";
 
 const fwoptions = {
   explosion: 5,
-  intensity:1,
-  traceSpeed: 1.6
-}
+  intensity: 1,
+  traceSpeed: 1.6,
+};
 
 const fwstyle = {
   top: 0,
   left: 0,
-  width: '100%',
-  height: '100%',
-  position: 'fixed',
-  background: 'transperent'
-}
+  width: "100%",
+  height: "100%",
+  position: "fixed",
+  background: "transperent",
+};
 
 const useStyles = makeStyles((theme) => ({
   sm: {
@@ -227,6 +229,7 @@ function App() {
   const [con, setConnection] = React.useState(null);
   const cls = useStyles();
   const History = useHistory();
+  const location = useLocation();
   const [Reduce, setReduce] = React.useState(false);
   const [ny, setNy] = React.useState(true);
   const [EvtPop, setpopup] = React.useState(true);
@@ -247,7 +250,7 @@ function App() {
   const [tokenID, setToken] = React.useState("");
   const [time, setTime] = React.useState(0);
   const [memDate, setMemBirth] = React.useState("");
-  const [ offline, setOffline] = React.useState(false)
+  const [offline, setOffline] = React.useState(false);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -302,28 +305,34 @@ function App() {
 
   React.useEffect(() => {
     if (MemberDl && kamin != "-" && kamin != "") {
-      fetch('https://cpxdevweb.onrender.com/bnk48/getmemberlivestatus?i=' + JSON.parse(localStorage.getItem("loged")).user.uid +'&mem=' + kamin, {
-        method :'post'
-    })
-        .then(response => response.json())
-        .then(dataads => {
-            if (dataads.status) {
-                if (dataads.isLive || dataads.isPS) {
-                  setKamiLive(dataads)
-                }
-            } else {
-                Swal.fire({
-                    title: "System error",
-                    text: "Contact support",
-                    icon: 'error',
-                  })
+      fetch(
+        "https://cpxdevweb.onrender.com/bnk48/getmemberlivestatus?i=" +
+          JSON.parse(localStorage.getItem("loged")).user.uid +
+          "&mem=" +
+          kamin,
+        {
+          method: "post",
+        }
+      )
+        .then((response) => response.json())
+        .then((dataads) => {
+          if (dataads.status) {
+            if (dataads.isLive || dataads.isPS) {
+              setKamiLive(dataads);
             }
-        }).catch(() => {
-            setNewspop([])
+          } else {
+            Swal.fire({
+              title: "System error",
+              text: "Contact support",
+              icon: "error",
+            });
+          }
         })
+        .catch(() => {
+          setNewspop([]);
+        });
     }
-  }, [MemberDl])
-
+  }, [MemberDl]);
 
   const FetchKami = (fetdata) => {
     if (localStorage.getItem("loged") != null) {
@@ -735,30 +744,35 @@ function App() {
 
   function ordinal_suffix_of(i) {
     var j = i % 10,
-        k = i % 100;
+      k = i % 100;
     if (j == 1 && k != 11) {
-        return i + "st";
+      return i + "st";
     }
     if (j == 2 && k != 12) {
-        return i + "nd";
+      return i + "nd";
     }
     if (j == 3 && k != 13) {
-        return i + "rd";
+      return i + "rd";
     }
     return i + "th";
-}
+  }
 
   if (uri != "" && allDone) {
     return (
       <>
-      {moment().format('DD-MM') == anni && (
-      <Fireworks options={fwoptions} style={fwstyle} />
-      )}
-      <Snackbar open={offline}  ModalProps={{ onBackdropClick: false }} anchorOrigin={{ vertical: 'top',
-    horizontal: 'center'}}>
-        <Alert severity="warning">
-          <CardHeader title="Reconnecting to service" subheader="You leave from platform just on minutes." />
-        </Alert>
+        {moment().format("DD-MM") == anni && (
+          <Fireworks options={fwoptions} style={fwstyle} />
+        )}
+        <Snackbar
+          open={offline}
+          ModalProps={{ onBackdropClick: false }}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}>
+          <Alert severity="warning">
+            <CardHeader
+              title="Reconnecting to service"
+              subheader="You leave from platform just on minutes."
+            />
+          </Alert>
         </Snackbar>
         {window.innerWidth >= 700 && (
           <Slide
@@ -781,17 +795,19 @@ function App() {
                   </IconButton>
                 )}
                 <div className="cur" onClick={() => History.push("/")}>
-                  {
-                    moment().format('DD-MM') == '16-07' ? (
-                      <Typography variant="h5" className="title">
-                        {'CPXDev Day | BNK48 Fans Space'}
-                      </Typography>
-                    ) : (
-                      <Typography variant="h5" className="title">
-                        {moment().format('DD-MM') == anni ? "BNK48 " + ordinal_suffix_of(new Date().getFullYear() - 2017) + ' Anniversary' : 'BNK48 Fans Space'}
-                      </Typography>
-                    )
-                  }
+                  {moment().format("DD-MM") == "16-07" ? (
+                    <Typography variant="h5" className="title">
+                      {"CPXDev Day | BNK48 Fans Space"}
+                    </Typography>
+                  ) : (
+                    <Typography variant="h5" className="title">
+                      {moment().format("DD-MM") == anni
+                        ? "BNK48 " +
+                          ordinal_suffix_of(new Date().getFullYear() - 2017) +
+                          " Anniversary"
+                        : "BNK48 Fans Space"}
+                    </Typography>
+                  )}
                 </div>
                 <div className={cls.search + " mt-2"}>
                   {width > 1200 && (
@@ -910,12 +926,19 @@ function App() {
             </ListItem>
             <ListItem
               component={Link}
-              onClick={() => window.open('https://lookerstudio.google.com/reporting/c6754958-49ba-4442-ad42-bb0880492129')}
+              onClick={() =>
+                window.open(
+                  "https://lookerstudio.google.com/reporting/c6754958-49ba-4442-ad42-bb0880492129"
+                )
+              }
               button>
               <ListItemIcon>
                 <FlightTakeoffIcon />
               </ListItemIcon>
-              <ListItemText primary="365-Nichi no Kamihikouki 2024 – Final Announcement" secondary='External Link: Google Looker Studio' />
+              <ListItemText
+                primary="365-Nichi no Kamihikouki 2024 – Final Announcement"
+                secondary="External Link: Google Looker Studio"
+              />
             </ListItem>
             <ListItem
               component={Link}
@@ -954,12 +977,23 @@ function App() {
                 secondary={spcLive ? "Livestream is launching" : ""}
               />
             </ListItem>
-            <ListItem component={Link} to='/bnk48inmemories' className={window.location.pathname == '/bnk48inmemories' ? 'activeNav' : ''} button>
-                  <ListItemIcon>
-                    <PanToolIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="BNK48 Graduation Gallery" secondary="Rewind in memories of graduated members of BNK48" />
-                </ListItem>
+            <ListItem
+              component={Link}
+              to="/bnk48inmemories"
+              className={
+                window.location.pathname == "/bnk48inmemories"
+                  ? "activeNav"
+                  : ""
+              }
+              button>
+              <ListItemIcon>
+                <PanToolIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="BNK48 Graduation Gallery"
+                secondary="Rewind in memories of graduated members of BNK48"
+              />
+            </ListItem>
             <ListItem
               component={Link}
               to="/originalcontent"
@@ -1088,49 +1122,49 @@ function App() {
               </ListItemIcon>
               <ListItemText primary="Follow and Support" />
             </ListItem>
-          <ListItem
-            onClick={() => {
-              setOpen(false);
-              Swal.fire({
-                title:
-                  "Region mode will enhance system performance. Current region connection has been referenced by IP address",
-                showDenyButton: true,
-                confirmButtonText: "View System Status",
-                denyButtonText: `Close`,
-                icon: "info",
-                iconColor: "rgb(203, 150, 194)",
-              }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                  window.open("//cp-cpxdevstatus.vercel.app", "_blank");
-                }
-              });
-            }}
-            button>
-            <ListItemIcon>
-              <DnsIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Region: " + Fet().nme} />
-          </ListItem>
+            <ListItem
+              onClick={() => {
+                setOpen(false);
+                Swal.fire({
+                  title:
+                    "Region mode will enhance system performance. Current region connection has been referenced by IP address",
+                  showDenyButton: true,
+                  confirmButtonText: "View System Status",
+                  denyButtonText: `Close`,
+                  icon: "info",
+                  iconColor: "rgb(203, 150, 194)",
+                }).then((result) => {
+                  /* Read more about isConfirmed, isDenied below */
+                  if (result.isConfirmed) {
+                    window.open("//cp-cpxdevstatus.vercel.app", "_blank");
+                  }
+                });
+              }}
+              button>
+              <ListItemIcon>
+                <DnsIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Region: " + Fet().nme} />
+            </ListItem>
           </d>
           <Divider />
-            {!login && (
-              <ListItem
-                component={Link}
-                to="/register"
-                className={
-                  window.location.pathname == "/register" ? "activeNav" : ""
-                }
-                button>
-                <ListItemIcon>
-                  <AssignmentReturnedIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="Register Membership"
-                  secondary="Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need"
-                />
-              </ListItem>
-            )}
+          {!login && (
+            <ListItem
+              component={Link}
+              to="/register"
+              className={
+                window.location.pathname == "/register" ? "activeNav" : ""
+              }
+              button>
+              <ListItemIcon>
+                <AssignmentReturnedIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Register Membership"
+                secondary="Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need"
+              />
+            </ListItem>
+          )}
           {loginLoad ? (
             <ListItem onClick={() => setMemDl(true)} button>
               <ListItemIcon>
@@ -1223,279 +1257,297 @@ function App() {
           )}
         </Drawer>
         <div style={{ marginBottom: footerHeight + "px" }}>
-          <BasicSwitch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <Home
-                  kamin={kamin}
-                  fet={Fet().ul}
-                  gp={Reduce}
-                  ImgThumb={ImgThumb}
-                  stream={stream}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+          <TransitionGroup>
+            <CSSTransition timeout={600} classNames="fade" key={location.key}>
+              <BasicSwitch>
+                <Route
+                  exact
+                  path="/"
+                  render={() => (
+                    <Home
+                      kamin={kamin}
+                      fet={Fet().ul}
+                      gp={Reduce}
+                      ImgThumb={ImgThumb}
+                      stream={stream}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/memberlist"
-              render={() => (
-                <MemberList
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/memberlist"
+                  render={() => (
+                    <MemberList
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/livestream"
-              render={() => (
-                <LiveCom
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/livestream"
+                  render={() => (
+                    <LiveCom
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/member/:c"
-              render={() => (
-                <MamSam
-                  fet={Fet().ul}
-                  kamio={kamin}
-                  setSec={(v) => setSec(v)}
-                  triggerUpdate={() => FetchKami(Fet().ul)}
-                  width={width}
-                  verify={verify}
+                <Route
+                  path="/member/:c"
+                  render={() => (
+                    <MamSam
+                      fet={Fet().ul}
+                      kamio={kamin}
+                      setSec={(v) => setSec(v)}
+                      triggerUpdate={() => FetchKami(Fet().ul)}
+                      width={width}
+                      verify={verify}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/news"
-              render={() => (
-                <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
-              )}
-            />
-            <Route
-              path="/shihainin"
-              render={() => (
-                <Shi
-                  fet={Fet().ul}
-                  kamio={kamin}
-                  setSec={(v) => setSec(v)}
-                  triggerUpdate={() => FetchKami(Fet().ul)}
-                  width={width}
+                <Route
+                  path="/news"
+                  render={() => (
+                    <News
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/anniversary"
-              render={() => (
-                <Anni fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
-              )}
-            />
-            <Route
-              path="/token"
-              render={() => (
-                <TokenCom
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/shihainin"
+                  render={() => (
+                    <Shi
+                      fet={Fet().ul}
+                      kamio={kamin}
+                      setSec={(v) => setSec(v)}
+                      triggerUpdate={() => FetchKami(Fet().ul)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/mv"
-              render={() => (
-                <MvCom
-                  gp={Reduce}
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/anniversary"
+                  render={() => (
+                    <Anni
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/originalcontent"
-              render={() => (
-                <OriCom
-                  gp={Reduce}
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/token"
+                  render={() => (
+                    <TokenCom
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/event"
-              render={() => (
-                <EventFind
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
-                  kamin={kamin}
+                <Route
+                  path="/mv"
+                  render={() => (
+                    <MvCom
+                      gp={Reduce}
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/music"
-              render={() => (
-                <MusicCom
-                  gp={Reduce}
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/originalcontent"
+                  render={() => (
+                    <OriCom
+                      gp={Reduce}
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/officialupdate"
-              render={() => (
-                <Offici
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/event"
+                  render={() => (
+                    <EventFind
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                      kamin={kamin}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/api"
-              render={() => (
-                <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
-              )}
-            />
-            <Route
-              path="/follow"
-              render={() => (
-                <FollowCom
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/music"
+                  render={() => (
+                    <MusicCom
+                      gp={Reduce}
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/bnk48inmemories"
-              render={() => (
-                <Graduated
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/officialupdate"
+                  render={() => (
+                    <Offici
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/requesthour"
-              render={() => (
-                <RequestCom
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/api"
+                  render={() => (
+                    <Api
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/janken"
-              render={() => (
-                <JankenCom
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/follow"
+                  render={() => (
+                    <FollowCom
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            {!login && (
-              <Route
-                path="/register"
-                render={() => (
-                  <RegisCom
-                    fet={Fet().ul}
-                    setSec={(v) => setSec(v)}
-                    width={width}
-                    triggerUpdate={() => FetchKami(Fet().ul)}
+                <Route
+                  path="/bnk48inmemories"
+                  render={() => (
+                    <Graduated
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
+                />
+                <Route
+                  path="/requesthour"
+                  render={() => (
+                    <RequestCom
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
+                />
+                <Route
+                  path="/janken"
+                  render={() => (
+                    <JankenCom
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
+                />
+                {!login && (
+                  <Route
+                    path="/register"
+                    render={() => (
+                      <RegisCom
+                        fet={Fet().ul}
+                        setSec={(v) => setSec(v)}
+                        width={width}
+                        triggerUpdate={() => FetchKami(Fet().ul)}
+                      />
+                    )}
                   />
                 )}
-              />
-            )}
-            <Route
-              path="/48group"
-              render={() => (
-                <Fenetwork
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/48group"
+                  render={() => (
+                    <Fenetwork
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/bma"
-              render={() => (
-                <BmaCom
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
-                  login={login}
+                <Route
+                  path="/bma"
+                  render={() => (
+                    <BmaCom
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                      login={login}
+                    />
+                  )}
                 />
-              )}
-            />
-            {login && (
-              <Route
-                path="/account"
-                render={() => (
-                  <Account
-                    fet={Fet().ul}
-                    setSec={(v) => setSec(v)}
-                    width={width}
-                    triggerUpdate={() => FetchKami(Fet().ul)}
+                {login && (
+                  <Route
+                    path="/account"
+                    render={() => (
+                      <Account
+                        fet={Fet().ul}
+                        setSec={(v) => setSec(v)}
+                        width={width}
+                        triggerUpdate={() => FetchKami(Fet().ul)}
+                      />
+                    )}
                   />
                 )}
-              />
-            )}
 
-            <Route
-              path="/ge3"
-              render={() => {
-                History.push("/ge4");
-              }}
-            />
-            <Route
-              path="/ge4"
-              render={() => (
-                <Ge4Com
-                  fet={Fet().ul}
-                  timesch={timesch}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/ge3"
+                  render={() => {
+                    History.push("/ge4");
+                  }}
                 />
-              )}
-            />
-            <Route
-              path="/mana"
-              render={() => (
-                <GeMana
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/ge4"
+                  render={() => (
+                    <Ge4Com
+                      fet={Fet().ul}
+                      timesch={timesch}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              path="/mssongkran48"
-              render={() => (
-                <MsSongkran
-                  fet={Fet().ul}
-                  setSec={(v) => setSec(v)}
-                  width={width}
+                <Route
+                  path="/mana"
+                  render={() => (
+                    <GeMana
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Route
-              exact
-              render={() => <PageErr setSec={(v) => setSec(v)} width={width} />}
-            />
-          </BasicSwitch>
+                <Route
+                  path="/mssongkran48"
+                  render={() => (
+                    <MsSongkran
+                      fet={Fet().ul}
+                      setSec={(v) => setSec(v)}
+                      width={width}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  render={() => (
+                    <PageErr setSec={(v) => setSec(v)} width={width} />
+                  )}
+                />
+              </BasicSwitch>
+            </CSSTransition>
+          </TransitionGroup>
 
           {window.innerWidth < 700 && (
             <BottomNavigation
@@ -1613,9 +1665,7 @@ function App() {
             maxWidth="sm"
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description">
-            <DialogTitle id="alert-dialog-title">
-              Acoount Menu
-            </DialogTitle>
+            <DialogTitle id="alert-dialog-title">Acoount Menu</DialogTitle>
             <DialogContent>
               {kamin != undefined && kamin != "" && kamin != "-" ? (
                 <ListItem
@@ -1629,23 +1679,24 @@ function App() {
                   }}
                   button>
                   <ListItemIcon>
-                  <Badge
+                    <Badge
                       overlap="circular"
                       anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
+                        vertical: "top",
+                        horizontal: "right",
                       }}
                       color="error"
                       className="mr-4"
-                      badgeContent={live != null && live.isLive ? 'LIVE' : null}
-                    >
-                    <img
-                      src={kamiimg}
-                      className={
-                        cls.lg +
-                        " border border-white rounded-circle cir avatarlimit"
-                      }
-                    />
+                      badgeContent={
+                        live != null && live.isLive ? "LIVE" : null
+                      }>
+                      <img
+                        src={kamiimg}
+                        className={
+                          cls.lg +
+                          " border border-white rounded-circle cir avatarlimit"
+                        }
+                      />
                     </Badge>
                   </ListItemIcon>
                   <ListItemText
@@ -1688,9 +1739,22 @@ function App() {
                 </ListItem>
               )}
               {live != null && live.isPS && (
-           <ListItem button className="text-success">
-             <ListItemText primary={kamin + ' BNK48 is pre-scheduled to LIVE on IAM48 Application'} secondary={'She is planned to LIVE in ' + moment(live.livestarted).local().format('DD MMMM YYYY HH:mm') + '. However, This schedule to change as appropriate.'} />
-             </ListItem>)}
+                <ListItem button className="text-success">
+                  <ListItemText
+                    primary={
+                      kamin +
+                      " BNK48 is pre-scheduled to LIVE on IAM48 Application"
+                    }
+                    secondary={
+                      "She is planned to LIVE in " +
+                      moment(live.livestarted)
+                        .local()
+                        .format("DD MMMM YYYY HH:mm") +
+                      ". However, This schedule to change as appropriate."
+                    }
+                  />
+                </ListItem>
+              )}
               {kamin != "-" &&
                 memDate == moment.unix(time).local().format("YYYY-M-DD") && (
                   <ListItem className="text-muted" button>
@@ -2063,8 +2127,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                BNK48 17th Single "Borderless" has been out on music streaming
-                platform. And Music Video on Youtube.
+                  BNK48 17th Single "Borderless" has been out on music streaming
+                  platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page
@@ -2075,8 +2139,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                BNK48 17th Single "Borderless" has been out on music streaming
-                platform. And Music Video on Youtube.
+                  BNK48 17th Single "Borderless" has been out on music streaming
+                  platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page
@@ -2109,8 +2173,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                BNK48 17th Single "Borderless" has been out on music streaming
-                platform. And Music Video on Youtube.
+                  BNK48 17th Single "Borderless" has been out on music streaming
+                  platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page

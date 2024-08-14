@@ -281,5 +281,5 @@ iframe[id*="twitter-widget"] {
   
   .fade-enter.fade-enter-active {
     opacity: 1;
-    transition: opacity 950ms ease-in;
+    transition: opacity 250ms ease-in;
   }

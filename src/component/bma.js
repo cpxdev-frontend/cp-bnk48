@@ -175,7 +175,7 @@ const Memberlist = ({fet, setSec, width, login}) => {
             </div>
           )) : (
             <div className='text-center'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+              <img src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
           </div>
           )}
           {list.length > 0 ? list.map((item, i) => data != null && data.threadId == item.threadId && (
@@ -202,7 +202,7 @@ const Memberlist = ({fet, setSec, width, login}) => {
             </div>
           )) : (
             <div className='text-center'>
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+              <img src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
           </div>
           )}
            </div>

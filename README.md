@@ -1,6 +1,6 @@
 # BNK48 Fan Space Front-End Souce Code
 
-![bnk48](https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/main14.png)
+![bnk48](https://d3hhrps04devi8.cloudfront.net/bnk48/main14.png)
 
 BNK48 Fan Space is sub-project of Fan Space project. Our objective are merge BNK48 fanclub from around the world to join this platform at once.
 

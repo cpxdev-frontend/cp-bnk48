@@ -209,7 +209,7 @@ const NextPage = () => {
                     <Typography className='pl-3' variant='subtitle2'>Achievement: TV Host (Mask Singer 12, I Can See Your Voices Thailand, The Wall Duet), DJ and Actor</Typography>
                 </div>
                 <div className='col-md-4' data-aos="slide-left">
-                    <img src='https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/kan.png' width='100%' />
+                    <img src='https://d3hhrps04devi8.cloudfront.net/bnk48/kan.png' width='100%' />
                 </div>
             </CardContent>
         </Card>

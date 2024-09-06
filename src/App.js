@@ -1168,7 +1168,7 @@ function App() {
             <ListItem onClick={() => setMemDl(true)} button>
               <ListItemIcon>
                 <img
-                  src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg"
+                  src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg"
                   width="40px"
                 />
               </ListItemIcon>
@@ -1559,7 +1559,7 @@ function App() {
                 icon={
                   <img
                     width="100%"
-                    src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnklogo.png"
+                    src="https://d3hhrps04devi8.cloudfront.net/main/bnklogo.png"
                   />
                 }
               />

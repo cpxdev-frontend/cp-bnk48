@@ -114,7 +114,7 @@ const Anni = ({fet, setSec, width}) => {
         {width >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/bnkanni.webp" width={width} />
+           <img src="https://d3hhrps04devi8.cloudfront.net/bnk48/bnkanni.webp" width={width} />
               </Fade>
       </div>
         )}
@@ -361,7 +361,7 @@ const Anni = ({fet, setSec, width}) => {
               )) : (
                 <Zoom in={true} timeout={{ enter: 200, exit: 200}}>
                  <Card className='p-5 text-center mt-5 col-12'>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-5 mb-5' />
+                <img src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg" width="50px" className='text-center mt-5 mb-5' />
                 Connect to service
           </Card>
               </Zoom>
@@ -377,7 +377,7 @@ const Anni = ({fet, setSec, width}) => {
                  )) : (
                     <Zoom in={true} timeout={{ enter: 200, exit: 200}}>
                  <Card className='p-5 text-center col mt-5'>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-5 mb-5' />
+                <img src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg" width="50px" className='text-center mt-5 mb-5' />
                 Connect to service
           </Card>
               </Zoom>
@@ -391,7 +391,7 @@ const Anni = ({fet, setSec, width}) => {
                  ) : (
                     <Zoom in={true} timeout={{ enter: 200, exit: 200}}>
                  <Card className='p-5 text-center col mt-5'>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-5 mb-5' />
+                <img src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg" width="50px" className='text-center mt-5 mb-5' />
                 Connect to service
           </Card>
               </Zoom>

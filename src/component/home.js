@@ -14,9 +14,9 @@ import { Typography, ListItem, Zoom, ListItemText,
       return randomNum;
     }
 
-// const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/16thsinggrand.jpg'
+// const defaultTheme = 'https://d3hhrps04devi8.cloudfront.net/bnk48/16thsinggrand.jpg'
 // const defaultvideo = 'https://www.youtube.com/embed/O7mtKDllAg0?autoplay=1&mute=1&controls=0&loop=1&playlist=O7mtKDllAg0'
-const defaultTheme = 'https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/bnk48/bnk17thsing.png'
+const defaultTheme = 'https://d3hhrps04devi8.cloudfront.net/bnk48/bnk17thsing.png'
 const defaultvideo = 'https://www.youtube.com/embed/tTxaboU2wYQ?autoplay=1&mute=1&controls=0&loop=1&playlist=tTxaboU2wYQ'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
     const History = useHistory()
@@ -280,7 +280,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
       </div>
     </>
   ) : (
-    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+    <img src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg" width="50px" className='text-center' />
   )}
   <hr />
   {onMonth ? (
@@ -311,7 +311,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
       )}
       </div>
   ) : (
-    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+    <img src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg" width="50px" className='text-center' />
   )}
   <hr/>
   {
@@ -348,7 +348,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
           </div>
         ) : (
           <div className='row ml-3 mr-3 justify-content-center'>
-            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+            <img src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg" width="50px" className='text-center' />
           </div>
         )
       }
@@ -382,7 +382,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
       )}
       </div>
   ) : (
-    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+    <img src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg" width="50px" className='text-center' />
   )}
  
   </div>

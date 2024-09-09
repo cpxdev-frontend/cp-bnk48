@@ -199,19 +199,7 @@ const Memberlist = ({ fet, setSec, width }) => {
                                 ))}
                             </TextField>
                         )}
-                        <TextField
-                            select
-                            label="Graduation Status"
-                            value={seGrad || '-'}
-                            className="m-3"
-                            onChange={(e) => setGrad(e.target.value)}
-                        >
-                            {vPack.graduation.map((option) => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                        </TextField>
+                        
                         <ButtonGroup>
                             {seGroup != '-' && seFill != '-' && (
                                 <Button className='ml-5 mt-4 mb-3' color="primary" onClick={() => onSearch()} variant="contained">Search</Button>

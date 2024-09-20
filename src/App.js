@@ -927,6 +927,20 @@ function App() {
               component={Link}
               onClick={() =>
                 window.open(
+                  "https://lookerstudio.google.com/reporting/19bdaf0b-e90f-4577-bc28-12cab7240788/page/p_3z5tiil5kd",
+                  "_blank"
+                )
+              }
+              button>
+              <ListItemIcon>
+                <TheatersIcon />
+              </ListItemIcon>
+              <ListItemText primary="BNK48 and CGM48 Request Hour 2024" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              onClick={() =>
+                window.open(
                   "https://lookerstudio.google.com/reporting/c6754958-49ba-4442-ad42-bb0880492129"
                 )
               }
@@ -1086,18 +1100,6 @@ function App() {
                 <SlideshowIcon />
               </ListItemIcon>
               <ListItemText primary="BNK48 and CGM48 Janken Tournament 2023" />
-            </ListItem>
-            <ListItem
-              component={Link}
-              to="/requesthour"
-              className={
-                window.location.pathname == "/requesthour" ? "activeNav" : ""
-              }
-              button>
-              <ListItemIcon>
-                <TheatersIcon />
-              </ListItemIcon>
-              <ListItemText primary="BNK48 and CGM48 Request Hour 2022" />
             </ListItem>
             <ListItem
               component={Link}

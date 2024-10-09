@@ -260,7 +260,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
   };
 
   const PlaySong = () => {
-    if (pm.paused) {
+    if (play == false) {
       onPlay(true);
       if ("mediaSession" in navigator) {
         navigator.mediaSession.metadata = new window.MediaMetadata({
@@ -779,6 +779,11 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
         </Alert>
       </Snackbar>
 
+      <Confetti
+        numberOfPieces={play ? 400 : 0}
+        initialVelocityY={2500}
+        style={{ position: "fixed" }}
+      />
       <div className="pt-5 pb-2" data-aos="zoom-in" data-aos-duration="300">
         <h3 className={width > 600 ? " ml-5" : " ml-3"}>
           {mem != ""
@@ -801,11 +806,6 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
             {arr.length > 0 &&
               arr.map((item, i) => (
                 <div>
-                  <Confetti
-                    numberOfPieces={play ? 400 : 0}
-                    initialVelocityY={2500}
-                    style={{ position: "fixed" }}
-                  />
                   <Card
                     className={
                       (width > 600 ? " m-5" : " m-3") + " pb-2 bnktheme row"

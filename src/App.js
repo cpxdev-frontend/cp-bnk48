@@ -2102,7 +2102,7 @@ function App() {
         <div className="row">
           <div data-aos="flip-right">
             <img
-              src="https://pbs.twimg.com/media/GTguFo9aoAAk9Po?format=jpg&name=4096x4096"
+              src="https://d3hhrps04devi8.cloudfront.net/bnk48/sukinandawall.webp"
               width="100%"
             />
           </div>
@@ -2110,8 +2110,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 17th Single "Borderless" has been out on music streaming
-                  platform. And Music Video on Youtube.
+                BNK48 5th Album "Sukinanda" has been out on music streaming
+                platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page
@@ -2122,7 +2122,7 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 17th Single "Borderless" has been out on music streaming
+                BNK48 5th Album "Sukinanda" has been out on music streaming
                   platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
@@ -2135,7 +2135,7 @@ function App() {
         <div className="row">
           <div className="col" data-aos="fade-in">
             <img
-              src="https://pbs.twimg.com/media/GTktNdabgAAD04a?format=jpg&name=large"
+              src="https://pbs.twimg.com/media/Gb8ftV-bkAAAt7m?format=jpg&name=large"
               width="100%"
             />
           </div>
@@ -2144,7 +2144,7 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 17th Single "Borderless" has been out on music streaming
+                  BNK48 5th Album "Sukinanda" has been out on music streaming
                   platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
@@ -2156,8 +2156,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 17th Single "Borderless" has been out on music streaming
-                  platform. And Music Video on Youtube.
+                BNK48 5th Album "Sukinanda" has been out on music streaming
+                platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page

@@ -16,7 +16,7 @@ import { Typography, ListItem, Zoom, ListItemText,
 
 // const defaultTheme = 'https://d3hhrps04devi8.cloudfront.net/bnk48/16thsinggrand.jpg'
 // const defaultvideo = 'https://www.youtube.com/embed/O7mtKDllAg0?autoplay=1&mute=1&controls=0&loop=1&playlist=O7mtKDllAg0'
-const defaultTheme = 'https://pbs.twimg.com/media/Gb8gWZhbQAA0Tey?format=jpg&name=4096x4096'
+const defaultTheme = 'https://d3hhrps04devi8.cloudfront.net/bnk48/sukinandawall.webp'
 const defaultvideo = 'https://www.youtube.com/embed/ymTOSdkUWBs?autoplay=1&mute=1&controls=0&loop=1&playlist=ymTOSdkUWBs'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
     const History = useHistory()

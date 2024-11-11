@@ -2102,7 +2102,7 @@ function App() {
         <div className="row">
           <div data-aos="flip-right">
             <img
-              src="https://d3hhrps04devi8.cloudfront.net/bnk48/sukinandawall.webp"
+              src="https://i.scdn.co/image/ab67618600001016bff3b2d65f20344e75ddbd7b"
               width="100%"
             />
           </div>

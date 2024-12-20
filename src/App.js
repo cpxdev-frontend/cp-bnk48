@@ -1137,7 +1137,7 @@ function App() {
                 }).then((result) => {
                   /* Read more about isConfirmed, isDenied below */
                   if (result.isConfirmed) {
-                    window.open("//cp-cpxdevstatus.vercel.app", "_blank");
+                    window.open("//cp-cpxdevstatus.onrender.com", "_blank");
                   }
                 });
               }}

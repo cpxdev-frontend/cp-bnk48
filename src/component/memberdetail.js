@@ -7,7 +7,6 @@ import {
   Card,
   Fade,
   Grow,
-  Avatar,
   Drawer,
   Typography,
   Zoom,

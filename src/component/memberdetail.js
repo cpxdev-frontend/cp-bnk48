@@ -7,6 +7,7 @@ import {
   Card,
   Fade,
   Grow,
+  Avatar,
   Drawer,
   Typography,
   Zoom,
@@ -130,8 +131,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
   const [v, setV] = React.useState(false);
 
   const [play, onPlay] = React.useState(false);
-  const [GEPoster, setGEPoster] = React.useState("");
-  const [GEPro, setGEPromote] = React.useState("");
+  const [korkao, setKorkao] = React.useState(false);
   const [fol, setFollowName] = React.useState("");
   const [customback, setBack] = React.useState(false);
   const [live, setLive] = React.useState(null);
@@ -595,6 +595,9 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
           if (data.response == "Not found this member in record.") {
             History.push("/");
           } else {
+            if (data.response.name === "Kaofrang") {
+              setKorkao(true);
+            }
             if (localStorage.getItem("loged") != null) {
               fetch(
                 fet +
@@ -755,8 +758,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
         open={live != null}
         autoHideDuration={10000}
         onClose={() => setLive(null)}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}>
         <Alert
           severity="info"
           onClick={() => {
@@ -765,8 +767,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
               "_blank"
             );
             setLive(null);
-          }}
-        >
+          }}>
           {live != null && (
             <CardHeader
               title={
@@ -778,6 +779,28 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
               subheader={live.desc}
             />
           )}
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={korkao}
+        autoHideDuration={30000}
+        onClose={() => setKorkao(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}>
+        <Alert
+          severity="info"
+          onClick={() => {
+            window.open("https://korkao.pages.dev", "_blank");
+            setKorkao(false);
+          }}>
+          <CardHeader
+            title={
+              <h6>Get starting journey of the world of Kaofrang BNK48 now!</h6>
+            }
+            avatar={
+              <Avatar src="https://d3hhrps04devi8.cloudfront.net/kf/korfranglogo.webp"></Avatar>
+            }
+          />
         </Alert>
       </Snackbar>
 
@@ -794,8 +817,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
         </h3>
         <Breadcrumbs
           className={width > 600 ? " ml-5" : " ml-3"}
-          aria-label="breadcrumb"
-        >
+          aria-label="breadcrumb">
           <Link color="inherit" onClick={() => History.push("/memberlist")}>
             Members
           </Link>
@@ -813,18 +835,15 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                     className={
                       (width > 600 ? " m-5" : " m-3") + " pb-2 bnktheme row"
                     }
-                    key={i}
-                  >
+                    key={i}>
                     <div
                       className={
                         width > 1600 ? "col-md-3 mb-1" : "col-lg-3 mb-1"
-                      }
-                    >
+                      }>
                       <div
                         className="p-3 pt-5"
                         data-aos="zoom-in"
-                        data-aos-duration="800"
-                      >
+                        data-aos-duration="800">
                         <Avatar
                           src={item.img}
                           style={{ width: "100%", height: "100%" }}
@@ -834,8 +853,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                     <div
                       className="col-md mt-5 mb-5"
                       data-aos="fade-in"
-                      data-aos-duration="1500"
-                    >
+                      data-aos-duration="1500">
                       <h4>
                         {item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                       </h4>
@@ -853,8 +871,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                                   " BNK48 have " +
                                   numberWithCommasx(follower2) +
                                   "  gifts sent on IAM48 Application"
-                                }
-                              >
+                                }>
                                 {countstep == false ? (
                                   <CountUp
                                     end={follower}
@@ -870,8 +887,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                           ) : (
                             <button
                               className="cur btn btn-info"
-                              onClick={() => fetchfollower(fol)}
-                            >
+                              onClick={() => fetchfollower(fol)}>
                               Something went wrong, please click here to refresh
                               page
                             </button>
@@ -890,8 +906,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                           (kami == 1 ? "bg-primary" : "text-dark") + " mt-3"
                         }
                         variant="contained"
-                        disabled={kami == 1 ? false : true}
-                      >
+                        disabled={kami == 1 ? false : true}>
                         {kami == 0 && (
                           <img
                             className="pb-1"
@@ -911,12 +926,10 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                         {item.shihainin != undefined && (
                           <CardActionArea
                             className="mb-3"
-                            onClick={() => History.push("/shihainin")}
-                          >
+                            onClick={() => History.push("/shihainin")}>
                             <p
                               class="badge text-light"
-                              style={{ backgroundColor: "#BF953F" }}
-                            >
+                              style={{ backgroundColor: "#BF953F" }}>
                               BNK48 Manager (Shihainin)
                             </p>
                           </CardActionArea>
@@ -1010,15 +1023,13 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                             <a
                               className="text-light"
                               href={item.follow[0]}
-                              target="_blank"
-                            >
+                              target="_blank">
                               <FacebookIcon />
                             </a>
                             <a
                               className="text-light"
                               href={item.follow[1]}
-                              target="_blank"
-                            >
+                              target="_blank">
                               <InstagramIcon />
                             </a>
                             <a
@@ -1027,8 +1038,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                                 "https://app.bnk48.com/members/bnk48/" +
                                 item.name.toLowerCase()
                               }
-                              target="_blank"
-                            >
+                              target="_blank">
                               <PhoneIphoneIcon />
                             </a>
                           </>
@@ -1044,8 +1054,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                           <Button
                             onClick={() => PlaySong()}
                             color="primary"
-                            variant="contained"
-                          >
+                            variant="contained">
                             Click here see effect
                           </Button>
                           <div className="ml-3 pt-2">
@@ -1098,8 +1107,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                       onClose={() => setIRtog(false)}
                       classes={{
                         paper: classes.drawerPaper,
-                      }}
-                    >
+                      }}>
                       <IRBio fet={fet} irItem={item.ir} />
                     </Drawer>
                   )}
@@ -1112,11 +1120,9 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
               <Card
                 className={
                   (width > 600 ? " m-5" : " m-3") + " pb-2 bnktheme row"
-                }
-              >
+                }>
                 <div
-                  className={width > 1600 ? "col-md-4 mb-1" : "col-lg-4 mb-1"}
-                >
+                  className={width > 1600 ? "col-md-4 mb-1" : "col-lg-4 mb-1"}>
                   <Skeleton height={530} />
                 </div>
                 <div className="col-md mt-5 mb-5">
@@ -1173,8 +1179,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                           <iframe
                             src={ita.video}
                             width="100%"
-                            height={window.innerWidth * 0.4}
-                          ></iframe>
+                            height={window.innerWidth * 0.4}></iframe>
                         ) : (
                           <img src={ita.src} width="100%" />
                         )}
@@ -1261,8 +1266,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                             className="mt-1"
                             data-toggle="tooltip"
                             data-placement="down"
-                            title={ita.placeobj.placeDesc}
-                          >
+                            title={ita.placeobj.placeDesc}>
                             <LocationOnIcon /> Location:{" "}
                             {ita.placeobj.placeName +
                               ", " +
@@ -1327,8 +1331,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
 
         <Zoom
           in={newspop == null || memLive == null ? true : false}
-          timeout={{ enter: 200, exit: 200 }}
-        >
+          timeout={{ enter: 200, exit: 200 }}>
           <div className="text-center pb-3">
             <img
               src="https://d3hhrps04devi8.cloudfront.net/main/bnk-circular.svg"

@@ -134,19 +134,7 @@ const Shihainin = ({ fet, kamio, setSec, triggerUpdate, width }) => {
   }, [customback]);
 
   const fetchfollower = (name) => {
-    setFollow(true);
-    fetch(fet + "/tpop/getfollower?name=" + name, {
-      method: "post",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setFol(data.count);
-        setFollow(false);
-      })
-      .catch(() => {
-        setFol(-1);
-        setFollow(false);
-      });
+    setFollow(false);
   };
 
   const BirthdayCheck = (val) => {
@@ -300,7 +288,8 @@ const Shihainin = ({ fet, kamio, setSec, triggerUpdate, width }) => {
                             Shihainin since{" "}
                             {moment(item.starting)
                               .local()
-                              .format("DD MMMM YYYY")} [{remainEvent(moment(item.starting).unix())}]
+                              .format("DD MMMM YYYY")}{" "}
+                            [{remainEvent(moment(item.starting).unix())}]
                           </h6>
                           {birthday ? (
                             <h6>

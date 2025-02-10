@@ -2102,7 +2102,7 @@ function App() {
         <div className="row">
           <div data-aos="flip-right">
             <img
-              src="https://i.scdn.co/image/ab67618600001016bff3b2d65f20344e75ddbd7b"
+              src="https://pbs.twimg.com/media/GjXBiZZbsAAd3mS?format=jpg&name=4096x4096"
               width="100%"
             />
           </div>
@@ -2110,8 +2110,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                BNK48 5th Album "Sukinanda" has been out on music streaming
-                platform. And Music Video on Youtube.
+                  BNK48 18th Single “Green Flash” has been out on music
+                  streaming platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page
@@ -2122,8 +2122,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                BNK48 5th Album "Sukinanda" has been out on music streaming
-                  platform. And Music Video on Youtube.
+                  BNK48 18th Single “Green Flash” has been out on music
+                  streaming platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page
@@ -2135,7 +2135,7 @@ function App() {
         <div className="row">
           <div className="col" data-aos="fade-in">
             <img
-              src="https://pbs.twimg.com/media/Gb8ftV-bkAAAt7m?format=jpg&name=large"
+              src="https://pbs.twimg.com/media/GjXAe0DbcAAgnD3?format=jpg&name=large"
               width="100%"
             />
           </div>
@@ -2144,8 +2144,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 5th Album "Sukinanda" has been out on music streaming
-                  platform. And Music Video on Youtube.
+                  BNK48 18th Single “Green Flash” has been out on music
+                  streaming platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page
@@ -2156,8 +2156,8 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                BNK48 5th Album "Sukinanda" has been out on music streaming
-                platform. And Music Video on Youtube.
+                  BNK48 18th Single “Green Flash” has been out on music
+                  streaming platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
                 page

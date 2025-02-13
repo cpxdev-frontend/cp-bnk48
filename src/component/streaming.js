@@ -64,7 +64,7 @@ const MusicSt = ({fet, setSec, width}) => {
             {width >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://pbs.twimg.com/media/GcF3CMobMAAeZ3x?format=jpg&name=large" width={width} />
+           <img src="https://image-cdn-ak.spotifycdn.com/image/ab67618600000194a35934b2db09e5b3a73c1dd0" width={width} />
               </Fade>
       </div>
         )}

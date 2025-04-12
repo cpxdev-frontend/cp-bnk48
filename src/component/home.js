@@ -17,7 +17,7 @@ import { Typography, ListItem, Zoom, ListItemText,
 // const defaultTheme = 'https://d3hhrps04devi8.cloudfront.net/bnk48/16thsinggrand.jpg'
 // const defaultvideo = 'https://www.youtube.com/embed/O7mtKDllAg0?autoplay=1&mute=1&controls=0&loop=1&playlist=O7mtKDllAg0'
 const defaultTheme = 'https://image-cdn-ak.spotifycdn.com/image/ab6761860000eab1144139d91f0c7d4432ec9ef6'
-const defaultvideo = 'https://www.youtube.com/embed/Pcbp5MYnHJA?autoplay=1&mute=1&controls=0&loop=1&playlist=Pcbp5MYnHJA'
+const defaultvideo = 'https://www.youtube.com/embed/WvqKGMBTI8Y?autoplay=1&mute=1&controls=0&loop=1&playlist=WvqKGMBTI8Y'
 const HomeCom = ({fet, gp, ImgThumb, stream, kamin, setSec, width}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);

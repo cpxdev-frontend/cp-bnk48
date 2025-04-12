@@ -33,10 +33,10 @@ var reg = 'Loading';
 // }
 const randomNumber = Math.floor(Math.random() * 10) + 1;
 if (randomNumber < 5) {
-        ul = 'https://cpxdevweb.runasp.net'
+        ul = 'https://cpxdevweb.azurewebsite.net'
                 reg = 'Worldwide'
 } else {
-        ul = 'https://cpxdevweb.runasp.net'
+        ul = 'https://cpxdevweb.koyeb.app'
                 reg = 'Worldwide'
 }
 

@@ -131,6 +131,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
 
   const [play, onPlay] = React.useState(false);
   const [korkao, setKorkao] = React.useState(false);
+  const [nm, setNm] = React.useState(false);
   const [fol, setFollowName] = React.useState("");
   const [customback, setBack] = React.useState(false);
   const [live, setLive] = React.useState(null);
@@ -597,6 +598,9 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
             if (data.response.name === "Kaofrang") {
               setKorkao(true);
             }
+            if (data.response.name === "Nammonn") {
+              setNm(true);
+            }
             if (localStorage.getItem("loged") != null) {
               fetch(
                 fet +
@@ -798,6 +802,28 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
             }
             avatar={
               <Avatar src="https://d3hhrps04devi8.cloudfront.net/kf/korfranglogo.webp"></Avatar>
+            }
+          />
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={nm}
+        autoHideDuration={30000}
+        onClose={() => setNm(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}>
+        <Alert
+          severity="info"
+          onClick={() => {
+            window.open("https://nammonnthfc.pages.dev", "_blank");
+            setNm(false);
+          }}>
+          <CardHeader
+            title={
+              <h6>มาร่วมเดินทางไปกับน้องน้ำมนต์ไปด้วยกันนะ!</h6>
+            }
+            avatar={
+              <Avatar src="https://pbs.twimg.com/profile_images/1888865584538075136/oOjgcNC__400x400.jpg"></Avatar>
             }
           />
         </Alert>

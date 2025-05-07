@@ -419,7 +419,7 @@ const HomeCom = ({ fet, gp, ImgThumb, stream, kamin, setSec, width }) => {
                             new Date().getDate() >
                             0
                             ? new Date().getFullYear() -
-                              new Date(item.birthday).getFullYear() +
+                              new Date(moment(item.birthday, "YYYY-M-DD").format("YYYY-MM-DD")).getFullYear() +
                               " years old | " +
                               (parseInt(
                                 moment(item.birthday, "YYYY-M-DD").format("D")
@@ -439,10 +439,10 @@ const HomeCom = ({ fet, gp, ImgThumb, stream, kamin, setSec, width }) => {
                               ) == moment().format("DD MMMM")
                             ? "Happy " +
                               (new Date().getFullYear() -
-                                new Date(item.birthday).getFullYear()) +
+                                new Date(moment(item.birthday, "YYYY-M-DD").format("YYYY-MM-DD")).getFullYear()) +
                               " years old!"
                             : new Date().getFullYear() -
-                              new Date(item.birthday).getFullYear() +
+                              new Date(moment(item.birthday, "YYYY-M-DD").format("YYYY-MM-DD")).getFullYear() +
                               " years old | already passed"}
                           )
                         </p>

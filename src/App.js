@@ -2102,7 +2102,7 @@ function App() {
         <div className="row">
           <div data-aos="flip-right">
             <img
-              src="https://pbs.twimg.com/profile_banners/710019065792765952/1748677458/1500x500"
+              src="https://pbs.twimg.com/media/GsPQAeiaMAAkDh3?format=jpg&name=large"
               width="100%"
             />
           </div>

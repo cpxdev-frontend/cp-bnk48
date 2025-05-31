@@ -49,6 +49,9 @@
             {
                 "value": 5,
               "label": "5th Generation"
+              }, {
+                "value": 6,
+              "label": "6th Generation"
               }
       ],
       "graduation": [

@@ -30,7 +30,7 @@ function getRandomIntExcept(min, max, except) {
 const defaultTheme =
   "https://image-cdn-ak.spotifycdn.com/image/ab6761860000eab1144139d91f0c7d4432ec9ef6";
 const defaultvideo =
-  "https://www.youtube.com/embed/WvqKGMBTI8Y?autoplay=1&mute=1&controls=0&loop=1&playlist=WvqKGMBTI8Y";
+  "https://www.youtube.com/embed/9ayUUchQ4OA?autoplay=1&mute=1&controls=0&loop=1&playlist=9ayUUchQ4OA";
 const HomeCom = ({ fet, gp, ImgThumb, stream, kamin, setSec, width }) => {
   const History = useHistory();
   const [Loaded1, setLoaded1] = React.useState(false);

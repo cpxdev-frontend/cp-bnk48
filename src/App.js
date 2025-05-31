@@ -2135,7 +2135,7 @@ function App() {
         <div className="row">
           <div className="col" data-aos="fade-in">
             <img
-              src="https://pbs.twimg.com/media/GsNWkowaMAAWOqK?format=jpg&name=4096x4096"
+              src="https://pbs.twimg.com/media/GsQ2SVCaMAAh3Xw?format=jpg&name=4096x4096"
               width="100%"
             />
           </div>

@@ -2102,7 +2102,7 @@ function App() {
         <div className="row">
           <div data-aos="flip-right">
             <img
-              src="https://pbs.twimg.com/media/GjXBiZZbsAAd3mS?format=jpg&name=4096x4096"
+              src="https://pbs.twimg.com/profile_banners/710019065792765952/1748677458/1500x500"
               width="100%"
             />
           </div>
@@ -2110,7 +2110,7 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 18th Single “Green Flash” has been out on music
+                  BNK48 19th Single “Colorcon Wink” has been out on music
                   streaming platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
@@ -2122,7 +2122,7 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 18th Single “Green Flash” has been out on music
+                  BNK48 19th Single “Colorcon Wink” has been out on music
                   streaming platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
@@ -2135,7 +2135,7 @@ function App() {
         <div className="row">
           <div className="col" data-aos="fade-in">
             <img
-              src="https://pbs.twimg.com/media/GjXAe0DbcAAgnD3?format=jpg&name=large"
+              src="https://pbs.twimg.com/media/GsNWkowaMAAWOqK?format=jpg&name=4096x4096"
               width="100%"
             />
           </div>
@@ -2144,7 +2144,7 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 18th Single “Green Flash” has been out on music
+                  BNK48 19th Single “Colorcon Wink” has been out on music
                   streaming platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this
@@ -2156,7 +2156,7 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  BNK48 18th Single “Green Flash” has been out on music
+                  BNK48 19th Single “Colorcon Wink” has been out on music
                   streaming platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click/tap here on image or wait 10 seconds to skip this

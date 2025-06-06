@@ -29,7 +29,7 @@ const Contact = ({ fet, setSec, width }) => {
         <div class="video-background">
           <Fade in={true} timeout={800}>
             <img
-              src="https://www.bnk48.com/data/Slidebanners/58/img_resize/092418klmvwy.png"
+              src="https://www.bnk48.com/data/Slidebanners/59/img_resize/062820aghz45.jpg"
               width={window.innerWidth}
             />
           </Fade>

@@ -28,9 +28,9 @@ function getRandomIntExcept(min, max, except) {
 // const defaultTheme = 'https://d3hhrps04devi8.cloudfront.net/bnk48/16thsinggrand.jpg'
 // const defaultvideo = 'https://www.youtube.com/embed/O7mtKDllAg0?autoplay=1&mute=1&controls=0&loop=1&playlist=O7mtKDllAg0'
 const defaultTheme =
-  "https://image-cdn-ak.spotifycdn.com/image/ab6761860000eab17d6e9edcfacff9405cf91e6a";
+  "https://pbs.twimg.com/media/G4wcYAAb0AAhhwM?format=jpg&name=4096x4096";
 const defaultvideo =
-  "https://www.youtube.com/embed/9ayUUchQ4OA?autoplay=1&mute=1&controls=0&loop=1&playlist=9ayUUchQ4OA";
+  "https://www.youtube.com/embed/LShOZ2JTEyU?autoplay=1&mute=1&controls=0&loop=1&playlist=LShOZ2JTEyU";
 const HomeCom = ({ fet, gp, ImgThumb, stream, kamin, setSec, width }) => {
   const History = useHistory();
   const [Loaded1, setLoaded1] = React.useState(false);

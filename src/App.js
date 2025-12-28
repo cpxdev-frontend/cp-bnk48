@@ -274,6 +274,11 @@ function App() {
   }
   React.useEffect(() => {
     AOS.init({ duration: 800 });
+    const now = moment();
+    const newYear2026 = moment("2026-01-01");
+    if (now.isAfter(newYear2026)) {
+      window.location.href = "https://the48thfan.onrender.com";
+    }
     window.addEventListener("resize", handleWindowResize);
     return () => {
       window.removeEventListener("resize", handleWindowResize);
